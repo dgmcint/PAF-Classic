@@ -3,7 +3,7 @@ name = "paf-classic"
 version = "0.1.0"
 edition = "2024"
 build = "build.rs"
-license = "Unlicense"
+license = "PolyForm-Noncommercial-1.0.0"
 repository = "https://github.com/dgmcint/PAF-Classic"
 description = "PAF Classic: an offline genealogy program in the spirit of PAF 5"
 
@@ -13,7 +13,7 @@ name = "PAF Classic"
 identifier = "io.github.dgmcint.pafclassic"
 icon = ["assets/icon.icns", "assets/icon.png"]
 version = "0.1.0"
-copyright = "Public domain. PAF was created by The Church of Jesus Christ of Latter-day Saints."
+copyright = "PAF Classic contributors. Free for noncommercial use. PAF was created by The Church of Jesus Christ of Latter-day Saints."
 category = "public.app-category.productivity"
 short_description = "An offline genealogy program in the spirit of PAF 5"
 

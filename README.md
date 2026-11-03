@@ -53,6 +53,8 @@ way to record your family without an account or an internet connection.
 - A notepad for research notes
 - Backup and Restore
 
+See [**FEATURES.md**](FEATURES.md) for a full list of what works, compared with the PAF 5 User's Guide, and what's planned next.
+
 ## Download and install
 
 Open the [**Releases page**](https://github.com/dgmcint/PAF-Classic/releases/latest)

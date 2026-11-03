@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 build = "build.rs"
 license = "Unlicense"
-repository = "https://github.com/dgmcint/paf"
+repository = "https://github.com/dgmcint/PAF-Classic"
 description = "PAF Classic: an offline genealogy program in the spirit of PAF 5"
 
 # Used by `cargo bundle --release` to make "PAF Classic.app" (and a .deb on Linux).

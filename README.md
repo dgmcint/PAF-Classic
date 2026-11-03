@@ -2,7 +2,7 @@
 
 # PAF Classic
 
-[![Build](https://github.com/dgmcint/paf/actions/workflows/release.yml/badge.svg)](https://github.com/dgmcint/paf/actions/workflows/release.yml)
+[![Build](https://github.com/dgmcint/PAF-Classic/actions/workflows/release.yml/badge.svg)](https://github.com/dgmcint/PAF-Classic/actions/workflows/release.yml)
 
 An offline genealogy program for macOS, Windows and Linux, modelled on the way
 Personal Ancestral File (PAF 5) worked: the Family and Pedigree screens, the
@@ -13,11 +13,11 @@ PAF Classic is an independent, open-source project. It isn't affiliated with or 
 FamilySearch or The Church of Jesus Christ of Latter-day Saints, and it doesn't
 contain any of PAF's code or artwork.
 
-![Family screen](shots/en.png)
+![Family screen](assets/screenshot.png)
 
 ## Download
 
-Go to the [Releases page](https://github.com/dgmcint/paf/releases/latest) and pick the file for your computer:
+Go to the [Releases page](https://github.com/dgmcint/PAF-Classic/releases/latest) and pick the file for your computer:
 
 | Computer | File |
 | --- | --- |
@@ -41,8 +41,8 @@ need a CJK font such as `fonts-noto-cjk`.
 You need [Rust](https://rustup.rs) 1.85 or newer.
 
 ```sh
-git clone https://github.com/dgmcint/paf.git
-cd paf
+git clone https://github.com/dgmcint/PAF-Classic.git
+cd PAF-Classic
 cargo run --release
 ```
 

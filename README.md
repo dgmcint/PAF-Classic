@@ -103,7 +103,6 @@ Korean names, install a CJK font such as `fonts-noto-cjk`.
 | `.pafc` | A PAF Classic family file | open and save |
 | `.paf` | A PAF 5 family file | open (read only) |
 | `.ged` | GEDCOM, the standard way family-history programs share data | import and export |
-| `.fkf` | A file from an early test version | open |
 
 Opening a `.paf` file brings in people, families, dates, places and notes.
 Sources, citations, custom events and pictures in `.paf` files aren't brought in

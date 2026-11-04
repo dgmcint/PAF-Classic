@@ -12,8 +12,6 @@ use std::sync::Arc;
 
 pub const APP_NAME: &str = "PAF Classic";
 pub const FILE_EXT: &str = "pafc";
-/// The ending this program used before it was named PAF Classic. Those files still open.
-pub const OLD_EXT: &str = "fkf";
 
 // Colours read from the original's screenshots.
 pub const BG: Color32 = Color32::from_rgb(236, 233, 216);
@@ -507,7 +505,7 @@ impl App {
 
     fn pick_family_filter() -> rfd::FileDialog {
         rfd::FileDialog::new()
-            .add_filter("Family files", &[FILE_EXT, OLD_EXT, "paf", "ged"])
+            .add_filter("Family files", &[FILE_EXT, "paf", "ged"])
             .add_filter("All files", &["*"])
     }
 
@@ -837,7 +835,7 @@ impl App {
             Cmd::Properties => self.push(|id| Dialog::Properties { id }),
             Cmd::Backup => self.write_backup(),
             Cmd::Restore => {
-                if let Some(p) = rfd::FileDialog::new().add_filter("Family files", &[FILE_EXT, OLD_EXT]).pick_file() {
+                if let Some(p) = rfd::FileDialog::new().add_filter("Family files", &[FILE_EXT]).pick_file() {
                     self.push(|id| Dialog::ConfirmRestore { id, from: p });
                 }
             }
@@ -847,7 +845,7 @@ impl App {
                 self.push(|id| Dialog::CheckRepair { id, found });
             }
             Cmd::DeleteFile => {
-                if let Some(p) = rfd::FileDialog::new().add_filter("Family files", &[FILE_EXT, OLD_EXT]).pick_file() {
+                if let Some(p) = rfd::FileDialog::new().add_filter("Family files", &[FILE_EXT]).pick_file() {
                     self.push(|id| Dialog::ConfirmDeleteFile { id, path: p });
                 }
             }

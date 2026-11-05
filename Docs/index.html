@@ -1,1 +1,156 @@
-fff
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PAF Classic</title>
+<meta name="description" content="PAF Classic: a free, noncommercial recreation of the classic Personal Ancestral File genealogy program for Windows, Mac and Linux.">
+<link rel="icon" type="image/png" href="icon.png">
+<style>
+  :root {
+    --desk: #2f6f8f;
+    --win: #d4d0c8;
+    --hi: #ffffff;
+    --lo: #808080;
+    --dk: #404040;
+    --ink: #111111;
+    --title1: #0a246a;
+    --title2: #3a6ea5;
+    --paper: #fffef6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--desk);
+    background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size: 4px 4px;
+    color: var(--ink);
+    font: 15px/1.55 Tahoma, Verdana, "Segoe UI", sans-serif;
+    padding: 40px 16px 56px;
+  }
+  .window {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--win);
+    border: 2px solid;
+    border-color: var(--hi) var(--dk) var(--dk) var(--hi);
+    box-shadow: 1px 1px 0 #000, 8px 8px 0 rgba(0,0,0,.25);
+  }
+  .titlebar {
+    display: flex; align-items: center; gap: 8px;
+    background: linear-gradient(90deg, var(--title1), var(--title2));
+    color: #fff; font-weight: bold; padding: 4px 6px;
+  }
+  .titlebar img { width: 16px; height: 16px; }
+  .titlebar span { flex: 1; }
+  .tb-btn {
+    width: 18px; height: 16px; background: var(--win); color: #000;
+    border: 1px solid; border-color: var(--hi) var(--dk) var(--dk) var(--hi);
+    font: bold 11px/14px Tahoma, sans-serif; text-align: center;
+  }
+  .menubar { display: flex; gap: 16px; padding: 3px 10px; border-bottom: 1px solid var(--lo); font-size: 14px; }
+  .menubar u { text-decoration: underline; }
+  .body { padding: 22px 22px 18px; }
+  .intro { display: flex; gap: 20px; align-items: center; }
+  .intro .appicon { width: 80px; height: 80px; flex-shrink: 0; }
+  h1 { font: bold 30px/1.1 Georgia, "Times New Roman", serif; margin: 0 0 6px; color: var(--title1); }
+  .tag { margin: 0; }
+  .btns { margin: 20px 0 4px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; min-width: 120px; padding: 7px 18px; text-align: center;
+    background: var(--win); color: #000; text-decoration: none;
+    border: 2px solid; border-color: var(--hi) var(--dk) var(--dk) var(--hi);
+    box-shadow: inset -1px -1px 0 var(--lo);
+  }
+  .btn.default { outline: 1px solid #000; }
+  .btn:active { border-color: var(--dk) var(--hi) var(--hi) var(--dk); box-shadow: inset 1px 1px 0 var(--lo); }
+  fieldset {
+    margin: 22px 0 0; padding: 12px 16px 14px;
+    border: 1px solid var(--lo); box-shadow: 1px 1px 0 var(--hi), inset 1px 1px 0 var(--hi);
+  }
+  legend { padding: 0 6px; font-weight: bold; }
+  ul { margin: 4px 0 0; padding-left: 20px; }
+  li { margin: 3px 0; }
+  .inset {
+    background: var(--paper); padding: 10px 14px;
+    border: 2px solid; border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+  }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 5px 8px; border-bottom: 1px dotted var(--lo); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { font-weight: bold; white-space: nowrap; }
+  code { font: 13px "Courier New", monospace; }
+  a { color: #0000cc; }
+  .small { font-size: 13px; color: #333; margin: 8px 0 0; }
+  .status {
+    display: flex; gap: 4px; padding: 3px; border-top: 1px solid var(--hi); font-size: 13px;
+  }
+  .status div { flex: 1; padding: 1px 6px; border: 1px solid; border-color: var(--lo) var(--hi) var(--hi) var(--lo); }
+  @media (max-width: 520px) {
+    body { padding: 16px 10px 32px; }
+    .intro { flex-direction: column; text-align: center; }
+    .btns { justify-content: center; }
+    td:first-child { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<div class="window">
+  <div class="titlebar">
+    <img src="icon.png" width="18" height="18" alt="">
+    <span>PAF Classic</span>
+    <div class="tb-btn">_</div><div class="tb-btn">□</div><div class="tb-btn">×</div>
+  </div>
+  <div class="menubar"><span><u>F</u>ile</span><span><u>E</u>dit</span><span><u>V</u>iew</span><span><u>H</u>elp</span></div>
+
+  <div class="body">
+    <div class="intro">
+        <img class="appicon" src="icon.png" width="80" height="80" alt="">
+      <div>
+        <h1>PAF Classic</h1>
+        <p class="tag">The familiar Personal Ancestral File, rebuilt for today’s computers. Free for Windows, Mac and Linux.</p>
+      </div>
+    </div>
+
+    <div class="btns">
+      <a class="btn default" href="https://github.com/dgmcint/paf/releases/latest">Download…</a>
+      <a class="btn" href="https://github.com/dgmcint/paf">GitHub</a>
+    </div>
+
+    <fieldset>
+      <legend>Features</legend>
+      <ul>
+        <li>Opens your existing PAF files</li>
+        <li>The family, pedigree and individual screens PAF users know</li>
+        <li>Saves to its own <code>.pafc</code> format, leaving your original files untouched</li>
+        <li>Your data stays on your computer, with no account and no ads</li>
+      </ul>
+    </fieldset>
+
+    <fieldset>
+      <legend>Which download?</legend>
+      <div class="inset">
+        <table>
+          <tr><td>Windows</td><td>Windows build</td></tr>
+          <tr><td>Mac (Apple chip)</td><td>macOS Apple Silicon build</td></tr>
+          <tr><td>Mac (Intel chip)</td><td>macOS Intel build</td></tr>
+          <tr><td>Linux</td><td>Linux build</td></tr>
+        </table>
+      </div>
+      <p class="small">On the Releases page, look under <b>Assets</b>. Not sure which Mac? Apple menu → <b>About This Mac</b>.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>About</legend>
+      <p style="margin:0">Personal Ancestral File was created by The Church of Jesus Christ of Latter-day Saints, and credit for the original program belongs to the Church. PAF Classic is an independent, noncommercial project and is not affiliated with or endorsed by the Church.</p>
+      <p class="small">Licensed under the <a href="https://polyformproject.org/licenses/noncommercial/1.0.0/">PolyForm Noncommercial License 1.0.0</a>: free to use and share, not for sale.</p>
+    </fieldset>
+  </div>
+
+  <div class="status"><div>Ready</div><div>Free &amp; noncommercial</div></div>
+</div>
+
+</body>
+</html>

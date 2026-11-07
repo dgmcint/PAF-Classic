@@ -26,11 +26,11 @@ jobs:
       matrix:
         include:
           - name: macOS (Apple Silicon)
-            os: macos-14
+            os: macos-15
             target: aarch64-apple-darwin
             package: PAF-Classic-macos-apple-silicon
           - name: macOS (Intel)
-            os: macos-14
+            os: macos-15
             target: x86_64-apple-darwin
             package: PAF-Classic-macos-intel
           - name: Windows

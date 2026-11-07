@@ -13,11 +13,8 @@ use std::sync::Arc;
 pub const APP_NAME: &str = "PAF Classic";
 pub const FILE_EXT: &str = "pafc";
 
-// Colours read from the original's screenshots.
-pub const BG: Color32 = Color32::from_rgb(236, 233, 216);
-pub const SELECT: Color32 = Color32::from_rgb(81, 85, 120);
-pub const INK: Color32 = Color32::BLACK;
-pub const SHADOW: Color32 = Color32::from_rgb(172, 168, 153);
+// The colours come from the scheme chosen under View > Colors; Classic is the original's.
+pub use crate::look::pal;
 
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
 pub enum View {
@@ -253,25 +250,47 @@ pub fn setup_look(ctx: &egui::Context) {
         fonts.families.insert(FontFamily::Name("bold".into()), list);
     }
     ctx.set_fonts(fonts);
-    let mut v = egui::Visuals::light();
-    v.panel_fill = BG;
-    v.window_fill = BG;
-    v.extreme_bg_color = Color32::WHITE;
-    v.faint_bg_color = Color32::from_rgb(246, 244, 234);
+    apply_colors(ctx);
+}
+
+/// Sets the window colours from the chosen scheme. Called at start and when the scheme changes.
+pub fn apply_colors(ctx: &egui::Context) {
+    let p = pal();
+    let mut v = if p.dark { egui::Visuals::dark() } else { egui::Visuals::light() };
+    v.panel_fill = p.bg;
+    v.window_fill = p.bg;
+    v.extreme_bg_color = p.text_bg;
+    v.faint_bg_color = p.faint;
     v.window_corner_radius = 2.into();
     v.menu_corner_radius = 1.into();
     for w in [&mut v.widgets.noninteractive, &mut v.widgets.inactive, &mut v.widgets.hovered, &mut v.widgets.active, &mut v.widgets.open] {
         w.corner_radius = 2.into();
     }
-    v.selection.bg_fill = SELECT;
-    v.selection.stroke = Stroke::new(1.0, Color32::WHITE);
-    v.widgets.noninteractive.fg_stroke = Stroke::new(1.0, INK);
-    v.widgets.inactive.fg_stroke = Stroke::new(1.0, INK);
-    v.widgets.inactive.bg_fill = Color32::from_rgb(244, 242, 232);
-    v.widgets.inactive.weak_bg_fill = Color32::from_rgb(244, 242, 232);
-    v.widgets.inactive.bg_stroke = Stroke::new(1.0, SHADOW);
-    v.widgets.hovered.weak_bg_fill = Color32::from_rgb(252, 250, 240);
-    v.widgets.active.weak_bg_fill = Color32::from_rgb(220, 216, 198);
+    v.selection.bg_fill = p.select;
+    v.selection.stroke = Stroke::new(1.0, p.select_ink);
+    v.widgets.noninteractive.fg_stroke = Stroke::new(1.0, p.ink);
+    v.widgets.inactive.fg_stroke = Stroke::new(1.0, p.ink);
+    v.widgets.inactive.bg_fill = p.button;
+    v.widgets.inactive.weak_bg_fill = p.button;
+    v.widgets.inactive.bg_stroke = Stroke::new(1.0, p.shadow);
+    v.widgets.hovered.weak_bg_fill = p.hover;
+    v.widgets.active.weak_bg_fill = p.pressed;
+    // Classic keeps the original's settings exactly; the other schemes set every state's colours.
+    if crate::look::current() != 0 {
+        v.widgets.noninteractive.bg_stroke = Stroke::new(1.0, p.shadow);
+        v.widgets.noninteractive.bg_fill = p.bg;
+        v.widgets.hovered.bg_fill = p.hover;
+        v.widgets.active.bg_fill = p.pressed;
+        v.widgets.open.bg_fill = p.hover;
+        v.widgets.open.weak_bg_fill = p.hover;
+        for w in [&mut v.widgets.hovered, &mut v.widgets.active, &mut v.widgets.open] {
+            w.fg_stroke = Stroke::new(1.0, p.ink);
+            w.bg_stroke = Stroke::new(1.0, p.light);
+        }
+        v.window_stroke = Stroke::new(1.0, p.shadow);
+        v.hyperlink_color = p.ink;
+        v.warn_fg_color = p.warn;
+    }
     ctx.set_theme(egui::ThemePreference::Light);
     ctx.set_visuals_of(egui::Theme::Light, v.clone());
     ctx.set_visuals_of(egui::Theme::Dark, v);
@@ -311,6 +330,18 @@ pub fn choose_language(index: usize) {
     }
     let _ = std::fs::create_dir_all(config_dir());
     let _ = std::fs::write(config_dir().join("language.txt"), crate::i18n::code());
+}
+
+/// Switches to a colour scheme and remembers it for next time.
+pub fn choose_colors(ctx: &egui::Context, index: usize) {
+    crate::look::set(index);
+    apply_colors(ctx);
+    // A picture run is only a test, so it leaves the person's setting alone.
+    if std::env::args().any(|a| a == "--screenshot") {
+        return;
+    }
+    let _ = std::fs::create_dir_all(config_dir());
+    let _ = std::fs::write(config_dir().join("colors.txt"), crate::look::name());
 }
 
 pub fn config_dir() -> PathBuf {
@@ -1200,6 +1231,21 @@ impl App {
                 ui.checkbox(&mut self.show_toolbar, tr("Toolbar"));
                 ui.checkbox(&mut self.show_status, tr("Status Bar"));
                 ui.separator();
+                ui.menu_button(tr("Colors"), |ui| {
+                    for (i, (name, group, _)) in crate::look::SCHEMES.iter().enumerate() {
+                        if i == 0 || crate::look::SCHEMES[i - 1].1 != *group {
+                            if i > 0 {
+                                ui.separator();
+                            }
+                            ui.label(egui::RichText::new(tr(group)).weak());
+                        }
+                        if ui.selectable_label(crate::look::current() == i, tr(name)).clicked() {
+                            choose_colors(ui.ctx(), i);
+                            ui.close();
+                        }
+                    }
+                });
+                ui.separator();
                 // Each language is listed under its own name, so it can be found from any language.
                 ui.label(egui::RichText::new(tr("Language")).weak());
                 for (i, name) in crate::i18n::LANGUAGES.iter().enumerate() {
@@ -1279,15 +1325,15 @@ impl App {
         ];
         let p = ui.painter().clone();
         for x in [147.0, 288.0, 401.0, 461.0] {
-            p.vline(r.left() + x, (r.top() + 3.0)..=(r.bottom() - 4.0), Stroke::new(1.0, SHADOW));
-            p.vline(r.left() + x + 1.0, (r.top() + 3.0)..=(r.bottom() - 4.0), Stroke::new(1.0, Color32::WHITE));
+            p.vline(r.left() + x, (r.top() + 3.0)..=(r.bottom() - 4.0), Stroke::new(1.0, pal().shadow));
+            p.vline(r.left() + x + 1.0, (r.top() + 3.0)..=(r.bottom() - 4.0), Stroke::new(1.0, pal().light));
         }
         let mut out = Vec::new();
         for (x, icon, tip, cmd, on) in tools {
             let rect = Rect::from_center_size(pos2(r.left() + x, r.center().y), vec2(24.0, 24.0));
             let resp = ui.allocate_rect(rect, if on { Sense::click() } else { Sense::hover() });
             if on && resp.hovered() {
-                p.rect(rect, 1.0, Color32::from_rgb(250, 248, 240), Stroke::new(1.0, SHADOW), StrokeKind::Inside);
+                p.rect(rect, 1.0, pal().hover, Stroke::new(1.0, pal().shadow), StrokeKind::Inside);
             }
             draw_icon(&p, rect.shrink(4.0), icon, on);
             if resp.on_hover_text(tr(tip)).clicked() {
@@ -1302,7 +1348,7 @@ impl App {
     fn status_bar(&mut self, ui: &mut egui::Ui) {
         let r = ui.max_rect();
         let p = ui.painter().clone();
-        p.hline(r.left()..=r.right(), r.top(), Stroke::new(1.0, SHADOW));
+        p.hline(r.left()..=r.right(), r.top(), Stroke::new(1.0, pal().shadow));
         let text = if !self.status.is_empty() {
             self.status.clone()
         } else if self.db.prefs.show_relationships {
@@ -1310,15 +1356,15 @@ impl App {
         } else {
             tr("For Help, press F1. Double-click on person you want to edit.").to_string()
         };
-        p.text(pos2(r.left() + 3.0, r.center().y), egui::Align2::LEFT_CENTER, text, egui::FontId::proportional(12.0), INK);
+        p.text(pos2(r.left() + 3.0, r.center().y), egui::Align2::LEFT_CENTER, text, egui::FontId::proportional(12.0), pal().ink);
         let right = r.right();
         let rin = self.selected.map(|x| format!("RIN {x}")).unwrap_or_default();
         let mrin = self.primary.and_then(|x| self.current_marriage(x)).map(|m| format!("MRIN {m}")).unwrap_or_default();
         let count = if self.db.people.is_empty() { String::new() } else { self.db.people.len().to_string() };
         for (x0, x1, t) in [(683.0, 781.0, rin), (782.0, 880.0, mrin), (881.0, 917.0, count), (918.0, 954.0, String::new()), (955.0, 993.0, String::new()), (994.0, 1022.0, String::new())] {
             let rc = Rect::from_min_max(pos2(right - 1024.0 + x0, r.top() + 2.0), pos2(right - 1024.0 + x1, r.bottom() - 2.0));
-            p.rect_stroke(rc, 0.0, Stroke::new(1.0, SHADOW), StrokeKind::Inside);
-            p.text(rc.center(), egui::Align2::CENTER_CENTER, t, egui::FontId::proportional(11.5), INK);
+            p.rect_stroke(rc, 0.0, Stroke::new(1.0, pal().shadow), StrokeKind::Inside);
+            p.text(rc.center(), egui::Align2::CENTER_CENTER, t, egui::FontId::proportional(11.5), pal().ink);
         }
     }
 
@@ -1418,13 +1464,13 @@ impl eframe::App for App {
         self.exit_prompt(&ctx);
         self.shortcuts(&ctx);
         // Strip heights measured from the person's pictures, with their title bar left out.
-        let panel = egui::Frame::new().fill(BG);
+        let panel = egui::Frame::new().fill(pal().bg);
         egui::Panel::top("menu").exact_size(20.0).frame(panel).show_separator_line(false).show(ui, |ui| self.menus(ui));
         if self.show_toolbar {
             egui::Panel::top("tools").exact_size(30.0).frame(panel).show_separator_line(false).show(ui, |ui| {
                 let r = ui.max_rect();
-                ui.painter().hline(r.left()..=r.right(), r.top(), Stroke::new(1.0, SHADOW));
-                ui.painter().hline(r.left()..=r.right(), r.bottom() - 1.0, Stroke::new(1.0, SHADOW));
+                ui.painter().hline(r.left()..=r.right(), r.top(), Stroke::new(1.0, pal().shadow));
+                ui.painter().hline(r.left()..=r.right(), r.bottom() - 1.0, Stroke::new(1.0, pal().shadow));
                 self.toolbar(ui);
             });
         }

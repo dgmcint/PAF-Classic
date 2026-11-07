@@ -161,3 +161,4 @@ The gaps that matter most to day-to-day family history, roughly in order:
 7. Merge duplicate repositories, and Match/Merge by record serial number
 8. Templates, and the Fonts, Multimedia and Folders preference tabs
 9. Photo editing
+10. Automatic updates: when a new version is released, ask whether to update, then download it, verify it and restart

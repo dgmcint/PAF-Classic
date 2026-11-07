@@ -9,6 +9,7 @@ mod dlg_people;
 mod dlg_tools;
 mod gedcom;
 mod i18n;
+mod look;
 mod model;
 mod paffile;
 mod reports;
@@ -25,6 +26,7 @@ fn main() -> eframe::Result {
     let mut open = None;
     let mut steps = None;
     let mut language = None;
+    let mut colors = None;
     let mut args = std::env::args().skip(1);
     while let Some(a) = args.next() {
         match a.as_str() {
@@ -34,10 +36,21 @@ fn main() -> eframe::Result {
             "--open" => open = args.next(),
             "--do" => steps = args.next(),
             "--lang" => language = args.next(),
+            "--colors" => colors = args.next(),
             other => file = Some(PathBuf::from(other)),
         }
     }
     let taking_picture = screenshot.is_some();
+    // A picture run uses Classic colours unless asked, like the language.
+    match colors {
+        Some(name) => look::set_name(&name),
+        None if !taking_picture => {
+            if let Ok(name) = std::fs::read_to_string(app::config_dir().join("colors.txt")) {
+                look::set_name(&name);
+            }
+        }
+        None => {}
+    }
     // A picture run stays in English unless asked, so it stays comparable.
     match language {
         Some(code) => i18n::set_code(&code),

@@ -4,7 +4,7 @@ use crate::app::*;
 use crate::calc;
 use crate::dialogs::*;
 use crate::model::*;
-use egui::{Color32, Key, RichText, TextEdit, vec2};
+use egui::{Key, RichText, TextEdit, vec2};
 
 impl App {
     pub fn show_people_dialog(&mut self, ctx: &egui::Context, dlg: &mut Dialog, is_top: bool) -> bool {
@@ -162,7 +162,7 @@ impl App {
                         found
                     };
                     if !warnings.is_empty() {
-                        egui::CollapsingHeader::new(RichText::new(format!("{} possible problems", warnings.len())).color(Color32::from_rgb(170, 60, 0))).show(ui, |ui| {
+                        egui::CollapsingHeader::new(RichText::new(format!("{} possible problems", warnings.len())).color(crate::look::pal().warn)).show(ui, |ui| {
                             for w in &warnings {
                                 ui.label(tr(w));
                             }

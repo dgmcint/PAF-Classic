@@ -6,7 +6,7 @@ use crate::dialogs::*;
 use crate::gedcom;
 use crate::model::*;
 use crate::reports::{self, Report};
-use egui::{Color32, Key, RichText, TextEdit};
+use egui::{Key, RichText, TextEdit};
 
 impl App {
     pub fn show_tool_dialog(&mut self, ctx: &egui::Context, dlg: &mut Dialog, is_top: bool) -> bool {
@@ -198,7 +198,7 @@ impl App {
                         }
                     });
                     if !note.is_empty() {
-                        ui.label(RichText::new(note.as_str()).color(Color32::from_rgb(170, 60, 0)));
+                        ui.label(RichText::new(note.as_str()).color(crate::look::pal().warn));
                     }
                 });
             }

@@ -218,7 +218,7 @@ pub fn custom_ui(ui: &mut egui::Ui, list: &mut Vec<CustomEvent>, kinds: &[String
 
 pub fn date_warning(ui: &mut egui::Ui, text: &str, day_first: bool) {
     if !calc::is_standard_date(text, day_first) {
-        ui.label(RichText::new(tr("The date you typed is not standard.")).color(Color32::from_rgb(170, 60, 0)).size(11.0));
+        ui.label(RichText::new(tr("The date you typed is not standard.")).color(crate::look::pal().warn).size(11.0));
     }
 }
 
@@ -491,21 +491,21 @@ pub fn draw_page(ui: &mut egui::Ui, page: &reports::Page, scale: f32) {
     let size = vec2(reports::PAGE_W * scale, reports::PAGE_H * scale);
     let (rect, _) = ui.allocate_exact_size(size, egui::Sense::hover());
     let p = ui.painter();
-    p.rect(rect, 0.0, Color32::WHITE, Stroke::new(1.0, SHADOW), egui::StrokeKind::Inside);
+    p.rect(rect, 0.0, Color32::WHITE, Stroke::new(1.0, pal().shadow), egui::StrokeKind::Inside);
     let at = |x: f32, y: f32| rect.min + vec2(x * scale, y * scale);
     for op in &page.ops {
         match op {
             Op::Text { x, y, size, bold, text } => {
                 let font = if *bold { egui::FontId::new(*size * scale, egui::FontFamily::Name("bold".into())) } else { egui::FontId::proportional(*size * scale) };
-                p.text(at(*x, *y), Align2::LEFT_TOP, text, font, INK);
+                p.text(at(*x, *y), Align2::LEFT_TOP, text, font, Color32::BLACK);
             }
             Op::Line { x1, y1, x2, y2 } => {
-                p.line_segment([at(*x1, *y1), at(*x2, *y2)], Stroke::new(0.5, INK));
+                p.line_segment([at(*x1, *y1), at(*x2, *y2)], Stroke::new(0.5, Color32::BLACK));
             }
             Op::Rect { x, y, w, h, shade } => {
                 let r = egui::Rect::from_min_size(at(*x, *y), vec2(*w * scale, *h * scale));
                 let fill = if *shade { Color32::from_gray(230) } else { Color32::WHITE };
-                p.rect(r, 0.0, fill, Stroke::new(0.5, INK), egui::StrokeKind::Inside);
+                p.rect(r, 0.0, fill, Stroke::new(0.5, Color32::BLACK), egui::StrokeKind::Inside);
             }
         }
     }

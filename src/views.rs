@@ -46,7 +46,7 @@ fn plain(size: f32) -> FontId {
 
 /// Fits text into a width, as the original clips names and places.
 fn clip(ui: &egui::Ui, text: &str, font: &FontId, width: f32) -> String {
-    let w = |s: &str| ui.fonts_mut(|f| f.layout_no_wrap(s.to_string(), font.clone(), INK).size().x);
+    let w = |s: &str| ui.fonts_mut(|f| f.layout_no_wrap(s.to_string(), font.clone(), pal().ink).size().x);
     if w(text) <= width {
         return text.to_string();
     }
@@ -117,11 +117,11 @@ fn person_box(app: &App, ui: &mut egui::Ui, rect: Rect, who: Option<u32>, slot: 
     let resp = ui.interact(rect, id, Sense::click());
     let sel = app.slot == slot;
     let painter = ui.painter();
-    let back = if sel { SELECT } else { Color32::WHITE };
+    let back = if sel { pal().select } else { pal().field };
     painter.rect_filled(rect, 0.0, back);
-    painter.rect_stroke(rect, 0.0, Stroke::new(1.0, INK), StrokeKind::Inside);
+    painter.rect_stroke(rect, 0.0, Stroke::new(1.0, pal().ink), StrokeKind::Inside);
     let Some(p) = who.and_then(|r| app.db.person(r)) else { return resp };
-    let ink = if sel { Color32::WHITE } else { INK };
+    let ink = if sel { pal().select_ink } else { pal().field_ink };
     let inner = rect.shrink2(vec2(4.0, 3.0));
     let row = inner.height() / 3.0;
     let font = plain(15.0);
@@ -144,8 +144,8 @@ fn triangle_button(ui: &mut egui::Ui, center: Pos2, size: f32, point: f32, solid
     } else {
         (center + vec2(size / 2.0, -size / 2.0), center + vec2(size / 2.0, size / 2.0), center + vec2(-size / 2.0, 0.0))
     };
-    let fill = if solid { INK } else { SHADOW };
-    ui.painter().add(egui::Shape::convex_polygon(vec![a, b, c], fill, Stroke::new(1.0, INK)));
+    let fill = if solid { pal().ink } else { pal().shadow };
+    ui.painter().add(egui::Shape::convex_polygon(vec![a, b, c], fill, Stroke::new(1.0, pal().ink)));
     resp.clicked()
 }
 
@@ -224,7 +224,7 @@ pub fn family(app: &mut App, ui: &mut egui::Ui) {
 
     let label_font = plain((16.0 * fit.sy.min(fit.sx)).clamp(12.0, 22.0));
     let painter = ui.painter().clone();
-    let stroke = Stroke::new(1.0, INK);
+    let stroke = Stroke::new(1.0, pal().ink);
 
     // Connecting lines between the primary person and the parents.
     let (jx, top, mid, bottom) = (fit.p(497.0, 0.0).x.round(), fit.p(0.0, 199.0).y.round(), fit.p(0.0, 244.0).y.round(), fit.p(0.0, 310.0).y.round());
@@ -234,14 +234,14 @@ pub fn family(app: &mut App, ui: &mut egui::Ui) {
     painter.hline(jx..=fit.p(532.0, 0.0).x.round(), bottom, stroke);
 
     // Labels, at the positions in the original's drawing code (see the mechanics sheet).
-    painter.text(fit.p(539.0, 144.0), Align2::LEFT_CENTER, tr("Parents"), label_font.clone(), INK);
-    painter.text(fit.p(49.0, 343.0), Align2::LEFT_CENTER, tr("Spouse"), label_font.clone(), INK);
-    painter.text(fit.p(49.0, 458.0), Align2::LEFT_CENTER, tr("Children"), label_font.clone(), INK);
-    painter.text(fit.p(614.0, 458.0), Align2::LEFT_CENTER, tr("Born"), label_font.clone(), INK);
-    painter.text(fit.p(736.0, 458.0), Align2::LEFT_CENTER, tr("Parent Link"), label_font.clone(), INK);
+    painter.text(fit.p(539.0, 144.0), Align2::LEFT_CENTER, tr("Parents"), label_font.clone(), pal().ink);
+    painter.text(fit.p(49.0, 343.0), Align2::LEFT_CENTER, tr("Spouse"), label_font.clone(), pal().ink);
+    painter.text(fit.p(49.0, 458.0), Align2::LEFT_CENTER, tr("Children"), label_font.clone(), pal().ink);
+    painter.text(fit.p(614.0, 458.0), Align2::LEFT_CENTER, tr("Born"), label_font.clone(), pal().ink);
+    painter.text(fit.p(736.0, 458.0), Align2::LEFT_CENTER, tr("Parent Link"), label_font.clone(), pal().ink);
     // Only drawn when LDS data is in use.
     if app.db.prefs.use_lds {
-        painter.text(fit.p(878.0, 458.0), Align2::LEFT_CENTER, tr("Ordinances"), label_font.clone(), INK);
+        painter.text(fit.p(878.0, 458.0), Align2::LEFT_CENTER, tr("Ordinances"), label_font.clone(), pal().ink);
     }
 
     // Primary person.
@@ -266,9 +266,9 @@ pub fn family(app: &mut App, ui: &mut egui::Ui) {
     let r = fit.r(56.0, 291.0, 416.0, 323.0);
     let m_resp = ui.interact(r, ui.scope_id().with("marriage"), Sense::click());
     let m_sel = app.slot == Slot::Marriage;
-    painter.rect_filled(r, 0.0, if m_sel { SELECT } else { Color32::WHITE });
+    painter.rect_filled(r, 0.0, if m_sel { pal().select } else { pal().field });
     painter.rect_stroke(r, 0.0, stroke, StrokeKind::Inside);
-    let ink = if m_sel { Color32::WHITE } else { INK };
+    let ink = if m_sel { pal().select_ink } else { pal().field_ink };
     // The marriage line: date and place, then (D) when divorced, then the number when
     // numbers are showing.
     let text = mrin.and_then(|m| app.db.marriages.get(&m)).map(|m| {
@@ -283,7 +283,7 @@ pub fn family(app: &mut App, ui: &mut egui::Ui) {
     });
     let mfont = plain((16.0 * fit.sy.min(fit.sx)).clamp(12.0, 20.0));
     painter.text(pos2(r.left() + 5.0, r.center().y), Align2::LEFT_CENTER, tr("Marriage:"), mfont.clone(), ink);
-    let label_w = ui.fonts_mut(|f| f.layout_no_wrap(format!("{} ", tr("Marriage:")), mfont.clone(), INK).size().x);
+    let label_w = ui.fonts_mut(|f| f.layout_no_wrap(format!("{} ", tr("Marriage:")), mfont.clone(), pal().ink).size().x);
     if let Some(t) = &text {
         let small = plain(12.5);
         let shown = clip(ui, t, &small, r.width() - label_w - 12.0);
@@ -355,7 +355,7 @@ pub fn family(app: &mut App, ui: &mut egui::Ui) {
 
     // Children.
     let r = fit.r(42.0, 472.0, 980.0, 697.0);
-    painter.rect_filled(r, 0.0, Color32::WHITE);
+    painter.rect_filled(r, 0.0, pal().field);
     painter.rect_stroke(r, 0.0, stroke, StrokeKind::Inside);
     let inner = r.shrink(1.0);
     // Eight rows fill the list, and it scrolls from the ninth child on.
@@ -385,9 +385,9 @@ pub fn family(app: &mut App, ui: &mut egui::Ui) {
                 let (row, resp) = ui.allocate_exact_size(vec2(inner.width() - 12.0, row_h), Sense::click());
                 let c = children[i];
                 let sel = app.slot == Slot::Child(i);
-                let ink = if sel { Color32::WHITE } else { INK };
+                let ink = if sel { pal().select_ink } else { pal().field_ink };
                 if sel {
-                    ui.painter().rect_filled(row, 0.0, SELECT);
+                    ui.painter().rect_filled(row, 0.0, pal().select);
                 }
                 let Some(p) = app.db.person(c) else { continue };
                 let cy = row.center().y;
@@ -396,7 +396,7 @@ pub fn family(app: &mut App, ui: &mut egui::Ui) {
                 ui.painter().text(pos2(row.left() + 20.0, cy), Align2::LEFT_CENTER, format!("{}", i + 1), font.clone(), ink);
                 let name_area = Rect::from_min_max(pos2(row.left() + 40.0, row.top()), pos2(x_born - 8.0, row.bottom()));
                 ui.painter().text(pos2(name_area.left(), cy), Align2::LEFT_CENTER, clip(ui, &shown_name(app, p), &font, name_area.width() - 12.0), font.clone(), ink);
-                draw_marks(ui.painter(), name_area, p, ink, if sel { SELECT } else { Color32::WHITE });
+                draw_marks(ui.painter(), name_area, p, ink, if sel { pal().select } else { pal().field });
                 ui.painter().text(pos2(x_born, cy), Align2::LEFT_CENTER, date_with_star(&p.birth, &p.chr), font.clone(), ink);
                 // The column stays blank for an ordinary birth link.
                 let rel = mrin.and_then(|m| p.parents.iter().find(|l| l.mrin == m)).map(|l| match l.relation.as_str() {
@@ -547,10 +547,10 @@ pub fn pedigree(app: &mut App, ui: &mut egui::Ui) {
     let fit = Fit::new(area);
     let tree = tree_people(app);
     let painter = ui.painter().clone();
-    let stroke = Stroke::new(1.0, INK);
+    let stroke = Stroke::new(1.0, pal().ink);
     let font = plain((16.0 * fit.sy.min(fit.sx)).clamp(12.0, 22.0));
     for (x, label) in [(28.0, "1st"), (95.0, "2nd"), (208.0, "3rd"), (395.0, "4th"), (704.0, "5th")] {
-        painter.text(fit.p(x, 133.0), Align2::LEFT_CENTER, tr(label), font.clone(), INK);
+        painter.text(fit.p(x, 133.0), Align2::LEFT_CENTER, tr(label), font.clone(), pal().ink);
     }
     let scaled = |b: Rect| fit.r(b.left(), b.top(), b.right(), b.bottom());
     // Connecting lines first, so the boxes sit on top.
@@ -586,11 +586,11 @@ pub fn pedigree(app: &mut App, ui: &mut egui::Ui) {
         let resp = ui.interact(r, ui.scope_id().with(("ped", i)), Sense::click());
         let sel = app.slot == Slot::Tree(i);
         let p = ui.painter();
-        p.rect_filled(r, 0.0, if sel { SELECT } else { Color32::WHITE });
+        p.rect_filled(r, 0.0, if sel { pal().select } else { pal().field });
         p.rect_stroke(r, 0.0, stroke, StrokeKind::Inside);
         if let Some(person) = who.and_then(|w| app.db.person(w)) {
-            let ink = if sel { Color32::WHITE } else { INK };
-            draw_marks(p, r, person, ink, if sel { SELECT } else { Color32::WHITE });
+            let ink = if sel { pal().select_ink } else { pal().field_ink };
+            draw_marks(p, r, person, ink, if sel { pal().select } else { pal().field });
             let f = plain(13.0);
             // One line, 4 pixels in from the left.
             p.text(pos2(r.left() + 4.0, r.center().y), Align2::LEFT_CENTER, clip(ui, &shown_name(app, person), &f, r.width() - 18.0), f.clone(), ink);
@@ -678,15 +678,15 @@ pub fn pedigree(app: &mut App, ui: &mut egui::Ui) {
             if level > 0 {
                 let text = info_text(app, w, level);
                 let r = scaled(pedigree_box(i));
-                let galley = ui.fonts_mut(|f| f.layout(text, plain(12.0), INK, 360.0));
+                let galley = ui.fonts_mut(|f| f.layout(text, plain(12.0), pal().field_ink, 360.0));
                 let top = if r.bottom() + galley.size().y + 12.0 > area.bottom() { r.top() - galley.size().y - 10.0 } else { r.bottom() + 1.0 };
                 let left = r.left().min(area.right() - galley.size().x - 14.0);
                 let bg = Rect::from_min_size(pos2(left, top), galley.size() + vec2(10.0, 8.0));
                 egui::Area::new(ui.scope_id().with("infobox")).order(egui::Order::Foreground).fixed_pos(bg.min).interactable(false).show(ui.ctx(), |ui| {
                     let (rect, _) = ui.allocate_exact_size(bg.size(), Sense::hover());
-                    ui.painter().rect_filled(rect, 0.0, Color32::from_rgb(255, 255, 225));
-                    ui.painter().rect_stroke(rect, 0.0, Stroke::new(1.0, INK), StrokeKind::Inside);
-                    ui.painter().galley(rect.min + vec2(5.0, 4.0), galley.clone(), INK);
+                    ui.painter().rect_filled(rect, 0.0, pal().tip);
+                    ui.painter().rect_stroke(rect, 0.0, Stroke::new(1.0, pal().ink), StrokeKind::Inside);
+                    ui.painter().galley(rect.min + vec2(5.0, 4.0), galley.clone(), pal().field_ink);
                 });
             }
         }
@@ -806,25 +806,25 @@ pub fn individual(app: &mut App, ui: &mut egui::Ui) {
     let row_h = 18.0;
     let mut ui = ui.new_child(egui::UiBuilder::new().max_rect(area).layout(egui::Layout::top_down(egui::Align::Min)));
     let ui = &mut ui;
-    ui.painter().rect_filled(area, 0.0, Color32::WHITE);
-    ui.painter().rect_stroke(area, 0.0, Stroke::new(1.0, INK), StrokeKind::Inside);
+    ui.painter().rect_filled(area, 0.0, pal().field);
+    ui.painter().rect_stroke(area, 0.0, Stroke::new(1.0, pal().ink), StrokeKind::Inside);
     let columns = app.individual.columns.clone();
     let total: f32 = columns.iter().map(|c| column_width(c)).sum::<f32>().max(area.width() - 2.0);
     egui::ScrollArea::horizontal().auto_shrink([false, false]).show(ui, |ui| {
         // Header row. Click sorts by RIN or by name, right-click picks the columns.
         let (head, _) = ui.allocate_exact_size(vec2(total, 22.0), Sense::hover());
-        ui.painter().rect_filled(head, 0.0, BG);
-        ui.painter().hline(head.x_range(), head.bottom(), Stroke::new(1.0, SHADOW));
+        ui.painter().rect_filled(head, 0.0, pal().bg);
+        ui.painter().hline(head.x_range(), head.bottom(), Stroke::new(1.0, pal().shadow));
         let mut x = head.left();
         for col in &columns {
             let w = column_width(col);
             let r = Rect::from_min_size(pos2(x, head.top()), vec2(w, head.height()));
             let resp = ui.interact(r, ui.scope_id().with(format!("col{col}")), Sense::click());
-            ui.painter().vline(r.right() - 1.0, r.y_range(), Stroke::new(1.0, SHADOW));
+            ui.painter().vline(r.right() - 1.0, r.y_range(), Stroke::new(1.0, pal().shadow));
             let sorted = (col == "RIN" && app.individual.sort_by_rin) || (col == "Full Name" && !app.individual.sort_by_rin);
             let text = if sorted { format!("{} ▾", tr(col)) } else { tr(col).to_string() };
             let head_font = bold(12.0);
-            ui.painter().text(pos2(x + 5.0, r.center().y), Align2::LEFT_CENTER, clip(ui, &text, &head_font, w - 8.0), head_font, INK);
+            ui.painter().text(pos2(x + 5.0, r.center().y), Align2::LEFT_CENTER, clip(ui, &text, &head_font, w - 8.0), head_font, pal().ink);
             if resp.clicked() {
                 if col == "RIN" {
                     app.individual.sort_by_rin = true;
@@ -875,12 +875,12 @@ pub fn individual(app: &mut App, ui: &mut egui::Ui) {
                 let (row, resp) = ui.allocate_exact_size(vec2(total, row_h), Sense::click());
                 let sel = selected == Some(rin);
                 if sel {
-                    ui.painter().rect_filled(row, 0.0, SELECT);
+                    ui.painter().rect_filled(row, 0.0, pal().select);
                     if want {
                         resp.scroll_to_me(None);
                     }
                 }
-                let ink = if sel { Color32::WHITE } else { INK };
+                let ink = if sel { pal().select_ink } else { pal().field_ink };
                 let Some(p) = app.db.person(rin) else { continue };
                 let mut x = row.left();
                 let f = plain(12.5);
@@ -999,16 +999,16 @@ impl App {
     pub fn tabs(&mut self, ui: &mut egui::Ui) {
         let r = ui.max_rect();
         let p = ui.painter().clone();
-        p.hline(r.left()..=r.right(), r.bottom() - 1.0, Stroke::new(1.0, SHADOW));
+        p.hline(r.left()..=r.right(), r.bottom() - 1.0, Stroke::new(1.0, pal().shadow));
         for (v, label, x0, x1) in [(View::Family, "Family", 8.0, 109.0), (View::Pedigree, "Pedigree", 109.0, 204.0), (View::Individual, "Individual", 204.0, 302.0)] {
             let rect = Rect::from_min_max(pos2(r.left() + x0, r.top() + 1.0), pos2(r.left() + x1, r.bottom()));
             let resp = ui.allocate_rect(rect, Sense::click());
             if self.view == v {
-                p.hline(rect.left()..=rect.right(), rect.bottom() - 1.0, Stroke::new(1.0, BG));
-                p.vline(rect.left(), rect.y_range(), Stroke::new(1.0, Color32::WHITE));
+                p.hline(rect.left()..=rect.right(), rect.bottom() - 1.0, Stroke::new(1.0, pal().bg));
+                p.vline(rect.left(), rect.y_range(), Stroke::new(1.0, pal().light));
             }
-            p.vline(rect.right(), (rect.top() + 2.0)..=(rect.bottom() - 2.0), Stroke::new(1.0, INK));
-            p.text(pos2((x0 + x1) / 2.0 + r.left(), rect.center().y), Align2::CENTER_CENTER, tr(label), plain(15.0), INK);
+            p.vline(rect.right(), (rect.top() + 2.0)..=(rect.bottom() - 2.0), Stroke::new(1.0, pal().ink));
+            p.text(pos2((x0 + x1) / 2.0 + r.left(), rect.center().y), Align2::CENTER_CENTER, tr(label), plain(15.0), pal().ink);
             if resp.clicked() {
                 self.pending.push(Cmd::SetView(v));
             }

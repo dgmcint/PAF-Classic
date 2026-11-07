@@ -17,3 +17,6 @@ Thumbs.db
 /MECHANICS.md
 /mechanics.json
 /A39E3D10-A5EC-4F35-9563-D616C156D83B.PNG
+
+# Claude Code local settings (may contain passwords or tokens)
+.claude/

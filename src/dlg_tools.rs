@@ -202,6 +202,73 @@ impl App {
                     }
                 });
             }
+            Dialog::Renumber { id, how, preview } => {
+                let mut apply = false;
+                window("Renumber Records", *id).resizable(false).show(ctx, |ui| {
+                    ui.set_max_width(520.0);
+                    ui.label(tr("Gives everyone new record numbers (RINs) 1, 2, 3... with no gaps, and numbers the marriages (MRINs) to match. Every link between people stays the same."));
+                    ui.add_space(4.0);
+                    let names = ["Family order: the home person first, then parents, grandparents and the rest of the family", "Present order, closing the gaps", "Alphabetical by surname"];
+                    for (i, n) in names.iter().enumerate() {
+                        if ui.radio_value(how, i as u8, tr(n)).changed() {
+                            *preview = None;
+                        }
+                    }
+                    ui.add_space(4.0);
+                    ui.label(RichText::new(tr("Each person keeps their old number as an Old ID, shown when editing them and written to exported GEDCOM files, so notes and printouts that use the old numbers can still be matched. A copy of the file as it is now is saved beside it first.")).size(12.0));
+                    let order = match *how {
+                        0 => RenumberOrder::Family,
+                        1 => RenumberOrder::Present,
+                        _ => RenumberOrder::Alphabetical,
+                    };
+                    if preview.is_none() {
+                        let list = self.db.renumber_order(order);
+                        *preview = Some(list.iter().take(200).enumerate().map(|(i, r)| (*r, i as u32 + 1, self.db.name(*r))).collect());
+                    }
+                    if let Some(rows) = preview.as_ref() {
+                        let changed = rows.iter().filter(|(o, n, _)| o != n).count();
+                        ui.label(RichText::new(format!("{} {}", tr("Preview, first people:"), if changed == 0 && rows.len() == self.db.people.len() { tr("nothing would change.") } else { "" })).strong());
+                        egui::ScrollArea::vertical().max_height(220.0).show(ui, |ui| {
+                            egui::Grid::new("renum").striped(true).num_columns(3).show(ui, |ui| {
+                                ui.label(RichText::new(tr("New RIN")).weak());
+                                ui.label(RichText::new(tr("Old RIN")).weak());
+                                ui.label(RichText::new(tr("Name")).weak());
+                                ui.end_row();
+                                for (old, new, name) in rows {
+                                    ui.label(new.to_string());
+                                    ui.label(old.to_string());
+                                    ui.label(name);
+                                    ui.end_row();
+                                }
+                            });
+                        });
+                    }
+                    ui.horizontal(|ui| {
+                        if ui.button(tr("Renumber")).clicked() {
+                            apply = true;
+                            open = false;
+                        }
+                        if ui.button(tr("Cancel")).clicked() || escape {
+                            open = false;
+                        }
+                    });
+                });
+                if apply {
+                    let order = self.db.renumber_order(match *how {
+                        0 => RenumberOrder::Family,
+                        1 => RenumberOrder::Present,
+                        _ => RenumberOrder::Alphabetical,
+                    });
+                    let copy = self.safety_copy("renumbering");
+                    let (rins, _) = self.db.renumber(&order);
+                    self.after_renumber(&rins);
+                    let mut text = format!("Renumbered {} individuals and {} marriages.", self.db.people.len(), self.db.marriages.len());
+                    if let Some(c) = copy {
+                        text.push_str(&format!("\nThe file as it was before is saved as {}.", c.display()));
+                    }
+                    self.message("Renumber Records", text);
+                }
+            }
             Dialog::Soundex { id, name } => {
                 window("Soundex Code Calculator", *id).resizable(false).show(ctx, |ui| {
                     egui::Grid::new("sx").num_columns(2).show(ui, |ui| {

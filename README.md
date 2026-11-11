@@ -40,6 +40,8 @@ way to record your family without an account or an internet connection.
 - Search by name, record number or custom filters
 - Match/Merge to find and combine duplicate people
 - Check/Repair, Global Search and Replace, and changing names from CAPITALS to Mixed Case
+- Renumber Records: new record numbers 1, 2, 3... in family, present or alphabetical order, each
+  person keeping their old number as an Old ID
 - Search a person on FamilySearch, Ancestry, Genealogy.com or RootsWeb in one click
 
 **Printing**

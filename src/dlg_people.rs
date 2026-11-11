@@ -83,7 +83,11 @@ impl App {
                                 // Locked unless the preference allows editing it, as in the original.
                                 ui.add_enabled(self.db.prefs.allow_afn_edit, TextEdit::singleline(&mut draft.afn).desired_width(130.0).min_size(vec2(130.0, 0.0)));
                                 if draft.rin != 0 {
-                                    ui.label(format!("RIN: {}", draft.rin));
+                                    if draft.old_id.is_empty() {
+                                        ui.label(format!("RIN: {}", draft.rin));
+                                    } else {
+                                        ui.label(format!("RIN: {}  ({} {})", draft.rin, tr("Old ID"), draft.old_id));
+                                    }
                                 }
                                 ui.end_row();
                             });

@@ -85,7 +85,7 @@ tested by hand yet, so please [report anything that doesn't behave as expected](
 
 | Feature | Status | Notes |
 | --- | --- | --- |
-| Home person | ✅ | |
+| Home person | ✅ | Kept with each file; taken from imported GEDCOM files (`_HOME` or the first person) and written first on export |
 | Individual list and Marriage list | ✅ | |
 | Find by RIN or MRIN | ✅ | |
 | Descendancy list | ✅ | |
@@ -132,6 +132,7 @@ tested by hand yet, so please [report anything that doesn't behave as expected](
 | Merge duplicate repositories | ❌ | |
 | Global search and replace | ✅ | |
 | Change names to mixed case | ✅ | |
+| Renumber records (family, present or alphabetical order; old numbers kept as Old ID) | ✅ | Added in this version; not in the original |
 | Relationship, Date and Soundex calculators | ✅ | |
 | Internet searches (FamilySearch, Ancestry, Genealogy.com, RootsWeb) | ✅ | |
 | Notepad | ✅ | |

@@ -76,6 +76,7 @@ pub enum Dialog {
     Merge { id: u64, pairs: Vec<(u32, u32)>, at: usize, sound_alike: bool, by_afn: bool, slack: i32 },
     GlobalReplace { id: u64, field: String, find: String, with: String, whole: bool, case_sensitive: bool },
     ConfirmMixedCase { id: u64 },
+    Renumber { id: u64, how: u8, preview: Option<Vec<(u32, u32, String)>> },
     WebPage { id: u64, title: String, hide_living: bool, include_notes: bool, focus_only: bool },
     Notepad { id: u64, text: String, path: Option<PathBuf> },
     Relationship { id: u64, a: Option<u32>, b: Option<u32>, result: Vec<String> },

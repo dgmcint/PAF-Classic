@@ -206,6 +206,22 @@ fn parse_tree(text: &str) -> (Vec<Node>, usize) {
     (roots, bad)
 }
 
+/// Record numbers for the records of one kind, in file order. The numbers in the file's own IDs
+/// are kept when they look like record numbers (all different and no bigger than ten times the
+/// number of records), as in files from PAF and from this program. Otherwise, as with the long
+/// IDs of Ancestry and other websites, the records are numbered 1, 2, 3... in the order of the file.
+fn record_numbers(xrefs: &[&str]) -> BTreeMap<String, u32> {
+    let limit = (xrefs.len() as u64).saturating_mul(10).max(100);
+    let mut seen = std::collections::HashSet::new();
+    let found: Vec<Option<u32>> = xrefs.iter().map(|x| digits_of(x)).collect();
+    let keep = found.iter().all(|n| n.is_some_and(|n| (n as u64) <= limit && seen.insert(n)));
+    xrefs
+        .iter()
+        .enumerate()
+        .map(|(i, x)| (x.to_string(), if keep { found[i].unwrap() } else { i as u32 + 1 }))
+        .collect()
+}
+
 fn digits_of(x: &str) -> Option<u32> {
     let d: String = x.chars().filter(|c| c.is_ascii_digit()).collect();
     d.parse().ok().filter(|n| *n > 0)
@@ -254,50 +270,16 @@ pub fn import(bytes: &[u8]) -> Result<(Db, ImportReport), String> {
     let mut db = Db::default();
     let mut report = ImportReport { bad_lines: bad, ..Default::default() };
     let mut notes: BTreeMap<String, String> = BTreeMap::new();
-    let mut rins: BTreeMap<String, u32> = BTreeMap::new();
-    let mut mrins: BTreeMap<String, u32> = BTreeMap::new();
     let mut srcs: BTreeMap<String, u32> = BTreeMap::new();
     let mut repos: BTreeMap<String, u32> = BTreeMap::new();
 
-    // Keep the numbers from the file when they are free, as the original does for its own exports.
-    let mut used = Vec::new();
-    for r in &roots {
-        match r.tag.as_str() {
-            "NOTE" => {
-                notes.insert(r.xref.clone(), r.full_text());
-            }
-            "INDI" => {
-                let n = digits_of(&r.xref).filter(|n| !used.contains(n)).unwrap_or(0);
-                if n != 0 {
-                    used.push(n);
-                }
-                rins.insert(r.xref.clone(), n);
-            }
-            _ => {}
-        }
+    for r in roots.iter().filter(|r| r.tag == "NOTE") {
+        notes.insert(r.xref.clone(), r.full_text());
     }
-    let mut next = used.iter().max().copied().unwrap_or(0);
-    for v in rins.values_mut() {
-        if *v == 0 {
-            next += 1;
-            *v = next;
-        }
-    }
-    let mut used_m = Vec::new();
-    for r in roots.iter().filter(|r| r.tag == "FAM") {
-        let n = digits_of(&r.xref).filter(|n| !used_m.contains(n)).unwrap_or(0);
-        if n != 0 {
-            used_m.push(n);
-        }
-        mrins.insert(r.xref.clone(), n);
-    }
-    let mut next_m = used_m.iter().max().copied().unwrap_or(0);
-    for v in mrins.values_mut() {
-        if *v == 0 {
-            next_m += 1;
-            *v = next_m;
-        }
-    }
+    let people: Vec<&str> = roots.iter().filter(|r| r.tag == "INDI").map(|r| r.xref.as_str()).collect();
+    let fams: Vec<&str> = roots.iter().filter(|r| r.tag == "FAM").map(|r| r.xref.as_str()).collect();
+    let rins = record_numbers(&people);
+    let mrins = record_numbers(&fams);
     let mut id = 0;
     for r in roots.iter().filter(|r| r.tag == "REPO") {
         id += 1;
@@ -427,6 +409,9 @@ pub fn import(bytes: &[u8]) -> Result<(Db, ImportReport), String> {
                 "EVEN" => p.custom.push(custom_of(k, "Event")),
                 "OCCU" | "RELI" | "EDUC" | "NATI" | "CAST" | "PROP" | "CENS" | "IMMI" | "EMIG" | "NATU" | "GRAD" | "RETI" | "PROB" | "WILL" | "ADOP"
                 | "BARM" | "BASM" | "BLES" | "CHRA" | "CONF" | "FCOM" | "ORDN" | "DSCR" | "IDNO" | "NCHI" | "NMR" | "SSN" | "_UID" | "RIN" | "REFN" | "RFN" => {
+                    if k.tag == "REFN" && k.text("TYPE").eq_ignore_ascii_case("Old ID") {
+                        p.old_id = k.value.trim().to_string();
+                    }
                     if matches!(k.tag.as_str(), "_UID" | "RIN" | "REFN" | "RFN") {
                         continue;
                     }
@@ -485,7 +470,11 @@ pub fn import(bytes: &[u8]) -> Result<(Db, ImportReport), String> {
     report.repositories = db.repositories.len();
     // Mend links that a file gave in only one direction.
     db.check(true);
-    db.home = db.people.keys().next().copied();
+    // The home person: the one the file names in its header (as this program and Gilded Roots
+    // write it), otherwise the first person in the file, as PAF, Ancestry and FamilySearch do.
+    let head = roots.iter().find(|r| r.tag == "HEAD");
+    let named = head.and_then(|h| h.child("_HOME")).and_then(|k| rins.get(&pointer(&k.value)).copied());
+    db.home = named.or_else(|| people.first().and_then(|x| rins.get(*x).copied()));
     Ok((db, report))
 }
 
@@ -736,11 +725,18 @@ pub fn export(db: &Db, o: &ExportOptions, program: &str) -> String {
     w.raw(2, "VERS", "5.5");
     w.raw(2, "FORM", "LINEAGE-LINKED");
     w.raw(1, "CHAR", "UTF-8");
+    let home = db.home.filter(|h| db.people.contains_key(h) && included(*h));
+    if let Some(h) = home {
+        // Read back by this program and Gilded Roots, so the home person stays the same.
+        w.raw(1, "_HOME", &format!("@I{h}@"));
+    }
     w.raw(1, "SUBM", "@SUB1@");
     w.raw(0, "@SUB1@ SUBM", "");
     w.line(1, "NAME", if db.prefs.prepared_name.trim().is_empty() { "Unknown" } else { db.prefs.prepared_name.trim() });
 
-    for p in db.people.values().filter(|p| included(p.rin)) {
+    // The home person comes first, so other programs that take the first person as home agree.
+    let first = home.and_then(|h| db.people.get(&h));
+    for p in first.into_iter().chain(db.people.values().filter(|p| Some(p.rin) != home)).filter(|p| included(p.rin)) {
         w.raw(0, &format!("@I{}@ INDI", p.rin), "");
         let hide = !o.full_living && maybe_living(db, p.rin);
         if hide {
@@ -838,6 +834,10 @@ pub fn export(db: &Db, o: &ExportOptions, program: &str) -> String {
             if db.marriages.contains_key(m) {
                 w.line(1, "FAMS", &format!("@F{m}@"));
             }
+        }
+        if !p.old_id.is_empty() {
+            w.line(1, "REFN", &p.old_id);
+            w.raw(2, "TYPE", "Old ID");
         }
     }
 
@@ -989,5 +989,33 @@ mod tests {
     fn rejects_incomplete() {
         assert!(import(b"0 HEAD\n").is_err());
         assert!(import(b"hello\n").is_err());
+    }
+}
+
+#[cfg(test)]
+mod home_tests {
+    use super::*;
+
+    #[test]
+    fn home_person_comes_from_the_file_and_survives_export() {
+        // Website-style IDs: numbered 1, 2... in file order, and the first person is home.
+        let text = "0 HEAD\n1 CHAR UTF-8\n0 @I900000001@ INDI\n1 NAME Ann /Lee/\n1 FAMC @F777777@\n0 @I12345678@ INDI\n1 NAME Joe /Lee/\n1 FAMS @F777777@\n0 @F777777@ FAM\n1 HUSB @I12345678@\n1 CHIL @I900000001@\n0 TRLR\n";
+        let (mut db, _) = import(text.as_bytes()).unwrap();
+        assert_eq!(db.people.keys().copied().collect::<Vec<_>>(), vec![1, 2]);
+        assert_eq!(db.marriages.keys().copied().collect::<Vec<_>>(), vec![1]);
+        assert_eq!(db.home, Some(1));
+        db.home = Some(2);
+        db.renumber(&[2, 1]);
+        let out = export(&db, &ExportOptions::default(), "PAF Classic").replace("\r\n", "\n");
+        assert!(out.contains("1 _HOME @I1@"), "{out}");
+        assert!(out.contains("1 REFN 2\n2 TYPE Old ID"), "{out}");
+        let (again, _) = import(out.as_bytes()).unwrap();
+        assert_eq!(again.name(again.home.unwrap()), db.name(db.home.unwrap()));
+        assert_eq!(again.people[&1].old_id, "2");
+        // PAF-style numbers are kept, and without a header mark the first person is home.
+        let paf = "0 HEAD\n0 @I7@ INDI\n1 NAME A /B/\n0 @I3@ INDI\n1 NAME C /D/\n0 TRLR\n";
+        let (db, _) = import(paf.as_bytes()).unwrap();
+        assert_eq!(db.people.keys().copied().collect::<Vec<_>>(), vec![3, 7]);
+        assert_eq!(db.home, Some(7));
     }
 }

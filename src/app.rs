@@ -85,6 +85,8 @@ pub enum Cmd {
     MergeSources,
     GlobalReplace,
     MixedCase,
+    Renumber,
+    SetHome,
     WebPage,
     Notepad,
     Relationship,
@@ -497,6 +499,31 @@ impl App {
         let t = crate::calc::today();
         let secs = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0);
         self.db.log.push(format!("{}-{}-{} {:02}:{:02} {what} {id}", t.1, t.2, t.0 % 100, (secs / 3600) % 24, (secs / 60) % 60));
+    }
+
+    /// After Renumber Records: follow the people on screen to their new numbers and forget
+    /// what was remembered under the old ones.
+    pub fn after_renumber(&mut self, rins: &std::collections::BTreeMap<u32, u32>) {
+        let map = |r: Option<u32>| r.and_then(|r| rins.get(&r).copied());
+        self.primary = map(self.primary).or(self.db.home);
+        self.selected = map(self.selected).or(self.primary);
+        self.shown_marriage.clear();
+        self.shown_parents.clear();
+        self.last_child.clear();
+        self.focus = None;
+        self.slot = self.home_slot();
+        self.touch();
+    }
+
+    /// A copy of the family file as it is now, saved beside it, before a big change.
+    pub fn safety_copy(&mut self, why: &str) -> Option<PathBuf> {
+        let path = self.path.clone()?;
+        let stem = path.file_stem()?.to_str()?.to_string();
+        let t = crate::calc::today();
+        let copy = path.with_file_name(format!("{stem} before {why} {:04}-{:02}-{:02}.{FILE_EXT}", t.0, t.1, t.2));
+        let bytes = serde_json::to_vec_pretty(&self.db).ok()?;
+        std::fs::write(&copy, bytes).ok()?;
+        Some(copy)
     }
 
     fn save_now(&mut self) -> bool {
@@ -1011,6 +1038,14 @@ impl App {
             }
             Cmd::GlobalReplace => self.push(|id| Dialog::GlobalReplace { id, field: "Places".into(), find: String::new(), with: String::new(), whole: false, case_sensitive: false }),
             Cmd::MixedCase => self.push(|id| Dialog::ConfirmMixedCase { id }),
+            Cmd::Renumber => self.push(|id| Dialog::Renumber { id, how: 0, preview: None }),
+            Cmd::SetHome => {
+                if let Some(r) = sel.filter(|r| self.db.people.contains_key(r)) {
+                    self.db.home = Some(r);
+                    self.touch();
+                    self.message("Home Person", format!("{} is now the home person.", self.db.name(r)));
+                }
+            }
             Cmd::WebPage => {
                 let title = self.path.as_ref().and_then(|p| p.file_stem()).and_then(|s| s.to_str()).unwrap_or("Family History").to_string();
                 self.push(|id| Dialog::WebPage { id, title, hide_living: true, include_notes: true, focus_only: false });
@@ -1263,6 +1298,7 @@ impl App {
                 item(ui, &mut out, "Advanced Focus/Filter...", "", Cmd::Focus, open);
                 ui.separator();
                 item(ui, &mut out, "Home Person", "⌘Home", Cmd::Home, has);
+                item(ui, &mut out, "Make Selected the Home Person", "", Cmd::SetHome, has);
                 ui.separator();
                 item(ui, &mut out, "On FamilySearch", "", Cmd::WebSearch("familysearch"), has);
                 item(ui, &mut out, "On Ancestry", "", Cmd::WebSearch("ancestry"), has);
@@ -1275,6 +1311,7 @@ impl App {
                 ui.separator();
                 item(ui, &mut out, "Global Search and Replace...", "", Cmd::GlobalReplace, open);
                 item(ui, &mut out, "Change Names to Mixed Case", "", Cmd::MixedCase, open);
+                item(ui, &mut out, "Renumber Records...", "", Cmd::Renumber, has);
                 item(ui, &mut out, "Create Web Page...", "", Cmd::WebPage, open);
                 item(ui, &mut out, "Notepad", "", Cmd::Notepad, true);
                 ui.separator();

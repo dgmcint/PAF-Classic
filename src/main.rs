@@ -1,21 +1,27 @@
+//! PAF Classic. Where things are:
+//!
+//! - `app`: the main window, its menus, toolbar, commands and file handling
+//! - `screens`: the Family, Pedigree and Individual screens
+//! - `dialogs`: the windows that open over the main screen
+//! - `data`: the family file and the records in it
+//! - `rules`: dates, Soundex, relationships and record checks, as the original worked them out
+//! - `formats`: GEDCOM and the original's .paf files
+//! - `reports`: printed reports, PDF and the family web page
+//! - `i18n`: the menus and windows in other languages
+
 // Release builds on Windows open without a console window behind the app.
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod app;
-mod calc;
+mod data;
 mod dialogs;
-mod dlg_find;
-mod dlg_people;
-mod dlg_tools;
-mod gedcom;
+mod formats;
 mod i18n;
-mod look;
-mod model;
-mod paffile;
 mod reports;
-mod script;
-mod views;
+mod rules;
+mod screens;
 
+use app::colors;
 use std::path::PathBuf;
 
 fn main() -> eframe::Result {
@@ -43,10 +49,10 @@ fn main() -> eframe::Result {
     let taking_picture = screenshot.is_some();
     // A picture run uses Classic colours unless asked, like the language.
     match colors {
-        Some(name) => look::set_name(&name),
+        Some(name) => colors::set_name(&name),
         None if !taking_picture => {
             if let Ok(name) = std::fs::read_to_string(app::config_dir().join("colors.txt")) {
-                look::set_name(&name);
+                colors::set_name(&name);
             }
         }
         None => {}

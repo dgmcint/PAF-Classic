@@ -1,9 +1,11 @@
 //! Windows for sources, finding people, filtering and merging.
+
+//! Windows for sources, finding people, filtering and merging.
+use super::*;
 use crate::i18n::tr;
 use crate::app::*;
-use crate::calc;
-use crate::dialogs::*;
-use crate::model::*;
+use crate::rules;
+use crate::data::*;
 use egui::{Key, RichText, TextEdit};
 
 impl App {
@@ -191,7 +193,7 @@ impl App {
                         ui.checkbox(soundex, tr("Sounds like"));
                     });
                     let f = filter.to_lowercase();
-                    let code = calc::soundex(filter);
+                    let code = rules::soundex(filter);
                     let mut list: Vec<&Person> = self
                         .db
                         .people
@@ -201,7 +203,7 @@ impl App {
                                 return true;
                             }
                             if *soundex {
-                                calc::soundex(&surname_of(&p.name)) == code
+                                rules::soundex(&surname_of(&p.name)) == code
                             } else {
                                 plain_name(&p.name).to_lowercase().contains(&f) || p.rin.to_string() == f
                             }
@@ -266,7 +268,7 @@ impl App {
                 let title = format!("Descendants of {}", self.db.name(*root));
                 let mut chosen = None;
                 window(&title, *id).default_width(460.0).show(ctx, |ui| {
-                    let list = calc::descendants(&self.db, *root);
+                    let list = rules::descendants(&self.db, *root);
                     if list.is_empty() {
                         ui.label(tr("No descendants are recorded."));
                     }
@@ -489,7 +491,7 @@ impl App {
                         }
                         out
                     } else {
-                        calc::duplicate_candidates(&self.db, *sound_alike, *slack)
+                        rules::duplicate_candidates(&self.db, *sound_alike, *slack)
                     };
                     *at = 0;
                     if pairs.is_empty() {
@@ -523,7 +525,7 @@ impl App {
                     ui.checkbox(case_sensitive, tr("Match case"));
                     ui.horizontal(|ui| {
                         if ui.add_enabled(!find.is_empty(), egui::Button::new(tr("Replace All"))).clicked() {
-                            done = Some(calc::global_replace(&mut self.db, field, find, with, *whole, *case_sensitive));
+                            done = Some(rules::global_replace(&mut self.db, field, find, with, *whole, *case_sensitive));
                         }
                         if ui.button(tr("Close")).clicked() || escape {
                             open = false;
@@ -543,7 +545,7 @@ impl App {
                             // Names and places alike, as the original's pass over its text records.
                             let mut n = 0;
                             let mut fix = |text: &mut String, place: bool| {
-                                let new = calc::mixed_case(text, place);
+                                let new = rules::mixed_case(text, place);
                                 if new != *text {
                                     *text = new;
                                     n += 1;

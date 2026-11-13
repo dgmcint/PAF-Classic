@@ -1,4 +1,5 @@
 //! Pretend actions by the person, for testing the program from the outside with `--do`.
+
 use eframe::egui;
 use egui::{Key, Modifiers, pos2};
 
@@ -74,7 +75,7 @@ pub fn feed(steps: &[(u32, Step)], frame: u32, raw: &mut egui::RawInput) {
 mod tests {
     use crate::app::*;
     use crate::dialogs::Link;
-    use crate::model::*;
+    use crate::data::*;
     use std::path::PathBuf;
 
     fn blank() -> App {

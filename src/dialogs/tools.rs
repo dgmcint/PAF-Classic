@@ -1,10 +1,12 @@
 //! Windows for reports, calculators, preferences and file tasks.
+
+//! Windows for reports, calculators, preferences and file tasks.
+use super::*;
 use crate::i18n::tr;
 use crate::app::*;
-use crate::calc;
-use crate::dialogs::*;
-use crate::gedcom;
-use crate::model::*;
+use crate::rules;
+use crate::formats::gedcom;
+use crate::data::*;
 use crate::reports::{self, Report};
 use egui::{Key, RichText, TextEdit};
 
@@ -110,7 +112,7 @@ impl App {
                     });
                     ui.horizontal(|ui| {
                         if ui.add_enabled(a.is_some() && b.is_some(), egui::Button::new(tr("Calculate"))).clicked() {
-                            let found = calc::relationships(&self.db, a.unwrap(), b.unwrap());
+                            let found = rules::relationships(&self.db, a.unwrap(), b.unwrap());
                             *result = if found.is_empty() {
                                 vec!["No relationship was found through shared ancestors.".to_string()]
                             } else {
@@ -161,26 +163,26 @@ impl App {
                             let b = parse_ymd(end, df);
                             let num = |s: &String| s.trim().parse::<i32>().unwrap_or(0);
                             let elapsed = !years.trim().is_empty() || !months.trim().is_empty() || !days.trim().is_empty();
-                            let in_range = |d: (i32, u32, u32)| calc::date_in_calendar(d.0, d.1);
+                            let in_range = |d: (i32, u32, u32)| rules::date_in_calendar(d.0, d.1);
                             *note = String::new();
                             if [a, b].into_iter().flatten().any(|d| !in_range(d)) {
                                 *note = "Dates before October 1752 cannot be calculated: some places had not yet changed to the Gregorian calendar.".into();
                             } else if let (Some(x), Some(y)) = (a, b) {
-                                if calc::serial(x.0, x.1, x.2) > calc::serial(y.0, y.1, y.2) {
+                                if rules::serial(x.0, x.1, x.2) > rules::serial(y.0, y.1, y.2) {
                                     *note = "Start date must be before end date.".into();
                                 } else {
-                                    let (yy, mm, dd) = calc::date_difference(x, y);
+                                    let (yy, mm, dd) = rules::date_difference(x, y);
                                     *years = yy.to_string();
                                     *months = mm.to_string();
                                     *days = dd.to_string();
                                 }
                             } else if let (Some(x), true) = (a, elapsed) {
-                                let r = calc::date_add(x, num(years), num(months), num(days));
-                                *end = calc::format_date(r.0, r.1, r.2);
+                                let r = rules::date_add(x, num(years), num(months), num(days));
+                                *end = rules::format_date(r.0, r.1, r.2);
                             } else if let (Some(y), true) = (b, elapsed) {
-                                let r = calc::date_add(y, -num(years), -num(months), -num(days));
+                                let r = rules::date_add(y, -num(years), -num(months), -num(days));
                                 if in_range((r.0, r.1, r.2)) {
-                                    *start = calc::format_date(r.0, r.1, r.2);
+                                    *start = rules::format_date(r.0, r.1, r.2);
                                 } else {
                                     *note = "The answer falls before October 1752, which cannot be calculated.".into();
                                 }
@@ -198,7 +200,7 @@ impl App {
                         }
                     });
                     if !note.is_empty() {
-                        ui.label(RichText::new(note.as_str()).color(crate::look::pal().warn));
+                        ui.label(RichText::new(note.as_str()).color(crate::app::colors::pal().warn));
                     }
                 });
             }
@@ -279,7 +281,7 @@ impl App {
                         }
                         ui.end_row();
                         ui.label(tr("Soundex code:"));
-                        ui.label(RichText::new(calc::soundex(name)).strong());
+                        ui.label(RichText::new(rules::soundex(name)).strong());
                         ui.end_row();
                     });
                     if ui.button(tr("Close")).clicked() || escape {

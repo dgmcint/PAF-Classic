@@ -1,9 +1,11 @@
 //! Windows for editing people, marriages and their links.
+
+//! Windows for editing people, marriages and their links.
+use super::*;
 use crate::i18n::tr;
 use crate::app::*;
-use crate::calc;
-use crate::dialogs::*;
-use crate::model::*;
+use crate::rules;
+use crate::data::*;
 use egui::{Key, RichText, TextEdit, vec2};
 
 impl App {
@@ -154,7 +156,7 @@ impl App {
                         let mut copy = (**draft).clone();
                         copy.rin = rin;
                         let old = self.db.people.insert(rin, copy);
-                        let found = calc::check_person(&self.db, rin);
+                        let found = rules::check_person(&self.db, rin);
                         match old {
                             Some(p) => {
                                 self.db.people.insert(rin, p);
@@ -166,7 +168,7 @@ impl App {
                         found
                     };
                     if !warnings.is_empty() {
-                        egui::CollapsingHeader::new(RichText::new(format!("{} possible problems", warnings.len())).color(crate::look::pal().warn)).show(ui, |ui| {
+                        egui::CollapsingHeader::new(RichText::new(format!("{} possible problems", warnings.len())).color(crate::app::colors::pal().warn)).show(ui, |ui| {
                             for w in &warnings {
                                 ui.label(tr(w));
                             }
@@ -185,8 +187,8 @@ impl App {
                     if self.db.prefs.auto_slash {
                         draft.name = with_surname_marks(&draft.name);
                     }
-                    let t = calc::today();
-                    draft.changed = calc::format_date(t.0, t.1, t.2);
+                    let t = rules::today();
+                    draft.changed = rules::format_date(t.0, t.1, t.2);
                     let p = (**draft).clone();
                     let mut notices: Vec<String> = Vec::new();
                     if self.db.prefs.verify_new_places {
@@ -562,7 +564,7 @@ impl App {
                     ui.horizontal(|ui| {
                         if ui.button(tr("Sort by Birth Date")).clicked() {
                             let df = self.db.prefs.day_first_numeric;
-                            list.sort_by_key(|r| self.db.person(*r).and_then(|p| calc::date_value(&p.birth.date, df)).unwrap_or(i64::MAX));
+                            list.sort_by_key(|r| self.db.person(*r).and_then(|p| rules::date_value(&p.birth.date, df)).unwrap_or(i64::MAX));
                             changed = true;
                         }
                         if ui.button(tr("Close")).clicked() || escape {

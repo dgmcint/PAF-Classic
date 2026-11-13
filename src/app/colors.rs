@@ -1,4 +1,5 @@
 //! Colour schemes. Classic is the look of the original; the others follow the tree pictures.
+
 use egui::Color32;
 use std::sync::atomic::{AtomicUsize, Ordering};
 

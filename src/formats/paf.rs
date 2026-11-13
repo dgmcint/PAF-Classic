@@ -3,23 +3,34 @@
 //! Worked out from the file layout and checked on a real family file, so the results are still
 //! checked hard and every import says it needs verifying. It never writes to
 //! the .paf file.
-use crate::model::*;
+
+use crate::data::*;
 
 const BLOCK: usize = 0x2000;
+
 const FIRST_MAP: u64 = 0x3000;
+
 const MASTER_MAP: usize = 0x1000;
+
 const HEADER_LEN: usize = 0x695;
+
 const MAX_PAGES: usize = 31;
 
 const TYPE_PERSON: u8 = 2;
+
 const TYPE_MARRIAGE: u8 = 3;
+
 const TYPE_LINK: u8 = 5;
+
 const TYPE_NOTE: u8 = 4;
+
 const TYPE_CONTACT: u8 = 0x11;
 
 // Record sizes in bytes.
 const PERSON_SIZE: usize = 221;
+
 const MARRIAGE_SIZE: usize = 106;
+
 const NOTE_SIZE: usize = 256;
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy)]
@@ -335,8 +346,10 @@ const STATUS: [&str; 17] = [
 
 /// Date qualifiers, by their number in the file.
 const QUALIFIER: [&str; 10] = ["Abt", "Aft", "Bef", "Est", "Cal", "Sub", "In Process", "BC", "From", "To"];
+
 /// The date word for a range: its second date prints, and the word itself doesn't.
 const QUALIFIER_FROM: u8 = 9;
+
 /// The date word for a year before the Christian era.
 const QUALIFIER_BC: u8 = 8;
 
@@ -350,12 +363,12 @@ fn one_date(jd: &[u8], flags: u8, bc: bool) -> Option<String> {
         return None;
     }
     // Julian day 2440588 is 1 Jan 1970, day zero of our calendar counting.
-    let (y, m, d) = crate::calc::from_serial(day_number - 2440588);
+    let (y, m, d) = crate::rules::from_serial(day_number - 2440588);
     let y = if bc && y < 1 { 1 - y } else { y };
     if !(1..=2200).contains(&y) || !(1..=12).contains(&m) {
         return None;
     }
-    let month = crate::calc::MONTHS[(m - 1) as usize];
+    let month = crate::rules::MONTHS[(m - 1) as usize];
     let s = if flags & 0x40 != 0 {
         y.to_string()
     } else if flags & 0x20 != 0 {
@@ -383,7 +396,7 @@ fn date_from(r: &Reader, b: &[u8]) -> String {
             let Some(first) = one_date(&b[4..7], b[3], b[1] == QUALIFIER_BC) else { return String::new() };
             if b[1] == QUALIFIER_FROM && b[0] >> 6 == 1 && (kind == 3 || kind == 4) {
                 if let Some(second) = one_date(&b[9..12], b[8], false) {
-                    return format!("{first}{}{second}", crate::calc::RANGE_SEPARATOR);
+                    return format!("{first}{}{second}", crate::rules::RANGE_SEPARATOR);
                 }
             }
             match (b[1] as usize).checked_sub(1).and_then(|i| QUALIFIER.get(i)) {
@@ -425,7 +438,7 @@ mod tests {
         println!("birth dates {born} birth places {born_place} (readable text {lower}) death dates {died}");
         println!("links that disagree {}", problems.len());
         // Sense check: children should be born after their parents, by a believable gap.
-        let year = |p: &Person| crate::calc::parse_date(&p.birth.date, false).map(|x| x.year);
+        let year = |p: &Person| crate::rules::parse_date(&p.birth.date, false).map(|x| x.year);
         let (mut pairs, mut good) = (0, 0);
         for p in db.people.values() {
             let Some(y) = year(p) else { continue };
@@ -457,7 +470,7 @@ mod tests {
             x.husband.and_then(|r| db.person(r)).is_some_and(|p| p.sex == Sex::Female) || x.wife.and_then(|r| db.person(r)).is_some_and(|p| p.sex == Sex::Male)
         });
         println!("marriages where a spouse's sex disagrees with their role {}", wrong.count());
-        let standard = db.people.values().filter(|p| !p.birth.date.is_empty() && crate::calc::parse_date(&p.birth.date, false).is_some()).count();
+        let standard = db.people.values().filter(|p| !p.birth.date.is_empty() && crate::rules::parse_date(&p.birth.date, false).is_some()).count();
         println!("birth dates that parse as standard dates {standard}");
     }
 

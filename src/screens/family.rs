@@ -1,7 +1,7 @@
 //! The Family screen.
 
+use crate::i18n::{tr, trf};
 use super::*;
-use crate::i18n::tr;
 use crate::app::*;
 use crate::rules;
 use crate::data::*;
@@ -121,7 +121,7 @@ pub fn family(app: &mut App, ui: &mut egui::Ui) {
     if count > 1 {
         let rect = Rect::from_min_size(fit.p(120.0, 334.0), vec2(120.0, 18.0));
         let at = primary.and_then(|r| app.db.person(r)).and_then(|p| p.spouses.iter().position(|m| Some(*m) == mrin)).unwrap_or(0);
-        if ui.put(rect, egui::Button::new(format!("Other marriages ({}/{count})", at + 1)).small()).clicked() {
+        if ui.put(rect, egui::Button::new(trf("Other marriages ({at}/{count})", &[("at", &(at + 1)), ("count", &count)])).small()).clicked() {
             app.pending.push(Cmd::ShowMarriage((at + 1) % count));
         }
     }
@@ -147,7 +147,7 @@ pub fn family(app: &mut App, ui: &mut egui::Ui) {
     if links.len() > 1 {
         let rect = Rect::from_min_size(fit.p(620.0, 136.0), vec2(120.0, 18.0));
         let next = links.iter().position(|l| Some(l.mrin) == pmrin).map(|i| (i + 1) % links.len()).unwrap_or(0);
-        if ui.put(rect, egui::Button::new(format!("Other parents ({})", links.len())).small()).clicked() {
+        if ui.put(rect, egui::Button::new(trf("Other parents ({count})", &[("count", &links.len())])).small()).clicked() {
             app.pending.push(Cmd::ShowParents(next));
         }
     }

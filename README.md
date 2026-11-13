@@ -116,8 +116,13 @@ run when you choose them.
 
 ## Languages
 
-Menus and windows come in **English, Deutsch, 日本語, 한국어, Svenska and 中文**
-(Traditional). Choose **View → Language**. Printed reports are in English.
+Menus and windows come in **English, Deutsch, Español (España and Latinoamérica),
+Français, Norsk, Português (Brasil and Portugal), Русский, Svenska, 日本語, 한국어 and
+中文** (Traditional). Choose **View → Language**. Printed reports are in English.
+
+The translations are in the `lang` folder as standard `.po` files. The new languages were
+written for this program and haven't yet been reviewed by native speakers. Corrections are
+welcome; see `lang/GLOSSARY.md`.
 
 ## Credit
 

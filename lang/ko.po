@@ -1,0 +1,1823 @@
+# PAF Classic: Korean.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "LDS Sealing"
+msgstr "LDS 인봉"
+
+msgid "Move the spouse to the primary position"
+msgstr "배우자를 주 위치로 이동"
+
+msgid "Move this child to the primary position"
+msgstr "이 자녀를 주 위치로 이동"
+
+msgid "Move this person to the primary position to see more ancestors"
+msgstr "더 많은 조상을 보려면 이 사람을 주 위치로 이동"
+
+msgid "Publication:"
+msgstr "출판 정보:"
+
+msgid "Unknown spouse"
+msgstr "알 수 없는 배우자"
+
+msgid "Start date must be before end date."
+msgstr "시작 날짜는 끝 날짜보다 앞이어야 합니다."
+
+msgid "No relationship was found through shared ancestors."
+msgstr "공통 조상을 통한 관계를 찾지 못했습니다."
+
+msgid "People with notes:"
+msgstr "메모가 있는 사람:"
+
+msgid "(None)"
+msgstr "(없음)"
+
+msgid ""
+"1. Double-click the dark box on the Family screen and type your own name, with slashes around the surname: Anna Marie /Lee/.\n"
+"\n"
+"2. Double-click an empty box to add a spouse or a parent, or the Children area to add a child.\n"
+"\n"
+"3. Click the triangle beside a person to move them into the main position. The F, M and C keys go to the father, mother or a child.\n"
+"\n"
+"4. Use the Pedigree tab to see five generations, and the Individual tab to see everyone in a list.\n"
+"\n"
+"5. Right-click anyone for more choices, such as Notes and Multimedia.\n"
+"\n"
+"6. Use File, Save As to name your family file. Changes save by themselves after that.\n"
+"\n"
+"7. Use File, Print Reports for charts and lists, and File, Backup to keep a safe copy."
+msgstr ""
+"1. 가족 화면의 어두운 상자를 두 번 클릭하고 성을 슬래시로 묶어 이름을 입력하십시오: Anna Marie /Lee/\n"
+"\n"
+"2. 빈 상자를 두 번 클릭하면 배우자나 부모를, 자녀 영역을 두 번 클릭하면 자녀를 추가할 수 있습니다.\n"
+"\n"
+"3. 사람 옆의 삼각형을 클릭하면 그 사람이 주 위치로 이동합니다. F, M, C 키는 아버지, 어머니, 자녀로 이동합니다.\n"
+"\n"
+"4. 가계도 탭에서 다섯 세대를, 개인 탭에서 모든 사람의 목록을 볼 수 있습니다.\n"
+"\n"
+"5. 사람을 오른쪽 클릭하면 메모, 멀티미디어 등 더 많은 항목이 나옵니다.\n"
+"\n"
+"6. 파일, 다른 이름으로 저장으로 가족 파일의 이름을 정하십시오. 그 후에는 변경 내용이 자동으로 저장됩니다.\n"
+"\n"
+"7. 도표와 목록은 파일, 보고서 인쇄에서, 안전한 사본은 파일, 백업에서 만들 수 있습니다."
+
+msgid "1/10 seconds"
+msgstr "1/10초"
+
+msgid "1st"
+msgstr "첫번째"
+
+msgid "2nd"
+msgstr "두번째"
+
+msgid "3rd"
+msgstr "세번째"
+
+msgid "4th"
+msgstr "4대"
+
+msgid "5th"
+msgstr "5대"
+
+msgid "A family history program for keeping individuals, marriages, notes and sources, and for printing charts and reports."
+msgstr "개인, 결혼, 메모, 출처를 기록하고 도표와 보고서를 인쇄하는 가족 역사 프로그램입니다."
+
+msgid "AFN"
+msgstr "AFN"
+
+msgid "AFN:"
+msgstr "AFN:"
+
+msgid "Actual text:"
+msgstr "실제 본문:"
+
+msgid "Add"
+msgstr "추가"
+
+msgid "Add Child..."
+msgstr "자녀 추가..."
+
+msgid "Add Filter"
+msgstr "필터 추가"
+
+msgid "Add Individual..."
+msgstr "개인 추가..."
+
+msgid "Add New"
+msgstr "새로 추가"
+
+msgid "Add New Individual..."
+msgstr "새로운 개인 추가..."
+
+msgid "Add New Parents..."
+msgstr "새로운 부모 추가..."
+
+msgid "Add Picture or File..."
+msgstr "그림 또는 파일 추가..."
+
+msgid "Add Spouse..."
+msgstr "배우자 추가..."
+
+msgid "Add a new person, or link someone already in this file?"
+msgstr "새 사람을 추가하시겠습니까, 아니면 이 파일에 있는 사람을 연결하시겠습니까?"
+
+msgid "Add family"
+msgstr "가족 추가"
+
+msgid "Add father, mother"
+msgstr "아버지, 어머니 추가"
+
+msgid "Add individual (Ctrl+A)"
+msgstr "개인 추가 (Ctrl+A)"
+
+msgid "Add individual, spouse, child"
+msgstr "개인, 배우자, 자녀 추가"
+
+msgid "Add or Select Individual"
+msgstr "개인 추가 또는 선택"
+
+msgid "Add surname slashes automatically"
+msgstr "성 슬래시 자동 추가"
+
+msgid "Address"
+msgstr "주소"
+
+msgid "Address:"
+msgstr "주소:"
+
+msgid "Adoption"
+msgstr "입양"
+
+msgid "Adult Christening"
+msgstr "성인 세례"
+
+msgid "Advanced Focus/Filter"
+msgstr "고등 초점/필터..."
+
+msgid "Advanced Focus/Filter..."
+msgstr "고등 초점/필터..."
+
+msgid "Age difference between husband and wife:"
+msgstr "남편과 아내 사이의 연령 차이:"
+
+msgid "Allow AFN edit"
+msgstr "AFN 편집 허락"
+
+msgid "Also Known As:"
+msgstr "다른 이름:"
+
+msgid "Also removes citations of this source"
+msgstr "이 출처의 인용도 제거합니다"
+
+msgid "An empty form to fill in by hand"
+msgstr "손으로 기입할 빈 양식"
+
+msgid "Ancestors of"
+msgstr "조상:"
+
+msgid "Ancestry"
+msgstr "조상"
+
+msgid "Annulment"
+msgstr "혼인 무효"
+
+msgid "Arrow keys"
+msgstr "화살표 키"
+
+msgid "Back up this family file"
+msgstr "이 가족 파일 백업"
+
+msgid "Backup"
+msgstr "백업"
+
+msgid "Backup frequency:"
+msgstr "백업 빈도:"
+
+msgid "Backup reminder"
+msgstr "백업 알림"
+
+msgid "Backup..."
+msgstr "백업..."
+
+msgid "Baptism"
+msgstr "침례"
+
+msgid "Baptism:"
+msgstr "침례:"
+
+msgid "Bar Mitzvah"
+msgstr "바르 미츠바"
+
+msgid "Bas Mitzvah"
+msgstr "바트 미츠바"
+
+msgid "Birth"
+msgstr "출생"
+
+msgid "Birth Date"
+msgstr "출생일"
+
+msgid "Birth Place"
+msgstr "출생지"
+
+msgid "Birth years within:"
+msgstr "출생 연도 범위:"
+
+msgid "Birth:"
+msgstr "출생:"
+
+msgid "Blank Form"
+msgstr "기입 용지"
+
+msgid "Blessing"
+msgstr "축복"
+
+msgid "Books"
+msgstr "책들"
+
+msgid "Born"
+msgstr "출생"
+
+msgid "Burial"
+msgstr "매장"
+
+msgid "Burial Date"
+msgstr "매장일"
+
+msgid "Burial Place"
+msgstr "매장지"
+
+msgid "Calculate"
+msgstr "계산하기"
+
+msgid "Calendar"
+msgstr "달력"
+
+msgid "Cancel"
+msgstr "취소"
+
+msgid "Caption:"
+msgstr "제목:"
+
+msgid "Census"
+msgstr "인구 조사"
+
+msgid "Change"
+msgstr "변경"
+
+msgid "Change Names to Mixed Case"
+msgstr "이름들을 혼합 문자로 변경"
+
+msgid "Check LDS data"
+msgstr "LDS 데이터 점검"
+
+msgid "Check for duplicates when adding individuals"
+msgstr "개인들을 추가할 때 중복성을 점검하시오"
+
+msgid "Check marriage and children order"
+msgstr "결혼 및 자녀 순서 점검"
+
+msgid "Check/Repair"
+msgstr "점검/보수"
+
+msgid "Check/Repair..."
+msgstr "점검/보수..."
+
+msgid "Child..."
+msgstr "자녀..."
+
+msgid "Children"
+msgstr "자녀"
+
+msgid "Children:"
+msgstr "자녀:"
+
+msgid "Choose the link to remove. The individual stays in the file."
+msgstr "제거할 연결을 선택하십시오. 개인은 파일에 남습니다."
+
+msgid "Christening"
+msgstr "명명"
+
+msgid "Christening Date"
+msgstr "명명일"
+
+msgid "Christening Place"
+msgstr "명명지"
+
+msgid "Clear Fields"
+msgstr "지우기"
+
+msgid "Click Search to look for possible duplicates."
+msgstr "찾기를 클릭하여 중복 가능성을 찾으십시오."
+
+msgid "Close"
+msgstr "닫기"
+
+msgid "Close without saving"
+msgstr "저장하지 않고 닫기"
+
+msgid "Comments:"
+msgstr "설명:"
+
+msgid "Confirmation"
+msgstr "견진"
+
+msgid "Contact information"
+msgstr "정보 연락처"
+
+msgid "Could not open"
+msgstr "열 수 없음"
+
+msgid "Could not read this .paf file"
+msgstr "이 .paf 파일을 읽을 수 없습니다"
+
+msgid "Could not save"
+msgstr "저장할 수 없음"
+
+msgid "Create"
+msgstr "작성하기"
+
+msgid "Create Web Page"
+msgstr "웹 페이지 만들기"
+
+msgid "Create Web Page..."
+msgstr "웹 페이지 제작..."
+
+msgid "Create a web page"
+msgstr "웹 페이지 만들기"
+
+msgid "Cremation"
+msgstr "화장"
+
+msgid "Custom"
+msgstr "사용자 정의"
+
+msgid "Date"
+msgstr "날짜"
+
+msgid "Date Calculator"
+msgstr "날짜 계산기"
+
+msgid "Dates"
+msgstr "날짜"
+
+msgid "Dates and family information"
+msgstr "날짜 및 가족 정보"
+
+msgid "Dates only"
+msgstr "날짜만"
+
+msgid "Dates typed as all numbers, such as 3/11/1955, mean:"
+msgstr "3/11/1955처럼 숫자로만 입력한 날짜의 의미:"
+
+msgid "Day first: 3 November 1955"
+msgstr "일 먼저: 1955년 11월 3일"
+
+msgid "Days:"
+msgstr "일수:"
+
+msgid "Death"
+msgstr "사망"
+
+msgid "Death Date"
+msgstr "사망일"
+
+msgid "Death Place"
+msgstr "사망지"
+
+msgid "Death:"
+msgstr "사망:"
+
+msgid "Delete"
+msgstr "삭제"
+
+msgid "Delete File"
+msgstr "파일 삭제"
+
+msgid "Delete Individual"
+msgstr "개인 삭제"
+
+msgid "Delete..."
+msgstr "삭제..."
+
+msgid "Descendancy"
+msgstr "후손"
+
+msgid "Descendancy List..."
+msgstr "후손 목록..."
+
+msgid "Descendancy list (Ctrl+D)"
+msgstr "후손 목록 (Ctrl+D)"
+
+msgid "Descendants"
+msgstr "후손들"
+
+msgid "Descendants of"
+msgstr "의 후손들"
+
+msgid "Description"
+msgstr "설명"
+
+msgid "Description:"
+msgstr "설명:"
+
+msgid "Ditto from:"
+msgstr "다음에서 복사:"
+
+msgid "Divorce Filed"
+msgstr "이혼 신청"
+
+msgid "Divorced"
+msgstr "이혼함"
+
+msgid "Down"
+msgstr "아래"
+
+msgid "Duplicate individuals"
+msgstr "중복된 개인"
+
+msgid "Edit"
+msgstr "편집"
+
+msgid "Edit Marriage"
+msgstr "결혼 편집"
+
+msgid "Edit Parent Links"
+msgstr "부모 연결 편집"
+
+msgid "Edit Parents' Marriage"
+msgstr "부모의 결혼 편집"
+
+msgid "Edit individual (Ctrl+I)"
+msgstr "개인 편집 (Ctrl+I)"
+
+msgid "Edit individual, notes, multimedia"
+msgstr "개인, 메모, 멀티미디어 편집"
+
+msgid "Edit marriage when created"
+msgstr "작성할때 결혼 편집"
+
+msgid "Edit notes (Ctrl+N)"
+msgstr "메모 편집 (Ctrl+N)"
+
+msgid "Education"
+msgstr "학력"
+
+msgid "Email:"
+msgstr "전자 우편:"
+
+msgid "Emigration"
+msgstr "이민 출국"
+
+msgid "End date:"
+msgstr "끝난 날짜:"
+
+msgid "End-of-line individuals"
+msgstr "끝줄 개인"
+
+msgid "Endowment:"
+msgstr "엔다우먼트:"
+
+msgid "Engagement"
+msgstr "약혼"
+
+msgid "Events"
+msgstr "사건들"
+
+msgid "Everyone"
+msgstr "모두"
+
+msgid "Exit"
+msgstr "종료"
+
+msgid "Exit without saving"
+msgstr "저장하지 않고 끝내기"
+
+msgid "Export"
+msgstr "내보내기"
+
+msgid "Export a GEDCOM file"
+msgstr "GEDCOM 파일 내보내기"
+
+msgid "Export to GEDCOM 5.5 (UTF-8)"
+msgstr "GEDCOM 5.5 (UTF-8)로 내보내기"
+
+msgid "Export..."
+msgstr "내보내기..."
+
+msgid "Family"
+msgstr "가족"
+
+msgid "Family Group"
+msgstr "가족 단체"
+
+msgid "Family file read"
+msgstr "가족 파일을 읽었습니다"
+
+msgid "Family reunion contacts"
+msgstr "가족 친목회 연락처"
+
+msgid "Family..."
+msgstr "가족..."
+
+msgid "Father's age should be between"
+msgstr "부친의 나이는 다음 사이가 되어야함"
+
+msgid "Father's or mother's line (Pedigree)"
+msgstr "아버지 또는 어머니 계통 (가계도)"
+
+msgid "Father, mother or child"
+msgstr "아버지, 어머니 또는 자녀"
+
+msgid "Father..."
+msgstr "부친..."
+
+msgid "Female"
+msgstr "여성"
+
+msgid "Field filters"
+msgstr "필드 필터"
+
+msgid "File"
+msgstr "파일"
+
+msgid "File Properties"
+msgstr "파일 등록 정보"
+
+msgid "Fill in any two of start, end and elapsed time. Works for the Gregorian calendar only, from October 1752."
+msgstr "시작, 끝, 경과 기간 중 두 가지를 입력하십시오. 1752년 10월 이후의 그레고리력에만 사용됩니다."
+
+msgid "Fill the empty surname and place fields from this person"
+msgstr "빈 성과 장소 필드를 이 사람에게서 채우기"
+
+msgid "Film/Volume/Page:"
+msgstr "필름/권/페이지:"
+
+msgid "Find by RIN or MRIN (Ctrl+R)"
+msgstr "RIN 또는 MRIN으로 찾기 (Ctrl+R)"
+
+msgid "Find by RIN/MRIN"
+msgstr "RIN/MRIN으로 찾기..."
+
+msgid "Find by RIN/MRIN..."
+msgstr "RIN/MRIN으로 찾기..."
+
+msgid "Find:"
+msgstr "찾기:"
+
+msgid "First Communion"
+msgstr "첫 영성체"
+
+msgid "First Person"
+msgstr "첫번째 사람"
+
+msgid "Flush"
+msgstr "지우시오"
+
+msgid "For Help, press F1. Double-click on person you want to edit."
+msgstr "도움말을 보려면 F1을 누르시오. 편집하고자 하는 사람을 두번 누르시오."
+
+msgid "Formats"
+msgstr "포맷"
+
+msgid "Full Name"
+msgstr "성명"
+
+msgid "Full Name:"
+msgstr "성명:"
+
+msgid "Full information on living"
+msgstr "산 자에 대한 완전 정보"
+
+msgid "GEDCOM import"
+msgstr "GEDCOM 들여오기"
+
+msgid "General"
+msgstr "일반"
+
+msgid "Generations per page:"
+msgstr "1페이지 당 세대:"
+
+msgid "Generations:"
+msgstr "세대:"
+
+msgid "Getting Started"
+msgstr "시작하기"
+
+msgid "Given /Surname/ Suffix"
+msgstr "이름 /성/ 접미사"
+
+msgid "Given Name"
+msgstr "이름"
+
+msgid "Global Search and Replace"
+msgstr "전체 검색 및 대치"
+
+msgid "Global Search and Replace..."
+msgstr "전 세계 탐색 및 대체..."
+
+msgid "Go to the home person"
+msgstr "기본 인물로 이동"
+
+msgid "Go to the home person (Ctrl+Home)"
+msgstr "기본 인물로 이동 (Ctrl+Home)"
+
+msgid "Graduation"
+msgstr "졸업"
+
+msgid "Help"
+msgstr "도움말"
+
+msgid "Hide details of people who may still be living"
+msgstr "생존 가능성이 있는 사람의 세부 정보 숨기기"
+
+msgid "Home Person"
+msgstr "최초 작성자"
+
+msgid "Immigration"
+msgstr "이민 입국"
+
+msgid "Import"
+msgstr "들여오기"
+
+msgid "Import a GEDCOM or .paf file"
+msgstr "GEDCOM 또는 .paf 파일 가져오기"
+
+msgid "Import..."
+msgstr "들여오기..."
+
+msgid "Include in the scrapbook"
+msgstr "스크랩북에 포함"
+
+msgid "Include notes"
+msgstr "메모 포함"
+
+msgid "Include people who have died"
+msgstr "사망한 사람 포함"
+
+msgid "Individual"
+msgstr "개인"
+
+msgid "Individual Event List"
+msgstr "개인 사건 목록"
+
+msgid "Individual List"
+msgstr "개인 목록"
+
+msgid "Individual List..."
+msgstr "개인 목록..."
+
+msgid "Individual Summary"
+msgstr "개인에 대한 요약"
+
+msgid "Individual list (Ctrl+F)"
+msgstr "개인 목록 (Ctrl+F)"
+
+msgid "Individual list, descendancy list, find by RIN"
+msgstr "개인 목록, 후손 목록, RIN으로 찾기"
+
+msgid "Individual..."
+msgstr "개인..."
+
+msgid "Individuals sorted alphabetically"
+msgstr "가나다 순으로 정렬된 개인"
+
+msgid "Individuals sorted by RIN"
+msgstr "RIN으로 정렬된 개인"
+
+msgid "Individuals with notes"
+msgstr "메모가 있는 개인"
+
+msgid "InfoBox"
+msgstr "정보 상자"
+
+msgid "It has been a while since this family file was backed up. Use File, Backup after opening it again."
+msgstr "이 가족 파일을 백업한 지 오래되었습니다. 다시 연 후 파일, 백업을 사용하십시오."
+
+msgid "Keep Left, Merge Right"
+msgstr "왼쪽 유지, 오른쪽 병합"
+
+msgid "Keep Right, Merge Left"
+msgstr "오른쪽 유지, 왼쪽 병합"
+
+msgid "Keyboard"
+msgstr "키보드"
+
+msgid "Keyboard help (F1)"
+msgstr "키보드 도움말 (F1)"
+
+msgid "LDS data"
+msgstr "말일 성도 데이터"
+
+msgid "Language"
+msgstr "언어"
+
+msgid "Colors"
+msgstr "색상"
+
+msgid "Classic"
+msgstr "클래식"
+
+msgid "Slate Blue"
+msgstr "슬레이트 블루"
+
+msgid "Navy"
+msgstr "네이비"
+
+msgid "Parchment"
+msgstr "양피지"
+
+msgid "Blue Linen"
+msgstr "블루 리넨"
+
+msgid "Leather"
+msgstr "가죽"
+
+msgid "Original"
+msgstr "원본"
+
+msgid "Tree pictures"
+msgstr "나무 그림"
+
+msgid "Earth tones"
+msgstr "어스 톤"
+
+msgid "Popular colors"
+msgstr "인기 색상"
+
+msgid "Neutrals"
+msgstr "뉴트럴"
+
+msgid "Genealogy sites"
+msgstr "족보 사이트"
+
+msgid "Leaf Green"
+msgstr "리프 그린"
+
+msgid "Fresh Green"
+msgstr "프레시 그린"
+
+msgid "Deep Green"
+msgstr "딥 그린"
+
+msgid "Sage"
+msgstr "세이지"
+
+msgid "Olive"
+msgstr "올리브"
+
+msgid "Moss"
+msgstr "이끼"
+
+msgid "Forest Green"
+msgstr "포레스트 그린"
+
+msgid "Terracotta"
+msgstr "테라코타"
+
+msgid "Clay"
+msgstr "점토"
+
+msgid "Burgundy"
+msgstr "버건디"
+
+msgid "Teal"
+msgstr "틸"
+
+msgid "Plum"
+msgstr "플럼"
+
+msgid "Charcoal"
+msgstr "차콜"
+
+msgid "Midnight"
+msgstr "미드나이트"
+
+msgid "Sky"
+msgstr "스카이"
+
+msgid "Rose"
+msgstr "로즈"
+
+msgid "Ivory"
+msgstr "아이보리"
+
+msgid "Linen"
+msgstr "리넨"
+
+msgid "Stone"
+msgstr "스톤"
+
+msgid "Taupe"
+msgstr "토프"
+
+msgid "Link a source"
+msgstr "출처 연결"
+
+msgid "List name"
+msgstr "목록 이름"
+
+msgid "Lists"
+msgstr "목록"
+
+msgid "Lists the pictures marked for the scrapbook, with their captions. Pictures themselves are viewed from Edit, Multimedia."
+msgstr "스크랩북으로 표시된 그림을 설명과 함께 나열합니다. 그림은 편집, 멀티미디어에서 볼 수 있습니다."
+
+msgid "Log changes"
+msgstr "변경 입력"
+
+msgid "MRIN"
+msgstr "MRIN"
+
+msgid "Make Primary"
+msgstr "시작인 만들기"
+
+msgid "Male"
+msgstr "남성"
+
+msgid "Marriage"
+msgstr "결혼"
+
+msgid "Marriage Banns"
+msgstr "혼인 공고"
+
+msgid "Marriage Contract"
+msgstr "혼인 계약"
+
+msgid "Marriage Date"
+msgstr "결혼 날짜"
+
+msgid "Marriage Event List"
+msgstr "결혼 사건 목록"
+
+msgid "Marriage License"
+msgstr "혼인 허가"
+
+msgid "Marriage List"
+msgstr "결혼 목록"
+
+msgid "Marriage List..."
+msgstr "결혼 목록..."
+
+msgid "Marriage Settlement"
+msgstr "혼인 재산 계약"
+
+msgid "Marriage date:"
+msgstr "결혼 날짜:"
+
+msgid "Marriage place:"
+msgstr "결혼 장소:"
+
+msgid "Marriage:"
+msgstr "결혼:"
+
+msgid "Marriages"
+msgstr "결혼"
+
+msgid "Match all (AND)"
+msgstr "모두 일치 (AND)"
+
+msgid "Match any (OR)"
+msgstr "하나라도 일치 (OR)"
+
+msgid "Match case"
+msgstr "사건 연결"
+
+msgid "Match on AFNs"
+msgstr "AFN으로 비교"
+
+msgid "Match on names"
+msgstr "이름으로 비교"
+
+msgid "Match/Merge"
+msgstr "비교/병합"
+
+msgid "Match/Merge..."
+msgstr "연결/결합..."
+
+msgid "Merge Duplicate Sources"
+msgstr "중복 출처 병합"
+
+msgid "Military"
+msgstr "군 복무"
+
+msgid "Month first: 11 March 1955"
+msgstr "월 먼저: 1955년 3월 11일"
+
+msgid "Months:"
+msgstr "월수:"
+
+msgid "Mother's age should be between"
+msgstr "모친의 나이는 다음 사이가 되어야함"
+
+msgid "Mother..."
+msgstr "모친..."
+
+msgid "Move someone to the primary position"
+msgstr "사람을 주 위치로 이동"
+
+msgid "Move this column left"
+msgstr "이 열을 왼쪽으로 이동"
+
+msgid "Move this column right"
+msgstr "이 열을 오른쪽으로 이동"
+
+msgid "Move to Primary"
+msgstr "시작인에게 가기"
+
+msgid "Multimedia"
+msgstr "다매체"
+
+msgid "Multimedia (Ctrl+M)"
+msgstr "멀티미디어 (Ctrl+M)"
+
+msgid "Multimedia file names"
+msgstr "멀티미디어 파일 이름"
+
+msgid "Multimedia links"
+msgstr "다매체 연결"
+
+msgid "Name:"
+msgstr "이름:"
+
+msgid "Names"
+msgstr "이름"
+
+msgid "Names on living"
+msgstr "산 자의 성명"
+
+msgid "Names that sound alike"
+msgstr "발음이 비슷한 이름"
+
+msgid "Naturalization"
+msgstr "귀화"
+
+msgid "New"
+msgstr "새 파일"
+
+msgid "New Event/Attribute"
+msgstr "새로운 사건/속성..."
+
+msgid "New event name"
+msgstr "새 사건 이름"
+
+msgid "New..."
+msgstr "새 파일..."
+
+msgid "Next"
+msgstr "다음"
+
+msgid "Next Page"
+msgstr "다음 쪽"
+
+msgid "Nickname:"
+msgstr "애칭:"
+
+msgid "No descendants are recorded."
+msgstr "후손이 기록되어 있지 않습니다."
+
+msgid "No file"
+msgstr "파일 없음"
+
+msgid "No parents are linked. Use the Add menu to add them."
+msgstr "연결된 부모가 없습니다. 추가 메뉴에서 추가하십시오."
+
+msgid "No pictures or files have been added for this individual."
+msgstr "이 개인에 대해 추가된 그림이나 파일이 없습니다."
+
+msgid "No possible duplicates were found."
+msgstr "중복 가능성이 발견되지 않았습니다."
+
+msgid "No problems were found in the links of this file."
+msgstr "이 파일의 연결에서 문제가 발견되지 않았습니다."
+
+msgid "No record has that number."
+msgstr "그 번호의 기록이 없습니다."
+
+msgid "None"
+msgstr "없음"
+
+msgid "Not a Match"
+msgstr "일치하지 않음"
+
+msgid "Not saved yet"
+msgstr "아직 저장되지 않음"
+
+msgid "Notepad"
+msgstr "메모지"
+
+msgid "Notes"
+msgstr "메모"
+
+msgid "OK"
+msgstr "확인"
+
+msgid "Occupation"
+msgstr "직업"
+
+msgid "On Ancestry"
+msgstr "Ancestry에서"
+
+msgid "On FamilySearch"
+msgstr "FamilySearch에서"
+
+msgid "On Genealogy.com"
+msgstr "Genealogy.com에서"
+
+msgid "On RootsWeb"
+msgstr "RootsWeb에서"
+
+msgid "Only the current focus list"
+msgstr "현재 포커스 목록만"
+
+msgid "Open Sample Family"
+msgstr "샘플 가족 열기"
+
+msgid "Open family file (Ctrl+O)"
+msgstr "가족 파일 열기 (Ctrl+O)"
+
+msgid "Open..."
+msgstr "열기..."
+
+msgid "Opens the report in your PDF viewer, where you can print it"
+msgstr "PDF 뷰어에서 보고서를 열어 인쇄할 수 있습니다"
+
+msgid "Order Children"
+msgstr "자녀들의 순서..."
+
+msgid "Order Children..."
+msgstr "자녀들의 순서..."
+
+msgid "Order Spouses"
+msgstr "배우자들의 순서..."
+
+msgid "Order Spouses..."
+msgstr "배우자들의 순서..."
+
+msgid "Ordinances"
+msgstr "의식들"
+
+msgid "Ordination"
+msgstr "성임"
+
+msgid "Other Parents..."
+msgstr "다른 부모..."
+
+msgid "Pages are saved in a folder you choose. Nothing is uploaded."
+msgstr "페이지는 선택한 폴더에 저장됩니다. 아무것도 업로드되지 않습니다."
+
+msgid "Parent Link"
+msgstr "부모 연결"
+
+msgid "Parents"
+msgstr "부모"
+
+msgid "Parents' Marriage"
+msgstr "부모의 결혼"
+
+msgid "Pedigree"
+msgstr "가계도"
+
+msgid "Phone:"
+msgstr "전화 번호:"
+
+msgid "Physical Description"
+msgstr "신체 설명"
+
+msgid "Place"
+msgstr "장소"
+
+msgid "Places"
+msgstr "장소들"
+
+msgid "Places sorted alphabetically"
+msgstr "가나다 순으로 정렬된 장소들"
+
+msgid "Please check"
+msgstr "확인하십시오"
+
+msgid "Possible problems"
+msgstr "가능한 문제들"
+
+msgid "Preferences"
+msgstr "우선권"
+
+msgid "Prepared by"
+msgstr "작성자"
+
+msgid "Preview"
+msgstr "미리보기"
+
+msgid "Previous"
+msgstr "이전"
+
+msgid "Previous Page"
+msgstr "이전 페이지"
+
+msgid "Print Reports"
+msgstr "보고서 인쇄..."
+
+msgid "Print Reports..."
+msgstr "보고서 인쇄..."
+
+msgid "Print reports"
+msgstr "보고서 인쇄"
+
+msgid "Print reports (Ctrl+P)"
+msgstr "보고서 인쇄 (Ctrl+P)"
+
+msgid "Print..."
+msgstr "인쇄..."
+
+msgid "Probate"
+msgstr "유언 검인"
+
+msgid "Problems"
+msgstr "문제"
+
+msgid "Properties"
+msgstr "등록 정보"
+
+msgid "RIN"
+msgstr "RIN"
+
+msgid "Relationship Calculator"
+msgstr "관계 계산기"
+
+msgid "Relationship calculator"
+msgstr "관계 계산기"
+
+msgid "Relationship filter"
+msgstr "관계 필터"
+
+msgid "Relationship to parents:"
+msgstr "부모와의 관계:"
+
+msgid "Religion"
+msgstr "종교"
+
+msgid "Remove"
+msgstr "제거"
+
+msgid "Repair"
+msgstr "복구"
+
+msgid "Replace All"
+msgstr "모두 대체"
+
+msgid "Replace with:"
+msgstr "다음과 대치:"
+
+msgid "Reports..."
+msgstr "보고..."
+
+msgid "Repository List"
+msgstr "보관소 목록"
+
+msgid "Repository:"
+msgstr "보관소:"
+
+msgid "Residence"
+msgstr "거주지"
+
+msgid "Restore"
+msgstr "복구"
+
+msgid "Restore..."
+msgstr "복원..."
+
+msgid "Retirement"
+msgstr "은퇴"
+
+msgid "Save"
+msgstr "저장"
+
+msgid "Save As..."
+msgstr "다른 이름으로 저장..."
+
+msgid "Save List"
+msgstr "목록 저장"
+
+msgid "Save as PDF..."
+msgstr "PDF로 저장..."
+
+msgid "Save..."
+msgstr "저장..."
+
+msgid "Saved lists"
+msgstr "저장된 목록"
+
+msgid "Scrapbook"
+msgstr "스크랩북"
+
+msgid "Sealed to parents:"
+msgstr "부모에게 인봉됨:"
+
+msgid "Sealed to spouse:"
+msgstr "배우자에게 인봉됨:"
+
+msgid "Search"
+msgstr "찾기"
+
+msgid "Search in:"
+msgstr "찾을 위치:"
+
+msgid "Second Person"
+msgstr "두번째 사람"
+
+msgid "Select Existing"
+msgstr "기존 항목 선택"
+
+msgid "Select a source, or click New."
+msgstr "출처를 선택하거나 새로 만들기를 클릭하십시오."
+
+msgid "Select an individual first."
+msgstr "먼저 개인을 선택하십시오."
+
+msgid "Select different individuals"
+msgstr "다른 개인 선택"
+
+msgid "Select the primary person, or the last one shown"
+msgstr "주 인물 또는 마지막으로 표시된 사람 선택"
+
+msgid "Sex"
+msgstr "성별"
+
+msgid "Sex:"
+msgstr "성별:"
+
+msgid "Show"
+msgstr "보이기"
+
+msgid "Show RIN numbers after names"
+msgstr "이름 뒤에 RIN 번호 표시"
+
+msgid "Show on Individual Screen"
+msgstr "개인 화면에 표시"
+
+msgid "Show relationships on the status bar"
+msgstr "상태 표시줄에 관계 표시"
+
+msgid "Sort by Birth Date"
+msgstr "출생일로 정렬"
+
+msgid "Soundex"
+msgstr "Soundex"
+
+msgid "Soundex Calculator"
+msgstr "사운덱스 계산기"
+
+msgid "Soundex Code Calculator"
+msgstr "사운덱스 약호 계산기"
+
+msgid "Soundex code:"
+msgstr "사운덱스 약호:"
+
+msgid "Sounds like"
+msgstr "비슷함"
+
+msgid "Source List"
+msgstr "근원 목록"
+
+msgid "Sources"
+msgstr "근원"
+
+msgid "Spouse"
+msgstr "배우자"
+
+msgid "Spouse..."
+msgstr "배우자..."
+
+msgid "Spouse:"
+msgstr "배우자:"
+
+msgid "Start date:"
+msgstr "시작 날짜:"
+
+msgid "Status Bar"
+msgstr "상태 표시줄"
+
+msgid "Surname"
+msgstr "성"
+
+msgid "Switch between the three screens"
+msgstr "세 화면 간 전환"
+
+msgid "Temple"
+msgstr "성전"
+
+msgid "Temple Codes"
+msgstr "성전 코드"
+
+msgid "Temple:"
+msgstr "성전:"
+
+msgid "That is all the possible duplicates."
+msgstr "중복 가능성은 이것이 전부입니다."
+
+msgid "The date you typed is not standard."
+msgstr "입력한 날짜는 표준이 아닙니다."
+
+msgid "There are no sources in this file yet. Add them from Edit, Source List."
+msgstr "이 파일에는 아직 출처가 없습니다. 편집, 출처 목록에서 추가하십시오."
+
+msgid "This changes names and places written in capital letters to upper and lower case, for example SMITH to Smith. Consider making a backup first. Continue?"
+msgstr "대문자로 된 이름과 장소를 대소문자 혼합으로 바꿉니다(예: SMITH를 Smith로). 먼저 백업을 만드는 것이 좋습니다. 계속하시겠습니까?"
+
+msgid "This family has not been saved to a file. Save it before closing?"
+msgstr "이 가족은 아직 파일에 저장되지 않았습니다. 닫기 전에 저장하시겠습니까?"
+
+msgid "This family has not been saved to a file. Save it before you exit?"
+msgstr "이 가족은 아직 파일에 저장되지 않았습니다. 끝내기 전에 저장하시겠습니까?"
+
+msgid "This file is not a valid family file. It may be corrupt."
+msgstr "유효한 가족 파일이 아닙니다. 손상되었을 수 있습니다."
+
+msgid "This individual has no marriage to order children in."
+msgstr "이 개인에게는 자녀를 정렬할 결혼이 없습니다."
+
+msgid "This individual has no marriage yet. Add a spouse first, or add one from the Add menu."
+msgstr "이 개인에게는 아직 결혼이 없습니다. 먼저 배우자를 추가하거나 추가 메뉴에서 추가하십시오."
+
+msgid "This individual has no parents linked yet."
+msgstr "이 개인에게는 아직 연결된 부모가 없습니다."
+
+msgid "This individual is not linked to anyone."
+msgstr "이 개인은 아무에게도 연결되어 있지 않습니다."
+
+msgid "This marriage will be removed and unlinked from husband, wife and children."
+msgstr "이 결혼은 제거되고 남편, 아내, 자녀와의 연결이 해제됩니다."
+
+msgid "This version keeps one family window."
+msgstr "이 버전에는 가족 창이 하나입니다."
+
+msgid "Title (prefix):"
+msgstr "제목(접두사):"
+
+msgid "Title:"
+msgstr "제목:"
+
+msgid "Toolbar"
+msgstr "도구 모음"
+
+msgid "Tools"
+msgstr "도구"
+
+msgid "Type of list"
+msgstr "목록표 유형"
+
+msgid "Unknown"
+msgstr "알 수 없음"
+
+msgid "Unlink Individual"
+msgstr "개인 연결끊기"
+
+msgid "Unlink..."
+msgstr "연결 끊기..."
+
+msgid "Unlinked individuals"
+msgstr "연결되지 않은 개인들"
+
+msgid "Up"
+msgstr "위"
+
+msgid "Use LDS data"
+msgstr "말일성도 데이터 사용"
+
+msgid "Use list when navigating"
+msgstr "항해할 때 목록 사용"
+
+msgid "Used by the Possible Problems list."
+msgstr "발생 가능한 문제 목록에서 사용됩니다."
+
+msgid "Verify new places"
+msgstr "새로운 장소 확인"
+
+msgid "View"
+msgstr "보기"
+
+msgid "Wait time:"
+msgstr "기다릴시간:"
+
+msgid "Whole field only"
+msgstr "전체 필드만"
+
+msgid "Will"
+msgstr "유언"
+
+msgid "Window"
+msgstr "창"
+
+msgid "With this on, the last word of a name without slashes becomes the surname."
+msgstr "켜면 슬래시가 없는 이름의 마지막 단어가 성이 됩니다."
+
+msgid "Year:"
+msgstr "연도:"
+
+msgid "Years:"
+msgstr "년수:"
+
+msgid "and"
+msgstr "부터"
+
+msgid "closes between reminders (0 for never)"
+msgstr "번 닫을 때마다 알림 (0은 알리지 않음)"
+
+msgid "contains"
+msgstr "포함됨"
+
+msgid "equals"
+msgstr "같음"
+
+msgid "is after"
+msgstr "이후"
+
+msgid "is before"
+msgstr "이전"
+
+msgid "is empty"
+msgstr "비어 있음"
+
+msgid "is not empty"
+msgstr "비어 있지 않음"
+
+msgid "years"
+msgstr "년"
+
+msgid "Abbreviation:"
+msgstr "약어:"
+
+msgid "Add Father..."
+msgstr "부친 추가..."
+
+msgid "Add Individual"
+msgstr "개인 추가"
+
+msgid "Add Mother..."
+msgstr "모친 추가..."
+
+msgid "Author:"
+msgstr "작자:"
+
+msgid "Biological"
+msgstr "친계"
+
+msgid "Burial:"
+msgstr "매장:"
+
+msgid "Buried"
+msgstr "매장"
+
+msgid "Christened"
+msgstr "명명됨"
+
+msgid "Christening:"
+msgstr "명명:"
+
+msgid "sex-letter:M"
+msgstr "남"
+
+msgid "sex-letter:F"
+msgstr "여"
+
+msgid "sex-letter:U"
+msgstr "?"
+
+msgid "Citations:"
+msgstr "인용문:"
+
+msgid "Died"
+msgstr "사망"
+
+msgid "Edit Individual"
+msgstr "개인 편집"
+
+msgid "Event"
+msgstr "사건"
+
+msgid "Father"
+msgstr "부친"
+
+msgid "File:"
+msgstr "파일:"
+
+msgid "Floating"
+msgstr "부동"
+
+msgid "HOME"
+msgstr "시작"
+
+msgid "Individuals:"
+msgstr "개인:"
+
+msgid "Locked"
+msgstr "잠겨 있음"
+
+msgid "Marriages:"
+msgstr "결혼:"
+
+msgid "Mother"
+msgstr "모친"
+
+msgid "Multimedia links:"
+msgstr "다매체 연결:"
+
+msgid "Primary"
+msgstr "시작인"
+
+msgid "Repositories:"
+msgstr "보관소:"
+
+msgid "Sealing"
+msgstr "인봉"
+
+msgid "Selected"
+msgstr "선택함"
+
+msgid "Size:"
+msgstr "크기:"
+
+msgid "Sources:"
+msgstr "근원:"
+
+msgid "Merged {n} duplicate source."
+msgid_plural "Merged {n} duplicate sources."
+msgstr[0] "중복된 근원 {n}개를 병합했습니다."
+
+msgid ""
+"Could not save {file}:\n"
+"{error}"
+msgstr ""
+"{file}을(를) 저장할 수 없습니다:\n"
+"{error}"
+
+msgid ""
+"Could not open {file}:\n"
+"{error}"
+msgstr ""
+"{file}을(를) 열 수 없습니다:\n"
+"{error}"
+
+msgid "Backup saved to {file}."
+msgstr "백업을 {file}에 저장했습니다."
+
+msgid ""
+"The backup could not be saved:\n"
+"{error}"
+msgstr ""
+"백업을 저장할 수 없습니다:\n"
+"{error}"
+
+msgid "About {program}"
+msgstr "{program} 정보"
+
+msgid "Individual {rin} points to marriage {mrin}, but the marriage does not point back."
+msgstr "개인 {rin}은(는) 결혼 {mrin}을(를) 가리키지만 그 결혼은 이 사람을 가리키지 않습니다."
+
+msgid "Individual {rin} points to parents in marriage {mrin}, but the marriage does not list them as a child."
+msgstr "개인 {rin}은(는) 결혼 {mrin}의 부모를 가리키지만 그 결혼은 이 사람을 자녀로 포함하지 않습니다."
+
+msgid "Husband's record (RIN {rin}) in marriage {mrin} has the wrong sex."
+msgstr "결혼 {mrin}에서 남편의 기록(RIN {rin})의 성별이 잘못되었습니다."
+
+msgid "Marriage {mrin} lists child {rin}, but that individual does not point back."
+msgstr "결혼 {mrin}에 자녀 {rin}이(가) 있지만 그 사람은 이 결혼을 가리키지 않습니다."
+
+msgid "Descendants of {name}"
+msgstr "{name}의 후손들"
+
+msgid "Possible duplicate {at} of {total}"
+msgstr "중복 가능성 {total}개 중 {at}번째"
+
+msgid "Changed {n} field."
+msgid_plural "Changed {n} fields."
+msgstr[0] "필드 {n}개를 변경했습니다."
+
+msgid "Changed {n} name or place."
+msgid_plural "Changed {n} names and places."
+msgstr[0] "이름과 장소 {n}개를 변경했습니다."
+
+msgid "Old ID"
+msgstr "이전 ID"
+
+msgid "New place: {place}. Please check its spelling."
+msgstr "새 장소: {place}. 철자를 확인하십시오."
+
+msgid "Husband: {name}"
+msgstr "남편: {name}"
+
+msgid "Wife: {name}"
+msgstr "아내: {name}"
+
+msgid "Edit Notes: {name}"
+msgstr "메모 편집: {name}"
+
+msgid "Multimedia: {name}"
+msgstr "다매체: {name}"
+
+msgid ""
+"This picture could not be shown:\n"
+"{file}"
+msgstr ""
+"이 그림을 표시할 수 없습니다:\n"
+"{file}"
+
+msgid "Unlink {name}"
+msgstr "{name} 연결 끊기"
+
+msgid "Unlink from spouse: {name}"
+msgstr "배우자와 연결 끊기: {name}"
+
+msgid "Unlink from parents: {father} and {mother}"
+msgstr "부모와 연결 끊기: {father}, {mother}"
+
+msgid "Delete {name} (RIN {rin})? This removes the record from the file and unlinks it from the family."
+msgstr "{name}(RIN {rin})을(를) 삭제하시겠습니까? 이 기록이 파일에서 삭제되고 가족과의 연결이 끊어집니다."
+
+msgid "Parents of {name}"
+msgstr "{name}의 부모"
+
+msgid "Web page creation complete: {n} page in {folder}."
+msgid_plural "Web page creation complete: {n} pages in {folder}."
+msgstr[0] "웹 페이지 만들기 완료: {folder}에 {n}페이지."
+
+msgid ""
+"The pages could not be saved:\n"
+"{error}"
+msgstr ""
+"페이지를 저장할 수 없습니다:\n"
+"{error}"
+
+msgid "Notepad: {file}"
+msgstr "메모지: {file}"
+
+msgid "Their common ancestor is {name}"
+msgstr "공통 조상은 {name}입니다"
+
+msgid "Their common ancestors are {name} and {other}"
+msgstr "공통 조상은 {name}, {other}입니다"
+
+msgid "Gives everyone new record numbers (RINs) 1, 2, 3... with no gaps, and numbers the marriages (MRINs) to match. Every link between people stays the same."
+msgstr "모든 사람에게 빠진 번호 없이 1, 2, 3... 새 기록 번호(RIN)를 매기고, 결혼(MRIN)도 그에 맞게 번호를 매깁니다. 사람 사이의 모든 연결은 그대로 유지됩니다."
+
+msgid "Each person keeps their old number as an Old ID, shown when editing them and written to exported GEDCOM files, so notes and printouts that use the old numbers can still be matched. A copy of the file as it is now is saved beside it first."
+msgstr "각 사람의 이전 번호는 이전 ID로 남아 편집할 때 표시되고 내보낸 GEDCOM 파일에도 기록되므로, 이전 번호를 사용하는 메모와 인쇄물을 계속 대조할 수 있습니다. 먼저 현재 상태의 파일 사본이 옆에 저장됩니다."
+
+msgid "Preview, first people:"
+msgstr "미리 보기, 처음 몇 사람:"
+
+msgid "nothing would change."
+msgstr "변경될 내용이 없습니다."
+
+msgid "New RIN"
+msgstr "새 RIN"
+
+msgid "Old RIN"
+msgstr "이전 RIN"
+
+msgid "Name"
+msgstr "이름"
+
+msgid "Renumber"
+msgstr "번호 다시 매기기"
+
+msgid "Renumbered {n} individual"
+msgid_plural "Renumbered {n} individuals"
+msgstr[0] "개인 {n}명과"
+
+msgid "and {n} marriage."
+msgid_plural "and {n} marriages."
+msgstr[0] "결혼 {n}건의 번호를 다시 매겼습니다."
+
+msgid "Home person: {name}"
+msgstr "최초 작성자: {name}"
+
+msgid "Root person for relationships: {name}"
+msgstr "관계의 기준이 되는 사람: {name}"
+
+msgid "The {n} individual"
+msgid_plural "All {n} individuals"
+msgstr[0] "개인 {n}명 모두"
+
+msgid "Current focus list ({n})"
+msgstr "현재 초점 목록 ({n})"
+
+msgid "Exported to {file}."
+msgstr "{file}(으)로 내보냈습니다."
+
+msgid ""
+"The file could not be saved:\n"
+"{error}"
+msgstr ""
+"파일을 저장할 수 없습니다:\n"
+"{error}"
+
+msgid "Open the backup {file} as the current family? Save it with Save As to replace your file."
+msgstr "백업 {file}을(를) 현재 가족으로 여시겠습니까? 파일을 바꾸려면 다른 이름으로 저장으로 저장하십시오."
+
+msgid ""
+"This backup could not be read:\n"
+"{error}"
+msgstr ""
+"이 백업을 읽을 수 없습니다:\n"
+"{error}"
+
+msgid "Permanently delete {file}? This cannot be undone."
+msgstr "{file}을(를) 영구히 삭제하시겠습니까? 되돌릴 수 없습니다."
+
+msgid ""
+"The file could not be deleted:\n"
+"{error}"
+msgstr ""
+"파일을 삭제할 수 없습니다:\n"
+"{error}"
+
+msgid "Starting person: {name}"
+msgstr "시작하는 사람: {name}"
+
+msgid "Prints {n} individual. Use Advanced Focus/Filter to choose fewer."
+msgid_plural "Prints {n} individuals. Use Advanced Focus/Filter to choose fewer."
+msgstr[0] "개인 {n}명을 인쇄합니다. 더 적게 선택하려면 고등 초점/필터를 사용하십시오."
+
+msgid "Page {page} of {pages}"
+msgstr "{pages}페이지 중 {page}페이지"
+
+msgid ""
+"The report could not be saved:\n"
+"{error}"
+msgstr ""
+"보고서를 저장할 수 없습니다:\n"
+"{error}"
+
+msgid "Parents: {names}"
+msgstr "부모: {names}"
+
+msgid "Spouse: {name}"
+msgstr "배우자: {name}"
+
+msgid "The christening date is more than {years} years after the birth date."
+msgstr "명명 날짜가 출생 날짜보다 {years}년 이상 늦습니다."
+
+msgid "The death date is more than {years} years after the birth or christening date."
+msgstr "사망 날짜가 출생 또는 명명 날짜보다 {years}년 이상 늦습니다."
+
+msgid "The burial date is more than {years} years after the birth or christening date."
+msgstr "매장 날짜가 출생 또는 명명 날짜보다 {years}년 이상 늦습니다."
+
+msgid "The burial date is more than {n} year after the death date."
+msgid_plural "The burial date is more than {n} years after the death date."
+msgstr[0] "매장 날짜가 사망 날짜보다 {n}년 이상 늦습니다."
+
+msgid "The individual's birth/christening date is less than {years} years after a parent's birth/christening date."
+msgstr "이 사람의 출생 또는 명명 날짜가 부모의 출생 또는 명명 날짜로부터 {years}년이 되지 않습니다."
+
+msgid "The individual's birth/christening date is more than {years} years after the father's birth/christening date."
+msgstr "이 사람의 출생 또는 명명 날짜가 아버지의 출생 또는 명명 날짜보다 {years}년 이상 늦습니다."
+
+msgid "The individual's birth/christening date is more than {years} years after the mother's birth/christening date."
+msgstr "이 사람의 출생 또는 명명 날짜가 어머니의 출생 또는 명명 날짜보다 {years}년 이상 늦습니다."
+
+msgid "The sealing date is before a spouse's birth or christening date (MRIN {mrin})."
+msgstr "인봉 날짜가 배우자의 출생 또는 명명 날짜보다 이릅니다 (MRIN {mrin})."
+
+msgid "The sealing date is before the age of {years} (MRIN {mrin})."
+msgstr "인봉 날짜가 {years}세 이전입니다 (MRIN {mrin})."
+
+msgid "The marriage date is before a spouse's birth or christening date (MRIN {mrin})."
+msgstr "결혼 날짜가 배우자의 출생 또는 명명 날짜보다 이릅니다 (MRIN {mrin})."
+
+msgid "The marriage date is less than {years} years after a spouse's birth or christening (MRIN {mrin})."
+msgstr "결혼 날짜가 배우자의 출생 또는 명명으로부터 {years}년이 되지 않습니다 (MRIN {mrin})."
+
+msgid "The marriage date is more than {years} years after a spouse's birth or christening date (MRIN {mrin})."
+msgstr "결혼 날짜가 배우자의 출생 또는 명명 날짜보다 {years}년 이상 늦습니다 (MRIN {mrin})."
+
+msgid "The marriage date is after a spouse's death date (MRIN {mrin})."
+msgstr "결혼 날짜가 배우자의 사망 날짜보다 늦습니다 (MRIN {mrin})."
+
+msgid "Age between husband and wife is greater than {years} years (MRIN {mrin})."
+msgstr "남편과 아내의 나이 차이가 {years}년보다 큽니다 (MRIN {mrin})."
+
+msgid "The children in marriage {mrin} are not in birth order."
+msgstr "결혼 {mrin}의 자녀들이 출생 순서대로 되어 있지 않습니다."
+
+msgid "Other marriages ({at}/{count})"
+msgstr "다른 결혼 ({at}/{count})"
+
+msgid "Other parents ({count})"
+msgstr "다른 부모 ({count})"
+
+msgid "Father's age at this birth, {age}, is outside {low} to {high} years."
+msgstr "이 출생 때 아버지의 나이 {age}세가 {low}~{high}세 범위를 벗어납니다."
+
+msgid "Mother's age at this birth, {age}, is outside {low} to {high} years."
+msgstr "이 출생 때 어머니의 나이 {age}세가 {low}~{high}세 범위를 벗어납니다."
+
+msgid "{name}   {rin}   b. {date}"
+msgstr "{name}   {rin}   출생 {date}"
+
+msgid "{father} and {mother}  (MRIN {mrin})"
+msgstr "{father}, {mother}  (MRIN {mrin})"

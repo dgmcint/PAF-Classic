@@ -1,7 +1,7 @@
 //! The Pedigree screen.
 
 use super::*;
-use crate::i18n::tr;
+use crate::i18n::{tr, trf};
 use crate::app::*;
 use crate::data::*;
 use egui::{Align2, Key, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
@@ -211,7 +211,7 @@ fn info_text(app: &App, who: u32, level: u8) -> String {
         for m in &p.spouses {
             if let Some(mar) = app.db.marriages.get(m) {
                 let name = app.db.spouse_in(*m, who).map(|s| app.db.name(s)).unwrap_or_default();
-                out.push_str(&format!("\nSpouse: {name}  {}", mar.event.date.trim()));
+                out.push_str(&format!("\n{}  {}", trf("Spouse: {name}", &[("name", &name)]), mar.event.date.trim()));
             }
         }
         let kids = app.db.children_of(who).len();

@@ -1,0 +1,1832 @@
+# PAF Classic: German.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "LDS Sealing"
+msgstr "HLT-Siegelung"
+
+msgid "Move the spouse to the primary position"
+msgstr "Ehepartner an die Hauptposition verschieben"
+
+msgid "Move this child to the primary position"
+msgstr "Dieses Kind an die Hauptposition verschieben"
+
+msgid "Move this person to the primary position to see more ancestors"
+msgstr "Diese Person an die Hauptposition verschieben, um weitere Vorfahren zu sehen"
+
+msgid "Publication:"
+msgstr "Veröffentlichung:"
+
+msgid "Unknown spouse"
+msgstr "Unbekannter Ehepartner"
+
+msgid "Start date must be before end date."
+msgstr "Das Anfangsdatum muss vor dem Enddatum liegen."
+
+msgid "No relationship was found through shared ancestors."
+msgstr "Über gemeinsame Vorfahren wurde keine Verwandtschaft gefunden."
+
+msgid "People with notes:"
+msgstr "Personen mit Notizen:"
+
+msgid "(None)"
+msgstr "(Keine)"
+
+msgid ""
+"1. Double-click the dark box on the Family screen and type your own name, with slashes around the surname: Anna Marie /Lee/.\n"
+"\n"
+"2. Double-click an empty box to add a spouse or a parent, or the Children area to add a child.\n"
+"\n"
+"3. Click the triangle beside a person to move them into the main position. The F, M and C keys go to the father, mother or a child.\n"
+"\n"
+"4. Use the Pedigree tab to see five generations, and the Individual tab to see everyone in a list.\n"
+"\n"
+"5. Right-click anyone for more choices, such as Notes and Multimedia.\n"
+"\n"
+"6. Use File, Save As to name your family file. Changes save by themselves after that.\n"
+"\n"
+"7. Use File, Print Reports for charts and lists, and File, Backup to keep a safe copy."
+msgstr ""
+"1. Doppelklicken Sie in der Familienansicht auf das dunkle Feld und geben Sie Ihren Namen ein, mit Schrägstrichen um den Nachnamen: Anna Marie /Lee/.\n"
+"\n"
+"2. Doppelklicken Sie auf ein leeres Feld, um einen Ehepartner oder ein Elternteil hinzuzufügen, oder auf den Kinderbereich für ein Kind.\n"
+"\n"
+"3. Klicken Sie auf das Dreieck neben einer Person, um sie an die Hauptposition zu verschieben. Die Tasten F, M und C wechseln zu Vater, Mutter oder einem Kind.\n"
+"\n"
+"4. Die Registerkarte Stammbaum zeigt fünf Generationen, die Registerkarte Person alle Personen in einer Liste.\n"
+"\n"
+"5. Klicken Sie mit der rechten Maustaste auf eine Person, um weitere Optionen wie Notizen und Multimedia zu sehen.\n"
+"\n"
+"6. Benennen Sie Ihre Familiendatei mit Datei, Speichern unter. Danach werden Änderungen von selbst gespeichert.\n"
+"\n"
+"7. Verwenden Sie Datei, Berichte drucken für Tafeln und Listen und Datei, Sichern für eine Sicherungskopie."
+
+msgid "1/10 seconds"
+msgstr "1/10 Sekunde"
+
+msgid "1st"
+msgstr "1."
+
+msgid "2nd"
+msgstr "2."
+
+msgid "3rd"
+msgstr "3."
+
+msgid "4th"
+msgstr "4."
+
+msgid "5th"
+msgstr "5."
+
+msgid "A family history program for keeping individuals, marriages, notes and sources, and for printing charts and reports."
+msgstr "Ein Familienforschungsprogramm für Personen, Ehen, Notizen und Quellen sowie zum Drucken von Tafeln und Berichten."
+
+msgid "AFN"
+msgstr "AFN"
+
+msgid "AFN:"
+msgstr "AFN:"
+
+msgid "Actual text:"
+msgstr "Originaltext:"
+
+msgid "Add"
+msgstr "Hinzufügen"
+
+msgid "Add Child..."
+msgstr "Kind hinzufügen..."
+
+msgid "Add Filter"
+msgstr "Filter hinzufügen"
+
+msgid "Add Individual..."
+msgstr "Person hinzufügen..."
+
+msgid "Add New"
+msgstr "Neu hinzufügen"
+
+msgid "Add New Individual..."
+msgstr "Neue Person hinzufügen..."
+
+msgid "Add New Parents..."
+msgstr "Neue Eltern hinzufügen..."
+
+msgid "Add Picture or File..."
+msgstr "Bild oder Datei hinzufügen..."
+
+msgid "Add Spouse..."
+msgstr "Ehepartner hinzufügen..."
+
+msgid "Add a new person, or link someone already in this file?"
+msgstr "Eine neue Person hinzufügen oder jemanden aus dieser Datei verknüpfen?"
+
+msgid "Add family"
+msgstr "Familie hinzufügen"
+
+msgid "Add father, mother"
+msgstr "Vater, Mutter hinzufügen"
+
+msgid "Add individual (Ctrl+A)"
+msgstr "Person hinzufügen (Strg+A)"
+
+msgid "Add individual, spouse, child"
+msgstr "Person, Ehepartner, Kind hinzufügen"
+
+msgid "Add or Select Individual"
+msgstr "Person hinzufügen/auswählen"
+
+msgid "Add surname slashes automatically"
+msgstr "Schrägstriche um den Nachnamen automatisch setzen"
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Address:"
+msgstr "Adresse:"
+
+msgid "Adoption"
+msgstr "Adoption"
+
+msgid "Adult Christening"
+msgstr "Erwachsenentaufe"
+
+msgid "Advanced Focus/Filter"
+msgstr "Erweiterter Fokus/Filter..."
+
+msgid "Advanced Focus/Filter..."
+msgstr "Erweiterter Fokus/Filter..."
+
+msgid "Age difference between husband and wife:"
+msgstr "Altersunterschied der Ehepartner:"
+
+msgid "Allow AFN edit"
+msgstr "Bearbeitung von AFN zulassen"
+
+msgid "Also Known As:"
+msgstr "Auch bekannt als:"
+
+msgid "Also removes citations of this source"
+msgstr "Entfernt auch die Quellenangaben zu dieser Quelle"
+
+msgid "An empty form to fill in by hand"
+msgstr "Ein leeres Formular zum Ausfüllen von Hand"
+
+msgid "Ancestors of"
+msgstr "Vorfahren von"
+
+msgid "Ancestry"
+msgstr "Vorfahren"
+
+msgid "Annulment"
+msgstr "Annullierung"
+
+msgid "Arrow keys"
+msgstr "Pfeiltasten"
+
+msgid "Back up this family file"
+msgstr "Diese Familiendatei sichern"
+
+msgid "Backup"
+msgstr "Sicherungskopie"
+
+msgid "Backup frequency:"
+msgstr "Sicherungshäufigkeit:"
+
+msgid "Backup reminder"
+msgstr "Sicherungserinnerung"
+
+msgid "Backup..."
+msgstr "Sicherungskopie..."
+
+msgid "Baptism"
+msgstr "Taufe"
+
+msgid "Baptism:"
+msgstr "Taufe:"
+
+msgid "Bar Mitzvah"
+msgstr "Bar Mizwa"
+
+msgid "Bas Mitzvah"
+msgstr "Bat Mizwa"
+
+msgid "Birth"
+msgstr "Geburt"
+
+msgid "Birth Date"
+msgstr "Geburtsdatum"
+
+msgid "Birth Place"
+msgstr "Geburtsort"
+
+msgid "Birth years within:"
+msgstr "Geburtsjahre innerhalb von:"
+
+msgid "Birth:"
+msgstr "Geburt:"
+
+msgid "Blank Form"
+msgstr "Leerformular"
+
+msgid "Blessing"
+msgstr "Segnung"
+
+msgid "Books"
+msgstr "Chroniken"
+
+msgid "Born"
+msgstr "Geb."
+
+msgid "Burial"
+msgstr "Bestattung"
+
+msgid "Burial Date"
+msgstr "Bestattungsdatum"
+
+msgid "Burial Place"
+msgstr "Bestattungsort"
+
+msgid "Calculate"
+msgstr "Berechnen"
+
+msgid "Calendar"
+msgstr "Kalender"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Caption:"
+msgstr "Titel:"
+
+msgid "Census"
+msgstr "Volkszählung"
+
+msgid "Change"
+msgstr "Ändern"
+
+msgid "Change Names to Mixed Case"
+msgstr "Namen in Groß- und Kleinbuchstaben umwandeln"
+
+msgid "Check LDS data"
+msgstr "HLT-Daten prüfen"
+
+msgid "Check for duplicates when adding individuals"
+msgstr "Bei Eingabe von Personen auf Duplikate überprüfen"
+
+msgid "Check marriage and children order"
+msgstr "Reihenfolge der Ehen und Kinder prüfen"
+
+msgid "Check/Repair"
+msgstr "Prüfen/Reparieren"
+
+msgid "Check/Repair..."
+msgstr "Prüfen/Reparieren..."
+
+msgid "Child..."
+msgstr "Kind..."
+
+msgid "Children"
+msgstr "Kinder"
+
+msgid "Children:"
+msgstr "Kinder:"
+
+msgid "Choose the link to remove. The individual stays in the file."
+msgstr "Wählen Sie die zu entfernende Verknüpfung. Die Person bleibt in der Datei."
+
+msgid "Christening"
+msgstr "Kleinkindtaufe"
+
+msgid "Christening Date"
+msgstr "Datum der Kleinkindtaufe"
+
+msgid "Christening Place"
+msgstr "Ort der Kleinkindtaufe"
+
+msgid "Clear Fields"
+msgstr "Felder leeren"
+
+msgid "Click Search to look for possible duplicates."
+msgstr "Klicken Sie auf Suchen, um mögliche Duplikate zu finden."
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Close without saving"
+msgstr "Schließen ohne Speichern"
+
+msgid "Comments:"
+msgstr "Kommentar:"
+
+msgid "Confirmation"
+msgstr "Konfirmation"
+
+msgid "Contact information"
+msgstr "Kontaktangaben"
+
+msgid "Could not open"
+msgstr "Konnte nicht geöffnet werden"
+
+msgid "Could not read this .paf file"
+msgstr "Diese .paf-Datei konnte nicht gelesen werden"
+
+msgid "Could not save"
+msgstr "Konnte nicht gespeichert werden"
+
+msgid "Create"
+msgstr "Anlegen"
+
+msgid "Create Web Page"
+msgstr "Web-Seite erstellen"
+
+msgid "Create Web Page..."
+msgstr "Web-Seite erstellen..."
+
+msgid "Create a web page"
+msgstr "Webseite erstellen"
+
+msgid "Cremation"
+msgstr "Einäscherung"
+
+msgid "Custom"
+msgstr "Benutzerdefiniert"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Date Calculator"
+msgstr "Datumsrechner"
+
+msgid "Dates"
+msgstr "Daten"
+
+msgid "Dates and family information"
+msgstr "Daten und Familienangaben"
+
+msgid "Dates only"
+msgstr "Nur Daten"
+
+msgid "Dates typed as all numbers, such as 3/11/1955, mean:"
+msgstr "Nur aus Zahlen bestehende Daten wie 3/11/1955 bedeuten:"
+
+msgid "Day first: 3 November 1955"
+msgstr "Tag zuerst: 3. November 1955"
+
+msgid "Days:"
+msgstr "Tage:"
+
+msgid "Death"
+msgstr "Tod"
+
+msgid "Death Date"
+msgstr "Sterbedatum"
+
+msgid "Death Place"
+msgstr "Sterbeort"
+
+msgid "Death:"
+msgstr "Tod:"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Delete File"
+msgstr "Datei löschen"
+
+msgid "Delete Individual"
+msgstr "Person löschen"
+
+msgid "Delete..."
+msgstr "Löschen..."
+
+msgid "Descendancy"
+msgstr "Nachkommenschaft"
+
+msgid "Descendancy List..."
+msgstr "Nachkommenliste..."
+
+msgid "Descendancy list (Ctrl+D)"
+msgstr "Nachkommenliste (Strg+D)"
+
+msgid "Descendants"
+msgstr "Nachkommen von"
+
+msgid "Descendants of"
+msgstr "Nachkommen von"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Description:"
+msgstr "Beschreibung:"
+
+msgid "Ditto from:"
+msgstr "Übernehmen von:"
+
+msgid "Divorce Filed"
+msgstr "Scheidung eingereicht"
+
+msgid "Divorced"
+msgstr "Geschieden"
+
+msgid "Down"
+msgstr "Ab"
+
+msgid "Duplicate individuals"
+msgstr "Doppelte Personen"
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Edit Marriage"
+msgstr "Eheschließung"
+
+msgid "Edit Parent Links"
+msgstr "Kindschaftsverhältnis bearbeiten"
+
+msgid "Edit Parents' Marriage"
+msgstr "Eheschließung der Eltern bearbeiten"
+
+msgid "Edit individual (Ctrl+I)"
+msgstr "Person bearbeiten (Strg+I)"
+
+msgid "Edit individual, notes, multimedia"
+msgstr "Person, Notizen, Multimedia bearbeiten"
+
+msgid "Edit marriage when created"
+msgstr "Neue Ehe sofort bearbeiten"
+
+msgid "Edit notes (Ctrl+N)"
+msgstr "Notizen bearbeiten (Strg+N)"
+
+msgid "Education"
+msgstr "Ausbildung"
+
+msgid "Email:"
+msgstr "EMAIL:"
+
+msgid "Emigration"
+msgstr "Auswanderung"
+
+msgid "End date:"
+msgstr "Enddatum:"
+
+msgid "End-of-line individuals"
+msgstr "Ahnenspitzen"
+
+msgid "Endowment:"
+msgstr "Begabung:"
+
+msgid "Engagement"
+msgstr "Verlobung"
+
+msgid "Events"
+msgstr "Ereignisse"
+
+msgid "Everyone"
+msgstr "Alle"
+
+msgid "Exit"
+msgstr "Beenden"
+
+msgid "Exit without saving"
+msgstr "Beenden ohne Speichern"
+
+msgid "Export"
+msgstr "Exportieren"
+
+msgid "Export a GEDCOM file"
+msgstr "GEDCOM-Datei exportieren"
+
+msgid "Export to GEDCOM 5.5 (UTF-8)"
+msgstr "Export nach GEDCOM 5.5 (UTF-8)"
+
+msgid "Export..."
+msgstr "Exportieren..."
+
+msgid "Family"
+msgstr "Familie"
+
+msgid "Family Group"
+msgstr "Familiengruppe"
+
+msgid "Family file read"
+msgstr "Familiendatei gelesen"
+
+msgid "Family reunion contacts"
+msgstr "Kontakte für Familientreffen"
+
+msgid "Family..."
+msgstr "Familie"
+
+msgid "Father's age should be between"
+msgstr "Alter des Vaters soll sein zwischen"
+
+msgid "Father's or mother's line (Pedigree)"
+msgstr "Linie des Vaters oder der Mutter (Stammbaum)"
+
+msgid "Father, mother or child"
+msgstr "Vater, Mutter oder Kind"
+
+msgid "Father..."
+msgstr "Vater..."
+
+msgid "Female"
+msgstr "Weiblich"
+
+msgid "Field filters"
+msgstr "Feldfilter"
+
+msgid "File"
+msgstr "Datei"
+
+msgid "File Properties"
+msgstr "Dateieigenschaften"
+
+msgid "Fill in any two of start, end and elapsed time. Works for the Gregorian calendar only, from October 1752."
+msgstr "Geben Sie zwei der Werte Anfang, Ende und Dauer ein. Gilt nur für den gregorianischen Kalender ab Oktober 1752."
+
+msgid "Fill the empty surname and place fields from this person"
+msgstr "Leere Nachnamen- und Ortsfelder von dieser Person übernehmen"
+
+msgid "Film/Volume/Page:"
+msgstr "Film/Band/Seite:"
+
+msgid "Find by RIN or MRIN (Ctrl+R)"
+msgstr "Nach RIN oder MRIN suchen (Strg+R)"
+
+msgid "Find by RIN/MRIN"
+msgstr "Suchen nach RIN/MRIN..."
+
+msgid "Find by RIN/MRIN..."
+msgstr "Suchen nach RIN/MRIN..."
+
+msgid "Find:"
+msgstr "Suchen:"
+
+msgid "First Communion"
+msgstr "Erstkommunion"
+
+msgid "First Person"
+msgstr "Erste Person"
+
+msgid "Flush"
+msgstr "Leeren"
+
+msgid "For Help, press F1. Double-click on person you want to edit."
+msgstr "PAF-Hilfe: F1 oder Doppelklick auf zu bearbeitende Person."
+
+msgid "Formats"
+msgstr "Format"
+
+msgid "Full Name"
+msgstr "Vollständiger Name"
+
+msgid "Full Name:"
+msgstr "Vollständiger Name:"
+
+msgid "Full information on living"
+msgstr "Alle Daten zu Lebenden"
+
+msgid "GEDCOM import"
+msgstr "GEDCOM-Import"
+
+msgid "General"
+msgstr "Allgemein"
+
+msgid "Generations per page:"
+msgstr "Generationen pro Seite:"
+
+msgid "Generations:"
+msgstr "Generationen:"
+
+msgid "Getting Started"
+msgstr "Erste Schritte"
+
+msgid "Given /Surname/ Suffix"
+msgstr "Vorname /Nachname/ Zusatz"
+
+msgid "Given Name"
+msgstr "Vorname"
+
+msgid "Global Search and Replace"
+msgstr "Global Suchen und Ersetzen"
+
+msgid "Global Search and Replace..."
+msgstr "Global Suchen und Ersetzen..."
+
+msgid "Go to the home person"
+msgstr "Zur Hauptperson gehen"
+
+msgid "Go to the home person (Ctrl+Home)"
+msgstr "Zur Hauptperson gehen (Strg+Pos1)"
+
+msgid "Graduation"
+msgstr "Schulabschluss"
+
+msgid "Help"
+msgstr "Hilfe"
+
+msgid "Hide details of people who may still be living"
+msgstr "Angaben zu möglicherweise noch lebenden Personen ausblenden"
+
+msgid "Home Person"
+msgstr "Ausgangsperson"
+
+msgid "Immigration"
+msgstr "Einwanderung"
+
+msgid "Import"
+msgstr "Importieren"
+
+msgid "Import a GEDCOM or .paf file"
+msgstr "GEDCOM- oder .paf-Datei importieren"
+
+msgid "Import..."
+msgstr "Importieren..."
+
+msgid "Include in the scrapbook"
+msgstr "In das Sammelalbum aufnehmen"
+
+msgid "Include notes"
+msgstr "Notizen einbeziehen"
+
+msgid "Include people who have died"
+msgstr "Verstorbene Personen einbeziehen"
+
+msgid "Individual"
+msgstr "Person"
+
+msgid "Individual Event List"
+msgstr "Ereignisliste einer Person"
+
+msgid "Individual List"
+msgstr "Personenliste"
+
+msgid "Individual List..."
+msgstr "Personenliste..."
+
+msgid "Individual Summary"
+msgstr "Personenblatt"
+
+msgid "Individual list (Ctrl+F)"
+msgstr "Personenliste (Strg+F)"
+
+msgid "Individual list, descendancy list, find by RIN"
+msgstr "Personenliste, Nachkommenliste, Suche nach RIN"
+
+msgid "Individual..."
+msgstr "Person..."
+
+msgid "Individuals sorted alphabetically"
+msgstr "Personen alphabetisch sortiert"
+
+msgid "Individuals sorted by RIN"
+msgstr "Personen nach RIN sortiert"
+
+msgid "Individuals with notes"
+msgstr "Personen mit Notizen"
+
+msgid "InfoBox"
+msgstr "Info-Box"
+
+msgid "It has been a while since this family file was backed up. Use File, Backup after opening it again."
+msgstr "Diese Familiendatei wurde länger nicht gesichert. Verwenden Sie nach dem erneuten Öffnen Datei, Sichern."
+
+msgid "Keep Left, Merge Right"
+msgstr "Links behalten, rechts einfügen"
+
+msgid "Keep Right, Merge Left"
+msgstr "Rechts behalten, links einfügen"
+
+msgid "Keyboard"
+msgstr "Tastatur"
+
+msgid "Keyboard help (F1)"
+msgstr "Tastaturhilfe (F1)"
+
+msgid "LDS data"
+msgstr "HLT-Daten"
+
+msgid "Language"
+msgstr "Sprache"
+
+msgid "Colors"
+msgstr "Farben"
+
+msgid "Classic"
+msgstr "Klassisch"
+
+msgid "Slate Blue"
+msgstr "Schieferblau"
+
+msgid "Navy"
+msgstr "Marineblau"
+
+msgid "Parchment"
+msgstr "Pergament"
+
+msgid "Blue Linen"
+msgstr "Blaues Leinen"
+
+msgid "Leather"
+msgstr "Leder"
+
+msgid "Original"
+msgstr "Original"
+
+msgid "Tree pictures"
+msgstr "Baumbilder"
+
+msgid "Earth tones"
+msgstr "Erdtöne"
+
+msgid "Popular colors"
+msgstr "Beliebte Farben"
+
+msgid "Neutrals"
+msgstr "Neutraltöne"
+
+msgid "Genealogy sites"
+msgstr "Genealogie-Websites"
+
+msgid "Leaf Green"
+msgstr "Blattgrün"
+
+msgid "Fresh Green"
+msgstr "Frisches Grün"
+
+msgid "Deep Green"
+msgstr "Tiefgrün"
+
+msgid "Sage"
+msgstr "Salbei"
+
+msgid "Olive"
+msgstr "Oliv"
+
+msgid "Moss"
+msgstr "Moos"
+
+msgid "Forest Green"
+msgstr "Waldgrün"
+
+msgid "Terracotta"
+msgstr "Terrakotta"
+
+msgid "Clay"
+msgstr "Ton"
+
+msgid "Burgundy"
+msgstr "Burgunder"
+
+msgid "Teal"
+msgstr "Petrol"
+
+msgid "Plum"
+msgstr "Pflaume"
+
+msgid "Charcoal"
+msgstr "Anthrazit"
+
+msgid "Midnight"
+msgstr "Mitternacht"
+
+msgid "Sky"
+msgstr "Himmelblau"
+
+msgid "Rose"
+msgstr "Rosé"
+
+msgid "Ivory"
+msgstr "Elfenbein"
+
+msgid "Linen"
+msgstr "Leinen"
+
+msgid "Stone"
+msgstr "Stein"
+
+msgid "Taupe"
+msgstr "Taupe"
+
+msgid "Link a source"
+msgstr "Quelle verknüpfen"
+
+msgid "List name"
+msgstr "Listenname"
+
+msgid "Lists"
+msgstr "Listen"
+
+msgid "Lists the pictures marked for the scrapbook, with their captions. Pictures themselves are viewed from Edit, Multimedia."
+msgstr "Listet die für das Sammelalbum markierten Bilder mit ihren Beschriftungen auf. Die Bilder selbst sehen Sie unter Bearbeiten, Multimedia."
+
+msgid "Log changes"
+msgstr "Änderungen aufzeichnen (Logbuch)"
+
+msgid "MRIN"
+msgstr "MRIN"
+
+msgid "Make Primary"
+msgstr "Haupteltern"
+
+msgid "Male"
+msgstr "Männlich"
+
+msgid "Marriage"
+msgstr "Eheschließung"
+
+msgid "Marriage Banns"
+msgstr "Aufgebot"
+
+msgid "Marriage Contract"
+msgstr "Ehevertrag"
+
+msgid "Marriage Date"
+msgstr "Heiratsdatum"
+
+msgid "Marriage Event List"
+msgstr "Ereignisliste einer Eheschließung"
+
+msgid "Marriage License"
+msgstr "Heiratserlaubnis"
+
+msgid "Marriage List"
+msgstr "Eheliste"
+
+msgid "Marriage List..."
+msgstr "Eheliste..."
+
+msgid "Marriage Settlement"
+msgstr "Ehegüterregelung"
+
+msgid "Marriage date:"
+msgstr "Heiratsdatum:"
+
+msgid "Marriage place:"
+msgstr "Heiratsort:"
+
+msgid "Marriage:"
+msgstr "Eheschließung:"
+
+msgid "Marriages"
+msgstr "Eheschließungen"
+
+msgid "Match all (AND)"
+msgstr "Alle erfüllen (UND)"
+
+msgid "Match any (OR)"
+msgstr "Eines erfüllen (ODER)"
+
+msgid "Match case"
+msgstr "Gleiche Schreibweise"
+
+msgid "Match on AFNs"
+msgstr "Nach AFN abgleichen"
+
+msgid "Match on names"
+msgstr "Nach Namen abgleichen"
+
+msgid "Match/Merge"
+msgstr "Abgleichen/Zusammenführen"
+
+msgid "Match/Merge..."
+msgstr "Vergleichen/Verschmelzen..."
+
+msgid "Merge Duplicate Sources"
+msgstr "Doppelte Quellen zusammenführen"
+
+msgid "Military"
+msgstr "Militärdienst"
+
+msgid "Month first: 11 March 1955"
+msgstr "Monat zuerst: 11. März 1955"
+
+msgid "Months:"
+msgstr "Monate:"
+
+msgid "Mother's age should be between"
+msgstr "Alter der Mutter soll sein zwischen"
+
+msgid "Mother..."
+msgstr "Mutter..."
+
+msgid "Move someone to the primary position"
+msgstr "Jemanden an die Hauptposition verschieben"
+
+msgid "Move this column left"
+msgstr "Diese Spalte nach links"
+
+msgid "Move this column right"
+msgstr "Diese Spalte nach rechts"
+
+msgid "Move to Primary"
+msgstr "Haupterson"
+
+msgid "Multimedia"
+msgstr "Multimedia"
+
+msgid "Multimedia (Ctrl+M)"
+msgstr "Multimedia (Strg+M)"
+
+msgid "Multimedia file names"
+msgstr "Multimedia-Dateinamen"
+
+msgid "Multimedia links"
+msgstr "Multimedia-Links"
+
+msgid "Name:"
+msgstr "Name:"
+
+msgid "Names"
+msgstr "Namen"
+
+msgid "Names on living"
+msgstr "Namen Lebender"
+
+msgid "Names that sound alike"
+msgstr "Ähnlich klingende Namen"
+
+msgid "Naturalization"
+msgstr "Einbürgerung"
+
+msgid "New"
+msgstr "Neu"
+
+msgid "New Event/Attribute"
+msgstr "Neues Ereignis/Merkmal..."
+
+msgid "New event name"
+msgstr "Neuer Ereignisname"
+
+msgid "New..."
+msgstr "Neu..."
+
+msgid "Next"
+msgstr "Nächster"
+
+msgid "Next Page"
+msgstr "Nächste"
+
+msgid "Nickname:"
+msgstr "Spitzname:"
+
+msgid "No descendants are recorded."
+msgstr "Es sind keine Nachkommen erfasst."
+
+msgid "No file"
+msgstr "Keine Datei"
+
+msgid "No parents are linked. Use the Add menu to add them."
+msgstr "Es sind keine Eltern verknüpft. Fügen Sie sie über das Menü Hinzufügen hinzu."
+
+msgid "No pictures or files have been added for this individual."
+msgstr "Für diese Person wurden keine Bilder oder Dateien hinzugefügt."
+
+msgid "No possible duplicates were found."
+msgstr "Es wurden keine möglichen Duplikate gefunden."
+
+msgid "No problems were found in the links of this file."
+msgstr "In den Verknüpfungen dieser Datei wurden keine Probleme gefunden."
+
+msgid "No record has that number."
+msgstr "Kein Datensatz hat diese Nummer."
+
+msgid "None"
+msgstr "Ohne"
+
+msgid "Not a Match"
+msgstr "Keine Übereinstimmung"
+
+msgid "Not saved yet"
+msgstr "Noch nicht gespeichert"
+
+msgid "Notepad"
+msgstr "Notepad"
+
+msgid "Notes"
+msgstr "Notizen"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Occupation"
+msgstr "Beruf"
+
+msgid "On Ancestry"
+msgstr "Auf Ancestry"
+
+msgid "On FamilySearch"
+msgstr "Auf FamilySearch"
+
+msgid "On Genealogy.com"
+msgstr "Auf Genealogy.com"
+
+msgid "On RootsWeb"
+msgstr "Auf RootsWeb"
+
+msgid "Only the current focus list"
+msgstr "Nur die aktuelle Auswahlliste"
+
+msgid "Open Sample Family"
+msgstr "Beispielfamilie öffnen"
+
+msgid "Open family file (Ctrl+O)"
+msgstr "Familiendatei öffnen (Strg+O)"
+
+msgid "Open..."
+msgstr "Öffnen..."
+
+msgid "Opens the report in your PDF viewer, where you can print it"
+msgstr "Öffnet den Bericht im PDF-Programm, wo Sie ihn drucken können"
+
+msgid "Order Children"
+msgstr "Reihenfolge der Kinder..."
+
+msgid "Order Children..."
+msgstr "Reihenfolge der Kinder..."
+
+msgid "Order Spouses"
+msgstr "Reihenfolge der Ehepartner..."
+
+msgid "Order Spouses..."
+msgstr "Reihenfolge der Ehepartner..."
+
+msgid "Ordinances"
+msgstr "Hlg. Handlg."
+
+msgid "Ordination"
+msgstr "Ordination"
+
+msgid "Other Parents..."
+msgstr "Weitere Eltern..."
+
+msgid "Pages are saved in a folder you choose. Nothing is uploaded."
+msgstr "Die Seiten werden in einem von Ihnen gewählten Ordner gespeichert. Es wird nichts hochgeladen."
+
+msgid "Parent Link"
+msgstr "Kindsch.-Verh."
+
+msgid "Parents"
+msgstr "Eltern"
+
+msgid "Parents' Marriage"
+msgstr "Eheschließung der Eltern"
+
+msgid "Pedigree"
+msgstr "Stammbaum"
+
+msgid "Phone:"
+msgstr "Tel:"
+
+msgid "Physical Description"
+msgstr "Personenbeschreibung"
+
+msgid "Place"
+msgstr "Ort"
+
+msgid "Places"
+msgstr "Orte"
+
+msgid "Places sorted alphabetically"
+msgstr "Orte alphabetisch sortiert"
+
+msgid "Please check"
+msgstr "Bitte prüfen"
+
+msgid "Possible problems"
+msgstr "Mögliche Probleme"
+
+msgid "Preferences"
+msgstr "Voreinstellungen"
+
+msgid "Prepared by"
+msgstr "Erstellt durch"
+
+msgid "Preview"
+msgstr "Vorschau"
+
+msgid "Previous"
+msgstr "Voriger"
+
+msgid "Previous Page"
+msgstr "Vorherige Seite"
+
+msgid "Print Reports"
+msgstr "Berichte drucken..."
+
+msgid "Print Reports..."
+msgstr "Berichte drucken..."
+
+msgid "Print reports"
+msgstr "Berichte drucken"
+
+msgid "Print reports (Ctrl+P)"
+msgstr "Berichte drucken (Strg+P)"
+
+msgid "Print..."
+msgstr "Drucken..."
+
+msgid "Probate"
+msgstr "Testamentseröffnung"
+
+msgid "Problems"
+msgstr "Probleme"
+
+msgid "Properties"
+msgstr "Eigenschaften"
+
+msgid "RIN"
+msgstr "RIN"
+
+msgid "Relationship Calculator"
+msgstr "Verwandtschaftsrechner"
+
+msgid "Relationship calculator"
+msgstr "Verwandtschaftsrechner"
+
+msgid "Relationship filter"
+msgstr "Verwandtschafts-Filter"
+
+msgid "Relationship to parents:"
+msgstr "Kindschaftsverhältnis:"
+
+msgid "Religion"
+msgstr "Religion"
+
+msgid "Remove"
+msgstr "Entfernen"
+
+msgid "Repair"
+msgstr "Reparieren"
+
+msgid "Replace All"
+msgstr "Alle ersetzen"
+
+msgid "Replace with:"
+msgstr "Ersetzen durch:"
+
+msgid "Reports..."
+msgstr "Berichte..."
+
+msgid "Repository List"
+msgstr "Standortliste"
+
+msgid "Repository:"
+msgstr "Standort:"
+
+msgid "Residence"
+msgstr "Wohnort"
+
+msgid "Restore"
+msgstr "W.-herstellen"
+
+msgid "Restore..."
+msgstr "W.-herstellen..."
+
+msgid "Retirement"
+msgstr "Ruhestand"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Save As..."
+msgstr "Speichern unter..."
+
+msgid "Save List"
+msgstr "Liste speichern"
+
+msgid "Save as PDF..."
+msgstr "Als PDF speichern..."
+
+msgid "Save..."
+msgstr "Speichern..."
+
+msgid "Saved lists"
+msgstr "Gespeicherte Listen"
+
+msgid "Scrapbook"
+msgstr "Bilderalbum"
+
+msgid "Sealed to parents:"
+msgstr "An Eltern ges.:"
+
+msgid "Sealed to spouse:"
+msgstr "An Ehepartner gesiegelt:"
+
+msgid "Search"
+msgstr "Suchen"
+
+msgid "Search in:"
+msgstr "Suchen in:"
+
+msgid "Second Person"
+msgstr "Zweite Person"
+
+msgid "Select Existing"
+msgstr "Vorhandene auswählen"
+
+msgid "Select a source, or click New."
+msgstr "Wählen Sie eine Quelle aus oder klicken Sie auf Neu."
+
+msgid "Select an individual first."
+msgstr "Wählen Sie zuerst eine Person aus."
+
+msgid "Select different individuals"
+msgstr "Andere Personen auswählen"
+
+msgid "Select the primary person, or the last one shown"
+msgstr "Hauptperson oder letzte angezeigte Person auswählen"
+
+msgid "Sex"
+msgstr "Geschlecht"
+
+msgid "Sex:"
+msgstr "m/w:"
+
+msgid "Show"
+msgstr "Anzeigen"
+
+msgid "Show RIN numbers after names"
+msgstr "RIN-Nummern hinter Namen anzeigen"
+
+msgid "Show on Individual Screen"
+msgstr "In der Personenansicht anzeigen"
+
+msgid "Show relationships on the status bar"
+msgstr "Verwandtschaft in der Statusleiste anzeigen"
+
+msgid "Sort by Birth Date"
+msgstr "Nach Geburtsdatum sortieren"
+
+msgid "Soundex"
+msgstr "Soundex"
+
+msgid "Soundex Calculator"
+msgstr "Soundexrechner"
+
+msgid "Soundex Code Calculator"
+msgstr "Soundex-Code Rechner"
+
+msgid "Soundex code:"
+msgstr "Soundex-Code:"
+
+msgid "Sounds like"
+msgstr "klingt wie"
+
+msgid "Source List"
+msgstr "Quellenverzeichnis"
+
+msgid "Sources"
+msgstr "Quellen"
+
+msgid "Spouse"
+msgstr "Ehepartner"
+
+msgid "Spouse..."
+msgstr "Ehepartner..."
+
+msgid "Spouse:"
+msgstr "Eheprt.:"
+
+msgid "Start date:"
+msgstr "Anfangsdatum:"
+
+msgid "Status Bar"
+msgstr "Statusleiste"
+
+msgid "Surname"
+msgstr "Nachname"
+
+msgid "Switch between the three screens"
+msgstr "Zwischen den drei Ansichten wechseln"
+
+msgid "Temple"
+msgstr "Tempel"
+
+msgid "Temple Codes"
+msgstr "Tempelcodes"
+
+msgid "Temple:"
+msgstr "Tempel:"
+
+msgid "That is all the possible duplicates."
+msgstr "Das sind alle möglichen Duplikate."
+
+msgid "The date you typed is not standard."
+msgstr "Das eingegebene Datum weicht vom Standard ab."
+
+msgid "There are no sources in this file yet. Add them from Edit, Source List."
+msgstr "Diese Datei enthält noch keine Quellen. Fügen Sie sie über Bearbeiten, Quellenliste hinzu."
+
+msgid "This changes names and places written in capital letters to upper and lower case, for example SMITH to Smith. Consider making a backup first. Continue?"
+msgstr "Dies ändert groß geschriebene Namen und Orte in Groß-/Kleinschreibung, zum Beispiel SMITH in Smith. Erstellen Sie am besten zuerst eine Sicherung. Fortfahren?"
+
+msgid "This family has not been saved to a file. Save it before closing?"
+msgstr "Diese Familie wurde noch nicht in einer Datei gespeichert. Vor dem Schließen speichern?"
+
+msgid "This family has not been saved to a file. Save it before you exit?"
+msgstr "Diese Familie wurde noch nicht in einer Datei gespeichert. Vor dem Beenden speichern?"
+
+msgid "This file is not a valid family file. It may be corrupt."
+msgstr "Dies ist keine gültige Familiendatei. Sie ist möglicherweise beschädigt."
+
+msgid "This individual has no marriage to order children in."
+msgstr "Diese Person hat keine Ehe, in der Kinder sortiert werden können."
+
+msgid "This individual has no marriage yet. Add a spouse first, or add one from the Add menu."
+msgstr "Diese Person hat noch keine Ehe. Fügen Sie zuerst einen Ehepartner hinzu, auch über das Menü Hinzufügen."
+
+msgid "This individual has no parents linked yet."
+msgstr "Mit dieser Person sind noch keine Eltern verknüpft."
+
+msgid "This individual is not linked to anyone."
+msgstr "Diese Person ist mit niemandem verknüpft."
+
+msgid "This marriage will be removed and unlinked from husband, wife and children."
+msgstr "Diese Ehe wird entfernt und von Ehemann, Ehefrau und Kindern getrennt."
+
+msgid "This version keeps one family window."
+msgstr "Diese Version hat ein Familienfenster."
+
+msgid "Title (prefix):"
+msgstr "Titel (Präfix):"
+
+msgid "Title:"
+msgstr "Titel:"
+
+msgid "Toolbar"
+msgstr "Symbolleiste"
+
+msgid "Tools"
+msgstr "Extras"
+
+msgid "Type of list"
+msgstr "Listenart"
+
+msgid "Unknown"
+msgstr "Unbekannt"
+
+msgid "Unlink Individual"
+msgstr "Person trennen"
+
+msgid "Unlink..."
+msgstr "Trennen..."
+
+msgid "Unlinked individuals"
+msgstr "Unverknüpfte Personen"
+
+msgid "Up"
+msgstr "Auf"
+
+msgid "Use LDS data"
+msgstr "HLT-Daten verwenden"
+
+msgid "Use list when navigating"
+msgstr "Über Liste navigieren"
+
+msgid "Used by the Possible Problems list."
+msgstr "Wird von der Liste möglicher Probleme verwendet."
+
+msgid "Verify new places"
+msgstr "Neue Ortsangaben bestätigen"
+
+msgid "View"
+msgstr "Ansicht"
+
+msgid "Wait time:"
+msgstr "Verzögert:"
+
+msgid "Whole field only"
+msgstr "Nur ganzes Feld"
+
+msgid "Will"
+msgstr "Testament"
+
+msgid "Window"
+msgstr "Fenster"
+
+msgid "With this on, the last word of a name without slashes becomes the surname."
+msgstr "Damit wird das letzte Wort eines Namens ohne Schrägstriche zum Nachnamen."
+
+msgid "Year:"
+msgstr "Jahr:"
+
+msgid "Years:"
+msgstr "Jahre:"
+
+msgid "and"
+msgstr "und"
+
+msgid "closes between reminders (0 for never)"
+msgstr "Schließvorgänge zwischen Erinnerungen (0 = nie)"
+
+msgid "contains"
+msgstr "enthält"
+
+msgid "equals"
+msgstr "ist gleich"
+
+msgid "is after"
+msgstr "ist nach"
+
+msgid "is before"
+msgstr "ist vor"
+
+msgid "is empty"
+msgstr "ist leer"
+
+msgid "is not empty"
+msgstr "ist nicht leer"
+
+msgid "years"
+msgstr "Jahre"
+
+msgid "Abbreviation:"
+msgstr "Abkürzung:"
+
+msgid "Add Father..."
+msgstr "Vater hinzufügen..."
+
+msgid "Add Individual"
+msgstr "Person hinzufügen"
+
+msgid "Add Mother..."
+msgstr "Mutter hinzufügen..."
+
+msgid "Author:"
+msgstr "Verfasser:"
+
+msgid "Biological"
+msgstr "Leiblich"
+
+msgid "Burial:"
+msgstr "Bestattung:"
+
+msgid "Buried"
+msgstr "Bestattet"
+
+msgid "Christened"
+msgstr "Kleinkindtaufe"
+
+msgid "Christening:"
+msgstr "Kleinkindtaufe:"
+
+msgid "sex-letter:M"
+msgstr "M"
+
+msgid "sex-letter:F"
+msgstr "W"
+
+msgid "sex-letter:U"
+msgstr "U"
+
+msgid "Citations:"
+msgstr "Quellenangaben:"
+
+msgid "Died"
+msgstr "Gest."
+
+msgid "Edit Individual"
+msgstr "Person bearbeiten"
+
+msgid "Event"
+msgstr "Ereignis"
+
+msgid "Father"
+msgstr "Vater"
+
+msgid "File:"
+msgstr "Standorte:"
+
+msgid "Floating"
+msgstr "'Pop-up'"
+
+msgid "HOME"
+msgstr "Pos1"
+
+msgid "Individuals:"
+msgstr "Personen:"
+
+msgid "Locked"
+msgstr "Fixiert"
+
+msgid "Marriages:"
+msgstr "Ehepaare:"
+
+msgid "Mother"
+msgstr "Mutter"
+
+msgid "Multimedia links:"
+msgstr "Multimedia-Links:"
+
+msgid "Primary"
+msgstr "Hauptperson"
+
+msgid "Repositories:"
+msgstr "Standorte:"
+
+msgid "Sealing"
+msgstr "Siegelung"
+
+msgid "Selected"
+msgstr "Ausgewählt"
+
+msgid "Size:"
+msgstr "Größe:"
+
+msgid "Sources:"
+msgstr "Quellen:"
+
+msgid "Merged {n} duplicate source."
+msgid_plural "Merged {n} duplicate sources."
+msgstr[0] "{n} doppelte Quelle zusammengeführt."
+msgstr[1] "{n} doppelte Quellen zusammengeführt."
+
+msgid ""
+"Could not save {file}:\n"
+"{error}"
+msgstr ""
+"{file} konnte nicht gespeichert werden:\n"
+"{error}"
+
+msgid ""
+"Could not open {file}:\n"
+"{error}"
+msgstr ""
+"{file} konnte nicht geöffnet werden:\n"
+"{error}"
+
+msgid "Backup saved to {file}."
+msgstr "Sicherung gespeichert unter {file}."
+
+msgid ""
+"The backup could not be saved:\n"
+"{error}"
+msgstr ""
+"Die Sicherung konnte nicht gespeichert werden:\n"
+"{error}"
+
+msgid "About {program}"
+msgstr "Über {program}"
+
+msgid "Individual {rin} points to marriage {mrin}, but the marriage does not point back."
+msgstr "Person {rin} verweist auf Ehe {mrin}, aber die Ehe verweist nicht zurück."
+
+msgid "Individual {rin} points to parents in marriage {mrin}, but the marriage does not list them as a child."
+msgstr "Person {rin} verweist auf Eltern in Ehe {mrin}, aber die Ehe führt sie nicht als Kind."
+
+msgid "Husband's record (RIN {rin}) in marriage {mrin} has the wrong sex."
+msgstr "Der Datensatz des Ehemanns (RIN {rin}) in Ehe {mrin} hat das falsche Geschlecht."
+
+msgid "Marriage {mrin} lists child {rin}, but that individual does not point back."
+msgstr "Ehe {mrin} führt Kind {rin}, aber diese Person verweist nicht zurück."
+
+msgid "Descendants of {name}"
+msgstr "Nachkommen von {name}"
+
+msgid "Possible duplicate {at} of {total}"
+msgstr "Mögliches Duplikat {at} von {total}"
+
+msgid "Changed {n} field."
+msgid_plural "Changed {n} fields."
+msgstr[0] "{n} Feld geändert."
+msgstr[1] "{n} Felder geändert."
+
+msgid "Changed {n} name or place."
+msgid_plural "Changed {n} names and places."
+msgstr[0] "{n} Name oder Ort geändert."
+msgstr[1] "{n} Namen und Orte geändert."
+
+msgid "Old ID"
+msgstr "Alte ID"
+
+msgid "New place: {place}. Please check its spelling."
+msgstr "Neuer Ort: {place}. Bitte die Schreibweise prüfen."
+
+msgid "Husband: {name}"
+msgstr "Ehemann: {name}"
+
+msgid "Wife: {name}"
+msgstr "Ehefrau: {name}"
+
+msgid "Edit Notes: {name}"
+msgstr "Notizen bearbeiten: {name}"
+
+msgid "Multimedia: {name}"
+msgstr "Multimedia: {name}"
+
+msgid ""
+"This picture could not be shown:\n"
+"{file}"
+msgstr ""
+"Dieses Bild konnte nicht angezeigt werden:\n"
+"{file}"
+
+msgid "Unlink {name}"
+msgstr "{name} trennen"
+
+msgid "Unlink from spouse: {name}"
+msgstr "Vom Ehepartner trennen: {name}"
+
+msgid "Unlink from parents: {father} and {mother}"
+msgstr "Von den Eltern trennen: {father} und {mother}"
+
+msgid "Delete {name} (RIN {rin})? This removes the record from the file and unlinks it from the family."
+msgstr "{name} (RIN {rin}) löschen? Der Datensatz wird aus der Datei entfernt und von der Familie getrennt."
+
+msgid "Parents of {name}"
+msgstr "Eltern von {name}"
+
+msgid "Web page creation complete: {n} page in {folder}."
+msgid_plural "Web page creation complete: {n} pages in {folder}."
+msgstr[0] "Webseite erstellt: {n} Seite in {folder}."
+msgstr[1] "Webseite erstellt: {n} Seiten in {folder}."
+
+msgid ""
+"The pages could not be saved:\n"
+"{error}"
+msgstr ""
+"Die Seiten konnten nicht gespeichert werden:\n"
+"{error}"
+
+msgid "Notepad: {file}"
+msgstr "Notizblock: {file}"
+
+msgid "Their common ancestor is {name}"
+msgstr "Ihr gemeinsamer Vorfahr ist {name}"
+
+msgid "Their common ancestors are {name} and {other}"
+msgstr "Ihre gemeinsamen Vorfahren sind {name} und {other}"
+
+msgid "Gives everyone new record numbers (RINs) 1, 2, 3... with no gaps, and numbers the marriages (MRINs) to match. Every link between people stays the same."
+msgstr "Gibt allen neue Datensatznummern (RIN) 1, 2, 3... ohne Lücken und nummeriert die Ehen (MRIN) passend dazu. Alle Verbindungen zwischen Personen bleiben gleich."
+
+msgid "Each person keeps their old number as an Old ID, shown when editing them and written to exported GEDCOM files, so notes and printouts that use the old numbers can still be matched. A copy of the file as it is now is saved beside it first."
+msgstr "Jede Person behält ihre alte Nummer als Alte ID. Sie wird beim Bearbeiten angezeigt und in exportierte GEDCOM-Dateien geschrieben, damit Notizen und Ausdrucke mit den alten Nummern weiter zugeordnet werden können. Vorher wird daneben eine Kopie der Datei im jetzigen Zustand gespeichert."
+
+msgid "Preview, first people:"
+msgstr "Vorschau, erste Personen:"
+
+msgid "nothing would change."
+msgstr "es würde sich nichts ändern."
+
+msgid "New RIN"
+msgstr "Neue RIN"
+
+msgid "Old RIN"
+msgstr "Alte RIN"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Renumber"
+msgstr "Neu nummerieren"
+
+msgid "Renumbered {n} individual"
+msgid_plural "Renumbered {n} individuals"
+msgstr[0] "{n} Person neu nummeriert"
+msgstr[1] "{n} Personen neu nummeriert"
+
+msgid "and {n} marriage."
+msgid_plural "and {n} marriages."
+msgstr[0] "und {n} Ehe."
+msgstr[1] "und {n} Ehen."
+
+msgid "Home person: {name}"
+msgstr "Hauptperson der Datei: {name}"
+
+msgid "Root person for relationships: {name}"
+msgstr "Bezugsperson für Verwandtschaft: {name}"
+
+msgid "The {n} individual"
+msgid_plural "All {n} individuals"
+msgstr[0] "Die eine Person ({n})"
+msgstr[1] "Alle {n} Personen"
+
+msgid "Current focus list ({n})"
+msgstr "Aktuelle Fokusliste ({n})"
+
+msgid "Exported to {file}."
+msgstr "Exportiert nach {file}."
+
+msgid ""
+"The file could not be saved:\n"
+"{error}"
+msgstr ""
+"Die Datei konnte nicht gespeichert werden:\n"
+"{error}"
+
+msgid "Open the backup {file} as the current family? Save it with Save As to replace your file."
+msgstr "Die Sicherung {file} als aktuelle Familie öffnen? Speichern Sie sie mit „Speichern unter“, um Ihre Datei zu ersetzen."
+
+msgid ""
+"This backup could not be read:\n"
+"{error}"
+msgstr ""
+"Diese Sicherung konnte nicht gelesen werden:\n"
+"{error}"
+
+msgid "Permanently delete {file}? This cannot be undone."
+msgstr "{file} endgültig löschen? Das kann nicht rückgängig gemacht werden."
+
+msgid ""
+"The file could not be deleted:\n"
+"{error}"
+msgstr ""
+"Die Datei konnte nicht gelöscht werden:\n"
+"{error}"
+
+msgid "Starting person: {name}"
+msgstr "Ausgangsperson: {name}"
+
+msgid "Prints {n} individual. Use Advanced Focus/Filter to choose fewer."
+msgid_plural "Prints {n} individuals. Use Advanced Focus/Filter to choose fewer."
+msgstr[0] "Druckt {n} Person. Mit „Erweiterter Fokus/Filter“ können Sie weniger auswählen."
+msgstr[1] "Druckt {n} Personen. Mit „Erweiterter Fokus/Filter“ können Sie weniger auswählen."
+
+msgid "Page {page} of {pages}"
+msgstr "Seite {page} von {pages}"
+
+msgid ""
+"The report could not be saved:\n"
+"{error}"
+msgstr ""
+"Der Bericht konnte nicht gespeichert werden:\n"
+"{error}"
+
+msgid "Parents: {names}"
+msgstr "Eltern: {names}"
+
+msgid "Spouse: {name}"
+msgstr "Ehepartner: {name}"
+
+msgid "The christening date is more than {years} years after the birth date."
+msgstr "Das Taufdatum liegt mehr als {years} Jahre nach dem Geburtsdatum."
+
+msgid "The death date is more than {years} years after the birth or christening date."
+msgstr "Das Sterbedatum liegt mehr als {years} Jahre nach dem Geburts- oder Taufdatum."
+
+msgid "The burial date is more than {years} years after the birth or christening date."
+msgstr "Das Begräbnisdatum liegt mehr als {years} Jahre nach dem Geburts- oder Taufdatum."
+
+msgid "The burial date is more than {n} year after the death date."
+msgid_plural "The burial date is more than {n} years after the death date."
+msgstr[0] "Das Begräbnisdatum liegt mehr als {n} Jahr nach dem Sterbedatum."
+msgstr[1] "Das Begräbnisdatum liegt mehr als {n} Jahre nach dem Sterbedatum."
+
+msgid "The individual's birth/christening date is less than {years} years after a parent's birth/christening date."
+msgstr "Das Geburts- oder Taufdatum der Person liegt weniger als {years} Jahre nach dem Geburts- oder Taufdatum eines Elternteils."
+
+msgid "The individual's birth/christening date is more than {years} years after the father's birth/christening date."
+msgstr "Das Geburts- oder Taufdatum der Person liegt mehr als {years} Jahre nach dem Geburts- oder Taufdatum des Vaters."
+
+msgid "The individual's birth/christening date is more than {years} years after the mother's birth/christening date."
+msgstr "Das Geburts- oder Taufdatum der Person liegt mehr als {years} Jahre nach dem Geburts- oder Taufdatum der Mutter."
+
+msgid "The sealing date is before a spouse's birth or christening date (MRIN {mrin})."
+msgstr "Das Siegelungsdatum liegt vor dem Geburts- oder Taufdatum eines Ehepartners (MRIN {mrin})."
+
+msgid "The sealing date is before the age of {years} (MRIN {mrin})."
+msgstr "Das Siegelungsdatum liegt vor dem Alter von {years} Jahren (MRIN {mrin})."
+
+msgid "The marriage date is before a spouse's birth or christening date (MRIN {mrin})."
+msgstr "Das Heiratsdatum liegt vor dem Geburts- oder Taufdatum eines Ehepartners (MRIN {mrin})."
+
+msgid "The marriage date is less than {years} years after a spouse's birth or christening (MRIN {mrin})."
+msgstr "Das Heiratsdatum liegt weniger als {years} Jahre nach der Geburt oder Taufe eines Ehepartners (MRIN {mrin})."
+
+msgid "The marriage date is more than {years} years after a spouse's birth or christening date (MRIN {mrin})."
+msgstr "Das Heiratsdatum liegt mehr als {years} Jahre nach dem Geburts- oder Taufdatum eines Ehepartners (MRIN {mrin})."
+
+msgid "The marriage date is after a spouse's death date (MRIN {mrin})."
+msgstr "Das Heiratsdatum liegt nach dem Sterbedatum eines Ehepartners (MRIN {mrin})."
+
+msgid "Age between husband and wife is greater than {years} years (MRIN {mrin})."
+msgstr "Der Altersunterschied zwischen Ehemann und Ehefrau ist größer als {years} Jahre (MRIN {mrin})."
+
+msgid "The children in marriage {mrin} are not in birth order."
+msgstr "Die Kinder in Ehe {mrin} stehen nicht in Geburtsreihenfolge."
+
+msgid "Other marriages ({at}/{count})"
+msgstr "Weitere Ehen ({at}/{count})"
+
+msgid "Other parents ({count})"
+msgstr "Weitere Eltern ({count})"
+
+msgid "Father's age at this birth, {age}, is outside {low} to {high} years."
+msgstr "Das Alter des Vaters bei dieser Geburt, {age}, liegt außerhalb von {low} bis {high} Jahren."
+
+msgid "Mother's age at this birth, {age}, is outside {low} to {high} years."
+msgstr "Das Alter der Mutter bei dieser Geburt, {age}, liegt außerhalb von {low} bis {high} Jahren."
+
+msgid "{name}   {rin}   b. {date}"
+msgstr "{name}   {rin}   geb. {date}"
+
+msgid "{father} and {mother}  (MRIN {mrin})"
+msgstr "{father} und {mother}  (MRIN {mrin})"

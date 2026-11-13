@@ -1,13 +1,52 @@
-//! The menus and windows in six languages, as in the original's all-languages package.
-//! Generated from the original's language files where it has the same label, the rest written
-//! for this program. Family data and printed reports are not translated.
+//! The menus and windows in other languages.
+//!
+//! Each language is a gettext `.po` file in the `lang` folder, built into the program, so
+//! translators can work on them with ordinary tools such as Poedit. `lang/template.pot` lists
+//! every phrase. A regional language (Latin American Spanish, Portugal Portuguese) only lists
+//! the phrases that differ and takes the rest from its main language.
+//!
+//! Family data and printed reports are not translated.
 use std::collections::HashMap;
 use std::sync::OnceLock;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
-/// Each language's name in its own words. English comes first and needs no table.
-pub const LANGUAGES: [&str; 6] = ["English", "Deutsch", "日本語", "한국어", "Svenska", "中文"];
-const CODES: [&str; 6] = ["en", "de", "ja", "ko", "sv", "zh"];
+struct Language {
+    /// The language's name in its own words, as the Language menu shows it.
+    name: &'static str,
+    code: &'static str,
+    /// Older codes saved by earlier versions that mean this language.
+    also: &'static [&'static str],
+    /// The language that fills in any phrase this one doesn't list.
+    base: Option<&'static str>,
+    po: &'static str,
+}
+
+const ALL: &[Language] = &[
+    Language { name: "English", code: "en", also: &[], base: None, po: "" },
+    Language { name: "Deutsch", code: "de", also: &[], base: None, po: include_str!("../lang/de.po") },
+    Language { name: "Español (España)", code: "es", also: &[], base: None, po: include_str!("../lang/es.po") },
+    Language { name: "Español (Latinoamérica)", code: "es-419", also: &[], base: Some("es"), po: include_str!("../lang/es-419.po") },
+    Language { name: "Français", code: "fr", also: &[], base: None, po: include_str!("../lang/fr.po") },
+    Language { name: "Norsk", code: "nb", also: &["no"], base: None, po: include_str!("../lang/nb.po") },
+    Language { name: "Português (Brasil)", code: "pt-BR", also: &["pt"], base: None, po: include_str!("../lang/pt-BR.po") },
+    Language { name: "Português (Portugal)", code: "pt-PT", also: &[], base: Some("pt-BR"), po: include_str!("../lang/pt-PT.po") },
+    Language { name: "Русский", code: "ru", also: &[], base: None, po: include_str!("../lang/ru.po") },
+    Language { name: "Svenska", code: "sv", also: &[], base: None, po: include_str!("../lang/sv.po") },
+    Language { name: "日本語", code: "ja", also: &[], base: None, po: include_str!("../lang/ja.po") },
+    Language { name: "한국어", code: "ko", also: &[], base: None, po: include_str!("../lang/ko.po") },
+    Language { name: "中文 (繁體)", code: "zh-Hant", also: &["zh"], base: None, po: include_str!("../lang/zh-Hant.po") },
+];
+
+/// Each language's name in its own words, in menu order. English comes first.
+pub const LANGUAGES: [&str; ALL.len()] = {
+    let mut names = [""; ALL.len()];
+    let mut i = 0;
+    while i < ALL.len() {
+        names[i] = ALL[i].name;
+        i += 1;
+    }
+    names
+};
 
 static CURRENT: AtomicUsize = AtomicUsize::new(0);
 
@@ -16,554 +55,349 @@ pub fn current() -> usize {
 }
 
 pub fn set(index: usize) {
-    CURRENT.store(index.min(LANGUAGES.len() - 1), Ordering::Relaxed);
+    CURRENT.store(index.min(ALL.len() - 1), Ordering::Relaxed);
 }
 
 pub fn code() -> &'static str {
-    CODES[current()]
+    ALL[current()].code
 }
 
+/// Chooses a language by its code, such as `de` or `pt-BR`. Unknown codes change nothing.
 pub fn set_code(code: &str) {
-    if let Some(i) = CODES.iter().position(|c| c.eq_ignore_ascii_case(code.trim())) {
+    let code = code.trim();
+    if let Some(i) = ALL.iter().position(|l| l.code.eq_ignore_ascii_case(code) || l.also.iter().any(|a| a.eq_ignore_ascii_case(code))) {
         set(i);
     }
 }
 
-fn table() -> &'static HashMap<&'static str, [&'static str; 5]> {
-    static MAP: OnceLock<HashMap<&'static str, [&'static str; 5]>> = OnceLock::new();
-    MAP.get_or_init(|| TABLE.iter().copied().collect())
+/// One phrase's translation: one form, or one per plural form for phrases with a count.
+type Catalog = HashMap<String, Vec<String>>;
+
+fn catalogs() -> &'static [Catalog] {
+    static ONCE: OnceLock<Vec<Catalog>> = OnceLock::new();
+    ONCE.get_or_init(|| ALL.iter().map(|l| parse_po(l.po).into_iter().filter(|e| e.forms.iter().all(|f| !f.is_empty())).map(|e| (e.id, e.forms)).collect()).collect())
+}
+
+/// The forms for this phrase in a language, or in its main language.
+fn lookup(language: usize, id: &str) -> Option<&'static [String]> {
+    let mut index = language;
+    loop {
+        if let Some(forms) = catalogs()[index].get(id) {
+            return Some(forms);
+        }
+        let base = ALL[index].base?;
+        index = ALL.iter().position(|l| l.code == base)?;
+    }
+}
+
+fn translate<'a>(language: usize, text: &'a str) -> &'a str {
+    if language == 0 {
+        return text;
+    }
+    match lookup(language, text) {
+        Some(forms) => &forms[0],
+        None => text,
+    }
 }
 
 /// This text in the chosen language. Anything without a translation stays as it is.
 pub fn tr<'a>(text: &'a str) -> &'a str {
-    let language = current();
-    if language == 0 {
-        return text;
+    translate(current(), text)
+}
+
+/// This text in the chosen language, with each `{name}` filled in, for example
+/// `trf("Exported to {file}.", &[("file", &path.display())])`.
+pub fn trf(text: &str, values: &[(&str, &dyn std::fmt::Display)]) -> String {
+    fill(tr(text), values)
+}
+
+/// A phrase with a count in it, such as "{n} people", in the right form for the number.
+/// `one` is the English for exactly one and `many` for any other number. `{n}` becomes the
+/// number and each other `{name}` its value.
+pub fn tr_n(one: &str, many: &str, n: usize, values: &[(&str, &dyn std::fmt::Display)]) -> String {
+    plural_in(current(), one, many, n, values)
+}
+
+fn plural_in(language: usize, one: &str, many: &str, n: usize, values: &[(&str, &dyn std::fmt::Display)]) -> String {
+    let english = if n == 1 { one } else { many };
+    let text = match (language, lookup(language, one)) {
+        (0, _) | (_, None) => english,
+        (_, Some(forms)) => forms.get(plural_form(ALL[language].code, n as u64)).or(forms.last()).map_or(english, |s| s.as_str()),
+    };
+    fill(&text.replace("{n}", &n.to_string()), values)
+}
+
+fn fill(text: &str, values: &[(&str, &dyn std::fmt::Display)]) -> String {
+    let mut out = text.to_string();
+    for (name, value) in values {
+        out = out.replace(&format!("{{{name}}}"), &value.to_string());
     }
-    match table().get(text) {
-        Some(row) if !row[language - 1].is_empty() => row[language - 1],
-        _ => text,
+    out
+}
+
+/// Which plural form a number takes, numbered as in each language's `Plural-Forms` header.
+fn plural_form(code: &str, n: u64) -> usize {
+    match code {
+        "ja" | "ko" | "zh-Hant" => 0,
+        "fr" | "pt-BR" => usize::from(n > 1),
+        "ru" => {
+            let (ten, hundred) = (n % 10, n % 100);
+            if ten == 1 && hundred != 11 {
+                0
+            } else if (2..=4).contains(&ten) && !(12..=14).contains(&hundred) {
+                1
+            } else {
+                2
+            }
+        }
+        _ => usize::from(n != 1),
     }
+}
+
+struct Entry {
+    id: String,
+    #[cfg_attr(not(test), allow(dead_code))]
+    plural: Option<String>,
+    forms: Vec<String>,
+}
+
+/// Reads the parts of a .po file this program uses: msgid, msgid_plural and msgstr entries,
+/// with strings split over several lines. Comments and the header are skipped.
+fn parse_po(text: &str) -> Vec<Entry> {
+    let mut entries = Vec::new();
+    let mut id: Option<String> = None;
+    let mut plural: Option<String> = None;
+    let mut forms: Vec<String> = Vec::new();
+    // Which string a continuation line adds to: 0 msgid, 1 msgid_plural, 2.. msgstr forms.
+    let mut target = 0usize;
+    let mut finish = |id: &mut Option<String>, plural: &mut Option<String>, forms: &mut Vec<String>| {
+        if let Some(i) = id.take() {
+            if !i.is_empty() {
+                entries.push(Entry { id: i, plural: plural.take(), forms: std::mem::take(forms) });
+            }
+        }
+        *plural = None;
+        forms.clear();
+    };
+    for line in text.lines() {
+        let line = line.trim();
+        if line.is_empty() || line.starts_with('#') {
+            continue;
+        }
+        if let Some(rest) = line.strip_prefix("msgid_plural ") {
+            plural = Some(unquote(rest));
+            target = 1;
+        } else if let Some(rest) = line.strip_prefix("msgid ") {
+            finish(&mut id, &mut plural, &mut forms);
+            id = Some(unquote(rest));
+            target = 0;
+        } else if let Some(rest) = line.strip_prefix("msgstr[") {
+            let (n, rest) = rest.split_once(']').unwrap_or(("0", rest));
+            let n: usize = n.parse().unwrap_or(0);
+            if forms.len() <= n {
+                forms.resize(n + 1, String::new());
+            }
+            forms[n] = unquote(rest.trim());
+            target = 2 + n;
+        } else if let Some(rest) = line.strip_prefix("msgstr ") {
+            forms = vec![unquote(rest)];
+            target = 2;
+        } else if line.starts_with('"') {
+            let more = unquote(line);
+            match target {
+                0 => id.get_or_insert_with(String::new).push_str(&more),
+                1 => plural.get_or_insert_with(String::new).push_str(&more),
+                n => {
+                    if let Some(f) = forms.get_mut(n - 2) {
+                        f.push_str(&more);
+                    }
+                }
+            }
+        }
+    }
+    finish(&mut id, &mut plural, &mut forms);
+    entries
+}
+
+/// The text inside a quoted .po string, with its escapes turned back into characters.
+fn unquote(s: &str) -> String {
+    let s = s.trim();
+    let s = s.strip_prefix('"').unwrap_or(s);
+    let s = s.strip_suffix('"').unwrap_or(s);
+    let mut out = String::with_capacity(s.len());
+    let mut chars = s.chars();
+    while let Some(c) = chars.next() {
+        if c != '\\' {
+            out.push(c);
+            continue;
+        }
+        match chars.next() {
+            Some('n') => out.push('\n'),
+            Some('t') => out.push('\t'),
+            Some(other) => out.push(other),
+            None => {}
+        }
+    }
+    out
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::collections::BTreeSet;
+
+    const TEMPLATE: &str = include_str!("../lang/template.pot");
+
+    fn index(code: &str) -> usize {
+        ALL.iter().position(|l| l.code == code).unwrap()
+    }
+
+    fn placeholders(s: &str) -> BTreeSet<String> {
+        let mut out = BTreeSet::new();
+        let mut rest = s;
+        while let Some(start) = rest.find('{') {
+            let Some(end) = rest[start..].find('}') else { break };
+            out.insert(rest[start..start + end + 1].to_string());
+            rest = &rest[start + end + 1..];
+        }
+        out
+    }
+
+    fn forms_for(code: &str) -> usize {
+        match code {
+            "ja" | "ko" | "zh-Hant" => 1,
+            "ru" => 3,
+            _ => 2,
+        }
+    }
 
     #[test]
     fn every_language_has_the_main_menu_and_unknown_text_stays() {
-        for (i, words) in [(1, "Datei"), (2, "ファイル"), (3, "파일"), (4, "Fil"), (5, "檔案")] {
-            let row = table().get("File").unwrap();
-            assert_eq!(row[i - 1], words);
+        let words = [("en", "File"), ("de", "Datei"), ("es", "Archivo"), ("fr", "Fichier"), ("nb", "Fil"), ("pt-BR", "Arquivo"), ("pt-PT", "Ficheiro"), ("ru", "Файл"), ("sv", "Fil"), ("ja", "ファイル"), ("ko", "파일"), ("zh-Hant", "檔案")];
+        for (code, word) in words {
+            assert_eq!(translate(index(code), "File"), word, "{code}");
+            assert_eq!(translate(index(code), "a name nobody translates"), "a name nobody translates");
         }
-        assert_eq!(tr("a name nobody translates"), "a name nobody translates");
+    }
+
+    #[test]
+    fn regional_languages_fall_back_to_their_main_language() {
+        assert_eq!(translate(index("pt-PT"), "Help"), translate(index("pt-BR"), "Help"));
+        assert_eq!(translate(index("es-419"), "Help"), "Ayuda");
+    }
+
+    #[test]
+    fn codes_choose_languages_and_old_codes_still_work() {
+        for code in ["zh", "no", "pt"] {
+            let found = ALL.iter().position(|l| l.also.contains(&code));
+            assert!(found.is_some(), "{code}");
+        }
+        assert_eq!(LANGUAGES[0], "English");
+        assert_eq!(LANGUAGES.len(), ALL.len());
+    }
+
+    #[test]
+    fn plural_forms_follow_each_language() {
+        assert_eq!([1, 2, 5, 11, 21, 22, 25].map(|n| plural_form("ru", n)), [0, 1, 2, 2, 0, 1, 2]);
+        assert_eq!([0, 1, 2].map(|n| plural_form("fr", n)), [0, 0, 1]);
+        assert_eq!([0, 1, 2].map(|n| plural_form("de", n)), [1, 0, 1]);
+        assert_eq!(plural_form("ja", 7), 0);
+        assert_eq!(plural_in(0, "{n} person", "{n} people", 1, &[]), "1 person");
+        assert_eq!(plural_in(0, "{n} person", "{n} people", 3, &[]), "3 people");
+        assert_eq!(fill("{a} and {b}", &[("a", &1), ("b", &"two")]), "1 and two");
+    }
+
+    #[test]
+    fn full_languages_translate_every_phrase_the_same_way() {
+        let template = parse_po(TEMPLATE);
+        let ids: BTreeSet<&str> = template.iter().map(|e| e.id.as_str()).collect();
+        assert_eq!(ids.len(), template.len(), "a phrase is listed twice in template.pot");
+        for lang in ALL.iter().skip(1) {
+            let entries = parse_po(lang.po);
+            let mut seen = BTreeSet::new();
+            for e in &entries {
+                assert!(seen.insert(e.id.as_str()), "{}: listed twice: {:?}", lang.code, e.id);
+                let Some(t) = template.iter().find(|t| t.id == e.id) else { panic!("{}: not in template.pot: {:?}", lang.code, e.id) };
+                assert_eq!(e.plural, t.plural, "{}: plural differs from template.pot for {:?}", lang.code, e.id);
+                let want = if e.plural.is_some() { forms_for(lang.code) } else { 1 };
+                assert_eq!(e.forms.len(), want, "{}: wrong number of forms for {:?}", lang.code, e.id);
+                let english: BTreeSet<String> = placeholders(&e.id).into_iter().chain(e.plural.iter().flat_map(|p| placeholders(p))).collect();
+                for f in &e.forms {
+                    assert!(!f.is_empty(), "{}: empty translation for {:?}", lang.code, e.id);
+                    // A count's form for exactly one may write the word instead of {n}.
+                    let mut have = placeholders(f);
+                    if e.plural.is_some() {
+                        have.insert("{n}".into());
+                    }
+                    assert_eq!(have, english, "{}: placeholders differ in {:?}", lang.code, e.id);
+                }
+            }
+            if lang.base.is_none() {
+                let missing: Vec<_> = ids.iter().filter(|id| !seen.contains(*id)).collect();
+                assert!(missing.is_empty(), "{}: {} phrases not translated, first {:?}", lang.code, missing.len(), missing.first());
+            }
+        }
+    }
+
+    #[test]
+    fn every_phrase_in_the_code_is_in_the_template() {
+        let template = parse_po(TEMPLATE);
+        let mut missing = Vec::new();
+        let mut stack = vec![std::path::PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/src"))];
+        while let Some(dir) = stack.pop() {
+            for entry in std::fs::read_dir(&dir).unwrap().flatten() {
+                let path = entry.path();
+                if path.is_dir() {
+                    stack.push(path);
+                    continue;
+                }
+                if path.extension().is_none_or(|e| e != "rs") || path.ends_with("i18n.rs") {
+                    continue;
+                }
+                let text = std::fs::read_to_string(&path).unwrap();
+                for call in ["tr(\"", "trf(\"", "tr_n(\""] {
+                    for (at, _) in text.match_indices(call) {
+                        if text[..at].ends_with(|c: char| c.is_alphanumeric() || c == '_') {
+                            continue;
+                        }
+                        let Some((one, rest)) = literal(&text[at + call.len() - 1..]) else { continue };
+                        if !one.chars().any(char::is_alphabetic) {
+                            continue;
+                        }
+                        let plural = if call == "tr_n(\"" { literal(rest.trim_start().strip_prefix(',').unwrap_or(rest).trim_start()).map(|(p, _)| p) } else { None };
+                        match template.iter().find(|e| e.id == one) {
+                            Some(e) if e.plural == plural => {}
+                            _ => missing.push(format!("{}: {:?}", path.display(), one)),
+                        }
+                    }
+                }
+            }
+        }
+        assert!(missing.is_empty(), "phrases missing from lang/template.pot:\n{}", missing.join("\n"));
+    }
+
+    /// The Rust string literal at the start of `s`, with simple escapes resolved, and what follows it.
+    fn literal(s: &str) -> Option<(String, &str)> {
+        let body = s.strip_prefix('"')?;
+        let mut out = String::new();
+        let mut chars = body.char_indices();
+        while let Some((i, c)) = chars.next() {
+            match c {
+                '"' => return Some((out, &body[i + 1..])),
+                '\\' => match chars.next()?.1 {
+                    'n' => out.push('\n'),
+                    't' => out.push('\t'),
+                    '\n' => {
+                        // A line continuation: skip the next line's leading spaces.
+                        while chars.clone().next().is_some_and(|(_, c)| c == ' ') {
+                            chars.next();
+                        }
+                    }
+                    other => out.push(other),
+                },
+                _ => out.push(c),
+            }
+        }
+        None
     }
 }
-
-const TABLE: &[(&str, [&str; 5])] = &[
-    ("LDS Sealing", ["HLT-Siegelung", "LDS の結び固め", "LDS 인봉", "SDH-besegling", "後期聖徒印證"]),
-    ("Move the spouse to the primary position", ["Ehepartner an die Hauptposition verschieben", "配偶者を主な位置へ移動", "배우자를 주 위치로 이동", "Flytta make/maka till huvudplatsen", "將配偶移到主要位置"]),
-    ("Move this child to the primary position", ["Dieses Kind an die Hauptposition verschieben", "この子供を主な位置へ移動", "이 자녀를 주 위치로 이동", "Flytta barnet till huvudplatsen", "將此子女移到主要位置"]),
-    ("Move this person to the primary position to see more ancestors", ["Diese Person an die Hauptposition verschieben, um weitere Vorfahren zu sehen", "この人を主な位置へ移動してさらに祖先を表示", "더 많은 조상을 보려면 이 사람을 주 위치로 이동", "Flytta personen till huvudplatsen för att se fler förfäder", "將此人移到主要位置以查看更多祖先"]),
-    ("Publication:", ["Veröffentlichung:", "出版情報：", "출판 정보:", "Publicering:", "出版資訊:"]),
-    ("Unknown spouse", ["Unbekannter Ehepartner", "不明の配偶者", "알 수 없는 배우자", "Okänd make/maka", "不明的配偶"]),
-    ("Start date must be before end date.", ["Das Anfangsdatum muss vor dem Enddatum liegen.", "開始日は終了日より前にしてください。", "시작 날짜는 끝 날짜보다 앞이어야 합니다.", "Startdatum måste vara före slutdatum.", "開始日期必須早於結束日期。"]),
-    ("No relationship was found through shared ancestors.", ["Über gemeinsame Vorfahren wurde keine Verwandtschaft gefunden.", "共通の祖先による続柄は見つかりませんでした。", "공통 조상을 통한 관계를 찾지 못했습니다.", "Inget släktskap hittades via gemensamma förfäder.", "未透過共同祖先找到關係。"]),
-    ("People with notes:", ["Personen mit Notizen:", "メモのある人：", "메모가 있는 사람:", "Personer med anteckningar:", "有筆記的人:"]),
-    ("(None)", ["(Keine)", "(なし)", "(없음)", "(Ingen)", "(無)"]),
-    ("1. Double-click the dark box on the Family screen and type your own name, with slashes around the surname: Anna Marie /Lee/.\n\n2. Double-click an empty box to add a spouse or a parent, or the Children area to add a child.\n\n3. Click the triangle beside a person to move them into the main position. The F, M and C keys go to the father, mother or a child.\n\n4. Use the Pedigree tab to see five generations, and the Individual tab to see everyone in a list.\n\n5. Right-click anyone for more choices, such as Notes and Multimedia.\n\n6. Use File, Save As to name your family file. Changes save by themselves after that.\n\n7. Use File, Print Reports for charts and lists, and File, Backup to keep a safe copy.", ["1. Doppelklicken Sie in der Familienansicht auf das dunkle Feld und geben Sie Ihren Namen ein, mit Schrägstrichen um den Nachnamen: Anna Marie /Lee/.\n\n2. Doppelklicken Sie auf ein leeres Feld, um einen Ehepartner oder ein Elternteil hinzuzufügen, oder auf den Kinderbereich für ein Kind.\n\n3. Klicken Sie auf das Dreieck neben einer Person, um sie an die Hauptposition zu verschieben. Die Tasten F, M und C wechseln zu Vater, Mutter oder einem Kind.\n\n4. Die Registerkarte Stammbaum zeigt fünf Generationen, die Registerkarte Person alle Personen in einer Liste.\n\n5. Klicken Sie mit der rechten Maustaste auf eine Person, um weitere Optionen wie Notizen und Multimedia zu sehen.\n\n6. Benennen Sie Ihre Familiendatei mit Datei, Speichern unter. Danach werden Änderungen von selbst gespeichert.\n\n7. Verwenden Sie Datei, Berichte drucken für Tafeln und Listen und Datei, Sichern für eine Sicherungskopie.", "1. ［家族］画面の濃い色の枠をダブルクリックし、姓をスラッシュで囲んで名前を入力します：Anna Marie /Lee/\n\n2. 空の枠をダブルクリックすると配偶者や親を、［子供］の欄をダブルクリックすると子供を追加できます。\n\n3. 人の横の三角形をクリックすると、その人が主な位置に移動します。F、M、C キーで父、母、子供へ移動します。\n\n4. ［系図］タブで 5 世代を、［個人］タブで全員のリストを見られます。\n\n5. 人を右クリックすると、メモやマルチメディアなどを選べます。\n\n6. ［ファイル］、［名前を付けて保存］で家族ファイルに名前を付けます。その後の変更は自動的に保存されます。\n\n7. 図表やリストは［ファイル］、［レポートの印刷］で、安全なコピーは［ファイル］、［バックアップ］で作れます。", "1. 가족 화면의 어두운 상자를 두 번 클릭하고 성을 슬래시로 묶어 이름을 입력하십시오: Anna Marie /Lee/\n\n2. 빈 상자를 두 번 클릭하면 배우자나 부모를, 자녀 영역을 두 번 클릭하면 자녀를 추가할 수 있습니다.\n\n3. 사람 옆의 삼각형을 클릭하면 그 사람이 주 위치로 이동합니다. F, M, C 키는 아버지, 어머니, 자녀로 이동합니다.\n\n4. 가계도 탭에서 다섯 세대를, 개인 탭에서 모든 사람의 목록을 볼 수 있습니다.\n\n5. 사람을 오른쪽 클릭하면 메모, 멀티미디어 등 더 많은 항목이 나옵니다.\n\n6. 파일, 다른 이름으로 저장으로 가족 파일의 이름을 정하십시오. 그 후에는 변경 내용이 자동으로 저장됩니다.\n\n7. 도표와 목록은 파일, 보고서 인쇄에서, 안전한 사본은 파일, 백업에서 만들 수 있습니다.", "1. Dubbelklicka på den mörka rutan i familjevyn och skriv ditt namn, med snedstreck runt efternamnet: Anna Marie /Lee/.\n\n2. Dubbelklicka på en tom ruta för att lägga till en make/maka eller förälder, eller på barnområdet för att lägga till ett barn.\n\n3. Klicka på triangeln bredvid en person för att flytta personen till huvudplatsen. Tangenterna F, M och C går till far, mor eller ett barn.\n\n4. Fliken Antavla visar fem generationer och fliken Person visar alla i en lista.\n\n5. Högerklicka på en person för fler val, till exempel Anteckningar och Multimedia.\n\n6. Namnge släktfilen med Arkiv, Spara som. Därefter sparas ändringar av sig själva.\n\n7. Använd Arkiv, Skriv ut rapporter för tavlor och listor, och Arkiv, Säkerhetskopiera för en säker kopia.", "1. 在家庭畫面按兩下深色方框，輸入您的姓名，並以斜線括住姓氏：Anna Marie /Lee/\n\n2. 按兩下空白方框可增加配偶或父母，按兩下子女區可增加子女。\n\n3. 按一下人名旁的三角形，可將此人移到主要位置。F、M、C 鍵可前往父親、母親或子女。\n\n4. 世系表標籤顯示五代，個人標籤以名單顯示所有人。\n\n5. 在人名上按右鍵可看到更多選項，如筆記和多媒體。\n\n6. 使用「檔案」、「另存新檔」為家庭檔案命名。之後變更會自動儲存。\n\n7. 使用「檔案」、「列印報告」製作圖表和名單，使用「檔案」、「備份」保留安全副本。"]),
-    ("1/10 seconds", ["1/10 Sekunde", "1/10 秒", "1/10초", "1/10 sekunder", "1/10 秒"]),
-    ("1st", ["1.", "第1", "첫번째", "1:a", "第1"]),
-    ("2nd", ["2.", "第2", "두번째", "2:a", "第2"]),
-    ("3rd", ["3.", "第3", "세번째", "3:e", "第3"]),
-    ("4th", ["4.", "4代目", "4대", "4:e", "第4代"]),
-    ("5th", ["5.", "5代目", "5대", "5:e", "第5代"]),
-    ("A family history program for keeping individuals, marriages, notes and sources, and for printing charts and reports.", ["Ein Familienforschungsprogramm für Personen, Ehen, Notizen und Quellen sowie zum Drucken von Tafeln und Berichten.", "個人、結婚、メモ、資料を記録し、図表やレポートを印刷するための家族歴史プログラムです。", "개인, 결혼, 메모, 출처를 기록하고 도표와 보고서를 인쇄하는 가족 역사 프로그램입니다.", "Ett släktforskningsprogram för personer, äktenskap, anteckningar och källor och för utskrift av tavlor och rapporter.", "用來記錄個人、婚姻、筆記和資料來源，並列印圖表和報告的家譜程式。"]),
-    ("AFN", ["AFN", "AFN", "AFN", "AFN", "祖先檔號"]),
-    ("AFN:", ["AFN:", "AFN:", "AFN:", "AFN:", "祖先檔號:"]),
-    ("Actual text:", ["Originaltext:", "実際のテキスト:", "실제 본문:", "Befintlig text:", "原文："]),
-    ("Add", ["Hinzufügen", "追加", "추가", "Lägg till", "增加"]),
-    ("Add Child...", ["Kind hinzufügen...", "子供の追加...", "자녀 추가...", "Lägg till barn...", "增加子女..."]),
-    ("Add Filter", ["Filter hinzufügen", "フィルタを追加", "필터 추가", "Lägg till filter", "增加篩選條件"]),
-    ("Add Individual...", ["Person hinzufügen...", "個人の追加...", "개인 추가...", "Lägg till person...", "增加個人..."]),
-    ("Add New", ["Neu hinzufügen", "新規追加", "새로 추가", "Lägg till ny", "新增"]),
-    ("Add New Individual...", ["Neue Person hinzufügen...", "新しい個人の追加...", "새로운 개인 추가...", "Lägg till ny person...", "增加新的個人..."]),
-    ("Add New Parents...", ["Neue Eltern hinzufügen...", "新しい両親の追加...", "새로운 부모 추가...", "Lägg till nya föräldrar...", "增加新的父母..."]),
-    ("Add Picture or File...", ["Bild oder Datei hinzufügen...", "画像またはファイルを追加...", "그림 또는 파일 추가...", "Lägg till bild eller fil...", "增加圖片或檔案..."]),
-    ("Add Spouse...", ["Ehepartner hinzufügen...", "配偶者の追加...", "배우자 추가...", "Lägg till make/maka...", "增加配偶..."]),
-    ("Add a new person, or link someone already in this file?", ["Eine neue Person hinzufügen oder jemanden aus dieser Datei verknüpfen?", "新しい人を追加しますか。それともこのファイルにいる人を関連付けますか。", "새 사람을 추가하시겠습니까, 아니면 이 파일에 있는 사람을 연결하시겠습니까?", "Lägga till en ny person eller länka någon som redan finns i filen?", "要增加新的人，還是連結此檔案中已有的人？"]),
-    ("Add family", ["Familie hinzufügen", "家族を追加", "가족 추가", "Lägg till familj", "增加家庭"]),
-    ("Add father, mother", ["Vater, Mutter hinzufügen", "父、母を追加", "아버지, 어머니 추가", "Lägg till far, mor", "增加父親、母親"]),
-    ("Add individual (Ctrl+A)", ["Person hinzufügen (Strg+A)", "個人を追加 (Ctrl+A)", "개인 추가 (Ctrl+A)", "Lägg till person (Ctrl+A)", "增加個人 (Ctrl+A)"]),
-    ("Add individual, spouse, child", ["Person, Ehepartner, Kind hinzufügen", "個人、配偶者、子供を追加", "개인, 배우자, 자녀 추가", "Lägg till person, make/maka, barn", "增加個人、配偶、子女"]),
-    ("Add or Select Individual", ["Person hinzufügen/auswählen", "個人の追加または選択", "개인 추가 또는 선택", "Lägg till eller välj person", "增加或選擇個人"]),
-    ("Add surname slashes automatically", ["Schrägstriche um den Nachnamen automatisch setzen", "姓のスラッシュを自動で付ける", "성 슬래시 자동 추가", "Lägg till snedstreck runt efternamn automatiskt", "自動在姓氏加上斜線"]),
-    ("Address", ["Adresse", "アドレス", "주소", "Adress", "地址"]),
-    ("Address:", ["Adresse:", "住所:", "주소:", "Adress:", "地址："]),
-    ("Adoption", ["Adoption", "養子縁組", "입양", "adoption", "收養"]),
-    ("Adult Christening", ["Erwachsenentaufe", "成人の洗礼", "성인 세례", "Vuxendop", "成人受洗"]),
-    ("Advanced Focus/Filter", ["Erweiterter Fokus/Filter...", "詳細検索...", "고등 초점/필터...", "Avancerat fokus/filter...", "進階焦點/篩選器..."]),
-    ("Advanced Focus/Filter...", ["Erweiterter Fokus/Filter...", "詳細検索...", "고등 초점/필터...", "Avancerat fokus/filter...", "進階焦點/篩選器..."]),
-    ("Age difference between husband and wife:", ["Altersunterschied der Ehepartner:", "夫と妻の年齢差:", "남편과 아내 사이의 연령 차이:", "Åldersskillnad mellan make och hustru:", "夫妻相差歲數："]),
-    ("Allow AFN edit", ["Bearbeitung von AFN zulassen", "AFN編集を許可", "AFN 편집 허락", "Tillåt AFN-redigering", "允許編輯祖先檔號"]),
-    ("Also Known As:", ["Auch bekannt als:", "別名:", "다른 이름:", "Även känd som:", "字號:"]),
-    ("Also removes citations of this source", ["Entfernt auch die Quellenangaben zu dieser Quelle", "この資料の引用も削除します", "이 출처의 인용도 제거합니다", "Tar även bort hänvisningar till källan", "同時移除此來源的引用"]),
-    ("An empty form to fill in by hand", ["Ein leeres Formular zum Ausfüllen von Hand", "手で記入する空白の用紙", "손으로 기입할 빈 양식", "Ett tomt formulär att fylla i för hand", "供手寫填寫的空白表格"]),
-    ("Ancestors of", ["Vorfahren von", "祖先：", "조상:", "Förfäder till", "祖先:"]),
-    ("Ancestry", ["Vorfahren", "先祖", "조상", "Antavla", "祖先"]),
-    ("Annulment", ["Annullierung", "婚姻の無効", "혼인 무효", "Annullering", "婚姻無效"]),
-    ("Arrow keys", ["Pfeiltasten", "矢印キー", "화살표 키", "Piltangenter", "方向鍵"]),
-    ("Back up this family file", ["Diese Familiendatei sichern", "この家族ファイルをバックアップ", "이 가족 파일 백업", "Säkerhetskopiera släktfilen", "備份此家庭檔案"]),
-    ("Backup", ["Sicherungskopie", "バックアップ", "백업", "Säkerhetskopiera", "備份"]),
-    ("Backup frequency:", ["Sicherungshäufigkeit:", "バックアップの頻度：", "백업 빈도:", "Säkerhetskopieringsfrekvens:", "備份頻率:"]),
-    ("Backup reminder", ["Sicherungserinnerung", "バックアップの通知", "백업 알림", "Påminnelse om säkerhetskopia", "備份提醒"]),
-    ("Backup...", ["Sicherungskopie...", "バックアップ...", "백업...", "Säkerhetskopiera...", "備份..."]),
-    ("Baptism", ["Taufe", "バプテスマ", "침례", "Dop", "洗禮"]),
-    ("Baptism:", ["Taufe:", "バプテ:", "침례:", "Dop:", "洗禮:"]),
-    ("Bar Mitzvah", ["Bar Mizwa", "バル・ミツバー", "바르 미츠바", "Bar mitzva", "成年禮 (男)"]),
-    ("Bas Mitzvah", ["Bat Mizwa", "バト・ミツバー", "바트 미츠바", "Bat mitzva", "成年禮 (女)"]),
-    ("Birth", ["Geburt", "出生", "출생", "Födelse", "出生"]),
-    ("Birth Date", ["Geburtsdatum", "出生日", "출생일", "Födelsedatum", "出生日期"]),
-    ("Birth Place", ["Geburtsort", "出生地", "출생지", "Födelseort", "出生地點"]),
-    ("Birth years within:", ["Geburtsjahre innerhalb von:", "出生年の範囲：", "출생 연도 범위:", "Födelseår inom:", "出生年份相差:"]),
-    ("Birth:", ["Geburt:", "出生：", "출생:", "Född:", "出生:"]),
-    ("Blank Form", ["Leerformular", "白紙の用紙", "기입 용지", "Tom blankett", "空白表"]),
-    ("Blessing", ["Segnung", "祝福", "축복", "Välsignelse", "祝福"]),
-    ("Books", ["Chroniken", "書籍", "책들", "Böcker", "書"]),
-    ("Born", ["Geb.", "出生", "출생", "Född", "出生"]),
-    ("Burial", ["Bestattung", "埋葬", "매장", "Begravning", "埋葬"]),
-    ("Burial Date", ["Bestattungsdatum", "埋葬日", "매장일", "Begravningsdatum", "埋葬日期"]),
-    ("Burial Place", ["Bestattungsort", "埋葬地", "매장지", "Begravningsplats", "埋葬地點"]),
-    ("Calculate", ["Berechnen", "算出する", "계산하기", "Beräkna", "計算"]),
-    ("Calendar", ["Kalender", "カレンダー", "달력", "Kalender", "月曆"]),
-    ("Cancel", ["Abbrechen", "キャンセル", "취소", "Avbryt", "取消"]),
-    ("Caption:", ["Titel:", "表題:", "제목:", "Bildtext:", "標題列："]),
-    ("Census", ["Volkszählung", "国勢調査", "인구 조사", "Folkräkning", "人口普查"]),
-    ("Change", ["Ändern", "変更", "변경", "Ändra", "更改"]),
-    ("Change Names to Mixed Case", ["Namen in Groß- und Kleinbuchstaben umwandeln", "名前を大文字・小文字混じりに書き換え", "이름들을 혼합 문자로 변경", "Ändra namn till stor begynnelsebokstav", "名字改為大小寫混合的形式"]),
-    ("Check LDS data", ["HLT-Daten prüfen", "LDSのデータをチェックする", "LDS 데이터 점검", "Kontrollera SDH-data", "檢查後期聖徒資料"]),
-    ("Check for duplicates when adding individuals", ["Bei Eingabe von Personen auf Duplikate überprüfen", "人名を追加する場合は，重複チェックをする。", "개인들을 추가할 때 중복성을 점검하시오", "Kontrollera om dubbletter finns då personer läggs till", "增加個人時檢查是否重複"]),
-    ("Check marriage and children order", ["Reihenfolge der Ehen und Kinder prüfen", "結婚と子供の順番をチェックする", "결혼 및 자녀 순서 점검", "Kontrollera ordningen på äktenskap och barn", "檢查婚姻和子女順序"]),
-    ("Check/Repair", ["Prüfen/Reparieren", "確認／修正", "점검/보수", "Kontrollera/Reparera", "檢查/修復"]),
-    ("Check/Repair...", ["Prüfen/Reparieren...", "確認／修正", "점검/보수...", "Kontrollera/Reparera...", "檢查/修復..."]),
-    ("Child...", ["Kind...", "子供...", "자녀...", "Barn...", "子女..."]),
-    ("Children", ["Kinder", "子供", "자녀", "Barn", "子女"]),
-    ("Children:", ["Kinder:", "子供：", "자녀:", "Barn:", "子女:"]),
-    ("Choose the link to remove. The individual stays in the file.", ["Wählen Sie die zu entfernende Verknüpfung. Die Person bleibt in der Datei.", "削除する関連付けを選んでください。個人はファイルに残ります。", "제거할 연결을 선택하십시오. 개인은 파일에 남습니다.", "Välj vilken länk som ska tas bort. Personen finns kvar i filen.", "請選擇要移除的連結。此人仍會保留在檔案中。"]),
-    ("Christening", ["Kleinkindtaufe", "洗礼", "명명", "Kristning", "領洗"]),
-    ("Christening Date", ["Datum der Kleinkindtaufe", "洗礼日", "명명일", "Kristningsdatum", "領洗日期"]),
-    ("Christening Place", ["Ort der Kleinkindtaufe", "洗礼地", "명명지", "Kristningsort", "領洗地點"]),
-    ("Clear Fields", ["Felder leeren", "クリア", "지우기", "Töm fälten", "清除欄位"]),
-    ("Click Search to look for possible duplicates.", ["Klicken Sie auf Suchen, um mögliche Duplikate zu finden.", "［検索］をクリックして重複の可能性を探します。", "찾기를 클릭하여 중복 가능성을 찾으십시오.", "Klicka på Sök för att leta efter möjliga dubbletter.", "按一下「搜尋」以尋找可能的重複項目。"]),
-    ("Close", ["Schließen", "閉じる", "닫기", "Stäng", "關閉"]),
-    ("Close without saving", ["Schließen ohne Speichern", "保存せずに閉じる", "저장하지 않고 닫기", "Stäng utan att spara", "關閉但不儲存"]),
-    ("Comments:", ["Kommentar:", "コメント:", "설명:", "Kommentarer:", "註解："]),
-    ("Confirmation", ["Konfirmation", "堅信礼", "견진", "Konfirmation", "堅信禮"]),
-    ("Contact information", ["Kontaktangaben", "連絡情報", "정보 연락처", "Uppgifter om kontaktperson", "連絡的資訊"]),
-    ("Could not open", ["Konnte nicht geöffnet werden", "開けませんでした", "열 수 없음", "Kunde inte öppnas", "無法開啟"]),
-    ("Could not read this .paf file", ["Diese .paf-Datei konnte nicht gelesen werden", "この .paf ファイルを読み取れませんでした", "이 .paf 파일을 읽을 수 없습니다", "Kunde inte läsa .paf-filen", "無法讀取此 .paf 檔案"]),
-    ("Could not save", ["Konnte nicht gespeichert werden", "保存できませんでした", "저장할 수 없음", "Kunde inte sparas", "無法儲存"]),
-    ("Create", ["Anlegen", "作成", "작성하기", "Skapa", "設立"]),
-    ("Create Web Page", ["Web-Seite erstellen", "ウェブページの作成", "웹 페이지 만들기", "Skapa webbsida", "設立網頁"]),
-    ("Create Web Page...", ["Web-Seite erstellen...", "ウェブページの作成...", "웹 페이지 제작...", "Skapa webbsida...", "設立網頁..."]),
-    ("Create a web page", ["Webseite erstellen", "Web ページを作成", "웹 페이지 만들기", "Skapa en webbsida", "建立網頁"]),
-    ("Cremation", ["Einäscherung", "火葬", "화장", "Kremering", "火葬"]),
-    ("Custom", ["Benutzerdefiniert", "カスタム", "사용자 정의", "Anpassad", "自訂"]),
-    ("Date", ["Datum", "日付", "날짜", "Datum", "日期"]),
-    ("Date Calculator", ["Datumsrechner", "日付算出", "날짜 계산기", "Datumkalkylator", "日期小算盤"]),
-    ("Dates", ["Daten", "日付", "날짜", "Datum", "日期"]),
-    ("Dates and family information", ["Daten und Familienangaben", "日付と家族の情報", "날짜 및 가족 정보", "Datum och familjeuppgifter", "日期和家庭資料"]),
-    ("Dates only", ["Nur Daten", "日付のみ", "날짜만", "Enbart datum", "只要日期"]),
-    ("Dates typed as all numbers, such as 3/11/1955, mean:", ["Nur aus Zahlen bestehende Daten wie 3/11/1955 bedeuten:", "3/11/1955 のように数字だけの日付の意味：", "3/11/1955처럼 숫자로만 입력한 날짜의 의미:", "Datum med bara siffror, till exempel 3/11/1955, betyder:", "全部以數字輸入的日期 (如 3/11/1955) 表示:"]),
-    ("Day first: 3 November 1955", ["Tag zuerst: 3. November 1955", "日が先：1955年11月3日", "일 먼저: 1955년 11월 3일", "Dag först: 3 november 1955", "日在前: 1955年11月3日"]),
-    ("Days:", ["Tage:", "日:", "일수:", "Dagar:", "日："]),
-    ("Death", ["Tod", "死亡", "사망", "Död", "死亡"]),
-    ("Death Date", ["Sterbedatum", "死亡日", "사망일", "Dödsdatum", "死亡日期"]),
-    ("Death Place", ["Sterbeort", "死亡地", "사망지", "Dödsort", "死亡地點"]),
-    ("Death:", ["Tod:", "死亡：", "사망:", "Död:", "死亡:"]),
-    ("Delete", ["Löschen", "削除", "삭제", "Ta bort", "刪除"]),
-    ("Delete File", ["Datei löschen", "ファイルを削除", "파일 삭제", "Ta bort fil", "刪除檔案"]),
-    ("Delete Individual", ["Person löschen", "個人の記録の削除", "개인 삭제", "Ta bort person", "刪除個人"]),
-    ("Delete...", ["Löschen...", "削除...", "삭제...", "Ta bort...", "刪除..."]),
-    ("Descendancy", ["Nachkommenschaft", "子孫", "후손", "Efterkommande", "子孫"]),
-    ("Descendancy List...", ["Nachkommenliste...", "子孫のリスト...", "후손 목록...", "Lista på efterkommande...", "子孫名單..."]),
-    ("Descendancy list (Ctrl+D)", ["Nachkommenliste (Strg+D)", "子孫のリスト (Ctrl+D)", "후손 목록 (Ctrl+D)", "Ättlingslista (Ctrl+D)", "後代名單 (Ctrl+D)"]),
-    ("Descendants", ["Nachkommen von", "子孫", "후손들", "Efterkommande", "子孫"]),
-    ("Descendants of", ["Nachkommen von", "子孫：", "의 후손들", "Efterkommande till", "後代:"]),
-    ("Description", ["Beschreibung", "記述", "설명", "Beskrivning", "描述"]),
-    ("Description:", ["Beschreibung:", "記述:", "설명:", "Beskrivning:", "說明："]),
-    ("Ditto from:", ["Übernehmen von:", "次からコピー：", "다음에서 복사:", "Kopiera från:", "複製自:"]),
-    ("Divorce Filed", ["Scheidung eingereicht", "離婚の申し立て", "이혼 신청", "Ansökt om skilsmässa", "申請離婚"]),
-    ("Divorced", ["Geschieden", "離婚", "이혼함", "Skild", "已離婚"]),
-    ("Down", ["Ab", "下", "아래", "Nedåt", "向下"]),
-    ("Duplicate individuals", ["Doppelte Personen", "重複した個人", "중복된 개인", "Dubblettpersoner", "重複的個人"]),
-    ("Edit", ["Bearbeiten", "編集", "편집", "Redigera", "編輯"]),
-    ("Edit Marriage", ["Eheschließung", "結婚の情報の編集", "결혼 편집", "Redigera vigsel", "編輯婚姻"]),
-    ("Edit Parent Links", ["Kindschaftsverhältnis bearbeiten", "両親とのつながりの編集", "부모 연결 편집", "Redigera länkar till föräldrar", "編輯父母連結"]),
-    ("Edit Parents' Marriage", ["Eheschließung der Eltern bearbeiten", "両親の結婚の情報の編集", "부모의 결혼 편집", "Redigera föräldrars vigsel", "編輯父母的婚姻"]),
-    ("Edit individual (Ctrl+I)", ["Person bearbeiten (Strg+I)", "個人を編集 (Ctrl+I)", "개인 편집 (Ctrl+I)", "Redigera person (Ctrl+I)", "編輯個人 (Ctrl+I)"]),
-    ("Edit individual, notes, multimedia", ["Person, Notizen, Multimedia bearbeiten", "個人、メモ、マルチメディアを編集", "개인, 메모, 멀티미디어 편집", "Redigera person, anteckningar, multimedia", "編輯個人、筆記、多媒體"]),
-    ("Edit marriage when created", ["Neue Ehe sofort bearbeiten", "作成されたとき，結婚情報を編集する", "작성할때 결혼 편집", "Redigera vigsel när det införs", "增加後編輯婚姻"]),
-    ("Edit notes (Ctrl+N)", ["Notizen bearbeiten (Strg+N)", "メモを編集 (Ctrl+N)", "메모 편집 (Ctrl+N)", "Redigera anteckningar (Ctrl+N)", "編輯筆記 (Ctrl+N)"]),
-    ("Education", ["Ausbildung", "学歴", "학력", "Utbildning", "教育"]),
-    ("Email:", ["EMAIL:", "電子メール:", "전자 우편:", "E-POST:", "電子郵件:"]),
-    ("Emigration", ["Auswanderung", "出国移住", "이민 출국", "Utvandring", "移出"]),
-    ("End date:", ["Enddatum:", "最後の日:", "끝난 날짜:", "Slutdatum:", "結束日期："]),
-    ("End-of-line individuals", ["Ahnenspitzen", "エンド・オブ・ラインの個人", "끝줄 개인", "Personer i slutet av släktlinje", "沒有父母紀錄的個人"]),
-    ("Endowment:", ["Begabung:", "エンダウメント:", "엔다우먼트:", "Begåvning:", "恩道門:"]),
-    ("Engagement", ["Verlobung", "婚約", "약혼", "Förlovning", "訂婚"]),
-    ("Events", ["Ereignisse", "出来事", "사건들", "Händelser", "事項"]),
-    ("Everyone", ["Alle", "全員", "모두", "Alla", "所有人"]),
-    ("Exit", ["Beenden", "終了", "종료", "Avsluta", "結束"]),
-    ("Exit without saving", ["Beenden ohne Speichern", "保存せずに終了", "저장하지 않고 끝내기", "Avsluta utan att spara", "結束但不儲存"]),
-    ("Export", ["Exportieren", "エクスポート", "내보내기", "Exportera", "匯出"]),
-    ("Export a GEDCOM file", ["GEDCOM-Datei exportieren", "GEDCOM ファイルをエクスポート", "GEDCOM 파일 내보내기", "Exportera en GEDCOM-fil", "匯出 GEDCOM 檔案"]),
-    ("Export to GEDCOM 5.5 (UTF-8)", ["Export nach GEDCOM 5.5 (UTF-8)", "GEDCOM 5.5 (UTF-8) へエクスポート", "GEDCOM 5.5 (UTF-8)로 내보내기", "Exportera till GEDCOM 5.5 (UTF-8)", "匯出為 GEDCOM 5.5 (UTF-8)"]),
-    ("Export...", ["Exportieren...", "エクスポート...", "내보내기...", "Exportera...", "匯出..."]),
-    ("Family", ["Familie", "家族", "가족", "Familj", "家庭"]),
-    ("Family Group", ["Familiengruppe", "家族グループ", "가족 단체", "Familjeuppteckning", "家庭資料"]),
-    ("Family file read", ["Familiendatei gelesen", "家族ファイルを読み込みました", "가족 파일을 읽었습니다", "Släktfilen lästes", "已讀取家庭檔案"]),
-    ("Family reunion contacts", ["Kontakte für Familientreffen", "親族の集い連絡先", "가족 친목회 연락처", "Kontakter vid släktträffar", "家庭團聚連絡"]),
-    ("Family...", ["Familie", "家族...", "가족...", "Familj...", "家庭..."]),
-    ("Father's age should be between", ["Alter des Vaters soll sein zwischen", "父親の年齢の範囲", "부친의 나이는 다음 사이가 되어야함", "Faderns ålder bör vara mellan", "父親的年齡應介於"]),
-    ("Father's or mother's line (Pedigree)", ["Linie des Vaters oder der Mutter (Stammbaum)", "父方または母方の系統 (系図)", "아버지 또는 어머니 계통 (가계도)", "Faderns eller moderns linje (antavla)", "父系或母系 (世系表)"]),
-    ("Father, mother or child", ["Vater, Mutter oder Kind", "父、母、または子供", "아버지, 어머니 또는 자녀", "Far, mor eller barn", "父親、母親或子女"]),
-    ("Father...", ["Vater...", "父親...", "부친...", "Far...", "父親..."]),
-    ("Female", ["Weiblich", "女性", "여성", "Kvinna", "女性"]),
-    ("Field filters", ["Feldfilter", "フィールドのフィルタ", "필드 필터", "Fältfilter", "欄位篩選條件"]),
-    ("File", ["Datei", "ファイル", "파일", "Fil", "檔案"]),
-    ("File Properties", ["Dateieigenschaften", "ファイルのプロパティ", "파일 등록 정보", "Filens innehåll", "檔案內容"]),
-    ("Fill in any two of start, end and elapsed time. Works for the Gregorian calendar only, from October 1752.", ["Geben Sie zwei der Werte Anfang, Ende und Dauer ein. Gilt nur für den gregorianischen Kalender ab Oktober 1752.", "開始、終了、経過期間のうち 2 つを入力してください。1752年10月以降のグレゴリオ暦のみ使用できます。", "시작, 끝, 경과 기간 중 두 가지를 입력하십시오. 1752년 10월 이후의 그레고리력에만 사용됩니다.", "Fyll i två av start, slut och tid. Fungerar bara för den gregorianska kalendern från oktober 1752.", "請填入開始、結束和經過時間其中兩項。僅適用於 1752 年 10 月以後的格里曆。"]),
-    ("Fill the empty surname and place fields from this person", ["Leere Nachnamen- und Ortsfelder von dieser Person übernehmen", "空の姓と場所をこの人から入力する", "빈 성과 장소 필드를 이 사람에게서 채우기", "Fyll tomma efternamns- och platsfält från den här personen", "從此人填入空白的姓氏和地點欄位"]),
-    ("Film/Volume/Page:", ["Film/Band/Seite:", "フィルム/巻/ページ：", "필름/권/페이지:", "Film/volym/sida:", "影片/冊/頁:"]),
-    ("Find by RIN or MRIN (Ctrl+R)", ["Nach RIN oder MRIN suchen (Strg+R)", "RIN または MRIN で検索 (Ctrl+R)", "RIN 또는 MRIN으로 찾기 (Ctrl+R)", "Sök på RIN eller MRIN (Ctrl+R)", "依 RIN 或 MRIN 尋找 (Ctrl+R)"]),
-    ("Find by RIN/MRIN", ["Suchen nach RIN/MRIN...", "RIN/MRINによって検索...", "RIN/MRIN으로 찾기...", "Sök RIN/MRIN...", "用紀錄號/婚姻號尋找..."]),
-    ("Find by RIN/MRIN...", ["Suchen nach RIN/MRIN...", "RIN/MRINによって検索...", "RIN/MRIN으로 찾기...", "Sök RIN/MRIN...", "用紀錄號/婚姻號尋找..."]),
-    ("Find:", ["Suchen:", "検索:", "찾기:", "Sök:", "尋找:"]),
-    ("First Communion", ["Erstkommunion", "初聖体", "첫 영성체", "Första nattvard", "初領聖體"]),
-    ("First Person", ["Erste Person", "最初の人物", "첫번째 사람", "Första personen", "第一個人"]),
-    ("Flush", ["Leeren", "フラッシュ", "지우시오", "Utjämna", "清除"]),
-    ("For Help, press F1. Double-click on person you want to edit.", ["PAF-Hilfe: F1 oder Doppelklick auf zu bearbeitende Person.", "F1を押すとヘルプ機能が働きます。編集したい人をダブルクリックします。", "도움말을 보려면 F1을 누르시오. 편집하고자 하는 사람을 두번 누르시오.", "Tryck F1 för Hjälp. Dubbelklicka på den person du vill redigera.", "說明，請按F1。在想要編輯的人上面點兩下。"]),
-    ("Formats", ["Format", "フォーマット", "포맷", "Format", "格式"]),
-    ("Full Name", ["Vollständiger Name", "ﾌﾙﾈｰﾑ", "성명", "Fullständigt namn", "全名"]),
-    ("Full Name:", ["Vollständiger Name:", "ﾌﾙﾈｰﾑ:", "성명:", "Fullständigt namn:", "全名:"]),
-    ("Full information on living", ["Alle Daten zu Lebenden", "生存に関するすべての情報", "산 자에 대한 완전 정보", "Fullständig information om levande", "完整的活人資料"]),
-    ("GEDCOM import", ["GEDCOM-Import", "GEDCOMインポート", "GEDCOM 들여오기", "GEDCOM-import", "「家譜資訊檔」GEDCOM匯入"]),
-    ("General", ["Allgemein", "全般", "일반", "Allmänt", "一般"]),
-    ("Generations per page:", ["Generationen pro Seite:", "ページごとの世代数:", "1페이지 당 세대:", "Generationer per sida:", "每頁世代數："]),
-    ("Generations:", ["Generationen:", "世代:", "세대:", "Generationer:", "世代:"]),
-    ("Getting Started", ["Erste Schritte", "はじめに", "시작하기", "Komma igång", "入門"]),
-    ("Given /Surname/ Suffix", ["Vorname /Nachname/ Zusatz", "名 /姓/ 接尾語", "이름 /성/ 접미사", "Förnamn /Efternamn/ Tillägg", "名 /姓/ 字尾"]),
-    ("Given Name", ["Vorname", "名", "이름", "Förnamn", "給定名稱"]),
-    ("Global Search and Replace", ["Global Suchen und Ersetzen", "グローバル検索および置換", "전체 검색 및 대치", "Generell sökning och ersättning", "全域搜尋和取代"]),
-    ("Global Search and Replace...", ["Global Suchen und Ersetzen...", "グローバル検索および置換...", "전 세계 탐색 및 대체...", "Generell sökning och ersättning...", "全域搜尋和取代..."]),
-    ("Go to the home person", ["Zur Hauptperson gehen", "ホームの人へ移動", "기본 인물로 이동", "Gå till hempersonen", "前往起始人物"]),
-    ("Go to the home person (Ctrl+Home)", ["Zur Hauptperson gehen (Strg+Pos1)", "ホームの人へ移動 (Ctrl+Home)", "기본 인물로 이동 (Ctrl+Home)", "Gå till hempersonen (Ctrl+Home)", "前往起始人物 (Ctrl+Home)"]),
-    ("Graduation", ["Schulabschluss", "卒業", "졸업", "Examen", "畢業"]),
-    ("Help", ["Hilfe", "ヘルプ", "도움말", "Hjälp", "說明"]),
-    ("Hide details of people who may still be living", ["Angaben zu möglicherweise noch lebenden Personen ausblenden", "存命の可能性がある人の詳細を隠す", "생존 가능성이 있는 사람의 세부 정보 숨기기", "Dölj uppgifter om personer som kan vara i livet", "隱藏可能仍在世者的詳細資料"]),
-    ("Home Person", ["Ausgangsperson", "本人", "최초 작성자", "Startperson", "起始之人"]),
-    ("Immigration", ["Einwanderung", "入国移住", "이민 입국", "Invandring", "移入"]),
-    ("Import", ["Importieren", "インポート", "들여오기", "Importera", "匯入"]),
-    ("Import a GEDCOM or .paf file", ["GEDCOM- oder .paf-Datei importieren", "GEDCOM または .paf ファイルをインポート", "GEDCOM 또는 .paf 파일 가져오기", "Importera en GEDCOM- eller .paf-fil", "匯入 GEDCOM 或 .paf 檔案"]),
-    ("Import...", ["Importieren...", "インポート...", "들여오기...", "Importera...", "匯入..."]),
-    ("Include in the scrapbook", ["In das Sammelalbum aufnehmen", "スクラップブックに含める", "스크랩북에 포함", "Ta med i klippboken", "納入剪貼簿"]),
-    ("Include notes", ["Notizen einbeziehen", "メモを含める", "메모 포함", "Ta med anteckningar", "包括筆記"]),
-    ("Include people who have died", ["Verstorbene Personen einbeziehen", "亡くなった人を含める", "사망한 사람 포함", "Ta med avlidna personer", "包括已過世者"]),
-    ("Individual", ["Person", "個人", "개인", "Person", "個人"]),
-    ("Individual Event List", ["Ereignisliste einer Person", "個人の出来事のリスト", "개인 사건 목록", "Lista på händelser för person", "個人事項"]),
-    ("Individual List", ["Personenliste", "個人のリスト", "개인 목록", "Personlista", "個人名單"]),
-    ("Individual List...", ["Personenliste...", "個人のリスト....", "개인 목록...", "Personlista...", "個人名單..."]),
-    ("Individual Summary", ["Personenblatt", "個人の概要", "개인에 대한 요약", "Sammanställning för person", "個人摘要"]),
-    ("Individual list (Ctrl+F)", ["Personenliste (Strg+F)", "個人のリスト (Ctrl+F)", "개인 목록 (Ctrl+F)", "Personlista (Ctrl+F)", "個人名單 (Ctrl+F)"]),
-    ("Individual list, descendancy list, find by RIN", ["Personenliste, Nachkommenliste, Suche nach RIN", "個人のリスト、子孫のリスト、RIN で検索", "개인 목록, 후손 목록, RIN으로 찾기", "Personlista, ättlingslista, sök på RIN", "個人名單、後代名單、依 RIN 尋找"]),
-    ("Individual...", ["Person...", "個人...", "개인...", "Person...", "個人..."]),
-    ("Individuals sorted alphabetically", ["Personen alphabetisch sortiert", "ｱﾙﾌｧﾍﾞｯﾄ/五十音順に並べられた個人", "가나다 순으로 정렬된 개인", "Personer sorterade alfabetiskt", "個人，依字母排序"]),
-    ("Individuals sorted by RIN", ["Personen nach RIN sortiert", "RIN順に並べられた個人", "RIN으로 정렬된 개인", "Personer sorterade efter RIN", "個人，依紀錄號排序"]),
-    ("Individuals with notes", ["Personen mit Notizen", "注釈のある個人", "메모가 있는 개인", "Personer med noteringar", "有備註的個人"]),
-    ("InfoBox", ["Info-Box", "情報ボックス", "정보 상자", "Informationsruta", "訊息盒"]),
-    ("It has been a while since this family file was backed up. Use File, Backup after opening it again.", ["Diese Familiendatei wurde länger nicht gesichert. Verwenden Sie nach dem erneuten Öffnen Datei, Sichern.", "この家族ファイルは長い間バックアップされていません。もう一度開いてから［ファイル］、［バックアップ］を使ってください。", "이 가족 파일을 백업한 지 오래되었습니다. 다시 연 후 파일, 백업을 사용하십시오.", "Det var länge sedan släktfilen säkerhetskopierades. Välj Arkiv, Säkerhetskopiera när du har öppnat den igen.", "此家庭檔案已有一段時間未備份。請重新開啟後使用「檔案」、「備份」。"]),
-    ("Keep Left, Merge Right", ["Links behalten, rechts einfügen", "左を残して右を統合", "왼쪽 유지, 오른쪽 병합", "Behåll vänster, slå ihop höger", "保留左方，合併右方"]),
-    ("Keep Right, Merge Left", ["Rechts behalten, links einfügen", "右を残して左を統合", "오른쪽 유지, 왼쪽 병합", "Behåll höger, slå ihop vänster", "保留右方，合併左方"]),
-    ("Keyboard", ["Tastatur", "キーボード", "키보드", "Tangentbord", "鍵盤"]),
-    ("Keyboard help (F1)", ["Tastaturhilfe (F1)", "キーボードのヘルプ (F1)", "키보드 도움말 (F1)", "Tangentbordshjälp (F1)", "鍵盤說明 (F1)"]),
-    ("LDS data", ["HLT-Daten", "LDSのデータ", "말일 성도 데이터", "SDH-data", "後期聖徒資料"]),
-    ("Language", ["Sprache", "言語", "언어", "Språk", "語言"]),
-    ("Colors", ["Farben", "配色", "색상", "Färger", "配色"]),
-    ("Classic", ["Klassisch", "クラシック", "클래식", "Klassisk", "經典"]),
-    ("Slate Blue", ["Schieferblau", "スレートブルー", "슬레이트 블루", "Skifferblå", "石板藍"]),
-    ("Navy", ["Marineblau", "ネイビー", "네이비", "Marinblå", "海軍藍"]),
-    ("Parchment", ["Pergament", "羊皮紙", "양피지", "Pergament", "羊皮紙"]),
-    ("Blue Linen", ["Blaues Leinen", "ブルーリネン", "블루 리넨", "Blått linne", "藍色亞麻"]),
-    ("Leather", ["Leder", "レザー", "가죽", "Läder", "皮革"]),
-    ("Original", ["Original", "オリジナル", "원본", "Original", "原始"]),
-    ("Tree pictures", ["Baumbilder", "木の絵", "나무 그림", "Trädbilder", "樹木圖案"]),
-    ("Earth tones", ["Erdtöne", "アースカラー", "어스 톤", "Jordtoner", "大地色"]),
-    ("Popular colors", ["Beliebte Farben", "人気の色", "인기 색상", "Populära färger", "熱門顏色"]),
-    ("Neutrals", ["Neutraltöne", "ニュートラル", "뉴트럴", "Neutrala", "中性色"]),
-    ("Genealogy sites", ["Genealogie-Websites", "系図サイト", "족보 사이트", "Släktforskningssajter", "家譜網站"]),
-    ("Leaf Green", ["Blattgrün", "リーフグリーン", "리프 그린", "Lövgrön", "葉綠"]),
-    ("Fresh Green", ["Frisches Grün", "フレッシュグリーン", "프레시 그린", "Friskt grön", "清新綠"]),
-    ("Deep Green", ["Tiefgrün", "ディープグリーン", "딥 그린", "Djupgrön", "深綠"]),
-    ("Sage", ["Salbei", "セージ", "세이지", "Salvia", "鼠尾草綠"]),
-    ("Olive", ["Oliv", "オリーブ", "올리브", "Oliv", "橄欖"]),
-    ("Moss", ["Moos", "モス", "이끼", "Mossa", "苔綠"]),
-    ("Forest Green", ["Waldgrün", "フォレストグリーン", "포레스트 그린", "Skogsgrön", "森林綠"]),
-    ("Terracotta", ["Terrakotta", "テラコッタ", "테라코타", "Terrakotta", "赤陶"]),
-    ("Clay", ["Ton", "クレイ", "점토", "Lera", "陶土"]),
-    ("Burgundy", ["Burgunder", "バーガンディ", "버건디", "Vinröd", "酒紅"]),
-    ("Teal", ["Petrol", "ティール", "틸", "Blågrön", "藍綠"]),
-    ("Plum", ["Pflaume", "プラム", "플럼", "Plommon", "梅紫"]),
-    ("Charcoal", ["Anthrazit", "チャコール", "차콜", "Kolgrå", "炭灰"]),
-    ("Midnight", ["Mitternacht", "ミッドナイト", "미드나이트", "Midnatt", "午夜藍"]),
-    ("Sky", ["Himmelblau", "スカイ", "스카이", "Himmelsblå", "天藍"]),
-    ("Rose", ["Rosé", "ローズ", "로즈", "Rosa", "玫瑰"]),
-    ("Ivory", ["Elfenbein", "アイボリー", "아이보리", "Elfenben", "象牙"]),
-    ("Linen", ["Leinen", "リネン", "리넨", "Linne", "亞麻"]),
-    ("Stone", ["Stein", "ストーン", "스톤", "Sten", "石灰"]),
-    ("Taupe", ["Taupe", "トープ", "토프", "Gråbrun", "灰褐"]),
-    ("Link a source", ["Quelle verknüpfen", "資料を関連付ける", "출처 연결", "Länka en källa", "連結資料來源"]),
-    ("List name", ["Listenname", "リスト名", "목록 이름", "Listnamn", "名單名稱"]),
-    ("Lists", ["Listen", "リスト", "목록", "Listor", "名單"]),
-    ("Lists the pictures marked for the scrapbook, with their captions. Pictures themselves are viewed from Edit, Multimedia.", ["Listet die für das Sammelalbum markierten Bilder mit ihren Beschriftungen auf. Die Bilder selbst sehen Sie unter Bearbeiten, Multimedia.", "スクラップブック用に指定した画像を説明付きで一覧表示します。画像は［編集］、［マルチメディア］で見られます。", "스크랩북으로 표시된 그림을 설명과 함께 나열합니다. 그림은 편집, 멀티미디어에서 볼 수 있습니다.", "Listar bilder som markerats för klippboken, med bildtexter. Själva bilderna visas via Redigera, Multimedia.", "列出標記為剪貼簿的圖片和說明。圖片本身可從「編輯」、「多媒體」檢視。"]),
-    ("Log changes", ["Änderungen aufzeichnen (Logbuch)", "ログの変更", "변경 입력", "Registerändringar", "登錄更改"]),
-    ("MRIN", ["MRIN", "MRIN", "MRIN", "MRIN", "婚姻號"]),
-    ("Make Primary", ["Haupteltern", "第一にする", "시작인 만들기", "Gör som grund", "設為主要"]),
-    ("Male", ["Männlich", "男性", "남성", "Man", "男性"]),
-    ("Marriage", ["Eheschließung", "結婚", "결혼", "Vigsel", "結婚"]),
-    ("Marriage Banns", ["Aufgebot", "結婚予告", "혼인 공고", "Lysning", "結婚預告"]),
-    ("Marriage Contract", ["Ehevertrag", "結婚契約", "혼인 계약", "Äktenskapsförord", "婚約書"]),
-    ("Marriage Date", ["Heiratsdatum", "結婚日", "결혼 날짜", "Vigseldatum", "結婚日期"]),
-    ("Marriage Event List", ["Ereignisliste einer Eheschließung", "結婚に関する出来事のリスト", "결혼 사건 목록", "Lista på händelser för äktenskap", "婚姻事項"]),
-    ("Marriage License", ["Heiratserlaubnis", "結婚許可証", "혼인 허가", "Vigseltillstånd", "結婚證書"]),
-    ("Marriage List", ["Eheliste", "結婚のリスト", "결혼 목록", "Vigsellista", "婚姻"]),
-    ("Marriage List...", ["Eheliste...", "結婚のリスト...", "결혼 목록...", "Vigsellista...", "婚姻名單..."]),
-    ("Marriage Settlement", ["Ehegüterregelung", "婚姻財産契約", "혼인 재산 계약", "Äktenskapsuppgörelse", "婚姻財產協議"]),
-    ("Marriage date:", ["Heiratsdatum:", "結婚日:", "결혼 날짜:", "Vigseldatum:", "結婚日期:"]),
-    ("Marriage place:", ["Heiratsort:", "結婚地:", "결혼 장소:", "Vigselort:", "結婚地點:"]),
-    ("Marriage:", ["Eheschließung:", "結婚：", "결혼:", "Vigsel:", "婚姻:"]),
-    ("Marriages", ["Eheschließungen", "結婚", "결혼", "Vigslar", "婚姻"]),
-    ("Match all (AND)", ["Alle erfüllen (UND)", "すべて一致 (AND)", "모두 일치 (AND)", "Matcha alla (OCH)", "全部符合 (AND)"]),
-    ("Match any (OR)", ["Eines erfüllen (ODER)", "いずれか一致 (OR)", "하나라도 일치 (OR)", "Matcha någon (ELLER)", "任一符合 (OR)"]),
-    ("Match case", ["Gleiche Schreibweise", "大文字と小文字を区別する", "사건 연결", "Överensstämmelse med liten eller stor bokstav", "大小寫須符合"]),
-    ("Match on AFNs", ["Nach AFN abgleichen", "AFN で照合", "AFN으로 비교", "Matcha på AFN", "依 AFN 比對"]),
-    ("Match on names", ["Nach Namen abgleichen", "名前で照合", "이름으로 비교", "Matcha på namn", "依姓名比對"]),
-    ("Match/Merge", ["Abgleichen/Zusammenführen", "照合/統合", "비교/병합", "Matcha/slå ihop", "比對/合併"]),
-    ("Match/Merge...", ["Vergleichen/Verschmelzen...", "照合/融合...", "연결/결합...", "Jämför/Kombinera...", "符合/合併..."]),
-    ("Merge Duplicate Sources", ["Doppelte Quellen zusammenführen", "重複する資料を統合", "중복 출처 병합", "Slå ihop dubblettkällor", "合併重複的資料來源"]),
-    ("Military", ["Militärdienst", "兵役", "군 복무", "Militärtjänst", "兵役"]),
-    ("Month first: 11 March 1955", ["Monat zuerst: 11. März 1955", "月が先：1955年3月11日", "월 먼저: 1955년 3월 11일", "Månad först: 11 mars 1955", "月在前: 1955年3月11日"]),
-    ("Months:", ["Monate:", "月:", "월수:", "Månader:", "月："]),
-    ("Mother's age should be between", ["Alter der Mutter soll sein zwischen", "母親の年齢の範囲", "모친의 나이는 다음 사이가 되어야함", "Moderns ålder bör vara mellan", "母親的年齡應介於"]),
-    ("Mother...", ["Mutter...", "母親...", "모친...", "Mor...", "母親..."]),
-    ("Move someone to the primary position", ["Jemanden an die Hauptposition verschieben", "人を主な位置へ移動", "사람을 주 위치로 이동", "Flytta någon till huvudplatsen", "將某人移到主要位置"]),
-    ("Move this column left", ["Diese Spalte nach links", "この列を左へ移動", "이 열을 왼쪽으로 이동", "Flytta kolumnen åt vänster", "將此欄向左移"]),
-    ("Move this column right", ["Diese Spalte nach rechts", "この列を右へ移動", "이 열을 오른쪽으로 이동", "Flytta kolumnen åt höger", "將此欄向右移"]),
-    ("Move to Primary", ["Haupterson", "本人に移動", "시작인에게 가기", "Flytta till Grund", "移到主要位置"]),
-    ("Multimedia", ["Multimedia", "ﾏﾙﾁﾒﾃﾞｨｱ", "다매체", "Multimedia", "多媒體"]),
-    ("Multimedia (Ctrl+M)", ["Multimedia (Strg+M)", "マルチメディア (Ctrl+M)", "멀티미디어 (Ctrl+M)", "Multimedia (Ctrl+M)", "多媒體 (Ctrl+M)"]),
-    ("Multimedia file names", ["Multimedia-Dateinamen", "マルチメディアのファイル名", "멀티미디어 파일 이름", "Multimediafilnamn", "多媒體檔案名稱"]),
-    ("Multimedia links", ["Multimedia-Links", "マルチメディア・リンク", "다매체 연결", "Multimedialänkar", "多媒體連結"]),
-    ("Name:", ["Name:", "名前:", "이름:", "Namn:", "姓名："]),
-    ("Names", ["Namen", "人名", "이름", "Namn", "名字"]),
-    ("Names on living", ["Namen Lebender", "生存者の名前", "산 자의 성명", "Namn på levande", "活人名字"]),
-    ("Names that sound alike", ["Ähnlich klingende Namen", "発音が似ている名前", "발음이 비슷한 이름", "Namn som låter lika", "發音相近的姓名"]),
-    ("Naturalization", ["Einbürgerung", "帰化", "귀화", "Naturalisering", "歸化"]),
-    ("New", ["Neu", "新規", "새 파일", "Ny", "增加"]),
-    ("New Event/Attribute", ["Neues Ereignis/Merkmal...", "新しい出来事/属性...", "새로운 사건/속성...", "Ny händelse/attribut...", "增加事項／特點..."]),
-    ("New event name", ["Neuer Ereignisname", "新しい出来事の名前", "새 사건 이름", "Namn på ny händelse", "新事件名稱"]),
-    ("New...", ["Neu...", "新規作成...", "새 파일...", "Ny...", "開新檔案..."]),
-    ("Next", ["Nächster", "次のページ", "다음", "Nästa", "下一步"]),
-    ("Next Page", ["Nächste", "次ﾍﾟｰｼﾞ", "다음 쪽", "Nästa sida", "下一頁"]),
-    ("Nickname:", ["Spitzname:", "ニックネーム:", "애칭:", "Smeknamn:", "別名:"]),
-    ("No descendants are recorded.", ["Es sind keine Nachkommen erfasst.", "子孫は記録されていません。", "후손이 기록되어 있지 않습니다.", "Inga ättlingar finns registrerade.", "沒有後代記錄。"]),
-    ("No file", ["Keine Datei", "ファイルなし", "파일 없음", "Ingen fil", "沒有檔案"]),
-    ("No parents are linked. Use the Add menu to add them.", ["Es sind keine Eltern verknüpft. Fügen Sie sie über das Menü Hinzufügen hinzu.", "両親が関連付けられていません。［追加］メニューで追加してください。", "연결된 부모가 없습니다. 추가 메뉴에서 추가하십시오.", "Inga föräldrar är länkade. Lägg till dem via menyn Lägg till.", "沒有連結父母。請使用「增加」功能表增加。"]),
-    ("No pictures or files have been added for this individual.", ["Für diese Person wurden keine Bilder oder Dateien hinzugefügt.", "この人の画像やファイルは追加されていません。", "이 개인에 대해 추가된 그림이나 파일이 없습니다.", "Inga bilder eller filer har lagts till för personen.", "此人尚未增加圖片或檔案。"]),
-    ("No possible duplicates were found.", ["Es wurden keine möglichen Duplikate gefunden.", "重複の可能性は見つかりませんでした。", "중복 가능성이 발견되지 않았습니다.", "Inga möjliga dubbletter hittades.", "未找到可能的重複項目。"]),
-    ("No problems were found in the links of this file.", ["In den Verknüpfungen dieser Datei wurden keine Probleme gefunden.", "このファイルの関連付けに問題は見つかりませんでした。", "이 파일의 연결에서 문제가 발견되지 않았습니다.", "Inga problem hittades i filens länkar.", "此檔案的連結未發現問題。"]),
-    ("No record has that number.", ["Kein Datensatz hat diese Nummer.", "その番号の記録はありません。", "그 번호의 기록이 없습니다.", "Ingen post har det numret.", "沒有該編號的記錄。"]),
-    ("None", ["Ohne", "なし", "없음", "Inget", "無"]),
-    ("Not a Match", ["Keine Übereinstimmung", "一致しない", "일치하지 않음", "Ingen matchning", "不符合"]),
-    ("Not saved yet", ["Noch nicht gespeichert", "未保存", "아직 저장되지 않음", "Inte sparad än", "尚未儲存"]),
-    ("Notepad", ["Notepad", "メモ帳", "메모지", "Notepad", "筆記本"]),
-    ("Notes", ["Notizen", "注釈", "메모", "Noteringar", "備註"]),
-    ("OK", ["OK", "OK", "확인", "OK", "確定"]),
-    ("Occupation", ["Beruf", "職業", "직업", "Yrke", "職業"]),
-    ("On Ancestry", ["Auf Ancestry", "Ancestry で", "Ancestry에서", "På Ancestry", "在 Ancestry 上"]),
-    ("On FamilySearch", ["Auf FamilySearch", "FamilySearch で", "FamilySearch에서", "På FamilySearch", "在 FamilySearch 上"]),
-    ("On Genealogy.com", ["Auf Genealogy.com", "Genealogy.com で", "Genealogy.com에서", "På Genealogy.com", "在 Genealogy.com 上"]),
-    ("On RootsWeb", ["Auf RootsWeb", "RootsWeb で", "RootsWeb에서", "På RootsWeb", "在 RootsWeb 上"]),
-    ("Only the current focus list", ["Nur die aktuelle Auswahlliste", "現在のフォーカスリストのみ", "현재 포커스 목록만", "Bara den aktuella fokuslistan", "僅目前的焦點名單"]),
-    ("Open Sample Family", ["Beispielfamilie öffnen", "サンプルの家族を開く", "샘플 가족 열기", "Öppna exempelsläkt", "開啟範例家庭"]),
-    ("Open family file (Ctrl+O)", ["Familiendatei öffnen (Strg+O)", "家族ファイルを開く (Ctrl+O)", "가족 파일 열기 (Ctrl+O)", "Öppna släktfil (Ctrl+O)", "開啟家庭檔案 (Ctrl+O)"]),
-    ("Open...", ["Öffnen...", "開く...", "열기...", "Öppna...", "開啟舊檔..."]),
-    ("Opens the report in your PDF viewer, where you can print it", ["Öffnet den Bericht im PDF-Programm, wo Sie ihn drucken können", "PDF ビューアでレポートを開き、そこで印刷できます", "PDF 뷰어에서 보고서를 열어 인쇄할 수 있습니다", "Öppnar rapporten i PDF-programmet där du kan skriva ut den", "在 PDF 檢視程式中開啟報告，即可列印"]),
-    ("Order Children", ["Reihenfolge der Kinder...", "子供たちの順番...", "자녀들의 순서...", "Ordna barn...", "子女順序..."]),
-    ("Order Children...", ["Reihenfolge der Kinder...", "子供たちの順番...", "자녀들의 순서...", "Ordna barn...", "子女順序..."]),
-    ("Order Spouses", ["Reihenfolge der Ehepartner...", "配偶者の順番...", "배우자들의 순서...", "Ordna makar...", "配偶順序..."]),
-    ("Order Spouses...", ["Reihenfolge der Ehepartner...", "配偶者の順番...", "배우자들의 순서...", "Ordna makar...", "配偶順序..."]),
-    ("Ordinances", ["Hlg. Handlg.", "儀式", "의식들", "Förordningar", "教儀"]),
-    ("Ordination", ["Ordination", "聖任", "성임", "Ordination", "按立"]),
-    ("Other Parents...", ["Weitere Eltern...", "その他の両親...", "다른 부모...", "Andra föräldrar...", "其他的父母..."]),
-    ("Pages are saved in a folder you choose. Nothing is uploaded.", ["Die Seiten werden in einem von Ihnen gewählten Ordner gespeichert. Es wird nichts hochgeladen.", "ページは選んだフォルダに保存されます。アップロードはされません。", "페이지는 선택한 폴더에 저장됩니다. 아무것도 업로드되지 않습니다.", "Sidorna sparas i en mapp du väljer. Inget laddas upp.", "網頁會儲存在您選擇的資料夾中，不會上傳任何內容。"]),
-    ("Parent Link", ["Kindsch.-Verh.", "親との関係", "부모 연결", "Länk till föräldrar", "父母連結"]),
-    ("Parents", ["Eltern", "両親", "부모", "Föräldrar", "父母"]),
-    ("Parents' Marriage", ["Eheschließung der Eltern", "両親の結婚", "부모의 결혼", "Föräldrars vigsel", "父母的婚姻"]),
-    ("Pedigree", ["Stammbaum", "系図", "가계도", "Antavla", "世系表"]),
-    ("Phone:", ["Tel:", "電話:", "전화 번호:", "Telefon:", "電話："]),
-    ("Physical Description", ["Personenbeschreibung", "身体に関する記述", "신체 설명", "Fysisk beskrivning", "外觀描述"]),
-    ("Place", ["Ort", "場所", "장소", "Plats", "地點"]),
-    ("Places", ["Orte", "場所", "장소들", "Platser", "小數位數"]),
-    ("Places sorted alphabetically", ["Orte alphabetisch sortiert", "ｱﾙﾌｧﾍﾞｯﾄ/五十音順の地名", "가나다 순으로 정렬된 장소들", "Platser sorterade alfabetiskt", "地點，依字母排序"]),
-    ("Please check", ["Bitte prüfen", "確認してください", "확인하십시오", "Kontrollera", "請檢查"]),
-    ("Possible problems", ["Mögliche Probleme", "可能な問題", "가능한 문제들", "Möjliga problem", "紀錄可能有的問題"]),
-    ("Preferences", ["Voreinstellungen", "基本設定", "우선권", "Preferenser", "喜好設定"]),
-    ("Prepared by", ["Erstellt durch", "作成者", "작성자", "Uppgiftslämnare", "撰寫人"]),
-    ("Preview", ["Vorschau", "プレビュー", "미리보기", "Visning", "預覽"]),
-    ("Previous", ["Voriger", "前のページ", "이전", "Föregående", "上一個"]),
-    ("Previous Page", ["Vorherige Seite", "前のページ", "이전 페이지", "Föregående sida", "上一頁"]),
-    ("Print Reports", ["Berichte drucken...", "レポートの印刷...", "보고서 인쇄...", "Skriv ut rapporter...", "列印報表..."]),
-    ("Print Reports...", ["Berichte drucken...", "レポートの印刷...", "보고서 인쇄...", "Skriv ut rapporter...", "列印報表..."]),
-    ("Print reports", ["Berichte drucken", "レポートを印刷", "보고서 인쇄", "Skriv ut rapporter", "列印報告"]),
-    ("Print reports (Ctrl+P)", ["Berichte drucken (Strg+P)", "レポートを印刷 (Ctrl+P)", "보고서 인쇄 (Ctrl+P)", "Skriv ut rapporter (Ctrl+P)", "列印報告 (Ctrl+P)"]),
-    ("Print...", ["Drucken...", "印刷...", "인쇄...", "Skriv ut...", "列印..."]),
-    ("Probate", ["Testamentseröffnung", "遺言検認", "유언 검인", "Bouppteckning", "遺囑認證"]),
-    ("Problems", ["Probleme", "問題", "문제", "Problem", "問題"]),
-    ("Properties", ["Eigenschaften", "プロパティ", "등록 정보", "Egenskaper", "內容"]),
-    ("RIN", ["RIN", "RIN", "RIN", "RIN", "紀錄號"]),
-    ("Relationship Calculator", ["Verwandtschaftsrechner", "関係の算定", "관계 계산기", "Släktskapskalkylator", "親戚關係小算盤"]),
-    ("Relationship calculator", ["Verwandtschaftsrechner", "続柄の計算", "관계 계산기", "Släktskapsberäkning", "關係計算器"]),
-    ("Relationship filter", ["Verwandtschafts-Filter", "関係フィルター", "관계 필터", "Släktskapsfilter", "關係篩選器"]),
-    ("Relationship to parents:", ["Kindschaftsverhältnis:", "両親との関係:", "부모와의 관계:", "Släktskap med föräldrar:", "和父母的關係："]),
-    ("Religion", ["Religion", "宗教", "종교", "Religion", "宗教"]),
-    ("Remove", ["Entfernen", "削除", "제거", "Ta bort", "移除"]),
-    ("Repair", ["Reparieren", "修復", "복구", "Reparera", "修復"]),
-    ("Replace All", ["Alle ersetzen", "すべて置換", "모두 대체", "Ersätt alla", "全部取代"]),
-    ("Replace with:", ["Ersetzen durch:", "置換後の文字列:", "다음과 대치:", "Ersätt med:", "取代為："]),
-    ("Reports...", ["Berichte...", "レポート...", "보고...", "Rapporter...", "報表..."]),
-    ("Repository List", ["Standortliste", "記録保管所のリスト", "보관소 목록", "Lista på förvaringsplatser", "收藏者名單"]),
-    ("Repository:", ["Standort:", "記録保管所:", "보관소:", "Förvaringsplats:", "收藏者："]),
-    ("Residence", ["Wohnort", "居住地", "거주지", "Bostad", "居住地"]),
-    ("Restore", ["W.-herstellen", "復元", "복구", "Återställ", "還原"]),
-    ("Restore...", ["W.-herstellen...", "復元...", "복원...", "Återställ...", "還原..."]),
-    ("Retirement", ["Ruhestand", "退職", "은퇴", "Pensionering", "退休"]),
-    ("Save", ["Speichern", "保存", "저장", "Spara", "儲存"]),
-    ("Save As...", ["Speichern unter...", "名前を付けて保存...", "다른 이름으로 저장...", "Spara som...", "另存新檔..."]),
-    ("Save List", ["Liste speichern", "リストを保存", "목록 저장", "Spara lista", "儲存名單"]),
-    ("Save as PDF...", ["Als PDF speichern...", "PDF として保存...", "PDF로 저장...", "Spara som PDF...", "另存為 PDF..."]),
-    ("Save...", ["Speichern...", "保存...", "저장...", "Spara...", "儲存..."]),
-    ("Saved lists", ["Gespeicherte Listen", "保存したリスト", "저장된 목록", "Sparade listor", "已儲存的名單"]),
-    ("Scrapbook", ["Bilderalbum", "スクラップブック", "스크랩북", "Urklippsbok", "剪貼簿"]),
-    ("Sealed to parents:", ["An Eltern ges.:", "親子の結び固め:", "부모에게 인봉됨:", "Beseglad till föräldrar:", "印證給父母:"]),
-    ("Sealed to spouse:", ["An Ehepartner gesiegelt:", "夫婦の結び固め:", "배우자에게 인봉됨:", "Beseglad till make/maka:", "印證給配偶:"]),
-    ("Search", ["Suchen", "検索", "찾기", "Sök", "搜尋"]),
-    ("Search in:", ["Suchen in:", "検索対象：", "찾을 위치:", "Sök i:", "搜尋範圍:"]),
-    ("Second Person", ["Zweite Person", "二人目の人物", "두번째 사람", "Andra personen", "第二個人"]),
-    ("Select Existing", ["Vorhandene auswählen", "既存から選択", "기존 항목 선택", "Välj befintlig", "選擇現有的"]),
-    ("Select a source, or click New.", ["Wählen Sie eine Quelle aus oder klicken Sie auf Neu.", "資料を選ぶか［新規］をクリックしてください。", "출처를 선택하거나 새로 만들기를 클릭하십시오.", "Välj en källa eller klicka på Ny.", "請選擇資料來源，或按一下「新增」。"]),
-    ("Select an individual first.", ["Wählen Sie zuerst eine Person aus.", "先に個人を選んでください。", "먼저 개인을 선택하십시오.", "Välj en person först.", "請先選擇一個人。"]),
-    ("Select different individuals", ["Andere Personen auswählen", "別の個人を選ぶ", "다른 개인 선택", "Välj andra personer", "選擇其他人"]),
-    ("Select the primary person, or the last one shown", ["Hauptperson oder letzte angezeigte Person auswählen", "主な人、または最後に表示された人を選ぶ", "주 인물 또는 마지막으로 표시된 사람 선택", "Välj huvudpersonen eller den sista som visas", "選擇主要人物或最後顯示的人"]),
-    ("Sex", ["Geschlecht", "性別", "성별", "Kön", "性別"]),
-    ("Sex:", ["m/w:", "性別:", "성별:", "Kön:", "性別:"]),
-    ("Show", ["Anzeigen", "表示", "보이기", "Visa", "顯示"]),
-    ("Show RIN numbers after names", ["RIN-Nummern hinter Namen anzeigen", "名前の後に RIN 番号を表示", "이름 뒤에 RIN 번호 표시", "Visa RIN-nummer efter namn", "在姓名後顯示 RIN 編號"]),
-    ("Show on Individual Screen", ["In der Personenansicht anzeigen", "個人の画面に表示", "개인 화면에 표시", "Visa i personvyn", "顯示在個人畫面"]),
-    ("Show relationships on the status bar", ["Verwandtschaft in der Statusleiste anzeigen", "ステータスバーに続柄を表示", "상태 표시줄에 관계 표시", "Visa släktskap i statusfältet", "在狀態列顯示關係"]),
-    ("Sort by Birth Date", ["Nach Geburtsdatum sortieren", "生年月日で並べ替え", "출생일로 정렬", "Sortera efter födelsedatum", "依出生日期排序"]),
-    ("Soundex", ["Soundex", "Soundex", "Soundex", "Soundex", "Soundex"]),
-    ("Soundex Calculator", ["Soundexrechner", "Soundexに基づいた算出", "사운덱스 계산기", "Soundex-kalkylator", "Soundex 小算盤"]),
-    ("Soundex Code Calculator", ["Soundex-Code Rechner", "Soundexコード算定", "사운덱스 약호 계산기", "Kalkylator för Soundex-kod", "Soundex 碼小算盤"]),
-    ("Soundex code:", ["Soundex-Code:", "Soundexコード:", "사운덱스 약호:", "Soundex-kod:", "Soundex 碼："]),
-    ("Sounds like", ["klingt wie", "音が類似", "비슷함", "Låter som", "發音類似"]),
-    ("Source List", ["Quellenverzeichnis", "情報源の一覧表", "근원 목록", "Källförteckning", "來源目錄"]),
-    ("Sources", ["Quellen", "情報源", "근원", "Källor", "來源"]),
-    ("Spouse", ["Ehepartner", "配偶者", "배우자", "Make/Maka", "配偶"]),
-    ("Spouse...", ["Ehepartner...", "配偶者...", "배우자...", "Make/Maka...", "配偶..."]),
-    ("Spouse:", ["Eheprt.:", "配偶者:", "배우자:", "Make/Maka:", "配偶:"]),
-    ("Start date:", ["Anfangsdatum:", "最初の日:", "시작 날짜:", "Startdatum:", "開始日期："]),
-    ("Status Bar", ["Statusleiste", "ステータスバー", "상태 표시줄", "Statusrad", "狀態列"]),
-    ("Surname", ["Nachname", "姓", "성", "Efternamn", "姓"]),
-    ("Switch between the three screens", ["Zwischen den drei Ansichten wechseln", "3 つの画面を切り替える", "세 화면 간 전환", "Växla mellan de tre vyerna", "切換三個畫面"]),
-    ("Temple", ["Tempel", "神殿", "성전", "Tempel", "聖殿"]),
-    ("Temple Codes", ["Tempelcodes", "神殿コード", "성전 코드", "Tempelkoder", "聖殿代碼"]),
-    ("Temple:", ["Tempel:", "神殿:", "성전:", "Tempel:", "聖殿:"]),
-    ("That is all the possible duplicates.", ["Das sind alle möglichen Duplikate.", "重複の可能性は以上です。", "중복 가능성은 이것이 전부입니다.", "Det var alla möjliga dubbletter.", "以上是所有可能的重複項目。"]),
-    ("The date you typed is not standard.", ["Das eingegebene Datum weicht vom Standard ab.", "入力された日付は標準の形式ではありません。", "입력한 날짜는 표준이 아닙니다.", "Det datum du skrev är inte enligt standard.", "輸入的日期不合標準。"]),
-    ("There are no sources in this file yet. Add them from Edit, Source List.", ["Diese Datei enthält noch keine Quellen. Fügen Sie sie über Bearbeiten, Quellenliste hinzu.", "このファイルにはまだ資料がありません。［編集］、［資料リスト］から追加してください。", "이 파일에는 아직 출처가 없습니다. 편집, 출처 목록에서 추가하십시오.", "Filen har inga källor än. Lägg till dem via Redigera, Källista.", "此檔案尚無資料來源。請從「編輯」、「資料來源名單」增加。"]),
-    ("This changes names and places written in capital letters to upper and lower case, for example SMITH to Smith. Consider making a backup first. Continue?", ["Dies ändert groß geschriebene Namen und Orte in Groß-/Kleinschreibung, zum Beispiel SMITH in Smith. Erstellen Sie am besten zuerst eine Sicherung. Fortfahren?", "すべて大文字の名前と場所を大文字小文字混在に変更します (例：SMITH を Smith に)。先にバックアップを作ることをお勧めします。続行しますか。", "대문자로 된 이름과 장소를 대소문자 혼합으로 바꿉니다(예: SMITH를 Smith로). 먼저 백업을 만드는 것이 좋습니다. 계속하시겠습니까?", "Namn och platser med bara versaler ändras till gemener och versaler, till exempel SMITH till Smith. Gör gärna en säkerhetskopia först. Fortsätta?", "這會將全部大寫的姓名和地點改為大小寫混合，例如將 SMITH 改為 Smith。建議先備份。要繼續嗎？"]),
-    ("This family has not been saved to a file. Save it before closing?", ["Diese Familie wurde noch nicht in einer Datei gespeichert. Vor dem Schließen speichern?", "この家族はまだファイルに保存されていません。閉じる前に保存しますか。", "이 가족은 아직 파일에 저장되지 않았습니다. 닫기 전에 저장하시겠습니까?", "Släkten har inte sparats i en fil. Spara innan du stänger?", "此家庭尚未儲存至檔案。要在關閉前儲存嗎？"]),
-    ("This family has not been saved to a file. Save it before you exit?", ["Diese Familie wurde noch nicht in einer Datei gespeichert. Vor dem Beenden speichern?", "この家族はまだファイルに保存されていません。終了する前に保存しますか。", "이 가족은 아직 파일에 저장되지 않았습니다. 끝내기 전에 저장하시겠습니까?", "Släkten har inte sparats i en fil. Spara innan du avslutar?", "此家庭尚未儲存至檔案。要在結束前儲存嗎？"]),
-    ("This file is not a valid family file. It may be corrupt.", ["Dies ist keine gültige Familiendatei. Sie ist möglicherweise beschädigt.", "これは有効な家族ファイルではありません。破損している可能性があります。", "유효한 가족 파일이 아닙니다. 손상되었을 수 있습니다.", "Det här är ingen giltig släktfil. Den kan vara skadad.", "這不是有效的家庭檔案，可能已損毀。"]),
-    ("This individual has no marriage to order children in.", ["Diese Person hat keine Ehe, in der Kinder sortiert werden können.", "この人には子供を並べ替える結婚がありません。", "이 개인에게는 자녀를 정렬할 결혼이 없습니다.", "Personen har inget äktenskap att ordna barn i.", "此人沒有可排列子女的婚姻。"]),
-    ("This individual has no marriage yet. Add a spouse first, or add one from the Add menu.", ["Diese Person hat noch keine Ehe. Fügen Sie zuerst einen Ehepartner hinzu, auch über das Menü Hinzufügen.", "この人にはまだ結婚がありません。先に配偶者を追加するか、［追加］メニューから追加してください。", "이 개인에게는 아직 결혼이 없습니다. 먼저 배우자를 추가하거나 추가 메뉴에서 추가하십시오.", "Personen har inget äktenskap än. Lägg först till en make/maka, till exempel via menyn Lägg till.", "此人尚無婚姻。請先增加配偶，或從「增加」功能表增加。"]),
-    ("This individual has no parents linked yet.", ["Mit dieser Person sind noch keine Eltern verknüpft.", "この人にはまだ両親が関連付けられていません。", "이 개인에게는 아직 연결된 부모가 없습니다.", "Personen har inga länkade föräldrar än.", "此人尚未連結父母。"]),
-    ("This individual is not linked to anyone.", ["Diese Person ist mit niemandem verknüpft.", "この人は誰にも関連付けられていません。", "이 개인은 아무에게도 연결되어 있지 않습니다.", "Personen är inte länkad till någon.", "此人未與任何人連結。"]),
-    ("This marriage will be removed and unlinked from husband, wife and children.", ["Diese Ehe wird entfernt und von Ehemann, Ehefrau und Kindern getrennt.", "この結婚は削除され、夫、妻、子供との関連付けが解除されます。", "이 결혼은 제거되고 남편, 아내, 자녀와의 연결이 해제됩니다.", "Äktenskapet tas bort och länkarna till make, maka och barn tas bort.", "此婚姻將被移除，並解除與丈夫、妻子和子女的連結。"]),
-    ("This version keeps one family window.", ["Diese Version hat ein Familienfenster.", "このバージョンの家族ウィンドウは 1 つです。", "이 버전에는 가족 창이 하나입니다.", "Den här versionen har ett släktfönster.", "此版本只有一個家庭視窗。"]),
-    ("Title (prefix):", ["Titel (Präfix):", "肩書（接頭敬称）:", "제목(접두사):", "Titel (prefix):", "頭銜:"]),
-    ("Title:", ["Titel:", "タイトル :", "제목:", "Titel:", "標題："]),
-    ("Toolbar", ["Symbolleiste", "ツールバー", "도구 모음", "Verktygsrad", "工具列"]),
-    ("Tools", ["Extras", "ツール", "도구", "Verktyg", "工具"]),
-    ("Type of list", ["Listenart", "リストの種類", "목록표 유형", "Typ av lista", "類型"]),
-    ("Unknown", ["Unbekannt", "不明", "알 수 없음", "Okänt", "不詳"]),
-    ("Unlink Individual", ["Person trennen", "個人のつながりの解除", "개인 연결끊기", "Länka av person", "解除個人連結"]),
-    ("Unlink...", ["Trennen...", "つながりを解く...", "연결 끊기...", "Bryt länk...", "取消連結中..."]),
-    ("Unlinked individuals", ["Unverknüpfte Personen", "つながりのない個人", "연결되지 않은 개인들", "Olänkade personer", "無連結關係的個人"]),
-    ("Up", ["Auf", "上", "위", "Uppåt", "向上"]),
-    ("Use LDS data", ["HLT-Daten verwenden", "LDSのデータを使用", "말일성도 데이터 사용", "Använd SDH-data", "使用後期聖徒資料"]),
-    ("Use list when navigating", ["Über Liste navigieren", "ナビゲートするときにリストを使用する", "항해할 때 목록 사용", "Använd lista för styrning", "瀏覽時使用清單"]),
-    ("Used by the Possible Problems list.", ["Wird von der Liste möglicher Probleme verwendet.", "問題の可能性のリストで使います。", "발생 가능한 문제 목록에서 사용됩니다.", "Används av listan över möjliga problem.", "用於可能問題清單。"]),
-    ("Verify new places", ["Neue Ortsangaben bestätigen", "新しい場所を確認する", "새로운 장소 확인", "Bekräfta nya platser", "查證新地點"]),
-    ("View", ["Ansicht", "表示", "보기", "Visa", "檢視"]),
-    ("Wait time:", ["Verzögert:", "待ち時間:", "기다릴시간:", "Väntetid:", "等待時間："]),
-    ("Whole field only", ["Nur ganzes Feld", "フィールド全体のみ", "전체 필드만", "Bara hela fältet", "僅限整個欄位"]),
-    ("Will", ["Testament", "遺言", "유언", "Testamente", "遺囑"]),
-    ("Window", ["Fenster", "ウィンドウ", "창", "Fönster", "視窗"]),
-    ("With this on, the last word of a name without slashes becomes the surname.", ["Damit wird das letzte Wort eines Namens ohne Schrägstriche zum Nachnamen.", "オンにすると、スラッシュのない名前の最後の語が姓になります。", "켜면 슬래시가 없는 이름의 마지막 단어가 성이 됩니다.", "Med detta blir sista ordet i ett namn utan snedstreck efternamn.", "開啟後，沒有斜線的姓名最後一個字會成為姓氏。"]),
-    ("Year:", ["Jahr:", "年:", "연도:", "År:", "年："]),
-    ("Years:", ["Jahre:", "年:", "년수:", "År:", "年："]),
-    ("and", ["und", "と", "부터", "och", "及"]),
-    ("closes between reminders (0 for never)", ["Schließvorgänge zwischen Erinnerungen (0 = nie)", "回閉じるごとに通知 (0 は通知なし)", "번 닫을 때마다 알림 (0은 알리지 않음)", "stängningar mellan påminnelser (0 = aldrig)", "次關閉提醒一次 (0 表示不提醒)"]),
-    ("contains", ["enthält", "含む", "포함됨", "Innehåller", "包含"]),
-    ("equals", ["ist gleich", "同一", "같음", "Likadana", "等於"]),
-    ("is after", ["ist nach", "より後", "이후", "är efter", "在之後"]),
-    ("is before", ["ist vor", "より前", "이전", "är före", "在之前"]),
-    ("is empty", ["ist leer", "空である", "비어 있음", "är tom", "是空白"]),
-    ("is not empty", ["ist nicht leer", "空でない", "비어 있지 않음", "är inte tom", "不是空白"]),
-    ("years", ["Jahre", "年", "년", "år", "年"]),
-    ("Abbreviation:", ["Abkürzung:", "省略:", "약어:", "Förkortning:", "縮寫："]),
-    ("Add Father...", ["Vater hinzufügen...", "父親の追加...", "부친 추가...", "Lägg till far...", "增加父親..."]),
-    ("Add Individual", ["Person hinzufügen", "個人の追加", "개인 추가", "Lägg till person", "加入個人！"]),
-    ("Add Mother...", ["Mutter hinzufügen...", "母親の追加...", "모친 추가...", "Lägg till mor...", "增加母親..."]),
-    ("Author:", ["Verfasser:", "著者：", "작자:", "Författare:", "作者："]),
-    ("Biological", ["Leiblich", "血のつながった", "친계", "Biologisk", "親生的"]),
-    ("Burial:", ["Bestattung:", "埋葬：", "매장:", "Begr:", "埋葬:"]),
-    ("Buried", ["Bestattet", "埋葬", "매장", "Begravd", "埋葬"]),
-    ("Christened", ["Kleinkindtaufe", "洗礼", "명명됨", "Kristnad", "已領洗"]),
-    ("Christening:", ["Kleinkindtaufe:", "洗礼：", "명명:", "Kristning:", "領洗:"]),
-    // The one-letter sex shown in the Individual list.
-    ("sex-letter:M", ["M", "男", "남", "M", "男"]),
-    ("sex-letter:F", ["W", "女", "여", "K", "女"]),
-    ("sex-letter:U", ["U", "?", "?", "O", "?"]),
-    ("Citations:", ["Quellenangaben:", "引用：", "인용문:", "Källuppgifter:", "引文："]),
-    ("Died", ["Gest.", "死亡", "사망", "Dog", "死亡"]),
-    ("Edit Individual", ["Person bearbeiten", "個人の情報の編集", "개인 편집", "Redigera person", "編輯個人"]),
-    ("Event", ["Ereignis", "出来事", "사건", "Händelse", "事項"]),
-    ("Father", ["Vater", "父親", "부친", "Far", "父親"]),
-    ("File:", ["Standorte:", "ファイル :", "파일:", "Fil:", "檔案："]),
-    ("Floating", ["'Pop-up'", "浮動", "부동", "Flyttbar", "浮動"]),
-    ("HOME", ["Pos1", "ホームページ", "시작", "Hem", "住家"]),
-    ("Individuals:", ["Personen:", "個人：", "개인:", "Personer:", "個人："]),
-    ("Locked", ["Fixiert", "固定", "잠겨 있음", "Fast", "鎖定"]),
-    ("Marriages:", ["Ehepaare:", "結婚：", "결혼:", "Vigslar:", "婚姻："]),
-    ("Mother", ["Mutter", "母親", "모친", "Mor", "母親"]),
-    ("Multimedia links:", ["Multimedia-Links:", "マルチメディア・リンク:", "다매체 연결:", "Multimedialänkar:", "多媒體連結:"]),
-    ("Primary", ["Hauptperson", "本人", "시작인", "Grund", "主要資料"]),
-    ("Repositories:", ["Standorte:", "記録保管所：", "보관소:", "Förvaringsplatser:", "收藏者："]),
-    ("Sealing", ["Siegelung", "日付", "인봉", "Besegling", "印證日期"]),
-    ("Selected", ["Ausgewählt", "選択数", "선택함", "Valda", "選定"]),
-    ("Size:", ["Größe:", "サイズ :", "크기:", "Storlek:", "大小："]),
-    ("Sources:", ["Quellen:", "情報源 :", "근원:", "Källor:", "來源："]),
-];

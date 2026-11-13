@@ -1,8 +1,8 @@
 //! Windows for editing people, marriages and their links.
 
 //! Windows for editing people, marriages and their links.
+use crate::i18n::{tr, trf};
 use super::*;
-use crate::i18n::tr;
 use crate::app::*;
 use crate::rules;
 use crate::data::*;
@@ -196,7 +196,7 @@ impl App {
                         for e in [&p.birth, &p.chr, &p.death, &p.burial] {
                             let place = e.place.trim();
                             if !place.is_empty() && !known.iter().any(|k| k.eq_ignore_ascii_case(place)) {
-                                notices.push(format!("New place: {place}. Please check its spelling."));
+                                notices.push(trf("New place: {place}. Please check its spelling.", &[("place", &place)]));
                             }
                         }
                     }
@@ -238,8 +238,8 @@ impl App {
                 let df = self.db.prefs.day_first_numeric;
                 window("Edit Marriage", *id).default_width(560.0).show(ctx, |ui| {
                     let name = |r: Option<u32>| r.map(|x| self.db.name(x)).unwrap_or_default();
-                    ui.label(format!("Husband: {}", name(draft.husband)));
-                    ui.label(format!("Wife: {}", name(draft.wife)));
+                    ui.label(trf("Husband: {name}", &[("name", &name(draft.husband))]));
+                    ui.label(trf("Wife: {name}", &[("name", &name(draft.wife))]));
                     ui.checkbox(&mut draft.divorced, tr("Divorced"));
                     ui.separator();
                     egui::Grid::new("marriage_fields").num_columns(2).spacing(vec2(8.0, 5.0)).show(ui, |ui| {
@@ -315,7 +315,7 @@ impl App {
                 });
             }
             Dialog::Notes { id, rin, text, find, with } => {
-                let title = format!("Edit Notes: {}", self.db.name(*rin));
+                let title = trf("Edit Notes: {name}", &[("name", &self.db.name(*rin))]);
                 let mut save = false;
                 window(&title, *id).default_width(620.0).show(ctx, |ui| {
                     egui::ScrollArea::vertical().max_height(360.0).show(ui, |ui| {
@@ -351,7 +351,7 @@ impl App {
             }
             Dialog::MediaList { id, rin, current } => {
                 let rin = *rin;
-                let title = format!("Multimedia: {}", self.db.name(rin));
+                let title = trf("Multimedia: {name}", &[("name", &self.db.name(rin))]);
                 let mut changed = false;
                 let mut add_file = None;
                 window(&title, *id).default_width(560.0).show(ctx, |ui| {
@@ -380,7 +380,7 @@ impl App {
                                 ui.image((tex.id(), sz * scale));
                             }
                             None => {
-                                ui.label(format!("This picture could not be shown:\n{file}"));
+                                ui.label(trf("This picture could not be shown:\n{file}", &[("file", &file)]));
                             }
                         }
                         let m = &mut self.db.people.get_mut(&rin).unwrap().media[*current];
@@ -420,7 +420,7 @@ impl App {
             }
             Dialog::Unlink { id, rin } => {
                 let rin = *rin;
-                let title = format!("Unlink {}", self.db.name(rin));
+                let title = trf("Unlink {name}", &[("name", &self.db.name(rin))]);
                 window(&title, *id).resizable(false).show(ctx, |ui| {
                     ui.label(tr("Choose the link to remove. The individual stays in the file."));
                     let Some(p) = self.db.person(rin).cloned() else {
@@ -432,7 +432,7 @@ impl App {
                     }
                     for m in &p.spouses {
                         let other = self.db.spouse_in(*m, rin).map(|r| self.db.name(r)).unwrap_or_else(|| "Unknown spouse".into());
-                        if ui.button(format!("Unlink from spouse: {other}")).clicked() {
+                        if ui.button(trf("Unlink from spouse: {name}", &[("name", &other)])).clicked() {
                             self.db.unlink_spouse(*m, rin);
                             self.log("Unl Sp", rin);
                             self.touch();
@@ -443,7 +443,7 @@ impl App {
                         let Some(m) = self.db.marriages.get(&l.mrin) else { continue };
                         let dad = m.husband.map(|r| self.db.name(r)).unwrap_or_default();
                         let mum = m.wife.map(|r| self.db.name(r)).unwrap_or_default();
-                        if ui.button(format!("Unlink from parents: {dad} and {mum}")).clicked() {
+                        if ui.button(trf("Unlink from parents: {father} and {mother}", &[("father", &dad), ("mother", &mum)])).clicked() {
                             self.db.unlink_child(l.mrin, rin);
                             self.log("Unl Ch", rin);
                             self.touch();
@@ -460,7 +460,7 @@ impl App {
                 let rin = *rin;
                 let name = self.db.name(rin);
                 window("Delete Individual", *id).resizable(false).show(ctx, |ui| {
-                    ui.label(format!("Delete {name} (RIN {rin})? This removes the record from the file and unlinks it from the family."));
+                    ui.label(trf("Delete {name} (RIN {rin})? This removes the record from the file and unlinks it from the family.", &[("name", &name), ("rin", &rin)]));
                     ui.add_space(6.0);
                     ui.horizontal(|ui| {
                         if ui.button(tr("Delete")).clicked() {
@@ -477,7 +477,7 @@ impl App {
             }
             Dialog::Parents { id, rin } => {
                 let rin = *rin;
-                let title = format!("Parents of {}", self.db.name(rin));
+                let title = trf("Parents of {name}", &[("name", &self.db.name(rin))]);
                 let mut changed = false;
                 window(&title, *id).default_width(520.0).show(ctx, |ui| {
                     let Some(mut links) = self.db.person(rin).map(|p| p.parents.clone()) else {
@@ -492,7 +492,7 @@ impl App {
                         ui.push_id(i, |ui| {
                             ui.group(|ui| {
                                 let (dad, mum) = self.db.marriages.get(&l.mrin).map(|m| (m.husband.map(|r| self.db.name(r)).unwrap_or_default(), m.wife.map(|r| self.db.name(r)).unwrap_or_default())).unwrap_or_default();
-                                ui.label(format!("{dad} and {mum}  (MRIN {}){}", l.mrin, if i == 0 { "  Primary" } else { "" }));
+                                ui.label(format!("{}{}", trf("{father} and {mother}  (MRIN {mrin})", &[("father", &dad), ("mother", &mum), ("mrin", &l.mrin)]), if i == 0 { format!("  {}", tr("Primary")) } else { String::new() }));
                                 ui.horizontal(|ui| {
                                     ui.label(tr("Relationship to parents:"));
                                     let before = l.relation.clone();

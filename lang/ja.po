@@ -1,0 +1,1823 @@
+# PAF Classic: Japanese.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "LDS Sealing"
+msgstr "LDS の結び固め"
+
+msgid "Move the spouse to the primary position"
+msgstr "配偶者を主な位置へ移動"
+
+msgid "Move this child to the primary position"
+msgstr "この子供を主な位置へ移動"
+
+msgid "Move this person to the primary position to see more ancestors"
+msgstr "この人を主な位置へ移動してさらに祖先を表示"
+
+msgid "Publication:"
+msgstr "出版情報："
+
+msgid "Unknown spouse"
+msgstr "不明の配偶者"
+
+msgid "Start date must be before end date."
+msgstr "開始日は終了日より前にしてください。"
+
+msgid "No relationship was found through shared ancestors."
+msgstr "共通の祖先による続柄は見つかりませんでした。"
+
+msgid "People with notes:"
+msgstr "メモのある人："
+
+msgid "(None)"
+msgstr "(なし)"
+
+msgid ""
+"1. Double-click the dark box on the Family screen and type your own name, with slashes around the surname: Anna Marie /Lee/.\n"
+"\n"
+"2. Double-click an empty box to add a spouse or a parent, or the Children area to add a child.\n"
+"\n"
+"3. Click the triangle beside a person to move them into the main position. The F, M and C keys go to the father, mother or a child.\n"
+"\n"
+"4. Use the Pedigree tab to see five generations, and the Individual tab to see everyone in a list.\n"
+"\n"
+"5. Right-click anyone for more choices, such as Notes and Multimedia.\n"
+"\n"
+"6. Use File, Save As to name your family file. Changes save by themselves after that.\n"
+"\n"
+"7. Use File, Print Reports for charts and lists, and File, Backup to keep a safe copy."
+msgstr ""
+"1. ［家族］画面の濃い色の枠をダブルクリックし、姓をスラッシュで囲んで名前を入力します：Anna Marie /Lee/\n"
+"\n"
+"2. 空の枠をダブルクリックすると配偶者や親を、［子供］の欄をダブルクリックすると子供を追加できます。\n"
+"\n"
+"3. 人の横の三角形をクリックすると、その人が主な位置に移動します。F、M、C キーで父、母、子供へ移動します。\n"
+"\n"
+"4. ［系図］タブで 5 世代を、［個人］タブで全員のリストを見られます。\n"
+"\n"
+"5. 人を右クリックすると、メモやマルチメディアなどを選べます。\n"
+"\n"
+"6. ［ファイル］、［名前を付けて保存］で家族ファイルに名前を付けます。その後の変更は自動的に保存されます。\n"
+"\n"
+"7. 図表やリストは［ファイル］、［レポートの印刷］で、安全なコピーは［ファイル］、［バックアップ］で作れます。"
+
+msgid "1/10 seconds"
+msgstr "1/10 秒"
+
+msgid "1st"
+msgstr "第1"
+
+msgid "2nd"
+msgstr "第2"
+
+msgid "3rd"
+msgstr "第3"
+
+msgid "4th"
+msgstr "4代目"
+
+msgid "5th"
+msgstr "5代目"
+
+msgid "A family history program for keeping individuals, marriages, notes and sources, and for printing charts and reports."
+msgstr "個人、結婚、メモ、資料を記録し、図表やレポートを印刷するための家族歴史プログラムです。"
+
+msgid "AFN"
+msgstr "AFN"
+
+msgid "AFN:"
+msgstr "AFN:"
+
+msgid "Actual text:"
+msgstr "実際のテキスト:"
+
+msgid "Add"
+msgstr "追加"
+
+msgid "Add Child..."
+msgstr "子供の追加..."
+
+msgid "Add Filter"
+msgstr "フィルタを追加"
+
+msgid "Add Individual..."
+msgstr "個人の追加..."
+
+msgid "Add New"
+msgstr "新規追加"
+
+msgid "Add New Individual..."
+msgstr "新しい個人の追加..."
+
+msgid "Add New Parents..."
+msgstr "新しい両親の追加..."
+
+msgid "Add Picture or File..."
+msgstr "画像またはファイルを追加..."
+
+msgid "Add Spouse..."
+msgstr "配偶者の追加..."
+
+msgid "Add a new person, or link someone already in this file?"
+msgstr "新しい人を追加しますか。それともこのファイルにいる人を関連付けますか。"
+
+msgid "Add family"
+msgstr "家族を追加"
+
+msgid "Add father, mother"
+msgstr "父、母を追加"
+
+msgid "Add individual (Ctrl+A)"
+msgstr "個人を追加 (Ctrl+A)"
+
+msgid "Add individual, spouse, child"
+msgstr "個人、配偶者、子供を追加"
+
+msgid "Add or Select Individual"
+msgstr "個人の追加または選択"
+
+msgid "Add surname slashes automatically"
+msgstr "姓のスラッシュを自動で付ける"
+
+msgid "Address"
+msgstr "アドレス"
+
+msgid "Address:"
+msgstr "住所:"
+
+msgid "Adoption"
+msgstr "養子縁組"
+
+msgid "Adult Christening"
+msgstr "成人の洗礼"
+
+msgid "Advanced Focus/Filter"
+msgstr "詳細検索..."
+
+msgid "Advanced Focus/Filter..."
+msgstr "詳細検索..."
+
+msgid "Age difference between husband and wife:"
+msgstr "夫と妻の年齢差:"
+
+msgid "Allow AFN edit"
+msgstr "AFN編集を許可"
+
+msgid "Also Known As:"
+msgstr "別名:"
+
+msgid "Also removes citations of this source"
+msgstr "この資料の引用も削除します"
+
+msgid "An empty form to fill in by hand"
+msgstr "手で記入する空白の用紙"
+
+msgid "Ancestors of"
+msgstr "祖先："
+
+msgid "Ancestry"
+msgstr "先祖"
+
+msgid "Annulment"
+msgstr "婚姻の無効"
+
+msgid "Arrow keys"
+msgstr "矢印キー"
+
+msgid "Back up this family file"
+msgstr "この家族ファイルをバックアップ"
+
+msgid "Backup"
+msgstr "バックアップ"
+
+msgid "Backup frequency:"
+msgstr "バックアップの頻度："
+
+msgid "Backup reminder"
+msgstr "バックアップの通知"
+
+msgid "Backup..."
+msgstr "バックアップ..."
+
+msgid "Baptism"
+msgstr "バプテスマ"
+
+msgid "Baptism:"
+msgstr "バプテ:"
+
+msgid "Bar Mitzvah"
+msgstr "バル・ミツバー"
+
+msgid "Bas Mitzvah"
+msgstr "バト・ミツバー"
+
+msgid "Birth"
+msgstr "出生"
+
+msgid "Birth Date"
+msgstr "出生日"
+
+msgid "Birth Place"
+msgstr "出生地"
+
+msgid "Birth years within:"
+msgstr "出生年の範囲："
+
+msgid "Birth:"
+msgstr "出生："
+
+msgid "Blank Form"
+msgstr "白紙の用紙"
+
+msgid "Blessing"
+msgstr "祝福"
+
+msgid "Books"
+msgstr "書籍"
+
+msgid "Born"
+msgstr "出生"
+
+msgid "Burial"
+msgstr "埋葬"
+
+msgid "Burial Date"
+msgstr "埋葬日"
+
+msgid "Burial Place"
+msgstr "埋葬地"
+
+msgid "Calculate"
+msgstr "算出する"
+
+msgid "Calendar"
+msgstr "カレンダー"
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Caption:"
+msgstr "表題:"
+
+msgid "Census"
+msgstr "国勢調査"
+
+msgid "Change"
+msgstr "変更"
+
+msgid "Change Names to Mixed Case"
+msgstr "名前を大文字・小文字混じりに書き換え"
+
+msgid "Check LDS data"
+msgstr "LDSのデータをチェックする"
+
+msgid "Check for duplicates when adding individuals"
+msgstr "人名を追加する場合は，重複チェックをする。"
+
+msgid "Check marriage and children order"
+msgstr "結婚と子供の順番をチェックする"
+
+msgid "Check/Repair"
+msgstr "確認／修正"
+
+msgid "Check/Repair..."
+msgstr "確認／修正"
+
+msgid "Child..."
+msgstr "子供..."
+
+msgid "Children"
+msgstr "子供"
+
+msgid "Children:"
+msgstr "子供："
+
+msgid "Choose the link to remove. The individual stays in the file."
+msgstr "削除する関連付けを選んでください。個人はファイルに残ります。"
+
+msgid "Christening"
+msgstr "洗礼"
+
+msgid "Christening Date"
+msgstr "洗礼日"
+
+msgid "Christening Place"
+msgstr "洗礼地"
+
+msgid "Clear Fields"
+msgstr "クリア"
+
+msgid "Click Search to look for possible duplicates."
+msgstr "［検索］をクリックして重複の可能性を探します。"
+
+msgid "Close"
+msgstr "閉じる"
+
+msgid "Close without saving"
+msgstr "保存せずに閉じる"
+
+msgid "Comments:"
+msgstr "コメント:"
+
+msgid "Confirmation"
+msgstr "堅信礼"
+
+msgid "Contact information"
+msgstr "連絡情報"
+
+msgid "Could not open"
+msgstr "開けませんでした"
+
+msgid "Could not read this .paf file"
+msgstr "この .paf ファイルを読み取れませんでした"
+
+msgid "Could not save"
+msgstr "保存できませんでした"
+
+msgid "Create"
+msgstr "作成"
+
+msgid "Create Web Page"
+msgstr "ウェブページの作成"
+
+msgid "Create Web Page..."
+msgstr "ウェブページの作成..."
+
+msgid "Create a web page"
+msgstr "Web ページを作成"
+
+msgid "Cremation"
+msgstr "火葬"
+
+msgid "Custom"
+msgstr "カスタム"
+
+msgid "Date"
+msgstr "日付"
+
+msgid "Date Calculator"
+msgstr "日付算出"
+
+msgid "Dates"
+msgstr "日付"
+
+msgid "Dates and family information"
+msgstr "日付と家族の情報"
+
+msgid "Dates only"
+msgstr "日付のみ"
+
+msgid "Dates typed as all numbers, such as 3/11/1955, mean:"
+msgstr "3/11/1955 のように数字だけの日付の意味："
+
+msgid "Day first: 3 November 1955"
+msgstr "日が先：1955年11月3日"
+
+msgid "Days:"
+msgstr "日:"
+
+msgid "Death"
+msgstr "死亡"
+
+msgid "Death Date"
+msgstr "死亡日"
+
+msgid "Death Place"
+msgstr "死亡地"
+
+msgid "Death:"
+msgstr "死亡："
+
+msgid "Delete"
+msgstr "削除"
+
+msgid "Delete File"
+msgstr "ファイルを削除"
+
+msgid "Delete Individual"
+msgstr "個人の記録の削除"
+
+msgid "Delete..."
+msgstr "削除..."
+
+msgid "Descendancy"
+msgstr "子孫"
+
+msgid "Descendancy List..."
+msgstr "子孫のリスト..."
+
+msgid "Descendancy list (Ctrl+D)"
+msgstr "子孫のリスト (Ctrl+D)"
+
+msgid "Descendants"
+msgstr "子孫"
+
+msgid "Descendants of"
+msgstr "子孫："
+
+msgid "Description"
+msgstr "記述"
+
+msgid "Description:"
+msgstr "記述:"
+
+msgid "Ditto from:"
+msgstr "次からコピー："
+
+msgid "Divorce Filed"
+msgstr "離婚の申し立て"
+
+msgid "Divorced"
+msgstr "離婚"
+
+msgid "Down"
+msgstr "下"
+
+msgid "Duplicate individuals"
+msgstr "重複した個人"
+
+msgid "Edit"
+msgstr "編集"
+
+msgid "Edit Marriage"
+msgstr "結婚の情報の編集"
+
+msgid "Edit Parent Links"
+msgstr "両親とのつながりの編集"
+
+msgid "Edit Parents' Marriage"
+msgstr "両親の結婚の情報の編集"
+
+msgid "Edit individual (Ctrl+I)"
+msgstr "個人を編集 (Ctrl+I)"
+
+msgid "Edit individual, notes, multimedia"
+msgstr "個人、メモ、マルチメディアを編集"
+
+msgid "Edit marriage when created"
+msgstr "作成されたとき，結婚情報を編集する"
+
+msgid "Edit notes (Ctrl+N)"
+msgstr "メモを編集 (Ctrl+N)"
+
+msgid "Education"
+msgstr "学歴"
+
+msgid "Email:"
+msgstr "電子メール:"
+
+msgid "Emigration"
+msgstr "出国移住"
+
+msgid "End date:"
+msgstr "最後の日:"
+
+msgid "End-of-line individuals"
+msgstr "エンド・オブ・ラインの個人"
+
+msgid "Endowment:"
+msgstr "エンダウメント:"
+
+msgid "Engagement"
+msgstr "婚約"
+
+msgid "Events"
+msgstr "出来事"
+
+msgid "Everyone"
+msgstr "全員"
+
+msgid "Exit"
+msgstr "終了"
+
+msgid "Exit without saving"
+msgstr "保存せずに終了"
+
+msgid "Export"
+msgstr "エクスポート"
+
+msgid "Export a GEDCOM file"
+msgstr "GEDCOM ファイルをエクスポート"
+
+msgid "Export to GEDCOM 5.5 (UTF-8)"
+msgstr "GEDCOM 5.5 (UTF-8) へエクスポート"
+
+msgid "Export..."
+msgstr "エクスポート..."
+
+msgid "Family"
+msgstr "家族"
+
+msgid "Family Group"
+msgstr "家族グループ"
+
+msgid "Family file read"
+msgstr "家族ファイルを読み込みました"
+
+msgid "Family reunion contacts"
+msgstr "親族の集い連絡先"
+
+msgid "Family..."
+msgstr "家族..."
+
+msgid "Father's age should be between"
+msgstr "父親の年齢の範囲"
+
+msgid "Father's or mother's line (Pedigree)"
+msgstr "父方または母方の系統 (系図)"
+
+msgid "Father, mother or child"
+msgstr "父、母、または子供"
+
+msgid "Father..."
+msgstr "父親..."
+
+msgid "Female"
+msgstr "女性"
+
+msgid "Field filters"
+msgstr "フィールドのフィルタ"
+
+msgid "File"
+msgstr "ファイル"
+
+msgid "File Properties"
+msgstr "ファイルのプロパティ"
+
+msgid "Fill in any two of start, end and elapsed time. Works for the Gregorian calendar only, from October 1752."
+msgstr "開始、終了、経過期間のうち 2 つを入力してください。1752年10月以降のグレゴリオ暦のみ使用できます。"
+
+msgid "Fill the empty surname and place fields from this person"
+msgstr "空の姓と場所をこの人から入力する"
+
+msgid "Film/Volume/Page:"
+msgstr "フィルム/巻/ページ："
+
+msgid "Find by RIN or MRIN (Ctrl+R)"
+msgstr "RIN または MRIN で検索 (Ctrl+R)"
+
+msgid "Find by RIN/MRIN"
+msgstr "RIN/MRINによって検索..."
+
+msgid "Find by RIN/MRIN..."
+msgstr "RIN/MRINによって検索..."
+
+msgid "Find:"
+msgstr "検索:"
+
+msgid "First Communion"
+msgstr "初聖体"
+
+msgid "First Person"
+msgstr "最初の人物"
+
+msgid "Flush"
+msgstr "フラッシュ"
+
+msgid "For Help, press F1. Double-click on person you want to edit."
+msgstr "F1を押すとヘルプ機能が働きます。編集したい人をダブルクリックします。"
+
+msgid "Formats"
+msgstr "フォーマット"
+
+msgid "Full Name"
+msgstr "ﾌﾙﾈｰﾑ"
+
+msgid "Full Name:"
+msgstr "ﾌﾙﾈｰﾑ:"
+
+msgid "Full information on living"
+msgstr "生存に関するすべての情報"
+
+msgid "GEDCOM import"
+msgstr "GEDCOMインポート"
+
+msgid "General"
+msgstr "全般"
+
+msgid "Generations per page:"
+msgstr "ページごとの世代数:"
+
+msgid "Generations:"
+msgstr "世代:"
+
+msgid "Getting Started"
+msgstr "はじめに"
+
+msgid "Given /Surname/ Suffix"
+msgstr "名 /姓/ 接尾語"
+
+msgid "Given Name"
+msgstr "名"
+
+msgid "Global Search and Replace"
+msgstr "グローバル検索および置換"
+
+msgid "Global Search and Replace..."
+msgstr "グローバル検索および置換..."
+
+msgid "Go to the home person"
+msgstr "ホームの人へ移動"
+
+msgid "Go to the home person (Ctrl+Home)"
+msgstr "ホームの人へ移動 (Ctrl+Home)"
+
+msgid "Graduation"
+msgstr "卒業"
+
+msgid "Help"
+msgstr "ヘルプ"
+
+msgid "Hide details of people who may still be living"
+msgstr "存命の可能性がある人の詳細を隠す"
+
+msgid "Home Person"
+msgstr "本人"
+
+msgid "Immigration"
+msgstr "入国移住"
+
+msgid "Import"
+msgstr "インポート"
+
+msgid "Import a GEDCOM or .paf file"
+msgstr "GEDCOM または .paf ファイルをインポート"
+
+msgid "Import..."
+msgstr "インポート..."
+
+msgid "Include in the scrapbook"
+msgstr "スクラップブックに含める"
+
+msgid "Include notes"
+msgstr "メモを含める"
+
+msgid "Include people who have died"
+msgstr "亡くなった人を含める"
+
+msgid "Individual"
+msgstr "個人"
+
+msgid "Individual Event List"
+msgstr "個人の出来事のリスト"
+
+msgid "Individual List"
+msgstr "個人のリスト"
+
+msgid "Individual List..."
+msgstr "個人のリスト...."
+
+msgid "Individual Summary"
+msgstr "個人の概要"
+
+msgid "Individual list (Ctrl+F)"
+msgstr "個人のリスト (Ctrl+F)"
+
+msgid "Individual list, descendancy list, find by RIN"
+msgstr "個人のリスト、子孫のリスト、RIN で検索"
+
+msgid "Individual..."
+msgstr "個人..."
+
+msgid "Individuals sorted alphabetically"
+msgstr "ｱﾙﾌｧﾍﾞｯﾄ/五十音順に並べられた個人"
+
+msgid "Individuals sorted by RIN"
+msgstr "RIN順に並べられた個人"
+
+msgid "Individuals with notes"
+msgstr "注釈のある個人"
+
+msgid "InfoBox"
+msgstr "情報ボックス"
+
+msgid "It has been a while since this family file was backed up. Use File, Backup after opening it again."
+msgstr "この家族ファイルは長い間バックアップされていません。もう一度開いてから［ファイル］、［バックアップ］を使ってください。"
+
+msgid "Keep Left, Merge Right"
+msgstr "左を残して右を統合"
+
+msgid "Keep Right, Merge Left"
+msgstr "右を残して左を統合"
+
+msgid "Keyboard"
+msgstr "キーボード"
+
+msgid "Keyboard help (F1)"
+msgstr "キーボードのヘルプ (F1)"
+
+msgid "LDS data"
+msgstr "LDSのデータ"
+
+msgid "Language"
+msgstr "言語"
+
+msgid "Colors"
+msgstr "配色"
+
+msgid "Classic"
+msgstr "クラシック"
+
+msgid "Slate Blue"
+msgstr "スレートブルー"
+
+msgid "Navy"
+msgstr "ネイビー"
+
+msgid "Parchment"
+msgstr "羊皮紙"
+
+msgid "Blue Linen"
+msgstr "ブルーリネン"
+
+msgid "Leather"
+msgstr "レザー"
+
+msgid "Original"
+msgstr "オリジナル"
+
+msgid "Tree pictures"
+msgstr "木の絵"
+
+msgid "Earth tones"
+msgstr "アースカラー"
+
+msgid "Popular colors"
+msgstr "人気の色"
+
+msgid "Neutrals"
+msgstr "ニュートラル"
+
+msgid "Genealogy sites"
+msgstr "系図サイト"
+
+msgid "Leaf Green"
+msgstr "リーフグリーン"
+
+msgid "Fresh Green"
+msgstr "フレッシュグリーン"
+
+msgid "Deep Green"
+msgstr "ディープグリーン"
+
+msgid "Sage"
+msgstr "セージ"
+
+msgid "Olive"
+msgstr "オリーブ"
+
+msgid "Moss"
+msgstr "モス"
+
+msgid "Forest Green"
+msgstr "フォレストグリーン"
+
+msgid "Terracotta"
+msgstr "テラコッタ"
+
+msgid "Clay"
+msgstr "クレイ"
+
+msgid "Burgundy"
+msgstr "バーガンディ"
+
+msgid "Teal"
+msgstr "ティール"
+
+msgid "Plum"
+msgstr "プラム"
+
+msgid "Charcoal"
+msgstr "チャコール"
+
+msgid "Midnight"
+msgstr "ミッドナイト"
+
+msgid "Sky"
+msgstr "スカイ"
+
+msgid "Rose"
+msgstr "ローズ"
+
+msgid "Ivory"
+msgstr "アイボリー"
+
+msgid "Linen"
+msgstr "リネン"
+
+msgid "Stone"
+msgstr "ストーン"
+
+msgid "Taupe"
+msgstr "トープ"
+
+msgid "Link a source"
+msgstr "資料を関連付ける"
+
+msgid "List name"
+msgstr "リスト名"
+
+msgid "Lists"
+msgstr "リスト"
+
+msgid "Lists the pictures marked for the scrapbook, with their captions. Pictures themselves are viewed from Edit, Multimedia."
+msgstr "スクラップブック用に指定した画像を説明付きで一覧表示します。画像は［編集］、［マルチメディア］で見られます。"
+
+msgid "Log changes"
+msgstr "ログの変更"
+
+msgid "MRIN"
+msgstr "MRIN"
+
+msgid "Make Primary"
+msgstr "第一にする"
+
+msgid "Male"
+msgstr "男性"
+
+msgid "Marriage"
+msgstr "結婚"
+
+msgid "Marriage Banns"
+msgstr "結婚予告"
+
+msgid "Marriage Contract"
+msgstr "結婚契約"
+
+msgid "Marriage Date"
+msgstr "結婚日"
+
+msgid "Marriage Event List"
+msgstr "結婚に関する出来事のリスト"
+
+msgid "Marriage License"
+msgstr "結婚許可証"
+
+msgid "Marriage List"
+msgstr "結婚のリスト"
+
+msgid "Marriage List..."
+msgstr "結婚のリスト..."
+
+msgid "Marriage Settlement"
+msgstr "婚姻財産契約"
+
+msgid "Marriage date:"
+msgstr "結婚日:"
+
+msgid "Marriage place:"
+msgstr "結婚地:"
+
+msgid "Marriage:"
+msgstr "結婚："
+
+msgid "Marriages"
+msgstr "結婚"
+
+msgid "Match all (AND)"
+msgstr "すべて一致 (AND)"
+
+msgid "Match any (OR)"
+msgstr "いずれか一致 (OR)"
+
+msgid "Match case"
+msgstr "大文字と小文字を区別する"
+
+msgid "Match on AFNs"
+msgstr "AFN で照合"
+
+msgid "Match on names"
+msgstr "名前で照合"
+
+msgid "Match/Merge"
+msgstr "照合/統合"
+
+msgid "Match/Merge..."
+msgstr "照合/融合..."
+
+msgid "Merge Duplicate Sources"
+msgstr "重複する資料を統合"
+
+msgid "Military"
+msgstr "兵役"
+
+msgid "Month first: 11 March 1955"
+msgstr "月が先：1955年3月11日"
+
+msgid "Months:"
+msgstr "月:"
+
+msgid "Mother's age should be between"
+msgstr "母親の年齢の範囲"
+
+msgid "Mother..."
+msgstr "母親..."
+
+msgid "Move someone to the primary position"
+msgstr "人を主な位置へ移動"
+
+msgid "Move this column left"
+msgstr "この列を左へ移動"
+
+msgid "Move this column right"
+msgstr "この列を右へ移動"
+
+msgid "Move to Primary"
+msgstr "本人に移動"
+
+msgid "Multimedia"
+msgstr "ﾏﾙﾁﾒﾃﾞｨｱ"
+
+msgid "Multimedia (Ctrl+M)"
+msgstr "マルチメディア (Ctrl+M)"
+
+msgid "Multimedia file names"
+msgstr "マルチメディアのファイル名"
+
+msgid "Multimedia links"
+msgstr "マルチメディア・リンク"
+
+msgid "Name:"
+msgstr "名前:"
+
+msgid "Names"
+msgstr "人名"
+
+msgid "Names on living"
+msgstr "生存者の名前"
+
+msgid "Names that sound alike"
+msgstr "発音が似ている名前"
+
+msgid "Naturalization"
+msgstr "帰化"
+
+msgid "New"
+msgstr "新規"
+
+msgid "New Event/Attribute"
+msgstr "新しい出来事/属性..."
+
+msgid "New event name"
+msgstr "新しい出来事の名前"
+
+msgid "New..."
+msgstr "新規作成..."
+
+msgid "Next"
+msgstr "次のページ"
+
+msgid "Next Page"
+msgstr "次ﾍﾟｰｼﾞ"
+
+msgid "Nickname:"
+msgstr "ニックネーム:"
+
+msgid "No descendants are recorded."
+msgstr "子孫は記録されていません。"
+
+msgid "No file"
+msgstr "ファイルなし"
+
+msgid "No parents are linked. Use the Add menu to add them."
+msgstr "両親が関連付けられていません。［追加］メニューで追加してください。"
+
+msgid "No pictures or files have been added for this individual."
+msgstr "この人の画像やファイルは追加されていません。"
+
+msgid "No possible duplicates were found."
+msgstr "重複の可能性は見つかりませんでした。"
+
+msgid "No problems were found in the links of this file."
+msgstr "このファイルの関連付けに問題は見つかりませんでした。"
+
+msgid "No record has that number."
+msgstr "その番号の記録はありません。"
+
+msgid "None"
+msgstr "なし"
+
+msgid "Not a Match"
+msgstr "一致しない"
+
+msgid "Not saved yet"
+msgstr "未保存"
+
+msgid "Notepad"
+msgstr "メモ帳"
+
+msgid "Notes"
+msgstr "注釈"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Occupation"
+msgstr "職業"
+
+msgid "On Ancestry"
+msgstr "Ancestry で"
+
+msgid "On FamilySearch"
+msgstr "FamilySearch で"
+
+msgid "On Genealogy.com"
+msgstr "Genealogy.com で"
+
+msgid "On RootsWeb"
+msgstr "RootsWeb で"
+
+msgid "Only the current focus list"
+msgstr "現在のフォーカスリストのみ"
+
+msgid "Open Sample Family"
+msgstr "サンプルの家族を開く"
+
+msgid "Open family file (Ctrl+O)"
+msgstr "家族ファイルを開く (Ctrl+O)"
+
+msgid "Open..."
+msgstr "開く..."
+
+msgid "Opens the report in your PDF viewer, where you can print it"
+msgstr "PDF ビューアでレポートを開き、そこで印刷できます"
+
+msgid "Order Children"
+msgstr "子供たちの順番..."
+
+msgid "Order Children..."
+msgstr "子供たちの順番..."
+
+msgid "Order Spouses"
+msgstr "配偶者の順番..."
+
+msgid "Order Spouses..."
+msgstr "配偶者の順番..."
+
+msgid "Ordinances"
+msgstr "儀式"
+
+msgid "Ordination"
+msgstr "聖任"
+
+msgid "Other Parents..."
+msgstr "その他の両親..."
+
+msgid "Pages are saved in a folder you choose. Nothing is uploaded."
+msgstr "ページは選んだフォルダに保存されます。アップロードはされません。"
+
+msgid "Parent Link"
+msgstr "親との関係"
+
+msgid "Parents"
+msgstr "両親"
+
+msgid "Parents' Marriage"
+msgstr "両親の結婚"
+
+msgid "Pedigree"
+msgstr "系図"
+
+msgid "Phone:"
+msgstr "電話:"
+
+msgid "Physical Description"
+msgstr "身体に関する記述"
+
+msgid "Place"
+msgstr "場所"
+
+msgid "Places"
+msgstr "場所"
+
+msgid "Places sorted alphabetically"
+msgstr "ｱﾙﾌｧﾍﾞｯﾄ/五十音順の地名"
+
+msgid "Please check"
+msgstr "確認してください"
+
+msgid "Possible problems"
+msgstr "可能な問題"
+
+msgid "Preferences"
+msgstr "基本設定"
+
+msgid "Prepared by"
+msgstr "作成者"
+
+msgid "Preview"
+msgstr "プレビュー"
+
+msgid "Previous"
+msgstr "前のページ"
+
+msgid "Previous Page"
+msgstr "前のページ"
+
+msgid "Print Reports"
+msgstr "レポートの印刷..."
+
+msgid "Print Reports..."
+msgstr "レポートの印刷..."
+
+msgid "Print reports"
+msgstr "レポートを印刷"
+
+msgid "Print reports (Ctrl+P)"
+msgstr "レポートを印刷 (Ctrl+P)"
+
+msgid "Print..."
+msgstr "印刷..."
+
+msgid "Probate"
+msgstr "遺言検認"
+
+msgid "Problems"
+msgstr "問題"
+
+msgid "Properties"
+msgstr "プロパティ"
+
+msgid "RIN"
+msgstr "RIN"
+
+msgid "Relationship Calculator"
+msgstr "関係の算定"
+
+msgid "Relationship calculator"
+msgstr "続柄の計算"
+
+msgid "Relationship filter"
+msgstr "関係フィルター"
+
+msgid "Relationship to parents:"
+msgstr "両親との関係:"
+
+msgid "Religion"
+msgstr "宗教"
+
+msgid "Remove"
+msgstr "削除"
+
+msgid "Repair"
+msgstr "修復"
+
+msgid "Replace All"
+msgstr "すべて置換"
+
+msgid "Replace with:"
+msgstr "置換後の文字列:"
+
+msgid "Reports..."
+msgstr "レポート..."
+
+msgid "Repository List"
+msgstr "記録保管所のリスト"
+
+msgid "Repository:"
+msgstr "記録保管所:"
+
+msgid "Residence"
+msgstr "居住地"
+
+msgid "Restore"
+msgstr "復元"
+
+msgid "Restore..."
+msgstr "復元..."
+
+msgid "Retirement"
+msgstr "退職"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Save As..."
+msgstr "名前を付けて保存..."
+
+msgid "Save List"
+msgstr "リストを保存"
+
+msgid "Save as PDF..."
+msgstr "PDF として保存..."
+
+msgid "Save..."
+msgstr "保存..."
+
+msgid "Saved lists"
+msgstr "保存したリスト"
+
+msgid "Scrapbook"
+msgstr "スクラップブック"
+
+msgid "Sealed to parents:"
+msgstr "親子の結び固め:"
+
+msgid "Sealed to spouse:"
+msgstr "夫婦の結び固め:"
+
+msgid "Search"
+msgstr "検索"
+
+msgid "Search in:"
+msgstr "検索対象："
+
+msgid "Second Person"
+msgstr "二人目の人物"
+
+msgid "Select Existing"
+msgstr "既存から選択"
+
+msgid "Select a source, or click New."
+msgstr "資料を選ぶか［新規］をクリックしてください。"
+
+msgid "Select an individual first."
+msgstr "先に個人を選んでください。"
+
+msgid "Select different individuals"
+msgstr "別の個人を選ぶ"
+
+msgid "Select the primary person, or the last one shown"
+msgstr "主な人、または最後に表示された人を選ぶ"
+
+msgid "Sex"
+msgstr "性別"
+
+msgid "Sex:"
+msgstr "性別:"
+
+msgid "Show"
+msgstr "表示"
+
+msgid "Show RIN numbers after names"
+msgstr "名前の後に RIN 番号を表示"
+
+msgid "Show on Individual Screen"
+msgstr "個人の画面に表示"
+
+msgid "Show relationships on the status bar"
+msgstr "ステータスバーに続柄を表示"
+
+msgid "Sort by Birth Date"
+msgstr "生年月日で並べ替え"
+
+msgid "Soundex"
+msgstr "Soundex"
+
+msgid "Soundex Calculator"
+msgstr "Soundexに基づいた算出"
+
+msgid "Soundex Code Calculator"
+msgstr "Soundexコード算定"
+
+msgid "Soundex code:"
+msgstr "Soundexコード:"
+
+msgid "Sounds like"
+msgstr "音が類似"
+
+msgid "Source List"
+msgstr "情報源の一覧表"
+
+msgid "Sources"
+msgstr "情報源"
+
+msgid "Spouse"
+msgstr "配偶者"
+
+msgid "Spouse..."
+msgstr "配偶者..."
+
+msgid "Spouse:"
+msgstr "配偶者:"
+
+msgid "Start date:"
+msgstr "最初の日:"
+
+msgid "Status Bar"
+msgstr "ステータスバー"
+
+msgid "Surname"
+msgstr "姓"
+
+msgid "Switch between the three screens"
+msgstr "3 つの画面を切り替える"
+
+msgid "Temple"
+msgstr "神殿"
+
+msgid "Temple Codes"
+msgstr "神殿コード"
+
+msgid "Temple:"
+msgstr "神殿:"
+
+msgid "That is all the possible duplicates."
+msgstr "重複の可能性は以上です。"
+
+msgid "The date you typed is not standard."
+msgstr "入力された日付は標準の形式ではありません。"
+
+msgid "There are no sources in this file yet. Add them from Edit, Source List."
+msgstr "このファイルにはまだ資料がありません。［編集］、［資料リスト］から追加してください。"
+
+msgid "This changes names and places written in capital letters to upper and lower case, for example SMITH to Smith. Consider making a backup first. Continue?"
+msgstr "すべて大文字の名前と場所を大文字小文字混在に変更します (例：SMITH を Smith に)。先にバックアップを作ることをお勧めします。続行しますか。"
+
+msgid "This family has not been saved to a file. Save it before closing?"
+msgstr "この家族はまだファイルに保存されていません。閉じる前に保存しますか。"
+
+msgid "This family has not been saved to a file. Save it before you exit?"
+msgstr "この家族はまだファイルに保存されていません。終了する前に保存しますか。"
+
+msgid "This file is not a valid family file. It may be corrupt."
+msgstr "これは有効な家族ファイルではありません。破損している可能性があります。"
+
+msgid "This individual has no marriage to order children in."
+msgstr "この人には子供を並べ替える結婚がありません。"
+
+msgid "This individual has no marriage yet. Add a spouse first, or add one from the Add menu."
+msgstr "この人にはまだ結婚がありません。先に配偶者を追加するか、［追加］メニューから追加してください。"
+
+msgid "This individual has no parents linked yet."
+msgstr "この人にはまだ両親が関連付けられていません。"
+
+msgid "This individual is not linked to anyone."
+msgstr "この人は誰にも関連付けられていません。"
+
+msgid "This marriage will be removed and unlinked from husband, wife and children."
+msgstr "この結婚は削除され、夫、妻、子供との関連付けが解除されます。"
+
+msgid "This version keeps one family window."
+msgstr "このバージョンの家族ウィンドウは 1 つです。"
+
+msgid "Title (prefix):"
+msgstr "肩書（接頭敬称）:"
+
+msgid "Title:"
+msgstr "タイトル :"
+
+msgid "Toolbar"
+msgstr "ツールバー"
+
+msgid "Tools"
+msgstr "ツール"
+
+msgid "Type of list"
+msgstr "リストの種類"
+
+msgid "Unknown"
+msgstr "不明"
+
+msgid "Unlink Individual"
+msgstr "個人のつながりの解除"
+
+msgid "Unlink..."
+msgstr "つながりを解く..."
+
+msgid "Unlinked individuals"
+msgstr "つながりのない個人"
+
+msgid "Up"
+msgstr "上"
+
+msgid "Use LDS data"
+msgstr "LDSのデータを使用"
+
+msgid "Use list when navigating"
+msgstr "ナビゲートするときにリストを使用する"
+
+msgid "Used by the Possible Problems list."
+msgstr "問題の可能性のリストで使います。"
+
+msgid "Verify new places"
+msgstr "新しい場所を確認する"
+
+msgid "View"
+msgstr "表示"
+
+msgid "Wait time:"
+msgstr "待ち時間:"
+
+msgid "Whole field only"
+msgstr "フィールド全体のみ"
+
+msgid "Will"
+msgstr "遺言"
+
+msgid "Window"
+msgstr "ウィンドウ"
+
+msgid "With this on, the last word of a name without slashes becomes the surname."
+msgstr "オンにすると、スラッシュのない名前の最後の語が姓になります。"
+
+msgid "Year:"
+msgstr "年:"
+
+msgid "Years:"
+msgstr "年:"
+
+msgid "and"
+msgstr "と"
+
+msgid "closes between reminders (0 for never)"
+msgstr "回閉じるごとに通知 (0 は通知なし)"
+
+msgid "contains"
+msgstr "含む"
+
+msgid "equals"
+msgstr "同一"
+
+msgid "is after"
+msgstr "より後"
+
+msgid "is before"
+msgstr "より前"
+
+msgid "is empty"
+msgstr "空である"
+
+msgid "is not empty"
+msgstr "空でない"
+
+msgid "years"
+msgstr "年"
+
+msgid "Abbreviation:"
+msgstr "省略:"
+
+msgid "Add Father..."
+msgstr "父親の追加..."
+
+msgid "Add Individual"
+msgstr "個人の追加"
+
+msgid "Add Mother..."
+msgstr "母親の追加..."
+
+msgid "Author:"
+msgstr "著者："
+
+msgid "Biological"
+msgstr "血のつながった"
+
+msgid "Burial:"
+msgstr "埋葬："
+
+msgid "Buried"
+msgstr "埋葬"
+
+msgid "Christened"
+msgstr "洗礼"
+
+msgid "Christening:"
+msgstr "洗礼："
+
+msgid "sex-letter:M"
+msgstr "男"
+
+msgid "sex-letter:F"
+msgstr "女"
+
+msgid "sex-letter:U"
+msgstr "?"
+
+msgid "Citations:"
+msgstr "引用："
+
+msgid "Died"
+msgstr "死亡"
+
+msgid "Edit Individual"
+msgstr "個人の情報の編集"
+
+msgid "Event"
+msgstr "出来事"
+
+msgid "Father"
+msgstr "父親"
+
+msgid "File:"
+msgstr "ファイル :"
+
+msgid "Floating"
+msgstr "浮動"
+
+msgid "HOME"
+msgstr "ホームページ"
+
+msgid "Individuals:"
+msgstr "個人："
+
+msgid "Locked"
+msgstr "固定"
+
+msgid "Marriages:"
+msgstr "結婚："
+
+msgid "Mother"
+msgstr "母親"
+
+msgid "Multimedia links:"
+msgstr "マルチメディア・リンク:"
+
+msgid "Primary"
+msgstr "本人"
+
+msgid "Repositories:"
+msgstr "記録保管所："
+
+msgid "Sealing"
+msgstr "日付"
+
+msgid "Selected"
+msgstr "選択数"
+
+msgid "Size:"
+msgstr "サイズ :"
+
+msgid "Sources:"
+msgstr "情報源 :"
+
+msgid "Merged {n} duplicate source."
+msgid_plural "Merged {n} duplicate sources."
+msgstr[0] "重複した資料を {n} 件統合しました。"
+
+msgid ""
+"Could not save {file}:\n"
+"{error}"
+msgstr ""
+"{file} を保存できませんでした：\n"
+"{error}"
+
+msgid ""
+"Could not open {file}:\n"
+"{error}"
+msgstr ""
+"{file} を開けませんでした：\n"
+"{error}"
+
+msgid "Backup saved to {file}."
+msgstr "バックアップを {file} に保存しました。"
+
+msgid ""
+"The backup could not be saved:\n"
+"{error}"
+msgstr ""
+"バックアップを保存できませんでした：\n"
+"{error}"
+
+msgid "About {program}"
+msgstr "{program} について"
+
+msgid "Individual {rin} points to marriage {mrin}, but the marriage does not point back."
+msgstr "個人 {rin} は結婚 {mrin} を指していますが、その結婚はこの人を指していません。"
+
+msgid "Individual {rin} points to parents in marriage {mrin}, but the marriage does not list them as a child."
+msgstr "個人 {rin} は結婚 {mrin} の両親を指していますが、その結婚はこの人を子供として含んでいません。"
+
+msgid "Husband's record (RIN {rin}) in marriage {mrin} has the wrong sex."
+msgstr "結婚 {mrin} の夫の記録 (RIN {rin}) の性別が正しくありません。"
+
+msgid "Marriage {mrin} lists child {rin}, but that individual does not point back."
+msgstr "結婚 {mrin} は子供 {rin} を含んでいますが、その人はこの結婚を指していません。"
+
+msgid "Descendants of {name}"
+msgstr "{name} の子孫"
+
+msgid "Possible duplicate {at} of {total}"
+msgstr "重複の可能性 {total} 件中 {at} 件目"
+
+msgid "Changed {n} field."
+msgid_plural "Changed {n} fields."
+msgstr[0] "{n} 個のフィールドを変更しました。"
+
+msgid "Changed {n} name or place."
+msgid_plural "Changed {n} names and places."
+msgstr[0] "{n} 件の名前と場所を変更しました。"
+
+msgid "Old ID"
+msgstr "旧 ID"
+
+msgid "New place: {place}. Please check its spelling."
+msgstr "新しい場所：{place}。つづりを確認してください。"
+
+msgid "Husband: {name}"
+msgstr "夫：{name}"
+
+msgid "Wife: {name}"
+msgstr "妻：{name}"
+
+msgid "Edit Notes: {name}"
+msgstr "注釈の編集：{name}"
+
+msgid "Multimedia: {name}"
+msgstr "マルチメディア：{name}"
+
+msgid ""
+"This picture could not be shown:\n"
+"{file}"
+msgstr ""
+"この画像を表示できませんでした：\n"
+"{file}"
+
+msgid "Unlink {name}"
+msgstr "{name} のリンクの解除"
+
+msgid "Unlink from spouse: {name}"
+msgstr "配偶者とのリンクを解除：{name}"
+
+msgid "Unlink from parents: {father} and {mother}"
+msgstr "両親とのリンクを解除：{father} と {mother}"
+
+msgid "Delete {name} (RIN {rin})? This removes the record from the file and unlinks it from the family."
+msgstr "{name} (RIN {rin}) を削除しますか？この記録はファイルから削除され、家族とのリンクも解除されます。"
+
+msgid "Parents of {name}"
+msgstr "{name} の両親"
+
+msgid "Web page creation complete: {n} page in {folder}."
+msgid_plural "Web page creation complete: {n} pages in {folder}."
+msgstr[0] "ウェブページを作成しました：{folder} に {n} ページ。"
+
+msgid ""
+"The pages could not be saved:\n"
+"{error}"
+msgstr ""
+"ページを保存できませんでした：\n"
+"{error}"
+
+msgid "Notepad: {file}"
+msgstr "メモ帳：{file}"
+
+msgid "Their common ancestor is {name}"
+msgstr "共通の祖先は {name} です"
+
+msgid "Their common ancestors are {name} and {other}"
+msgstr "共通の祖先は {name} と {other} です"
+
+msgid "Gives everyone new record numbers (RINs) 1, 2, 3... with no gaps, and numbers the marriages (MRINs) to match. Every link between people stays the same."
+msgstr "全員に 1, 2, 3... と欠番のない新しい記録番号 (RIN) を付け、結婚 (MRIN) にもそれに合わせて番号を付けます。人と人とのリンクはすべてそのままです。"
+
+msgid "Each person keeps their old number as an Old ID, shown when editing them and written to exported GEDCOM files, so notes and printouts that use the old numbers can still be matched. A copy of the file as it is now is saved beside it first."
+msgstr "各人の旧番号は旧 ID として残り、編集時に表示され、エクスポートした GEDCOM ファイルにも書き込まれるので、旧番号を使ったメモや印刷物とも照合できます。最初に、現在のファイルのコピーが隣に保存されます。"
+
+msgid "Preview, first people:"
+msgstr "プレビュー（最初の数人）："
+
+msgid "nothing would change."
+msgstr "何も変わりません。"
+
+msgid "New RIN"
+msgstr "新しい RIN"
+
+msgid "Old RIN"
+msgstr "旧 RIN"
+
+msgid "Name"
+msgstr "名前"
+
+msgid "Renumber"
+msgstr "番号の付け直し"
+
+msgid "Renumbered {n} individual"
+msgid_plural "Renumbered {n} individuals"
+msgstr[0] "{n} 人の番号を付け直し、"
+
+msgid "and {n} marriage."
+msgid_plural "and {n} marriages."
+msgstr[0] "{n} 件の結婚の番号を付け直しました。"
+
+msgid "Home person: {name}"
+msgstr "ホームの人：{name}"
+
+msgid "Root person for relationships: {name}"
+msgstr "続柄の基準となる人：{name}"
+
+msgid "The {n} individual"
+msgid_plural "All {n} individuals"
+msgstr[0] "全 {n} 人"
+
+msgid "Current focus list ({n})"
+msgstr "現在のフォーカスリスト ({n})"
+
+msgid "Exported to {file}."
+msgstr "{file} にエクスポートしました。"
+
+msgid ""
+"The file could not be saved:\n"
+"{error}"
+msgstr ""
+"ファイルを保存できませんでした：\n"
+"{error}"
+
+msgid "Open the backup {file} as the current family? Save it with Save As to replace your file."
+msgstr "バックアップ {file} を現在の家族として開きますか？ファイルを置き換えるには［名前を付けて保存］で保存してください。"
+
+msgid ""
+"This backup could not be read:\n"
+"{error}"
+msgstr ""
+"このバックアップを読み込めませんでした：\n"
+"{error}"
+
+msgid "Permanently delete {file}? This cannot be undone."
+msgstr "{file} を完全に削除しますか？元に戻すことはできません。"
+
+msgid ""
+"The file could not be deleted:\n"
+"{error}"
+msgstr ""
+"ファイルを削除できませんでした：\n"
+"{error}"
+
+msgid "Starting person: {name}"
+msgstr "開始する人：{name}"
+
+msgid "Prints {n} individual. Use Advanced Focus/Filter to choose fewer."
+msgid_plural "Prints {n} individuals. Use Advanced Focus/Filter to choose fewer."
+msgstr[0] "{n} 人を印刷します。人数を減らすには［高度なフォーカス／フィルター］を使用してください。"
+
+msgid "Page {page} of {pages}"
+msgstr "{pages} ページ中 {page} ページ"
+
+msgid ""
+"The report could not be saved:\n"
+"{error}"
+msgstr ""
+"レポートを保存できませんでした：\n"
+"{error}"
+
+msgid "Parents: {names}"
+msgstr "両親：{names}"
+
+msgid "Spouse: {name}"
+msgstr "配偶者：{name}"
+
+msgid "The christening date is more than {years} years after the birth date."
+msgstr "洗礼の日付が出生日より {years} 年以上後です。"
+
+msgid "The death date is more than {years} years after the birth or christening date."
+msgstr "死亡日が出生日または洗礼日より {years} 年以上後です。"
+
+msgid "The burial date is more than {years} years after the birth or christening date."
+msgstr "埋葬日が出生日または洗礼日より {years} 年以上後です。"
+
+msgid "The burial date is more than {n} year after the death date."
+msgid_plural "The burial date is more than {n} years after the death date."
+msgstr[0] "埋葬日が死亡日より {n} 年以上後です。"
+
+msgid "The individual's birth/christening date is less than {years} years after a parent's birth/christening date."
+msgstr "本人の出生日または洗礼日が、親の出生日または洗礼日から {years} 年未満です。"
+
+msgid "The individual's birth/christening date is more than {years} years after the father's birth/christening date."
+msgstr "本人の出生日または洗礼日が、父親の出生日または洗礼日より {years} 年以上後です。"
+
+msgid "The individual's birth/christening date is more than {years} years after the mother's birth/christening date."
+msgstr "本人の出生日または洗礼日が、母親の出生日または洗礼日より {years} 年以上後です。"
+
+msgid "The sealing date is before a spouse's birth or christening date (MRIN {mrin})."
+msgstr "結び固めの日付が配偶者の出生日または洗礼日より前です (MRIN {mrin})。"
+
+msgid "The sealing date is before the age of {years} (MRIN {mrin})."
+msgstr "結び固めの日付が {years} 歳より前です (MRIN {mrin})。"
+
+msgid "The marriage date is before a spouse's birth or christening date (MRIN {mrin})."
+msgstr "結婚日が配偶者の出生日または洗礼日より前です (MRIN {mrin})。"
+
+msgid "The marriage date is less than {years} years after a spouse's birth or christening (MRIN {mrin})."
+msgstr "結婚日が配偶者の出生または洗礼から {years} 年未満です (MRIN {mrin})。"
+
+msgid "The marriage date is more than {years} years after a spouse's birth or christening date (MRIN {mrin})."
+msgstr "結婚日が配偶者の出生日または洗礼日より {years} 年以上後です (MRIN {mrin})。"
+
+msgid "The marriage date is after a spouse's death date (MRIN {mrin})."
+msgstr "結婚日が配偶者の死亡日より後です (MRIN {mrin})。"
+
+msgid "Age between husband and wife is greater than {years} years (MRIN {mrin})."
+msgstr "夫と妻の年齢差が {years} 歳を超えています (MRIN {mrin})。"
+
+msgid "The children in marriage {mrin} are not in birth order."
+msgstr "結婚 {mrin} の子供が出生順に並んでいません。"
+
+msgid "Other marriages ({at}/{count})"
+msgstr "他の結婚 ({at}/{count})"
+
+msgid "Other parents ({count})"
+msgstr "他の両親 ({count})"
+
+msgid "Father's age at this birth, {age}, is outside {low} to {high} years."
+msgstr "この出生時の父親の年齢 {age} 歳が {low} ～ {high} 歳の範囲外です。"
+
+msgid "Mother's age at this birth, {age}, is outside {low} to {high} years."
+msgstr "この出生時の母親の年齢 {age} 歳が {low} ～ {high} 歳の範囲外です。"
+
+msgid "{name}   {rin}   b. {date}"
+msgstr "{name}   {rin}   生 {date}"
+
+msgid "{father} and {mother}  (MRIN {mrin})"
+msgstr "{father} と {mother}  (MRIN {mrin})"

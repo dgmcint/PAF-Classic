@@ -1,0 +1,354 @@
+# PAF Classic: Portuguese (Portugal).
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: pt-PT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "No relationship was found through shared ancestors."
+msgstr "Nenhum parentesco foi encontrado através de antepassados em comum."
+
+msgid ""
+"1. Double-click the dark box on the Family screen and type your own name, with slashes around the surname: Anna Marie /Lee/.\n"
+"\n"
+"2. Double-click an empty box to add a spouse or a parent, or the Children area to add a child.\n"
+"\n"
+"3. Click the triangle beside a person to move them into the main position. The F, M and C keys go to the father, mother or a child.\n"
+"\n"
+"4. Use the Pedigree tab to see five generations, and the Individual tab to see everyone in a list.\n"
+"\n"
+"5. Right-click anyone for more choices, such as Notes and Multimedia.\n"
+"\n"
+"6. Use File, Save As to name your family file. Changes save by themselves after that.\n"
+"\n"
+"7. Use File, Print Reports for charts and lists, and File, Backup to keep a safe copy."
+msgstr ""
+"1. Faça duplo clique na caixa escura do ecrã Família e escreva o seu próprio nome, com barras à volta do apelido: Ana Maria /Silva/.\n"
+"\n"
+"2. Faça duplo clique numa caixa vazia para adicionar um cônjuge ou um dos pais, ou na área Filhos para adicionar um filho.\n"
+"\n"
+"3. Clique no triângulo ao lado de uma pessoa para movê-la para a posição principal. As teclas F, M e C levam ao pai, à mãe ou a um filho.\n"
+"\n"
+"4. Use o separador Linhagem para ver cinco gerações, e o separador Pessoa para ver todos numa lista.\n"
+"\n"
+"5. Clique com o botão direito em qualquer pessoa para mais opções, como Notas e Multimédia.\n"
+"\n"
+"6. Use Ficheiro, Guardar como para dar nome ao seu ficheiro de família. Depois disso, as alterações são guardadas sozinhas.\n"
+"\n"
+"7. Use Ficheiro, Imprimir relatórios para gráficos e listas, e Ficheiro, Cópia de segurança para guardar uma cópia de segurança."
+
+msgid "A family history program for keeping individuals, marriages, notes and sources, and for printing charts and reports."
+msgstr "Um programa de história da família para registar pessoas, casamentos, notas e fontes, e para imprimir gráficos e relatórios."
+
+msgid "Add Picture or File..."
+msgstr "Adicionar imagem ou ficheiro..."
+
+msgid "Add a new person, or link someone already in this file?"
+msgstr "Adicionar uma pessoa nova ou vincular alguém que já está neste ficheiro?"
+
+msgid "Add surname slashes automatically"
+msgstr "Adicionar automaticamente as barras do apelido"
+
+msgid "Back up this family file"
+msgstr "Fazer cópia de segurança deste ficheiro de família"
+
+msgid "Backup"
+msgstr "Cópia de segurança"
+
+msgid "Backup frequency:"
+msgstr "Frequência da cópia de segurança:"
+
+msgid "Backup reminder"
+msgstr "Lembrete de cópia de segurança"
+
+msgid "Backup..."
+msgstr "Cópia de segurança..."
+
+msgid "Check for duplicates when adding individuals"
+msgstr "Procurar duplicados ao adicionar pessoas"
+
+msgid "Choose the link to remove. The individual stays in the file."
+msgstr "Escolha o vínculo a remover. A pessoa continua no ficheiro."
+
+msgid "Click Search to look for possible duplicates."
+msgstr "Clique em Pesquisar para procurar possíveis duplicados."
+
+msgid "Close without saving"
+msgstr "Fechar sem guardar"
+
+msgid "Contact information"
+msgstr "Informações de contacto"
+
+msgid "Could not read this .paf file"
+msgstr "Não foi possível ler este ficheiro .paf"
+
+msgid "Could not save"
+msgstr "Não foi possível guardar"
+
+msgid "Dates typed as all numbers, such as 3/11/1955, mean:"
+msgstr "Datas escritas só com números, como 3/11/1955, significam:"
+
+msgid "Delete"
+msgstr "Eliminar"
+
+msgid "Delete File"
+msgstr "Eliminar ficheiro"
+
+msgid "Delete Individual"
+msgstr "Eliminar pessoa"
+
+msgid "Delete..."
+msgstr "Eliminar..."
+
+msgid "Edit individual, notes, multimedia"
+msgstr "Editar pessoa, notas, multimédia"
+
+msgid "Exit without saving"
+msgstr "Sair sem guardar"
+
+msgid "Export a GEDCOM file"
+msgstr "Exportar um ficheiro GEDCOM"
+
+msgid "Family file read"
+msgstr "Ficheiro de família lido"
+
+msgid "Family reunion contacts"
+msgstr "Contactos para reuniões de família"
+
+msgid "File"
+msgstr "Ficheiro"
+
+msgid "File Properties"
+msgstr "Propriedades do ficheiro"
+
+msgid "Fill the empty surname and place fields from this person"
+msgstr "Preencher os campos vazios de apelido e local com os desta pessoa"
+
+msgid "For Help, press F1. Double-click on person you want to edit."
+msgstr "Para obter ajuda, prima F1. Faça duplo clique na pessoa que pretende editar."
+
+msgid "Given /Surname/ Suffix"
+msgstr "Nome próprio /Apelido/ Sufixo"
+
+msgid "Given Name"
+msgstr "Nome próprio"
+
+msgid "Import a GEDCOM or .paf file"
+msgstr "Importar um ficheiro GEDCOM ou .paf"
+
+msgid "It has been a while since this family file was backed up. Use File, Backup after opening it again."
+msgstr "Há algum tempo que não se faz cópia de segurança deste ficheiro de família. Use Ficheiro, Cópia de segurança depois de abri-lo de novo."
+
+msgid "Burgundy"
+msgstr "Bordéus"
+
+msgid "Lists the pictures marked for the scrapbook, with their captions. Pictures themselves are viewed from Edit, Multimedia."
+msgstr "Lista as imagens marcadas para o álbum de recortes, com as suas legendas. As imagens em si são vistas em Editar, Multimédia."
+
+msgid "Log changes"
+msgstr "Registar alterações"
+
+msgid "Marriage Banns"
+msgstr "Banhos"
+
+msgid "Marriage Settlement"
+msgstr "Convenção antenupcial"
+
+msgid "Multimedia"
+msgstr "Multimédia"
+
+msgid "Multimedia (Ctrl+M)"
+msgstr "Multimédia (Ctrl+M)"
+
+msgid "Multimedia file names"
+msgstr "Nomes de ficheiros multimédia"
+
+msgid "Multimedia links"
+msgstr "Vínculos de multimédia"
+
+msgid "Nickname:"
+msgstr "Alcunha:"
+
+msgid "No descendants are recorded."
+msgstr "Nenhum descendente registado."
+
+msgid "No file"
+msgstr "Nenhum ficheiro"
+
+msgid "No pictures or files have been added for this individual."
+msgstr "Nenhuma imagem ou ficheiro foi adicionado para esta pessoa."
+
+msgid "No possible duplicates were found."
+msgstr "Não foi encontrado nenhum possível duplicado."
+
+msgid "No problems were found in the links of this file."
+msgstr "Nenhum problema foi encontrado nos vínculos deste ficheiro."
+
+msgid "No record has that number."
+msgstr "Nenhum registo tem esse número."
+
+msgid "Not saved yet"
+msgstr "Ainda não guardado"
+
+msgid "Open family file (Ctrl+O)"
+msgstr "Abrir ficheiro de família (Ctrl+O)"
+
+msgid "Opens the report in your PDF viewer, where you can print it"
+msgstr "Abre o relatório no seu leitor de PDF, onde o pode imprimir"
+
+msgid "Pages are saved in a folder you choose. Nothing is uploaded."
+msgstr "As páginas são guardadas numa pasta à sua escolha. Nada é enviado para a Internet."
+
+msgid "Preview"
+msgstr "Pré-visualizar"
+
+msgid "Retirement"
+msgstr "Reforma"
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid "Save As..."
+msgstr "Guardar como..."
+
+msgid "Save List"
+msgstr "Guardar lista"
+
+msgid "Save as PDF..."
+msgstr "Guardar como PDF..."
+
+msgid "Save..."
+msgstr "Guardar..."
+
+msgid "Saved lists"
+msgstr "Listas guardadas"
+
+msgid "Show on Individual Screen"
+msgstr "Mostrar no ecrã Pessoa"
+
+msgid "Show relationships on the status bar"
+msgstr "Mostrar parentescos na barra de estado"
+
+msgid "Status Bar"
+msgstr "Barra de estado"
+
+msgid "Surname"
+msgstr "Apelido"
+
+msgid "Switch between the three screens"
+msgstr "Alternar entre os três ecrãs"
+
+msgid "That is all the possible duplicates."
+msgstr "Estes são todos os possíveis duplicados."
+
+msgid "The date you typed is not standard."
+msgstr "A data escrita não está no formato padrão."
+
+msgid "There are no sources in this file yet. Add them from Edit, Source List."
+msgstr "Ainda não há fontes neste ficheiro. Adicione-as em Editar, Lista de fontes."
+
+msgid "This changes names and places written in capital letters to upper and lower case, for example SMITH to Smith. Consider making a backup first. Continue?"
+msgstr "Isto muda nomes e locais escritos em maiúsculas para maiúsculas e minúsculas, por exemplo SILVA para Silva. Considere fazer uma cópia de segurança antes. Continuar?"
+
+msgid "This family has not been saved to a file. Save it before closing?"
+msgstr "Esta família não foi guardada num ficheiro. Guardar antes de fechar?"
+
+msgid "This family has not been saved to a file. Save it before you exit?"
+msgstr "Esta família não foi guardada num ficheiro. Guardar antes de sair?"
+
+msgid "This file is not a valid family file. It may be corrupt."
+msgstr "Este ficheiro não é um ficheiro de família válido. Pode estar corrompido."
+
+msgid "View"
+msgstr "Ver"
+
+msgid "With this on, the last word of a name without slashes becomes the surname."
+msgstr "Com esta opção ativada, a última palavra de um nome sem barras passa a ser o apelido."
+
+msgid "File:"
+msgstr "Ficheiro:"
+
+msgid "Multimedia links:"
+msgstr "Vínculos de multimédia:"
+
+msgid ""
+"Could not save {file}:\n"
+"{error}"
+msgstr ""
+"Não foi possível guardar {file}:\n"
+"{error}"
+
+msgid "Backup saved to {file}."
+msgstr "Cópia de segurança guardada em {file}."
+
+msgid ""
+"The backup could not be saved:\n"
+"{error}"
+msgstr ""
+"Não foi possível guardar a cópia de segurança:\n"
+"{error}"
+
+msgid "About {program}"
+msgstr "Acerca do {program}"
+
+msgid "Husband's record (RIN {rin}) in marriage {mrin} has the wrong sex."
+msgstr "O registo do marido (RIN {rin}) no casamento {mrin} tem o sexo errado."
+
+msgid "Possible duplicate {at} of {total}"
+msgstr "Possível duplicado {at} de {total}"
+
+msgid "Multimedia: {name}"
+msgstr "Multimédia: {name}"
+
+msgid "Delete {name} (RIN {rin})? This removes the record from the file and unlinks it from the family."
+msgstr "Eliminar {name} (RIN {rin})? O registo será removido do ficheiro e desvinculado da família."
+
+msgid ""
+"The pages could not be saved:\n"
+"{error}"
+msgstr ""
+"Não foi possível guardar as páginas:\n"
+"{error}"
+
+msgid "Gives everyone new record numbers (RINs) 1, 2, 3... with no gaps, and numbers the marriages (MRINs) to match. Every link between people stays the same."
+msgstr "Dá a todos novos números de registo (RIN) 1, 2, 3... sem lacunas, e numera os casamentos (MRIN) da mesma forma. Todos os vínculos entre as pessoas continuam iguais."
+
+msgid "Each person keeps their old number as an Old ID, shown when editing them and written to exported GEDCOM files, so notes and printouts that use the old numbers can still be matched. A copy of the file as it is now is saved beside it first."
+msgstr "Cada pessoa mantém o seu número antigo como ID antigo, que aparece ao editá-la e é gravado nos ficheiros GEDCOM exportados, para que notas e impressões com os números antigos ainda possam ser conferidas. Antes, uma cópia do ficheiro como está agora é guardada ao lado."
+
+msgid "Preview, first people:"
+msgstr "Pré-visualização, primeiras pessoas:"
+
+msgid ""
+"The file could not be saved:\n"
+"{error}"
+msgstr ""
+"Não foi possível guardar o ficheiro:\n"
+"{error}"
+
+msgid "Open the backup {file} as the current family? Save it with Save As to replace your file."
+msgstr "Abrir a cópia de segurança {file} como a família atual? Guarde-a com Guardar como para substituir o seu ficheiro."
+
+msgid ""
+"This backup could not be read:\n"
+"{error}"
+msgstr ""
+"Não foi possível ler esta cópia de segurança:\n"
+"{error}"
+
+msgid "Permanently delete {file}? This cannot be undone."
+msgstr "Eliminar {file} permanentemente? Isto não pode ser desfeito."
+
+msgid ""
+"The file could not be deleted:\n"
+"{error}"
+msgstr ""
+"Não foi possível eliminar o ficheiro:\n"
+"{error}"
+
+msgid ""
+"The report could not be saved:\n"
+"{error}"
+msgstr ""
+"Não foi possível guardar o relatório:\n"
+"{error}"

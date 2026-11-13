@@ -1,5 +1,6 @@
 //! Record checks: dates that don't make sense, and who may still be living.
 
+use crate::i18n::{tr_n, trf};
 use super::*;
 use crate::data::*;
 
@@ -78,22 +79,22 @@ pub fn check_person(db: &Db, rin: u32) -> Vec<String> {
     }
     if let (Some(b), Some(c)) = (birth, chr) {
         if years_between(b, c) > MAX_CHRISTENING_DELAY as f64 {
-            out.push(format!("The christening date is more than {MAX_CHRISTENING_DELAY} years after the birth date."));
+            out.push(trf("The christening date is more than {years} years after the birth date.", &[("years", &MAX_CHRISTENING_DELAY)]));
         }
     }
     if let (Some(b), Some(d)) = (earliest, death) {
         if years_between(b, d) > MAX_LIFESPAN as f64 {
-            out.push(format!("The death date is more than {MAX_LIFESPAN} years after the birth or christening date."));
+            out.push(trf("The death date is more than {years} years after the birth or christening date.", &[("years", &MAX_LIFESPAN)]));
         }
     }
     if let (Some(b), Some(d)) = (earliest, burial) {
         if years_between(b, d) > MAX_LIFESPAN as f64 {
-            out.push(format!("The burial date is more than {MAX_LIFESPAN} years after the birth or christening date."));
+            out.push(trf("The burial date is more than {years} years after the birth or christening date.", &[("years", &MAX_LIFESPAN)]));
         }
     }
     if let (Some(d), Some(b)) = (death, burial) {
         if years_between(d, b) > MAX_BURIAL_DELAY as f64 {
-            out.push(format!("The burial date is more than {MAX_BURIAL_DELAY} year after the death date."));
+            out.push(tr_n("The burial date is more than {n} year after the death date.", "The burial date is more than {n} years after the death date.", MAX_BURIAL_DELAY as usize, &[]));
         }
     }
     if let Some(e) = earliest {
@@ -111,11 +112,11 @@ pub fn check_person(db: &Db, rin: u32) -> Vec<String> {
                     if gap < 0.0 {
                         out.push("The individual's birth/christening date is before a parent's birth/christening date.".into());
                     } else if gap < MIN_PARENT_AGE as f64 {
-                        out.push(format!("The individual's birth/christening date is less than {MIN_PARENT_AGE} years after a parent's birth/christening date."));
+                        out.push(trf("The individual's birth/christening date is less than {years} years after a parent's birth/christening date.", &[("years", &MIN_PARENT_AGE)]));
                     } else if is_father && gap > MAX_FATHER_AGE as f64 {
-                        out.push(format!("The individual's birth/christening date is more than {MAX_FATHER_AGE} years after the father's birth/christening date."));
+                        out.push(trf("The individual's birth/christening date is more than {years} years after the father's birth/christening date.", &[("years", &MAX_FATHER_AGE)]));
                     } else if !is_father && gap > MAX_MOTHER_AGE as f64 {
-                        out.push(format!("The individual's birth/christening date is more than {MAX_MOTHER_AGE} years after the mother's birth/christening date."));
+                        out.push(trf("The individual's birth/christening date is more than {years} years after the mother's birth/christening date.", &[("years", &MAX_MOTHER_AGE)]));
                     }
                 }
                 if is_father && link.relation == "Biological" {
@@ -159,25 +160,25 @@ pub fn check_person(db: &Db, rin: u32) -> Vec<String> {
         let Some(m) = db.marriages.get(mrin) else { continue };
         if let (Some(s), Some(e)) = (val(&m.sealing.date), earliest) {
             if s < e {
-                out.push(format!("The sealing date is before a spouse's birth or christening date (MRIN {mrin})."));
+                out.push(trf("The sealing date is before a spouse's birth or christening date (MRIN {mrin}).", &[("mrin", &mrin)]));
             } else if years_between(e, s) < MIN_SEALING_AGE as f64 {
-                out.push(format!("The sealing date is before the age of {MIN_SEALING_AGE} (MRIN {mrin})."));
+                out.push(trf("The sealing date is before the age of {years} (MRIN {mrin}).", &[("years", &MIN_SEALING_AGE), ("mrin", &mrin)]));
             }
         }
         if let Some(md) = val(&m.event.date) {
             if let Some(e) = earliest {
                 let gap = years_between(e, md);
                 if gap < 0.0 {
-                    out.push(format!("The marriage date is before a spouse's birth or christening date (MRIN {mrin})."));
+                    out.push(trf("The marriage date is before a spouse's birth or christening date (MRIN {mrin}).", &[("mrin", &mrin)]));
                 } else if gap < MIN_MARRIAGE_AGE as f64 {
-                    out.push(format!("The marriage date is less than {MIN_MARRIAGE_AGE} years after a spouse's birth or christening (MRIN {mrin})."));
+                    out.push(trf("The marriage date is less than {years} years after a spouse's birth or christening (MRIN {mrin}).", &[("years", &MIN_MARRIAGE_AGE), ("mrin", &mrin)]));
                 } else if gap > MAX_MARRIAGE_AGE as f64 {
-                    out.push(format!("The marriage date is more than {MAX_MARRIAGE_AGE} years after a spouse's birth or christening date (MRIN {mrin})."));
+                    out.push(trf("The marriage date is more than {years} years after a spouse's birth or christening date (MRIN {mrin}).", &[("years", &MAX_MARRIAGE_AGE), ("mrin", &mrin)]));
                 }
             }
             if let Some(d) = death {
                 if md > d {
-                    out.push(format!("The marriage date is after a spouse's death date (MRIN {mrin})."));
+                    out.push(trf("The marriage date is after a spouse's death date (MRIN {mrin}).", &[("mrin", &mrin)]));
                 }
             }
         }
@@ -185,7 +186,7 @@ pub fn check_person(db: &Db, rin: u32) -> Vec<String> {
             if let (Some(h), Some(w)) = (earliest, m.wife.and_then(|r| db.person(r)).and_then(|x| val(&x.birth.date))) {
                 let span = db.prefs.spouse_span;
                 if years_between(h.min(w), h.max(w)) > span as f64 {
-                    out.push(format!("Age between husband and wife is greater than {span} years (MRIN {mrin})."));
+                    out.push(trf("Age between husband and wife is greater than {years} years (MRIN {mrin}).", &[("years", &span), ("mrin", &mrin)]));
                 }
             }
         }
@@ -204,13 +205,13 @@ pub fn problem_list(db: &Db, rin: u32) -> Vec<String> {
         for link in &p.parents {
             let Some(m) = db.marriages.get(&link.mrin) else { continue };
             for (par, word, low, high) in [
-                (m.husband, "Father", db.prefs.father_low, db.prefs.father_high),
-                (m.wife, "Mother", db.prefs.mother_low, db.prefs.mother_high),
+                (m.husband, "Father's age at this birth, {age}, is outside {low} to {high} years.", db.prefs.father_low, db.prefs.father_high),
+                (m.wife, "Mother's age at this birth, {age}, is outside {low} to {high} years.", db.prefs.mother_low, db.prefs.mother_high),
             ] {
                 let Some(b) = par.and_then(|r| db.person(r)).and_then(|x| val(&x.birth.date).or(val(&x.chr.date))) else { continue };
                 let age = years_between(b, e);
                 if age >= 0.0 && (age < low as f64 || age > high as f64) {
-                    out.push(format!("{word}'s age at this birth, {}, is outside {low} to {high} years.", age as i32));
+                    out.push(trf(word, &[("age", &(age as i32)), ("low", &low), ("high", &high)]));
                 }
             }
         }
@@ -224,7 +225,7 @@ pub fn problem_list(db: &Db, rin: u32) -> Vec<String> {
             let dates: Vec<Option<i64>> = m.children.iter().filter_map(|c| db.person(*c)).map(|c| val(&c.birth.date).or(val(&c.chr.date))).collect();
             let known: Vec<i64> = dates.into_iter().flatten().collect();
             if known.windows(2).any(|w| w[0] > w[1]) {
-                out.push(format!("The children in marriage {mrin} are not in birth order."));
+                out.push(trf("The children in marriage {mrin} are not in birth order.", &[("mrin", &mrin)]));
             }
         }
         let known: Vec<i64> = p.spouses.iter().filter_map(|m| db.marriages.get(m)).filter_map(|m| val(&m.event.date)).collect();

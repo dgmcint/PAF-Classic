@@ -1,0 +1,1832 @@
+# PAF Classic: Norwegian (Bokmål).
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: nb\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "LDS Sealing"
+msgstr "SDH-besegling"
+
+msgid "Move the spouse to the primary position"
+msgstr "Flytt ektefellen til hovedplassen"
+
+msgid "Move this child to the primary position"
+msgstr "Flytt dette barnet til hovedplassen"
+
+msgid "Move this person to the primary position to see more ancestors"
+msgstr "Flytt denne personen til hovedplassen for å se flere aner"
+
+msgid "Publication:"
+msgstr "Utgivelse:"
+
+msgid "Unknown spouse"
+msgstr "Ukjent ektefelle"
+
+msgid "Start date must be before end date."
+msgstr "Startdatoen må være før sluttdatoen."
+
+msgid "No relationship was found through shared ancestors."
+msgstr "Fant ikke noe slektskap gjennom felles aner."
+
+msgid "People with notes:"
+msgstr "Personer med notater:"
+
+msgid "(None)"
+msgstr "(Ingen)"
+
+msgid ""
+"1. Double-click the dark box on the Family screen and type your own name, with slashes around the surname: Anna Marie /Lee/.\n"
+"\n"
+"2. Double-click an empty box to add a spouse or a parent, or the Children area to add a child.\n"
+"\n"
+"3. Click the triangle beside a person to move them into the main position. The F, M and C keys go to the father, mother or a child.\n"
+"\n"
+"4. Use the Pedigree tab to see five generations, and the Individual tab to see everyone in a list.\n"
+"\n"
+"5. Right-click anyone for more choices, such as Notes and Multimedia.\n"
+"\n"
+"6. Use File, Save As to name your family file. Changes save by themselves after that.\n"
+"\n"
+"7. Use File, Print Reports for charts and lists, and File, Backup to keep a safe copy."
+msgstr ""
+"1. Dobbeltklikk på den mørke ruten i familievisningen og skriv inn ditt eget navn, med skråstreker rundt etternavnet: Anne Marie /Hansen/.\n"
+"\n"
+"2. Dobbeltklikk på en tom rute for å legge til en ektefelle eller en forelder, eller på barneområdet for å legge til et barn.\n"
+"\n"
+"3. Klikk på trekanten ved siden av en person for å flytte personen til hovedplassen. Tastene F, M og C går til far, mor eller et barn.\n"
+"\n"
+"4. Fanen Anetavle viser fem generasjoner, og fanen Person viser alle i en liste.\n"
+"\n"
+"5. Høyreklikk på en person for flere valg, for eksempel Notater og Multimedia.\n"
+"\n"
+"6. Gi slektsfilen et navn med Fil, Lagre som. Etter det lagres endringer av seg selv.\n"
+"\n"
+"7. Bruk Fil, Skriv ut rapporter for tavler og lister, og Fil, Sikkerhetskopi for å ta vare på en sikker kopi."
+
+msgid "1/10 seconds"
+msgstr "1/10 sekunder"
+
+msgid "1st"
+msgstr "1."
+
+msgid "2nd"
+msgstr "2."
+
+msgid "3rd"
+msgstr "3."
+
+msgid "4th"
+msgstr "4."
+
+msgid "5th"
+msgstr "5."
+
+msgid "A family history program for keeping individuals, marriages, notes and sources, and for printing charts and reports."
+msgstr "Et slektshistorieprogram for å holde orden på personer, ekteskap, notater og kilder, og for å skrive ut tavler og rapporter."
+
+msgid "AFN"
+msgstr "AFN"
+
+msgid "AFN:"
+msgstr "AFN:"
+
+msgid "Actual text:"
+msgstr "Nåværende tekst:"
+
+msgid "Add"
+msgstr "Legg til"
+
+msgid "Add Child..."
+msgstr "Legg til barn..."
+
+msgid "Add Filter"
+msgstr "Legg til filter"
+
+msgid "Add Individual..."
+msgstr "Legg til person..."
+
+msgid "Add New"
+msgstr "Legg til ny"
+
+msgid "Add New Individual..."
+msgstr "Legg til ny person..."
+
+msgid "Add New Parents..."
+msgstr "Legg til nye foreldre..."
+
+msgid "Add Picture or File..."
+msgstr "Legg til bilde eller fil..."
+
+msgid "Add Spouse..."
+msgstr "Legg til ektefelle..."
+
+msgid "Add a new person, or link someone already in this file?"
+msgstr "Legge til en ny person, eller knytte til noen som allerede er i denne filen?"
+
+msgid "Add family"
+msgstr "Legg til familie"
+
+msgid "Add father, mother"
+msgstr "Legg til far, mor"
+
+msgid "Add individual (Ctrl+A)"
+msgstr "Legg til person (Ctrl+A)"
+
+msgid "Add individual, spouse, child"
+msgstr "Legg til person, ektefelle, barn"
+
+msgid "Add or Select Individual"
+msgstr "Legg til eller velg person"
+
+msgid "Add surname slashes automatically"
+msgstr "Legg til skråstreker rundt etternavnet automatisk"
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Address:"
+msgstr "Adresse:"
+
+msgid "Adoption"
+msgstr "Adopsjon"
+
+msgid "Adult Christening"
+msgstr "Voksendåp"
+
+msgid "Advanced Focus/Filter"
+msgstr "Avansert fokus/filter"
+
+msgid "Advanced Focus/Filter..."
+msgstr "Avansert fokus/filter..."
+
+msgid "Age difference between husband and wife:"
+msgstr "Aldersforskjell mellom mann og kone:"
+
+msgid "Allow AFN edit"
+msgstr "Tillat redigering av AFN"
+
+msgid "Also Known As:"
+msgstr "Også kjent som:"
+
+msgid "Also removes citations of this source"
+msgstr "Fjerner også kildehenvisninger til denne kilden"
+
+msgid "An empty form to fill in by hand"
+msgstr "Et tomt skjema til å fylle ut for hånd"
+
+msgid "Ancestors of"
+msgstr "Aner til"
+
+msgid "Ancestry"
+msgstr "Aner"
+
+msgid "Annulment"
+msgstr "Annullering"
+
+msgid "Arrow keys"
+msgstr "Piltaster"
+
+msgid "Back up this family file"
+msgstr "Ta sikkerhetskopi av denne slektsfilen"
+
+msgid "Backup"
+msgstr "Sikkerhetskopi"
+
+msgid "Backup frequency:"
+msgstr "Hyppighet for sikkerhetskopi:"
+
+msgid "Backup reminder"
+msgstr "Påminnelse om sikkerhetskopi"
+
+msgid "Backup..."
+msgstr "Sikkerhetskopi..."
+
+msgid "Baptism"
+msgstr "SDH-dåp"
+
+msgid "Baptism:"
+msgstr "SDH-dåp:"
+
+msgid "Bar Mitzvah"
+msgstr "Bar mitsva"
+
+msgid "Bas Mitzvah"
+msgstr "Bat mitsva"
+
+msgid "Birth"
+msgstr "Fødsel"
+
+msgid "Birth Date"
+msgstr "Fødselsdato"
+
+msgid "Birth Place"
+msgstr "Fødested"
+
+msgid "Birth years within:"
+msgstr "Fødselsår innenfor:"
+
+msgid "Birth:"
+msgstr "Fødsel:"
+
+msgid "Blank Form"
+msgstr "Tomt skjema"
+
+msgid "Blessing"
+msgstr "Velsignelse"
+
+msgid "Books"
+msgstr "Bøker"
+
+msgid "Born"
+msgstr "Født"
+
+msgid "Burial"
+msgstr "Begravelse"
+
+msgid "Burial Date"
+msgstr "Begravelsesdato"
+
+msgid "Burial Place"
+msgstr "Begravelsessted"
+
+msgid "Calculate"
+msgstr "Beregn"
+
+msgid "Calendar"
+msgstr "Kalender"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "Caption:"
+msgstr "Bildetekst:"
+
+msgid "Census"
+msgstr "Folketelling"
+
+msgid "Change"
+msgstr "Endre"
+
+msgid "Change Names to Mixed Case"
+msgstr "Endre navn til store og små bokstaver"
+
+msgid "Check LDS data"
+msgstr "Kontroller SDH-data"
+
+msgid "Check for duplicates when adding individuals"
+msgstr "Se etter duplikater når personer legges til"
+
+msgid "Check marriage and children order"
+msgstr "Kontroller rekkefølgen på ekteskap og barn"
+
+msgid "Check/Repair"
+msgstr "Kontroller/reparer"
+
+msgid "Check/Repair..."
+msgstr "Kontroller/reparer..."
+
+msgid "Child..."
+msgstr "Barn..."
+
+msgid "Children"
+msgstr "Barn"
+
+msgid "Children:"
+msgstr "Barn:"
+
+msgid "Choose the link to remove. The individual stays in the file."
+msgstr "Velg koblingen som skal fjernes. Personen blir værende i filen."
+
+msgid "Christening"
+msgstr "Dåp"
+
+msgid "Christening Date"
+msgstr "Dåpsdato"
+
+msgid "Christening Place"
+msgstr "Dåpssted"
+
+msgid "Clear Fields"
+msgstr "Tøm feltene"
+
+msgid "Click Search to look for possible duplicates."
+msgstr "Klikk på Søk for å se etter mulige duplikater."
+
+msgid "Close"
+msgstr "Lukk"
+
+msgid "Close without saving"
+msgstr "Lukk uten å lagre"
+
+msgid "Comments:"
+msgstr "Kommentarer:"
+
+msgid "Confirmation"
+msgstr "Konfirmasjon"
+
+msgid "Contact information"
+msgstr "Kontaktinformasjon"
+
+msgid "Could not open"
+msgstr "Kunne ikke åpne"
+
+msgid "Could not read this .paf file"
+msgstr "Kunne ikke lese denne .paf-filen"
+
+msgid "Could not save"
+msgstr "Kunne ikke lagre"
+
+msgid "Create"
+msgstr "Opprett"
+
+msgid "Create Web Page"
+msgstr "Lag nettside"
+
+msgid "Create Web Page..."
+msgstr "Lag nettside..."
+
+msgid "Create a web page"
+msgstr "Lag en nettside"
+
+msgid "Cremation"
+msgstr "Kremasjon"
+
+msgid "Custom"
+msgstr "Egendefinert"
+
+msgid "Date"
+msgstr "Dato"
+
+msgid "Date Calculator"
+msgstr "Datokalkulator"
+
+msgid "Dates"
+msgstr "Datoer"
+
+msgid "Dates and family information"
+msgstr "Datoer og familieopplysninger"
+
+msgid "Dates only"
+msgstr "Bare datoer"
+
+msgid "Dates typed as all numbers, such as 3/11/1955, mean:"
+msgstr "Datoer skrevet bare med tall, som 3/11/1955, betyr:"
+
+msgid "Day first: 3 November 1955"
+msgstr "Dag først: 3. november 1955"
+
+msgid "Days:"
+msgstr "Dager:"
+
+msgid "Death"
+msgstr "Død"
+
+msgid "Death Date"
+msgstr "Dødsdato"
+
+msgid "Death Place"
+msgstr "Dødssted"
+
+msgid "Death:"
+msgstr "Død:"
+
+msgid "Delete"
+msgstr "Slett"
+
+msgid "Delete File"
+msgstr "Slett fil"
+
+msgid "Delete Individual"
+msgstr "Slett person"
+
+msgid "Delete..."
+msgstr "Slett..."
+
+msgid "Descendancy"
+msgstr "Etterkommere"
+
+msgid "Descendancy List..."
+msgstr "Etterkommerliste..."
+
+msgid "Descendancy list (Ctrl+D)"
+msgstr "Etterkommerliste (Ctrl+D)"
+
+msgid "Descendants"
+msgstr "Etterkommere"
+
+msgid "Descendants of"
+msgstr "Etterkommere etter"
+
+msgid "Description"
+msgstr "Beskrivelse"
+
+msgid "Description:"
+msgstr "Beskrivelse:"
+
+msgid "Ditto from:"
+msgstr "Kopier fra:"
+
+msgid "Divorce Filed"
+msgstr "Begjæring om skilsmisse"
+
+msgid "Divorced"
+msgstr "Skilt"
+
+msgid "Down"
+msgstr "Ned"
+
+msgid "Duplicate individuals"
+msgstr "Dupliserte personer"
+
+msgid "Edit"
+msgstr "Rediger"
+
+msgid "Edit Marriage"
+msgstr "Rediger ekteskap"
+
+msgid "Edit Parent Links"
+msgstr "Rediger koblinger til foreldre"
+
+msgid "Edit Parents' Marriage"
+msgstr "Rediger foreldrenes ekteskap"
+
+msgid "Edit individual (Ctrl+I)"
+msgstr "Rediger person (Ctrl+I)"
+
+msgid "Edit individual, notes, multimedia"
+msgstr "Rediger person, notater, multimedia"
+
+msgid "Edit marriage when created"
+msgstr "Rediger ekteskapet når det opprettes"
+
+msgid "Edit notes (Ctrl+N)"
+msgstr "Rediger notater (Ctrl+N)"
+
+msgid "Education"
+msgstr "Utdanning"
+
+msgid "Email:"
+msgstr "E-post:"
+
+msgid "Emigration"
+msgstr "Utvandring"
+
+msgid "End date:"
+msgstr "Sluttdato:"
+
+msgid "End-of-line individuals"
+msgstr "Personer i enden av en linje"
+
+msgid "Endowment:"
+msgstr "Begavelse:"
+
+msgid "Engagement"
+msgstr "Forlovelse"
+
+msgid "Events"
+msgstr "Hendelser"
+
+msgid "Everyone"
+msgstr "Alle"
+
+msgid "Exit"
+msgstr "Avslutt"
+
+msgid "Exit without saving"
+msgstr "Avslutt uten å lagre"
+
+msgid "Export"
+msgstr "Eksporter"
+
+msgid "Export a GEDCOM file"
+msgstr "Eksporter en GEDCOM-fil"
+
+msgid "Export to GEDCOM 5.5 (UTF-8)"
+msgstr "Eksporter til GEDCOM 5.5 (UTF-8)"
+
+msgid "Export..."
+msgstr "Eksporter..."
+
+msgid "Family"
+msgstr "Familie"
+
+msgid "Family Group"
+msgstr "Familiegruppe"
+
+msgid "Family file read"
+msgstr "Slektsfil lest"
+
+msgid "Family reunion contacts"
+msgstr "Kontakter for slektstreff"
+
+msgid "Family..."
+msgstr "Familie..."
+
+msgid "Father's age should be between"
+msgstr "Farens alder bør være mellom"
+
+msgid "Father's or mother's line (Pedigree)"
+msgstr "Farens eller morens linje (anetavle)"
+
+msgid "Father, mother or child"
+msgstr "Far, mor eller barn"
+
+msgid "Father..."
+msgstr "Far..."
+
+msgid "Female"
+msgstr "Kvinne"
+
+msgid "Field filters"
+msgstr "Feltfiltre"
+
+msgid "File"
+msgstr "Fil"
+
+msgid "File Properties"
+msgstr "Filegenskaper"
+
+msgid "Fill in any two of start, end and elapsed time. Works for the Gregorian calendar only, from October 1752."
+msgstr "Fyll inn to av start, slutt og tid som har gått. Virker bare for den gregorianske kalenderen, fra oktober 1752."
+
+msgid "Fill the empty surname and place fields from this person"
+msgstr "Fyll de tomme feltene for etternavn og sted fra denne personen"
+
+msgid "Film/Volume/Page:"
+msgstr "Film/bind/side:"
+
+msgid "Find by RIN or MRIN (Ctrl+R)"
+msgstr "Finn etter RIN eller MRIN (Ctrl+R)"
+
+msgid "Find by RIN/MRIN"
+msgstr "Finn etter RIN/MRIN"
+
+msgid "Find by RIN/MRIN..."
+msgstr "Finn etter RIN/MRIN..."
+
+msgid "Find:"
+msgstr "Finn:"
+
+msgid "First Communion"
+msgstr "Første nattverd"
+
+msgid "First Person"
+msgstr "Første person"
+
+msgid "Flush"
+msgstr "Tøm"
+
+msgid "For Help, press F1. Double-click on person you want to edit."
+msgstr "Trykk F1 for hjelp. Dobbeltklikk på personen du vil redigere."
+
+msgid "Formats"
+msgstr "Formater"
+
+msgid "Full Name"
+msgstr "Fullt navn"
+
+msgid "Full Name:"
+msgstr "Fullt navn:"
+
+msgid "Full information on living"
+msgstr "Alle opplysninger om levende"
+
+msgid "GEDCOM import"
+msgstr "GEDCOM-import"
+
+msgid "General"
+msgstr "Generelt"
+
+msgid "Generations per page:"
+msgstr "Generasjoner per side:"
+
+msgid "Generations:"
+msgstr "Generasjoner:"
+
+msgid "Getting Started"
+msgstr "Kom i gang"
+
+msgid "Given /Surname/ Suffix"
+msgstr "Fornavn /Etternavn/ Tillegg"
+
+msgid "Given Name"
+msgstr "Fornavn"
+
+msgid "Global Search and Replace"
+msgstr "Søk og erstatt overalt"
+
+msgid "Global Search and Replace..."
+msgstr "Søk og erstatt overalt..."
+
+msgid "Go to the home person"
+msgstr "Gå til startpersonen"
+
+msgid "Go to the home person (Ctrl+Home)"
+msgstr "Gå til startpersonen (Ctrl+Home)"
+
+msgid "Graduation"
+msgstr "Eksamen"
+
+msgid "Help"
+msgstr "Hjelp"
+
+msgid "Hide details of people who may still be living"
+msgstr "Skjul detaljer om personer som kanskje fortsatt lever"
+
+msgid "Home Person"
+msgstr "Startperson"
+
+msgid "Immigration"
+msgstr "Innvandring"
+
+msgid "Import"
+msgstr "Importer"
+
+msgid "Import a GEDCOM or .paf file"
+msgstr "Importer en GEDCOM- eller .paf-fil"
+
+msgid "Import..."
+msgstr "Importer..."
+
+msgid "Include in the scrapbook"
+msgstr "Ta med i utklippsboken"
+
+msgid "Include notes"
+msgstr "Ta med notater"
+
+msgid "Include people who have died"
+msgstr "Ta med personer som er døde"
+
+msgid "Individual"
+msgstr "Person"
+
+msgid "Individual Event List"
+msgstr "Hendelsesliste for person"
+
+msgid "Individual List"
+msgstr "Personliste"
+
+msgid "Individual List..."
+msgstr "Personliste..."
+
+msgid "Individual Summary"
+msgstr "Personsammendrag"
+
+msgid "Individual list (Ctrl+F)"
+msgstr "Personliste (Ctrl+F)"
+
+msgid "Individual list, descendancy list, find by RIN"
+msgstr "Personliste, etterkommerliste, finn etter RIN"
+
+msgid "Individual..."
+msgstr "Person..."
+
+msgid "Individuals sorted alphabetically"
+msgstr "Personer i alfabetisk rekkefølge"
+
+msgid "Individuals sorted by RIN"
+msgstr "Personer etter RIN"
+
+msgid "Individuals with notes"
+msgstr "Personer med notater"
+
+msgid "InfoBox"
+msgstr "Informasjonsrute"
+
+msgid "It has been a while since this family file was backed up. Use File, Backup after opening it again."
+msgstr "Det er en stund siden denne slektsfilen ble sikkerhetskopiert. Bruk Fil, Sikkerhetskopi etter at du har åpnet den igjen."
+
+msgid "Keep Left, Merge Right"
+msgstr "Behold venstre, slå sammen høyre"
+
+msgid "Keep Right, Merge Left"
+msgstr "Behold høyre, slå sammen venstre"
+
+msgid "Keyboard"
+msgstr "Tastatur"
+
+msgid "Keyboard help (F1)"
+msgstr "Tastaturhjelp (F1)"
+
+msgid "LDS data"
+msgstr "SDH-data"
+
+msgid "Language"
+msgstr "Språk"
+
+msgid "Colors"
+msgstr "Farger"
+
+msgid "Classic"
+msgstr "Klassisk"
+
+msgid "Slate Blue"
+msgstr "Skiferblå"
+
+msgid "Navy"
+msgstr "Marineblå"
+
+msgid "Parchment"
+msgstr "Pergament"
+
+msgid "Blue Linen"
+msgstr "Blått lin"
+
+msgid "Leather"
+msgstr "Lær"
+
+msgid "Original"
+msgstr "Original"
+
+msgid "Tree pictures"
+msgstr "Trebilder"
+
+msgid "Earth tones"
+msgstr "Jordfarger"
+
+msgid "Popular colors"
+msgstr "Populære farger"
+
+msgid "Neutrals"
+msgstr "Nøytrale"
+
+msgid "Genealogy sites"
+msgstr "Slektsnettsteder"
+
+msgid "Leaf Green"
+msgstr "Løvgrønn"
+
+msgid "Fresh Green"
+msgstr "Friskgrønn"
+
+msgid "Deep Green"
+msgstr "Dypgrønn"
+
+msgid "Sage"
+msgstr "Salvie"
+
+msgid "Olive"
+msgstr "Oliven"
+
+msgid "Moss"
+msgstr "Mose"
+
+msgid "Forest Green"
+msgstr "Skoggrønn"
+
+msgid "Terracotta"
+msgstr "Terrakotta"
+
+msgid "Clay"
+msgstr "Leire"
+
+msgid "Burgundy"
+msgstr "Burgunder"
+
+msgid "Teal"
+msgstr "Blågrønn"
+
+msgid "Plum"
+msgstr "Plomme"
+
+msgid "Charcoal"
+msgstr "Kullgrå"
+
+msgid "Midnight"
+msgstr "Midnatt"
+
+msgid "Sky"
+msgstr "Himmel"
+
+msgid "Rose"
+msgstr "Rosa"
+
+msgid "Ivory"
+msgstr "Elfenben"
+
+msgid "Linen"
+msgstr "Lin"
+
+msgid "Stone"
+msgstr "Stein"
+
+msgid "Taupe"
+msgstr "Gråbrun"
+
+msgid "Link a source"
+msgstr "Koble til en kilde"
+
+msgid "List name"
+msgstr "Listenavn"
+
+msgid "Lists"
+msgstr "Lister"
+
+msgid "Lists the pictures marked for the scrapbook, with their captions. Pictures themselves are viewed from Edit, Multimedia."
+msgstr "Viser bildene som er merket for utklippsboken, med bildetekstene. Selve bildene vises fra Rediger, Multimedia."
+
+msgid "Log changes"
+msgstr "Logg endringer"
+
+msgid "MRIN"
+msgstr "MRIN"
+
+msgid "Make Primary"
+msgstr "Gjør til hovedperson"
+
+msgid "Male"
+msgstr "Mann"
+
+msgid "Marriage"
+msgstr "Ekteskap"
+
+msgid "Marriage Banns"
+msgstr "Lysning"
+
+msgid "Marriage Contract"
+msgstr "Ektepakt"
+
+msgid "Marriage Date"
+msgstr "Vigselsdato"
+
+msgid "Marriage Event List"
+msgstr "Hendelsesliste for ekteskap"
+
+msgid "Marriage License"
+msgstr "Vigselsbevilling"
+
+msgid "Marriage List"
+msgstr "Ekteskapsliste"
+
+msgid "Marriage List..."
+msgstr "Ekteskapsliste..."
+
+msgid "Marriage Settlement"
+msgstr "Ekteskapsoppgjør"
+
+msgid "Marriage date:"
+msgstr "Vigselsdato:"
+
+msgid "Marriage place:"
+msgstr "Vigselssted:"
+
+msgid "Marriage:"
+msgstr "Ekteskap:"
+
+msgid "Marriages"
+msgstr "Ekteskap"
+
+msgid "Match all (AND)"
+msgstr "Treff på alle (OG)"
+
+msgid "Match any (OR)"
+msgstr "Treff på en av dem (ELLER)"
+
+msgid "Match case"
+msgstr "Skill mellom store og små bokstaver"
+
+msgid "Match on AFNs"
+msgstr "Sammenlign etter AFN"
+
+msgid "Match on names"
+msgstr "Sammenlign etter navn"
+
+msgid "Match/Merge"
+msgstr "Sammenlign/slå sammen"
+
+msgid "Match/Merge..."
+msgstr "Sammenlign/slå sammen..."
+
+msgid "Merge Duplicate Sources"
+msgstr "Slå sammen like kilder"
+
+msgid "Military"
+msgstr "Militærtjeneste"
+
+msgid "Month first: 11 March 1955"
+msgstr "Måned først: 11. mars 1955"
+
+msgid "Months:"
+msgstr "Måneder:"
+
+msgid "Mother's age should be between"
+msgstr "Morens alder bør være mellom"
+
+msgid "Mother..."
+msgstr "Mor..."
+
+msgid "Move someone to the primary position"
+msgstr "Flytt noen til hovedplassen"
+
+msgid "Move this column left"
+msgstr "Flytt denne kolonnen til venstre"
+
+msgid "Move this column right"
+msgstr "Flytt denne kolonnen til høyre"
+
+msgid "Move to Primary"
+msgstr "Flytt til hovedplassen"
+
+msgid "Multimedia"
+msgstr "Multimedia"
+
+msgid "Multimedia (Ctrl+M)"
+msgstr "Multimedia (Ctrl+M)"
+
+msgid "Multimedia file names"
+msgstr "Navn på multimediefiler"
+
+msgid "Multimedia links"
+msgstr "Multimediekoblinger"
+
+msgid "Name:"
+msgstr "Navn:"
+
+msgid "Names"
+msgstr "Navn"
+
+msgid "Names on living"
+msgstr "Navn på levende"
+
+msgid "Names that sound alike"
+msgstr "Navn som høres like ut"
+
+msgid "Naturalization"
+msgstr "Statsborgerskap"
+
+msgid "New"
+msgstr "Ny"
+
+msgid "New Event/Attribute"
+msgstr "Ny hendelse/egenskap"
+
+msgid "New event name"
+msgstr "Navn på ny hendelse"
+
+msgid "New..."
+msgstr "Ny..."
+
+msgid "Next"
+msgstr "Neste"
+
+msgid "Next Page"
+msgstr "Neste side"
+
+msgid "Nickname:"
+msgstr "Kallenavn:"
+
+msgid "No descendants are recorded."
+msgstr "Ingen etterkommere er registrert."
+
+msgid "No file"
+msgstr "Ingen fil"
+
+msgid "No parents are linked. Use the Add menu to add them."
+msgstr "Ingen foreldre er koblet til. Bruk Legg til-menyen for å legge dem til."
+
+msgid "No pictures or files have been added for this individual."
+msgstr "Ingen bilder eller filer er lagt til for denne personen."
+
+msgid "No possible duplicates were found."
+msgstr "Fant ingen mulige duplikater."
+
+msgid "No problems were found in the links of this file."
+msgstr "Fant ingen problemer i koblingene i denne filen."
+
+msgid "No record has that number."
+msgstr "Ingen post har det nummeret."
+
+msgid "None"
+msgstr "Ingen"
+
+msgid "Not a Match"
+msgstr "Ikke samme person"
+
+msgid "Not saved yet"
+msgstr "Ikke lagret ennå"
+
+msgid "Notepad"
+msgstr "Notisblokk"
+
+msgid "Notes"
+msgstr "Notater"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Occupation"
+msgstr "Yrke"
+
+msgid "On Ancestry"
+msgstr "På Ancestry"
+
+msgid "On FamilySearch"
+msgstr "På FamilySearch"
+
+msgid "On Genealogy.com"
+msgstr "På Genealogy.com"
+
+msgid "On RootsWeb"
+msgstr "På RootsWeb"
+
+msgid "Only the current focus list"
+msgstr "Bare gjeldende fokusliste"
+
+msgid "Open Sample Family"
+msgstr "Åpne eksempelfamilien"
+
+msgid "Open family file (Ctrl+O)"
+msgstr "Åpne slektsfil (Ctrl+O)"
+
+msgid "Open..."
+msgstr "Åpne..."
+
+msgid "Opens the report in your PDF viewer, where you can print it"
+msgstr "Åpner rapporten i PDF-leseren din, der du kan skrive den ut"
+
+msgid "Order Children"
+msgstr "Ordne barn"
+
+msgid "Order Children..."
+msgstr "Ordne barn..."
+
+msgid "Order Spouses"
+msgstr "Ordne ektefeller"
+
+msgid "Order Spouses..."
+msgstr "Ordne ektefeller..."
+
+msgid "Ordinances"
+msgstr "Ordinanser"
+
+msgid "Ordination"
+msgstr "Ordinasjon"
+
+msgid "Other Parents..."
+msgstr "Andre foreldre..."
+
+msgid "Pages are saved in a folder you choose. Nothing is uploaded."
+msgstr "Sidene lagres i en mappe du velger. Ingenting lastes opp."
+
+msgid "Parent Link"
+msgstr "Kobling"
+
+msgid "Parents"
+msgstr "Foreldre"
+
+msgid "Parents' Marriage"
+msgstr "Foreldrenes ekteskap"
+
+msgid "Pedigree"
+msgstr "Anetavle"
+
+msgid "Phone:"
+msgstr "Telefon:"
+
+msgid "Physical Description"
+msgstr "Fysisk beskrivelse"
+
+msgid "Place"
+msgstr "Sted"
+
+msgid "Places"
+msgstr "Steder"
+
+msgid "Places sorted alphabetically"
+msgstr "Steder i alfabetisk rekkefølge"
+
+msgid "Please check"
+msgstr "Kontroller"
+
+msgid "Possible problems"
+msgstr "Mulige problemer"
+
+msgid "Preferences"
+msgstr "Innstillinger"
+
+msgid "Prepared by"
+msgstr "Utarbeidet av"
+
+msgid "Preview"
+msgstr "Forhåndsvisning"
+
+msgid "Previous"
+msgstr "Forrige"
+
+msgid "Previous Page"
+msgstr "Forrige side"
+
+msgid "Print Reports"
+msgstr "Skriv ut rapporter"
+
+msgid "Print Reports..."
+msgstr "Skriv ut rapporter..."
+
+msgid "Print reports"
+msgstr "Skriv ut rapporter"
+
+msgid "Print reports (Ctrl+P)"
+msgstr "Skriv ut rapporter (Ctrl+P)"
+
+msgid "Print..."
+msgstr "Skriv ut..."
+
+msgid "Probate"
+msgstr "Skifte"
+
+msgid "Problems"
+msgstr "Problemer"
+
+msgid "Properties"
+msgstr "Egenskaper"
+
+msgid "RIN"
+msgstr "RIN"
+
+msgid "Relationship Calculator"
+msgstr "Slektskapskalkulator"
+
+msgid "Relationship calculator"
+msgstr "Slektskapskalkulator"
+
+msgid "Relationship filter"
+msgstr "Slektskapsfilter"
+
+msgid "Relationship to parents:"
+msgstr "Forhold til foreldre:"
+
+msgid "Religion"
+msgstr "Religion"
+
+msgid "Remove"
+msgstr "Fjern"
+
+msgid "Repair"
+msgstr "Reparer"
+
+msgid "Replace All"
+msgstr "Erstatt alle"
+
+msgid "Replace with:"
+msgstr "Erstatt med:"
+
+msgid "Reports..."
+msgstr "Rapporter..."
+
+msgid "Repository List"
+msgstr "Liste over oppbevaringssteder"
+
+msgid "Repository:"
+msgstr "Oppbevaringssted:"
+
+msgid "Residence"
+msgstr "Bosted"
+
+msgid "Restore"
+msgstr "Gjenopprett"
+
+msgid "Restore..."
+msgstr "Gjenopprett..."
+
+msgid "Retirement"
+msgstr "Pensjonering"
+
+msgid "Save"
+msgstr "Lagre"
+
+msgid "Save As..."
+msgstr "Lagre som..."
+
+msgid "Save List"
+msgstr "Lagre liste"
+
+msgid "Save as PDF..."
+msgstr "Lagre som PDF..."
+
+msgid "Save..."
+msgstr "Lagre..."
+
+msgid "Saved lists"
+msgstr "Lagrede lister"
+
+msgid "Scrapbook"
+msgstr "Utklippsbok"
+
+msgid "Sealed to parents:"
+msgstr "Beseglet til foreldre:"
+
+msgid "Sealed to spouse:"
+msgstr "Beseglet til ektefelle:"
+
+msgid "Search"
+msgstr "Søk"
+
+msgid "Search in:"
+msgstr "Søk i:"
+
+msgid "Second Person"
+msgstr "Andre person"
+
+msgid "Select Existing"
+msgstr "Velg eksisterende"
+
+msgid "Select a source, or click New."
+msgstr "Velg en kilde, eller klikk på Ny."
+
+msgid "Select an individual first."
+msgstr "Velg en person først."
+
+msgid "Select different individuals"
+msgstr "Velg andre personer"
+
+msgid "Select the primary person, or the last one shown"
+msgstr "Velg hovedpersonen, eller den sist viste"
+
+msgid "Sex"
+msgstr "Kjønn"
+
+msgid "Sex:"
+msgstr "Kjønn:"
+
+msgid "Show"
+msgstr "Vis"
+
+msgid "Show RIN numbers after names"
+msgstr "Vis RIN etter navnene"
+
+msgid "Show on Individual Screen"
+msgstr "Vis i personvisningen"
+
+msgid "Show relationships on the status bar"
+msgstr "Vis slektskap på statuslinjen"
+
+msgid "Sort by Birth Date"
+msgstr "Sorter etter fødselsdato"
+
+msgid "Soundex"
+msgstr "Soundex"
+
+msgid "Soundex Calculator"
+msgstr "Soundex-kalkulator"
+
+msgid "Soundex Code Calculator"
+msgstr "Soundex-kodekalkulator"
+
+msgid "Soundex code:"
+msgstr "Soundex-kode:"
+
+msgid "Sounds like"
+msgstr "Høres ut som"
+
+msgid "Source List"
+msgstr "Kildeliste"
+
+msgid "Sources"
+msgstr "Kilder"
+
+msgid "Spouse"
+msgstr "Ektefelle"
+
+msgid "Spouse..."
+msgstr "Ektefelle..."
+
+msgid "Spouse:"
+msgstr "Ektefelle:"
+
+msgid "Start date:"
+msgstr "Startdato:"
+
+msgid "Status Bar"
+msgstr "Statuslinje"
+
+msgid "Surname"
+msgstr "Etternavn"
+
+msgid "Switch between the three screens"
+msgstr "Bytt mellom de tre visningene"
+
+msgid "Temple"
+msgstr "Tempel"
+
+msgid "Temple Codes"
+msgstr "Tempelkoder"
+
+msgid "Temple:"
+msgstr "Tempel:"
+
+msgid "That is all the possible duplicates."
+msgstr "Det var alle de mulige duplikatene."
+
+msgid "The date you typed is not standard."
+msgstr "Datoen du skrev inn, er ikke i standardformat."
+
+msgid "There are no sources in this file yet. Add them from Edit, Source List."
+msgstr "Det er ingen kilder i denne filen ennå. Legg dem til fra Rediger, Kildeliste."
+
+msgid "This changes names and places written in capital letters to upper and lower case, for example SMITH to Smith. Consider making a backup first. Continue?"
+msgstr "Dette endrer navn og steder skrevet med store bokstaver til store og små bokstaver, for eksempel HANSEN til Hansen. Ta gjerne en sikkerhetskopi først. Fortsette?"
+
+msgid "This family has not been saved to a file. Save it before closing?"
+msgstr "Denne familien er ikke lagret i en fil. Lagre før du lukker?"
+
+msgid "This family has not been saved to a file. Save it before you exit?"
+msgstr "Denne familien er ikke lagret i en fil. Lagre før du avslutter?"
+
+msgid "This file is not a valid family file. It may be corrupt."
+msgstr "Denne filen er ikke en gyldig slektsfil. Den kan være skadet."
+
+msgid "This individual has no marriage to order children in."
+msgstr "Denne personen har ikke noe ekteskap å ordne barn i."
+
+msgid "This individual has no marriage yet. Add a spouse first, or add one from the Add menu."
+msgstr "Denne personen har ikke noe ekteskap ennå. Legg til en ektefelle først, eller legg til en fra Legg til-menyen."
+
+msgid "This individual has no parents linked yet."
+msgstr "Denne personen har ingen foreldre koblet til ennå."
+
+msgid "This individual is not linked to anyone."
+msgstr "Denne personen er ikke koblet til noen."
+
+msgid "This marriage will be removed and unlinked from husband, wife and children."
+msgstr "Dette ekteskapet blir fjernet og koblet fra mannen, kona og barna."
+
+msgid "This version keeps one family window."
+msgstr "Denne versjonen har ett familievindu."
+
+msgid "Title (prefix):"
+msgstr "Tittel (foran navnet):"
+
+msgid "Title:"
+msgstr "Tittel:"
+
+msgid "Toolbar"
+msgstr "Verktøylinje"
+
+msgid "Tools"
+msgstr "Verktøy"
+
+msgid "Type of list"
+msgstr "Listetype"
+
+msgid "Unknown"
+msgstr "Ukjent"
+
+msgid "Unlink Individual"
+msgstr "Koble fra person"
+
+msgid "Unlink..."
+msgstr "Koble fra..."
+
+msgid "Unlinked individuals"
+msgstr "Personer uten koblinger"
+
+msgid "Up"
+msgstr "Opp"
+
+msgid "Use LDS data"
+msgstr "Bruk SDH-data"
+
+msgid "Use list when navigating"
+msgstr "Bruk listen ved navigering"
+
+msgid "Used by the Possible Problems list."
+msgstr "Brukes av listen over mulige problemer."
+
+msgid "Verify new places"
+msgstr "Kontroller nye steder"
+
+msgid "View"
+msgstr "Vis"
+
+msgid "Wait time:"
+msgstr "Ventetid:"
+
+msgid "Whole field only"
+msgstr "Bare hele feltet"
+
+msgid "Will"
+msgstr "Testament"
+
+msgid "Window"
+msgstr "Vindu"
+
+msgid "With this on, the last word of a name without slashes becomes the surname."
+msgstr "Når dette er på, blir det siste ordet i et navn uten skråstreker etternavnet."
+
+msgid "Year:"
+msgstr "År:"
+
+msgid "Years:"
+msgstr "År:"
+
+msgid "and"
+msgstr "og"
+
+msgid "closes between reminders (0 for never)"
+msgstr "lukkinger mellom påminnelser (0 for aldri)"
+
+msgid "contains"
+msgstr "inneholder"
+
+msgid "equals"
+msgstr "er lik"
+
+msgid "is after"
+msgstr "er etter"
+
+msgid "is before"
+msgstr "er før"
+
+msgid "is empty"
+msgstr "er tom"
+
+msgid "is not empty"
+msgstr "er ikke tom"
+
+msgid "years"
+msgstr "år"
+
+msgid "Abbreviation:"
+msgstr "Forkortelse:"
+
+msgid "Add Father..."
+msgstr "Legg til far..."
+
+msgid "Add Individual"
+msgstr "Legg til person"
+
+msgid "Add Mother..."
+msgstr "Legg til mor..."
+
+msgid "Author:"
+msgstr "Forfatter:"
+
+msgid "Biological"
+msgstr "Biologisk"
+
+msgid "Burial:"
+msgstr "Begravelse:"
+
+msgid "Buried"
+msgstr "Begravet"
+
+msgid "Christened"
+msgstr "Døpt"
+
+msgid "Christening:"
+msgstr "Dåp:"
+
+msgid "sex-letter:M"
+msgstr "M"
+
+msgid "sex-letter:F"
+msgstr "K"
+
+msgid "sex-letter:U"
+msgstr "U"
+
+msgid "Citations:"
+msgstr "Kildehenvisninger:"
+
+msgid "Died"
+msgstr "Død"
+
+msgid "Edit Individual"
+msgstr "Rediger person"
+
+msgid "Event"
+msgstr "Hendelse"
+
+msgid "Father"
+msgstr "Far"
+
+msgid "File:"
+msgstr "Fil:"
+
+msgid "Floating"
+msgstr "Flytende"
+
+msgid "HOME"
+msgstr "HOME"
+
+msgid "Individuals:"
+msgstr "Personer:"
+
+msgid "Locked"
+msgstr "Låst"
+
+msgid "Marriages:"
+msgstr "Ekteskap:"
+
+msgid "Mother"
+msgstr "Mor"
+
+msgid "Multimedia links:"
+msgstr "Multimediekoblinger:"
+
+msgid "Primary"
+msgstr "Hovedperson"
+
+msgid "Repositories:"
+msgstr "Oppbevaringssteder:"
+
+msgid "Sealing"
+msgstr "Besegling"
+
+msgid "Selected"
+msgstr "Valgt"
+
+msgid "Size:"
+msgstr "Størrelse:"
+
+msgid "Sources:"
+msgstr "Kilder:"
+
+msgid "Merged {n} duplicate source."
+msgid_plural "Merged {n} duplicate sources."
+msgstr[0] "Slo sammen {n} dobbel kilde."
+msgstr[1] "Slo sammen {n} doble kilder."
+
+msgid ""
+"Could not save {file}:\n"
+"{error}"
+msgstr ""
+"Kunne ikke lagre {file}:\n"
+"{error}"
+
+msgid ""
+"Could not open {file}:\n"
+"{error}"
+msgstr ""
+"Kunne ikke åpne {file}:\n"
+"{error}"
+
+msgid "Backup saved to {file}."
+msgstr "Sikkerhetskopi lagret i {file}."
+
+msgid ""
+"The backup could not be saved:\n"
+"{error}"
+msgstr ""
+"Sikkerhetskopien kunne ikke lagres:\n"
+"{error}"
+
+msgid "About {program}"
+msgstr "Om {program}"
+
+msgid "Individual {rin} points to marriage {mrin}, but the marriage does not point back."
+msgstr "Person {rin} peker til ekteskap {mrin}, men ekteskapet peker ikke tilbake."
+
+msgid "Individual {rin} points to parents in marriage {mrin}, but the marriage does not list them as a child."
+msgstr "Person {rin} peker til foreldre i ekteskap {mrin}, men ekteskapet har ikke personen som barn."
+
+msgid "Husband's record (RIN {rin}) in marriage {mrin} has the wrong sex."
+msgstr "Mannens post (RIN {rin}) i ekteskap {mrin} har feil kjønn."
+
+msgid "Marriage {mrin} lists child {rin}, but that individual does not point back."
+msgstr "Ekteskap {mrin} har barnet {rin}, men den personen peker ikke tilbake."
+
+msgid "Descendants of {name}"
+msgstr "Etterkommere etter {name}"
+
+msgid "Possible duplicate {at} of {total}"
+msgstr "Mulig duplikat {at} av {total}"
+
+msgid "Changed {n} field."
+msgid_plural "Changed {n} fields."
+msgstr[0] "Endret {n} felt."
+msgstr[1] "Endret {n} felt."
+
+msgid "Changed {n} name or place."
+msgid_plural "Changed {n} names and places."
+msgstr[0] "Endret {n} navn eller sted."
+msgstr[1] "Endret {n} navn og steder."
+
+msgid "Old ID"
+msgstr "Gammel ID"
+
+msgid "New place: {place}. Please check its spelling."
+msgstr "Nytt sted: {place}. Kontroller stavemåten."
+
+msgid "Husband: {name}"
+msgstr "Mann: {name}"
+
+msgid "Wife: {name}"
+msgstr "Kone: {name}"
+
+msgid "Edit Notes: {name}"
+msgstr "Rediger notater: {name}"
+
+msgid "Multimedia: {name}"
+msgstr "Multimedia: {name}"
+
+msgid ""
+"This picture could not be shown:\n"
+"{file}"
+msgstr ""
+"Dette bildet kunne ikke vises:\n"
+"{file}"
+
+msgid "Unlink {name}"
+msgstr "Koble fra {name}"
+
+msgid "Unlink from spouse: {name}"
+msgstr "Koble fra ektefelle: {name}"
+
+msgid "Unlink from parents: {father} and {mother}"
+msgstr "Koble fra foreldre: {father} og {mother}"
+
+msgid "Delete {name} (RIN {rin})? This removes the record from the file and unlinks it from the family."
+msgstr "Slette {name} (RIN {rin})? Dette fjerner posten fra filen og kobler den fra familien."
+
+msgid "Parents of {name}"
+msgstr "Foreldrene til {name}"
+
+msgid "Web page creation complete: {n} page in {folder}."
+msgid_plural "Web page creation complete: {n} pages in {folder}."
+msgstr[0] "Nettsiden er laget: {n} side i {folder}."
+msgstr[1] "Nettsiden er laget: {n} sider i {folder}."
+
+msgid ""
+"The pages could not be saved:\n"
+"{error}"
+msgstr ""
+"Sidene kunne ikke lagres:\n"
+"{error}"
+
+msgid "Notepad: {file}"
+msgstr "Notisblokk: {file}"
+
+msgid "Their common ancestor is {name}"
+msgstr "Deres felles ane er {name}"
+
+msgid "Their common ancestors are {name} and {other}"
+msgstr "Deres felles aner er {name} og {other}"
+
+msgid "Gives everyone new record numbers (RINs) 1, 2, 3... with no gaps, and numbers the marriages (MRINs) to match. Every link between people stays the same."
+msgstr "Gir alle nye postnummer (RIN) 1, 2, 3... uten hull, og nummererer ekteskapene (MRIN) på samme måte. Alle koblinger mellom personer forblir de samme."
+
+msgid "Each person keeps their old number as an Old ID, shown when editing them and written to exported GEDCOM files, so notes and printouts that use the old numbers can still be matched. A copy of the file as it is now is saved beside it first."
+msgstr "Hver person beholder sitt gamle nummer som Gammel ID, som vises når personen redigeres og skrives til eksporterte GEDCOM-filer, slik at notater og utskrifter med de gamle numrene fortsatt kan sammenlignes. En kopi av filen slik den er nå, lagres ved siden av først."
+
+msgid "Preview, first people:"
+msgstr "Forhåndsvisning, de første personene:"
+
+msgid "nothing would change."
+msgstr "ingenting ville endres."
+
+msgid "New RIN"
+msgstr "Ny RIN"
+
+msgid "Old RIN"
+msgstr "Gammel RIN"
+
+msgid "Name"
+msgstr "Navn"
+
+msgid "Renumber"
+msgstr "Nummerer på nytt"
+
+msgid "Renumbered {n} individual"
+msgid_plural "Renumbered {n} individuals"
+msgstr[0] "Nummererte {n} person på nytt"
+msgstr[1] "Nummererte {n} personer på nytt"
+
+msgid "and {n} marriage."
+msgid_plural "and {n} marriages."
+msgstr[0] "og {n} ekteskap."
+msgstr[1] "og {n} ekteskap."
+
+msgid "Home person: {name}"
+msgstr "Startperson: {name}"
+
+msgid "Root person for relationships: {name}"
+msgstr "Utgangsperson for slektskap: {name}"
+
+msgid "The {n} individual"
+msgid_plural "All {n} individuals"
+msgstr[0] "Den ene personen ({n})"
+msgstr[1] "Alle {n} personer"
+
+msgid "Current focus list ({n})"
+msgstr "Gjeldende fokusliste ({n})"
+
+msgid "Exported to {file}."
+msgstr "Eksportert til {file}."
+
+msgid ""
+"The file could not be saved:\n"
+"{error}"
+msgstr ""
+"Filen kunne ikke lagres:\n"
+"{error}"
+
+msgid "Open the backup {file} as the current family? Save it with Save As to replace your file."
+msgstr "Åpne sikkerhetskopien {file} som gjeldende familie? Lagre den med Lagre som for å erstatte filen din."
+
+msgid ""
+"This backup could not be read:\n"
+"{error}"
+msgstr ""
+"Denne sikkerhetskopien kunne ikke leses:\n"
+"{error}"
+
+msgid "Permanently delete {file}? This cannot be undone."
+msgstr "Slette {file} for godt? Dette kan ikke angres."
+
+msgid ""
+"The file could not be deleted:\n"
+"{error}"
+msgstr ""
+"Filen kunne ikke slettes:\n"
+"{error}"
+
+msgid "Starting person: {name}"
+msgstr "Startperson: {name}"
+
+msgid "Prints {n} individual. Use Advanced Focus/Filter to choose fewer."
+msgid_plural "Prints {n} individuals. Use Advanced Focus/Filter to choose fewer."
+msgstr[0] "Skriver ut {n} person. Bruk Avansert fokus/filter for å velge færre."
+msgstr[1] "Skriver ut {n} personer. Bruk Avansert fokus/filter for å velge færre."
+
+msgid "Page {page} of {pages}"
+msgstr "Side {page} av {pages}"
+
+msgid ""
+"The report could not be saved:\n"
+"{error}"
+msgstr ""
+"Rapporten kunne ikke lagres:\n"
+"{error}"
+
+msgid "Parents: {names}"
+msgstr "Foreldre: {names}"
+
+msgid "Spouse: {name}"
+msgstr "Ektefelle: {name}"
+
+msgid "The christening date is more than {years} years after the birth date."
+msgstr "Dåpsdatoen er mer enn {years} år etter fødselsdatoen."
+
+msgid "The death date is more than {years} years after the birth or christening date."
+msgstr "Dødsdatoen er mer enn {years} år etter fødsels- eller dåpsdatoen."
+
+msgid "The burial date is more than {years} years after the birth or christening date."
+msgstr "Begravelsesdatoen er mer enn {years} år etter fødsels- eller dåpsdatoen."
+
+msgid "The burial date is more than {n} year after the death date."
+msgid_plural "The burial date is more than {n} years after the death date."
+msgstr[0] "Begravelsesdatoen er mer enn {n} år etter dødsdatoen."
+msgstr[1] "Begravelsesdatoen er mer enn {n} år etter dødsdatoen."
+
+msgid "The individual's birth/christening date is less than {years} years after a parent's birth/christening date."
+msgstr "Personens fødsels- eller dåpsdato er mindre enn {years} år etter en forelders fødsels- eller dåpsdato."
+
+msgid "The individual's birth/christening date is more than {years} years after the father's birth/christening date."
+msgstr "Personens fødsels- eller dåpsdato er mer enn {years} år etter farens fødsels- eller dåpsdato."
+
+msgid "The individual's birth/christening date is more than {years} years after the mother's birth/christening date."
+msgstr "Personens fødsels- eller dåpsdato er mer enn {years} år etter morens fødsels- eller dåpsdato."
+
+msgid "The sealing date is before a spouse's birth or christening date (MRIN {mrin})."
+msgstr "Beseglingsdatoen er før en ektefelles fødsels- eller dåpsdato (MRIN {mrin})."
+
+msgid "The sealing date is before the age of {years} (MRIN {mrin})."
+msgstr "Beseglingsdatoen er før {years}-årsalderen (MRIN {mrin})."
+
+msgid "The marriage date is before a spouse's birth or christening date (MRIN {mrin})."
+msgstr "Vigselsdatoen er før en ektefelles fødsels- eller dåpsdato (MRIN {mrin})."
+
+msgid "The marriage date is less than {years} years after a spouse's birth or christening (MRIN {mrin})."
+msgstr "Vigselsdatoen er mindre enn {years} år etter en ektefelles fødsel eller dåp (MRIN {mrin})."
+
+msgid "The marriage date is more than {years} years after a spouse's birth or christening date (MRIN {mrin})."
+msgstr "Vigselsdatoen er mer enn {years} år etter en ektefelles fødsels- eller dåpsdato (MRIN {mrin})."
+
+msgid "The marriage date is after a spouse's death date (MRIN {mrin})."
+msgstr "Vigselsdatoen er etter en ektefelles dødsdato (MRIN {mrin})."
+
+msgid "Age between husband and wife is greater than {years} years (MRIN {mrin})."
+msgstr "Aldersforskjellen mellom mann og kone er mer enn {years} år (MRIN {mrin})."
+
+msgid "The children in marriage {mrin} are not in birth order."
+msgstr "Barna i ekteskap {mrin} står ikke i fødselsrekkefølge."
+
+msgid "Other marriages ({at}/{count})"
+msgstr "Andre ekteskap ({at}/{count})"
+
+msgid "Other parents ({count})"
+msgstr "Andre foreldre ({count})"
+
+msgid "Father's age at this birth, {age}, is outside {low} to {high} years."
+msgstr "Farens alder ved denne fødselen, {age}, er utenfor {low} til {high} år."
+
+msgid "Mother's age at this birth, {age}, is outside {low} to {high} years."
+msgstr "Morens alder ved denne fødselen, {age}, er utenfor {low} til {high} år."
+
+msgid "{name}   {rin}   b. {date}"
+msgstr "{name}   {rin}   f. {date}"
+
+msgid "{father} and {mother}  (MRIN {mrin})"
+msgstr "{father} og {mother}  (MRIN {mrin})"

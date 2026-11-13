@@ -1,5 +1,6 @@
 //! Carrying out a command from a menu, toolbar button or key.
 
+use crate::i18n::tr_n;
 use super::*;
 use crate::dialogs::*;
 use crate::formats::gedcom;
@@ -196,7 +197,7 @@ impl App {
             Cmd::MergeSources => {
                 let n = merge_duplicate_sources(&mut self.db);
                 self.touch();
-                self.message("Merge Duplicate Sources", format!("Merged {n} duplicate sources."));
+                self.message("Merge Duplicate Sources", tr_n("Merged {n} duplicate source.", "Merged {n} duplicate sources.", n, &[]));
             }
             Cmd::GlobalReplace => self.push(|id| Dialog::GlobalReplace { id, field: "Places".into(), find: String::new(), with: String::new(), whole: false, case_sensitive: false }),
             Cmd::MixedCase => self.push(|id| Dialog::ConfirmMixedCase { id }),

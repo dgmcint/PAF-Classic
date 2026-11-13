@@ -1,5 +1,6 @@
 //! Opening, saving, importing and backing up family files, and where settings are kept.
 
+use crate::i18n::trf;
 use super::*;
 use crate::formats::gedcom;
 use crate::data::*;
@@ -66,7 +67,7 @@ impl App {
                 // Write beside the file, then swap, so a crash cannot leave half a file.
                 let tmp = path.with_extension("pafc.saving");
                 if let Err(e) = std::fs::write(&tmp, bytes).and_then(|_| std::fs::rename(&tmp, &path)) {
-                    self.message("Could not save", format!("Could not save {}:\n{e}", path.display()));
+                    self.message("Could not save", trf("Could not save {file}:\n{error}", &[("file", &path.display()), ("error", &e)]));
                     return false;
                 }
                 self.dirty = false;
@@ -104,7 +105,7 @@ impl App {
         let bytes = match std::fs::read(&path) {
             Ok(b) => b,
             Err(e) => {
-                self.message("Could not open", format!("Could not open {}:\n{e}", path.display()));
+                self.message("Could not open", trf("Could not open {file}:\n{error}", &[("file", &path.display()), ("error", &e)]));
                 return;
             }
         };
@@ -161,7 +162,7 @@ impl App {
         let bytes = match std::fs::read(path) {
             Ok(b) => b,
             Err(e) => {
-                self.message("Could not open", format!("Could not open {}:\n{e}", path.display()));
+                self.message("Could not open", trf("Could not open {file}:\n{error}", &[("file", &path.display()), ("error", &e)]));
                 return;
             }
         };
@@ -207,9 +208,9 @@ impl App {
                     if self.path.is_some() {
                         self.save_now();
                     }
-                    self.message("Backup", format!("Backup saved to {}.", p.display()));
+                    self.message("Backup", trf("Backup saved to {file}.", &[("file", &p.display())]));
                 }
-                Err(e) => self.message("Backup", format!("The backup could not be saved:\n{e}")),
+                Err(e) => self.message("Backup", trf("The backup could not be saved:\n{error}", &[("error", &e)])),
             }
         }
     }

@@ -1,6 +1,6 @@
 //! Small building blocks the windows share.
 
-use crate::i18n::tr;
+use crate::i18n::{tr, trf};
 use crate::app::*;
 use crate::rules;
 use crate::data::*;
@@ -135,10 +135,10 @@ pub fn person_card(ui: &mut egui::Ui, db: &Db, rin: u32) {
             ui.label(format!("{l}: {} {}", e.date, e.place));
         }
         let parents = db.primary_parents(rin).map(|m| format!("{} and {}", m.husband.map(|r| db.name(r)).unwrap_or_default(), m.wife.map(|r| db.name(r)).unwrap_or_default()));
-        ui.label(format!("Parents: {}", parents.unwrap_or_default()));
+        ui.label(trf("Parents: {names}", &[("names", &parents.unwrap_or_default())]));
         for m in &p.spouses {
             if let Some(s) = db.spouse_in(*m, rin) {
-                ui.label(format!("Spouse: {}", db.name(s)));
+                ui.label(trf("Spouse: {name}", &[("name", &db.name(s))]));
             }
         }
         if !p.afn.is_empty() {

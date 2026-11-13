@@ -1,8 +1,8 @@
 //! Windows for sources, finding people, filtering and merging.
 
 //! Windows for sources, finding people, filtering and merging.
+use crate::i18n::{tr, tr_n, trf};
 use super::*;
-use crate::i18n::tr;
 use crate::app::*;
 use crate::rules;
 use crate::data::*;
@@ -214,7 +214,7 @@ impl App {
                     egui::ScrollArea::vertical().max_height(340.0).auto_shrink([false, true]).show_rows(ui, 20.0, list.len(), |ui, range| {
                         for i in range {
                             let p = list[i];
-                            let text = format!("{}   {}   b. {}", plain_name(&p.name), p.rin, p.birth.date);
+                            let text = trf("{name}   {rin}   b. {date}", &[("name", &plain_name(&p.name)), ("rin", &p.rin), ("date", &p.birth.date)]);
                             if ui.selectable_label(self.selected == Some(p.rin), text).clicked() {
                                 chosen = Some(p.rin);
                             }
@@ -265,7 +265,7 @@ impl App {
                 }
             }
             Dialog::DescendancyList { id, root } => {
-                let title = format!("Descendants of {}", self.db.name(*root));
+                let title = trf("Descendants of {name}", &[("name", &self.db.name(*root))]);
                 let mut chosen = None;
                 window(&title, *id).default_width(460.0).show(ctx, |ui| {
                     let list = rules::descendants(&self.db, *root);
@@ -452,7 +452,7 @@ impl App {
                     ui.separator();
                     if *at < pairs.len() {
                         let (a, b) = pairs[*at];
-                        ui.label(format!("Possible duplicate {} of {}", *at + 1, pairs.len()));
+                        ui.label(trf("Possible duplicate {at} of {total}", &[("at", &(*at + 1)), ("total", &pairs.len())]));
                         ui.columns(2, |c| {
                             person_card(&mut c[0], &self.db, a);
                             person_card(&mut c[1], &self.db, b);
@@ -534,7 +534,7 @@ impl App {
                 });
                 if let Some(n) = done {
                     self.touch();
-                    self.message("Global Search and Replace", format!("Changed {n} fields."));
+                    self.message("Global Search and Replace", tr_n("Changed {n} field.", "Changed {n} fields.", n, &[]));
                 }
             }
             Dialog::ConfirmMixedCase { id } => {
@@ -567,7 +567,7 @@ impl App {
                                 }
                             }
                             self.touch();
-                            self.message("Change Names to Mixed Case", format!("Changed {n} names and places."));
+                            self.message("Change Names to Mixed Case", tr_n("Changed {n} name or place.", "Changed {n} names and places.", n, &[]));
                             open = false;
                         }
                         if ui.button(tr("Cancel")).clicked() || escape {

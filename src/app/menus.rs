@@ -1,7 +1,7 @@
 //! The menu bar, toolbar, status bar, window title and the exit prompt.
 
+use crate::i18n::{tr, trf};
 use super::*;
-use crate::i18n::tr;
 use egui::{Key, Modifiers, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 
 impl App {
@@ -188,7 +188,7 @@ impl App {
                 item(ui, &mut out, "Keyboard", "", Cmd::Keyboard, true);
                 item(ui, &mut out, "Open Sample Family", "", Cmd::Sample, true);
                 ui.separator();
-                item(ui, &mut out, &format!("About {APP_NAME}"), "", Cmd::About, true);
+                item(ui, &mut out, &trf("About {program}", &[("program", &APP_NAME)]), "", Cmd::About, true);
             });
         });
         self.pending.extend(out);

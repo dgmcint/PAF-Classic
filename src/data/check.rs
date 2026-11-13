@@ -1,5 +1,6 @@
 //! Check/Repair: finding and fixing broken links in the file.
 
+use crate::i18n::trf;
 use super::*;
 
 impl Db {
@@ -12,7 +13,7 @@ impl Db {
             for m in &p.spouses {
                 let ok = self.marriages.get(m).map(|x| x.husband == Some(*rin) || x.wife == Some(*rin)).unwrap_or(false);
                 if !ok {
-                    out.push(format!("Individual {rin} points to marriage {m}, but the marriage does not point back."));
+                    out.push(trf("Individual {rin} points to marriage {mrin}, but the marriage does not point back.", &[("rin", &rin), ("mrin", &m)]));
                     if repair {
                         if let Some(x) = self.people.get_mut(rin) {
                             x.spouses.retain(|v| v != m);
@@ -23,7 +24,7 @@ impl Db {
             for l in &p.parents {
                 let ok = self.marriages.get(&l.mrin).map(|x| x.children.contains(rin)).unwrap_or(false);
                 if !ok {
-                    out.push(format!("Individual {rin} points to parents in marriage {}, but the marriage does not list them as a child.", l.mrin));
+                    out.push(trf("Individual {rin} points to parents in marriage {mrin}, but the marriage does not list them as a child.", &[("rin", &rin), ("mrin", &l.mrin)]));
                     if repair {
                         if let Some(x) = self.people.get_mut(rin) {
                             x.parents.retain(|v| v.mrin != l.mrin);
@@ -56,13 +57,13 @@ impl Db {
             }
             if let (Some(h), Some(_)) = (m.husband, m.wife) {
                 if self.people.get(&h).map(|p| p.sex == Sex::Female).unwrap_or(false) {
-                    out.push(format!("Husband's record (RIN {h}) in marriage {mrin} has the wrong sex."));
+                    out.push(trf("Husband's record (RIN {rin}) in marriage {mrin} has the wrong sex.", &[("rin", &h), ("mrin", &mrin)]));
                 }
             }
             for c in &m.children {
                 let ok = self.people.get(c).map(|p| p.parents.iter().any(|l| l.mrin == mrin)).unwrap_or(false);
                 if !ok {
-                    out.push(format!("Marriage {mrin} lists child {c}, but that individual does not point back."));
+                    out.push(trf("Marriage {mrin} lists child {rin}, but that individual does not point back.", &[("mrin", &mrin), ("rin", &c)]));
                     if repair {
                         if self.people.contains_key(c) {
                             self.people.get_mut(c).unwrap().parents.push(ParentLink {

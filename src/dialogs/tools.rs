@@ -1,8 +1,8 @@
 //! Windows for reports, calculators, preferences and file tasks.
 
 //! Windows for reports, calculators, preferences and file tasks.
+use crate::i18n::{tr, tr_n, trf};
 use super::*;
-use crate::i18n::tr;
 use crate::app::*;
 use crate::rules;
 use crate::formats::gedcom;
@@ -39,8 +39,8 @@ impl App {
                     if let Some(folder) = rfd::FileDialog::new().pick_folder() {
                         let o = reports::WebOptions { title: title.clone(), hide_living: *hide_living, include_notes: *include_notes, who: if *focus_only { self.focus.clone() } else { None } };
                         match reports::write_web(&self.db, &o, &folder) {
-                            Ok(n) => self.message("Create Web Page", format!("Web page creation complete: {n} pages in {}.", folder.display())),
-                            Err(e) => self.message("Create Web Page", format!("The pages could not be saved:\n{e}")),
+                            Ok(n) => self.message("Create Web Page", tr_n("Web page creation complete: {n} page in {folder}.", "Web page creation complete: {n} pages in {folder}.", n, &[("folder", &folder.display())])),
+                            Err(e) => self.message("Create Web Page", trf("The pages could not be saved:\n{error}", &[("error", &e)])),
                         }
                         open = false;
                     }
@@ -48,7 +48,7 @@ impl App {
             }
             Dialog::Notepad { id, text, path } => {
                 let title = match path {
-                    Some(p) => format!("Notepad: {}", p.display()),
+                    Some(p) => trf("Notepad: {file}", &[("file", &p.display())]),
                     None => "Notepad".to_string(),
                 };
                 let mut err = None;
@@ -123,8 +123,8 @@ impl App {
                                         let names: Vec<String> = r.ancestors.iter().map(|x| self.db.name(*x)).collect();
                                         match names.len() {
                                             0 => {}
-                                            1 => v.push(format!("Their common ancestor is {}", names[0])),
-                                            _ => v.push(format!("Their common ancestors are {} and {}", names[0], names[1])),
+                                            1 => v.push(trf("Their common ancestor is {name}", &[("name", &names[0])])),
+                                            _ => v.push(trf("Their common ancestors are {name} and {other}", &[("name", &names[0]), ("other", &names[1])])),
                                         }
                                         v
                                     })
@@ -264,7 +264,7 @@ impl App {
                     let copy = self.safety_copy("renumbering");
                     let (rins, _) = self.db.renumber(&order);
                     self.after_renumber(&rins);
-                    let mut text = format!("Renumbered {} individuals and {} marriages.", self.db.people.len(), self.db.marriages.len());
+                    let mut text = format!("{} {}", tr_n("Renumbered {n} individual", "Renumbered {n} individuals", self.db.people.len(), &[]), tr_n("and {n} marriage.", "and {n} marriages.", self.db.marriages.len(), &[]));
                     if let Some(c) = copy {
                         text.push_str(&format!("\nThe file as it was before is saved as {}.", c.display()));
                     }
@@ -330,13 +330,13 @@ impl App {
                         }
                         1 => {
                             ui.horizontal(|ui| {
-                                ui.label(format!("Home person: {}", home.map(|r| self.db.name(r)).unwrap_or_default()));
+                                ui.label(trf("Home person: {name}", &[("name", &home.map(|r| self.db.name(r)).unwrap_or_default())]));
                                 if ui.button(tr("Search")).clicked() {
                                     pick_home = true;
                                 }
                             });
                             ui.horizontal(|ui| {
-                                ui.label(format!("Root person for relationships: {}", root.map(|r| self.db.name(r)).unwrap_or_default()));
+                                ui.label(trf("Root person for relationships: {name}", &[("name", &root.map(|r| self.db.name(r)).unwrap_or_default())]));
                                 if ui.button(tr("Search")).clicked() {
                                     pick_root = true;
                                 }
@@ -442,7 +442,7 @@ impl App {
                 }
             }
             Dialog::About { id } => {
-                window(&format!("About {APP_NAME}"), *id).resizable(false).show(ctx, |ui| {
+                window(&trf("About {program}", &[("program", &APP_NAME)]), *id).resizable(false).show(ctx, |ui| {
                     ui.label(RichText::new(format!("{APP_NAME} {}", env!("CARGO_PKG_VERSION"))).strong().size(16.0));
                     ui.label(tr("A family history program for keeping individuals, marriages, notes and sources, and for printing charts and reports."));
                     ui.add_space(6.0);
@@ -490,9 +490,9 @@ impl App {
                     ui.checkbox(&mut options.full_living, tr("Full information on living"));
                     ui.add_enabled_ui(!options.full_living, |ui| ui.checkbox(&mut options.names_on_living, tr("Names on living")));
                     ui.separator();
-                    ui.radio_value(partial, false, format!("All {} individuals", self.db.people.len()));
+                    ui.radio_value(partial, false, tr_n("The {n} individual", "All {n} individuals", self.db.people.len(), &[]));
                     let n = self.focus.as_ref().map(|f| f.len()).unwrap_or(0);
-                    ui.add_enabled_ui(n > 0, |ui| ui.radio_value(partial, true, format!("Current focus list ({n})")));
+                    ui.add_enabled_ui(n > 0, |ui| ui.radio_value(partial, true, trf("Current focus list ({n})", &[("n", &n)])));
                     ui.separator();
                     ui.horizontal(|ui| {
                         if ui.button(tr("Export")).clicked() {
@@ -509,8 +509,8 @@ impl App {
                         o.subset = if *partial { self.focus.clone() } else { None };
                         let text = gedcom::export(&self.db, &o, APP_NAME);
                         match std::fs::write(&p, text) {
-                            Ok(()) => self.message("Export", format!("Exported to {}.", p.display())),
-                            Err(e) => self.message("Export", format!("The file could not be saved:\n{e}")),
+                            Ok(()) => self.message("Export", trf("Exported to {file}.", &[("file", &p.display())])),
+                            Err(e) => self.message("Export", trf("The file could not be saved:\n{error}", &[("error", &e)])),
                         }
                         open = false;
                     }
@@ -548,7 +548,7 @@ impl App {
             Dialog::ConfirmRestore { id, from } => {
                 let mut go = false;
                 window("Restore", *id).resizable(false).show(ctx, |ui| {
-                    ui.label(format!("Open the backup {} as the current family? Save it with Save As to replace your file.", from.display()));
+                    ui.label(trf("Open the backup {file} as the current family? Save it with Save As to replace your file.", &[("file", &from.display())]));
                     ui.horizontal(|ui| {
                         if ui.button(tr("Restore")).clicked() {
                             go = true;
@@ -566,7 +566,7 @@ impl App {
                             self.load_db(db, None);
                             self.dirty = true;
                         }
-                        Err(e) => self.message("Restore", format!("This backup could not be read:\n{e}")),
+                        Err(e) => self.message("Restore", trf("This backup could not be read:\n{error}", &[("error", &e)])),
                     }
                 }
             }
@@ -601,7 +601,7 @@ impl App {
             Dialog::ConfirmDeleteFile { id, path } => {
                 let mut go = false;
                 window("Delete File", *id).resizable(false).show(ctx, |ui| {
-                    ui.label(format!("Permanently delete {}? This cannot be undone.", path.display()));
+                    ui.label(trf("Permanently delete {file}? This cannot be undone.", &[("file", &path.display())]));
                     ui.horizontal(|ui| {
                         if ui.button(tr("Delete")).clicked() {
                             go = true;
@@ -618,7 +618,7 @@ impl App {
                         self.load_db(Db::default(), None);
                     }
                     if let Err(e) = std::fs::remove_file(&p) {
-                        self.message("Delete File", format!("The file could not be deleted:\n{e}"));
+                        self.message("Delete File", trf("The file could not be deleted:\n{error}", &[("error", &e)]));
                     }
                     self.recent.retain(|x| *x != p);
                 }
@@ -640,7 +640,7 @@ impl App {
                     });
                     ui.separator();
                     ui.horizontal(|ui| {
-                        ui.label(format!("Starting person: {start_name}"));
+                        ui.label(trf("Starting person: {name}", &[("name", &start_name)]));
                         if ui.button(tr("Search")).clicked() {
                             pick = true;
                         }
@@ -694,7 +694,7 @@ impl App {
                                 }
                             });
                             let who = self.focus.as_ref().map(|f| f.len()).unwrap_or(self.db.people.len());
-                            ui.label(format!("Prints {who} individuals. Use Advanced Focus/Filter to choose fewer."));
+                            ui.label(tr_n("Prints {n} individual. Use Advanced Focus/Filter to choose fewer.", "Prints {n} individuals. Use Advanced Focus/Filter to choose fewer.", who, &[]));
                         }
                         _ => {}
                     }
@@ -731,7 +731,7 @@ impl App {
                             if ui.add_enabled(*page > 0, egui::Button::new(tr("Previous Page"))).clicked() {
                                 *page -= 1;
                             }
-                            ui.label(format!("Page {} of {n}", *page + 1));
+                            ui.label(trf("Page {page} of {pages}", &[("page", &(*page + 1)), ("pages", &n)]));
                             if ui.add_enabled(*page + 1 < n, egui::Button::new(tr("Next Page"))).clicked() {
                                 *page += 1;
                             }
@@ -751,7 +751,7 @@ impl App {
                     *page = 0;
                 }
                 if let Some(e) = failed {
-                    self.message("Print Reports", format!("The report could not be saved:\n{e}"));
+                    self.message("Print Reports", trf("The report could not be saved:\n{error}", &[("error", &e)]));
                 }
             }
             Dialog::UnsavedClose { id } => {

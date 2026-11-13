@@ -1,0 +1,122 @@
+# PAF Classic: Spanish (Latin America).
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: es-419\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid ""
+"1. Double-click the dark box on the Family screen and type your own name, with slashes around the surname: Anna Marie /Lee/.\n"
+"\n"
+"2. Double-click an empty box to add a spouse or a parent, or the Children area to add a child.\n"
+"\n"
+"3. Click the triangle beside a person to move them into the main position. The F, M and C keys go to the father, mother or a child.\n"
+"\n"
+"4. Use the Pedigree tab to see five generations, and the Individual tab to see everyone in a list.\n"
+"\n"
+"5. Right-click anyone for more choices, such as Notes and Multimedia.\n"
+"\n"
+"6. Use File, Save As to name your family file. Changes save by themselves after that.\n"
+"\n"
+"7. Use File, Print Reports for charts and lists, and File, Backup to keep a safe copy."
+msgstr ""
+"1. Haga doble clic en el recuadro oscuro de la pantalla Familia y escriba su propio nombre, con barras alrededor del apellido: Ana María /López/.\n"
+"\n"
+"2. Haga doble clic en un recuadro vacío para agregar un cónyuge o un padre, o en la zona Hijos para agregar un hijo.\n"
+"\n"
+"3. Haga clic en el triángulo junto a una persona para pasarla a la posición principal. Las teclas F, M y C llevan al padre, a la madre o a un hijo.\n"
+"\n"
+"4. Use la pestaña Linaje para ver cinco generaciones, y la pestaña Persona para ver a todos en una lista.\n"
+"\n"
+"5. Haga clic con el botón derecho en cualquier persona para ver más opciones, como Notas y Multimedia.\n"
+"\n"
+"6. Use Archivo, Guardar como para dar nombre a su archivo familiar. Después, los cambios se guardan solos.\n"
+"\n"
+"7. Use Archivo, Imprimir informes para cuadros y listas, y Archivo, Copia de seguridad para guardar una copia segura."
+
+msgid "Add"
+msgstr "Agregar"
+
+msgid "Add Child..."
+msgstr "Agregar hijo..."
+
+msgid "Add Filter"
+msgstr "Agregar filtro"
+
+msgid "Add Individual..."
+msgstr "Agregar persona..."
+
+msgid "Add New"
+msgstr "Agregar nuevo"
+
+msgid "Add New Individual..."
+msgstr "Agregar nueva persona..."
+
+msgid "Add New Parents..."
+msgstr "Agregar nuevos padres..."
+
+msgid "Add Picture or File..."
+msgstr "Agregar imagen o archivo..."
+
+msgid "Add Spouse..."
+msgstr "Agregar cónyuge..."
+
+msgid "Add a new person, or link someone already in this file?"
+msgstr "¿Agregar una persona nueva o vincular a alguien que ya está en este archivo?"
+
+msgid "Add family"
+msgstr "Agregar familia"
+
+msgid "Add father, mother"
+msgstr "Agregar padre, madre"
+
+msgid "Add individual (Ctrl+A)"
+msgstr "Agregar persona (Ctrl+A)"
+
+msgid "Add individual, spouse, child"
+msgstr "Agregar persona, cónyuge, hijo"
+
+msgid "Add or Select Individual"
+msgstr "Agregar o seleccionar persona"
+
+msgid "Add surname slashes automatically"
+msgstr "Agregar automáticamente las barras del apellido"
+
+msgid "An empty form to fill in by hand"
+msgstr "Un formulario vacío para llenar a mano"
+
+msgid "Back up this family file"
+msgstr "Respaldar este archivo familiar"
+
+msgid "Check for duplicates when adding individuals"
+msgstr "Buscar duplicados al agregar personas"
+
+msgid "Fill in any two of start, end and elapsed time. Works for the Gregorian calendar only, from October 1752."
+msgstr "Llene dos de estos datos: inicio, fin y tiempo transcurrido. Solo funciona con el calendario gregoriano, desde octubre de 1752."
+
+msgid "Fill the empty surname and place fields from this person"
+msgstr "Llenar los campos vacíos de apellido y lugar con los de esta persona"
+
+msgid "For Help, press F1. Double-click on person you want to edit."
+msgstr "Para obtener ayuda, presione F1. Haga doble clic en la persona que desee editar."
+
+msgid "No parents are linked. Use the Add menu to add them."
+msgstr "No hay padres vinculados. Use el menú Agregar para agregarlos."
+
+msgid "No pictures or files have been added for this individual."
+msgstr "No se ha agregado ninguna imagen ni archivo para esta persona."
+
+msgid "There are no sources in this file yet. Add them from Edit, Source List."
+msgstr "Aún no hay fuentes en este archivo. Agréguelas desde Editar, Lista de fuentes."
+
+msgid "This individual has no marriage yet. Add a spouse first, or add one from the Add menu."
+msgstr "Esta persona aún no tiene matrimonio. Agregue primero un cónyuge, o agréguelo desde el menú Agregar."
+
+msgid "Add Father..."
+msgstr "Agregar padre..."
+
+msgid "Add Individual"
+msgstr "Agregar persona"
+
+msgid "Add Mother..."
+msgstr "Agregar madre..."
